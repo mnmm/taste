@@ -936,7 +936,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 		
 		 // User Profile Dashboard
         .state("login", {
-            url: "/vendor/:param",
+            url: "/login",
             templateUrl: "views/login.html",
             data: {pageTitle: 'Login',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor','admin','all']},
             controller: "LoginController",
