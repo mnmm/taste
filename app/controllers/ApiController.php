@@ -1617,7 +1617,6 @@ class ApiController extends BaseController {
 								$obj=new ptStripe(STRIPE_KEY);
 
 								$transferdata=$obj->retrieveTransfer($listingdetail->stripe_payment_id);
-								
 								if(	$transferdata['status'] == 0){
 									
 									$transfer_date = $transferdata['data']->date;
