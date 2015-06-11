@@ -579,7 +579,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						
 					  }
 					});
-					$('#addBankAccount').find('input#tax_id').val(taxinfo);
+					$('#addBankAccount').find('input#tax_id').val(localStorage.getItem('taxinfo'));
 					
 					//$('form#addBankAccount').resetForm();        // Show the login form
 					
