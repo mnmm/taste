@@ -149,7 +149,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		var vendoruserid  = localStorage.getItem('userid');
 		
 		function makeSettings(optionsfortransfer) {
-			console.log('transfersplit'+transfersplit);
+			console.log('optionsfortransfer'+optionsfortransfer);
 			var transfersplit = optionsfortransfer.split('##@##');
 			//$('.customername').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'All' });
 			$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').text(transfersplit[0]);
