@@ -659,6 +659,56 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			});
 
 	}
+	
+	
+	$scope.toggleTransferMethods = function () {
+			
+			var vendoruserid  = localStorage.getItem('userid');
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
+			success(function(data, status, headers, config) {
+				if(data.status_code == 200){
+					
+					bootbox.dialog({
+						message: $('#transfers'),
+						show: false,
+						animate:true,
+						closeButton: false,
+						className:'addaccountdetail',
+						buttons: {
+						  danger: {
+							label: "Cancel",
+							className: "btn",
+							callback: function() {
+								bootbox.hideAll();	
+							}
+						  },
+						  success: {
+							label: "Add Account",
+							className: "main-btn",
+							callback: function() {
+								$('input#changetransfermethod').click();
+								return false;
+							}
+						  }
+						} 
+					})
+					.on('shown.bs.modal', function() {
+						
+						$('#transfers').show();     	
+							
+					})
+					.on('hide.bs.modal', function(e) {
+						//$('#addBankAccount').hide().appendTo('body');
+						$('#transfers').hide().appendTo('body');  
+					})
+					.modal('show');
+
+				} 		
+			});
+
+	}
 	  
 
 	  /*$scope.cancel = function () {
