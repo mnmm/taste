@@ -1615,7 +1615,7 @@ class ApiController extends BaseController {
 								$obj=new ptStripe(STRIPE_KEY);
 
 								$recipient_data=$obj->retrieveRecipient($listingdetail->stripe_payment_id);
-								print_r($recipient_data);exit;								
+															
 							} else {
 								
 								if($check_bank_details == 1){
