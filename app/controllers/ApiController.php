@@ -1286,7 +1286,7 @@ class ApiController extends BaseController {
 			}
 		}
 		
-		if($action == 'gettaxidforvendor' || $action == 'getpayeename' || $action == 'getbankaccountinfo'){
+		if($action == 'gettaxidforvendor' || $action == 'getpayeename' || $action == 'getbankaccountinfo' || $action == 'updatetransfermethod'){
 			if (array_key_exists("vendorid", $data1))
 			{
 				$vendorid = $data1->vendorid;
@@ -1294,6 +1294,18 @@ class ApiController extends BaseController {
 			else
 			{
 				 $vendorid = '';
+
+			}
+		}
+		
+		if($action == 'updatetransfermethod'){
+			if (array_key_exists("transferstatus", $data1))
+			{
+				$transferstatus = $data1->transferstatus;
+			}
+			else
+			{
+				 $transferstatus = '';
 
 			}
 		}
@@ -1959,6 +1971,10 @@ class ApiController extends BaseController {
 					$result['status_code']=201;
 					$result['message']='not valid recipeint';
 				}	
+			} else if($action == 'updatetransfermethod'){
+				$update_transfer_choice = PoDetail::update_vendor_transfer_choice($vendorid,$transferstatus);
+				$result['status_code']=200;
+				$result['updated']=$update_transfer_choice;
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));

@@ -707,8 +707,10 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 				if(data.status_code == 200){
 						var transfertypeselected = $('input#transfertypeselected').val();
 						if(transfertypeselected == 0){
+							var newtransferstatus = 1;
 							var btnlabel = 'Turn off ACH transfers';
 						} else {
+							var newtransferstatus = 0;
 							var btnlabel = 'Turn off automatic transfers';
 						}
 						bootbox.dialog({
@@ -729,7 +731,16 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 								label: btnlabel,
 								className: "main-btn",
 								callback: function() {
-									$('input#changetransfermethod').click();
+									//$('input#changetransfermethod').click();
+									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+									var vendoruserid  = localStorage.getItem('userid');
+									$http.post($scope.apppath+'/api/getunpaidpo',{action:'updatetransfermethod',vendorid:vendoruserid,transferstatus:transferstatus}).
+									success(function(data, status, headers, config) {
+										if(data.status_code == 200){
+											
+										} 		
+									});
 									return false;
 								}
 							  }

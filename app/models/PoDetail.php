@@ -865,6 +865,13 @@
 				$get_vendor_info =  DB::table('users')->where('id','=',$vendorid)->first();
 				return $get_vendor_info->transfer_option;
 		}
+
+		//function to update payment status
+		public static function update_vendor_transfer_choice($vendorid,$transferstatus){
+				
+				$update_transfer =  DB::table('users')->where('id','=',$vendorid)->update(array('transfer_option' => $transferstatus ));
+				return 1;
+		}
 	}
 	
 	
