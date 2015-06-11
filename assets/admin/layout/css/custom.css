@@ -58,3 +58,5 @@ Change Quick Sidebar Width
   margin-left: -370px;
 }
 */
+/*add bank info style*/
+.modal-content{ border-radius: 6px !important;}
