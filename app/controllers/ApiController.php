@@ -1617,7 +1617,9 @@ class ApiController extends BaseController {
 								$transferdata=$obj->retrieveTransfer($listingdetail->stripe_payment_id);
 								
 								if(	$transferdata['status'] == 0){
-									$transfer_data = '';
+									print_r($transferdata);
+									$transfer_date = $bank_data['data']->created;
+									$transfer_amount = $bank_data['data']->created;
 									
 								}
 															
