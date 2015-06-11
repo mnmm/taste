@@ -164,7 +164,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						  }
 						});
 						
-						$('#addBankAccount').find('input#tax_id').val(data.taxinformation)
+						$('#addBankAccount').find('input#tax_id').val(data.taxinfo)
 					 /*if(data.taxinformation != '')
 						$scope.taxinformation = data.taxinformation;	
 					
