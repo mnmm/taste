@@ -1601,7 +1601,7 @@ class ApiController extends BaseController {
 							$priority_status = $listingdetail->priority_status;
 							$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
 							
-							$payment_done_hover = '';
+							
 							if($check_bank_details == 0){
 								$request_status = 'Request Info';
 								$request_id = 'requestinfo';
@@ -1612,7 +1612,7 @@ class ApiController extends BaseController {
 							
 							if($listingdetail->vendor_paid_status == 1){
 								$pay_done_class = 'fade_pay';
-								$payment_done_hover = 'paymentpopover';
+							
 							} else {
 								
 								if($check_bank_details == 1){
@@ -1623,9 +1623,7 @@ class ApiController extends BaseController {
 								}
 							}
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
-							$result['data'][]= array($listingdetail->po_no,$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,$priority_status,'<script type="text/ng-template" id="paymentpopover.html">
-							Your routing number is normally found on a check provided by your bank.
-							</script><a '.$payment_done_hover.' href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" data-placement="top">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
+							$result['data'][]= array($listingdetail->po_no,$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,$priority_status,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" data-placement="top" data-toggle="popover" data-trigger="hover" title="Popover title" data-html="true" data-content="Name : xyz<br/>Phone : 3535353 <br/>Address : xxxxx">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
 						//}
 						$i++;
 					}
