@@ -102,5 +102,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008cdd', end
 .addaccountdetail {
 	top:9% !important;
 }
-.transferoptions{  width: 400px; }
+.transferoptions .modal-content { width:400px; }
 
