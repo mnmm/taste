@@ -179,10 +179,11 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						}
 						//console.log('transfertext'+transfertext);
 						//console.log('transferoption'+data.transferoption);
+						alert($('div.paymentmethods').find('div#manageBankAccounts').html());
 						$scope.transferoption = data.transferoption;
-						$('div#manageBankAccounts').find('span#enabledtransfertext').text(transfertext);
-						$('div#manageBankAccounts').find('input#transfertypeselected').val(data.transferoption);
-						$('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
+						$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').text(transfertext);
+						$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(data.transferoption);
+						$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
 						
 					localStorage.setItem('taxinfo',data.taxinformation);
 					// $('#addBankAccount').find('input#tax_id').val(data.taxinformation)
