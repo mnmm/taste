@@ -2032,7 +2032,7 @@ class ApiController extends BaseController {
 		
 	}
 	
-	public function getusers(){
+	public function login(){
 		
 		$data1=$this->get_data();
 		
