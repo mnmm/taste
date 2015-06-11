@@ -675,7 +675,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						show: false,
 						animate:true,
 						closeButton: false,
-						className:'addaccountdetail',
+						className:'transferoptions',
 						buttons: {
 						  danger: {
 							label: "Cancel",
