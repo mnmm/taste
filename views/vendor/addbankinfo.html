@@ -78,11 +78,13 @@
 </div>
 
 <script type="text/ng-template" id="addBankAccount.html">
+	<form class="form-horizontal" name="addBankAccount" novalidate id="addBankAccount" style="display: none;"> 
 	<div class="modal-header">
 		<h3 class="modal-title">Please add your checking account details</h3>
 	</div>
 	<div class="modal-body">
 		<div class="form-horizontal" id="addBankPopup">
+		
 			<div class="form-group" style="display:none;" id="payeeinfo">
 				<label class="col-md-5 control-label" for="name">Payee Name:</label>
 				<div class="col-md-5">
@@ -157,7 +159,7 @@
 		<button class="btn" type="button" ng-click="hideBankPopup()">Cancel</button>
 		<button class="btn btn-success" type="submit" id="accountbtn">Add Account</button>
 	</div>
-	
+	</form>
 </script>
 
 
