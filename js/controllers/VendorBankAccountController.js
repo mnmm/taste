@@ -565,7 +565,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$('#addBankAccount').find('#payeeinfo').hide();
 					$('#addBankAccount').find('#mailinginfo').hide();
 					$('#addBankAccount').find('input#mailingaddress').prop('disabled',true);
-					$('#addBankAccount').find('input#tax_id').val(data.taxinfo);*/
+					$('#addBankAccount').find('input#tax_id').val(data.taxinfo);
 				
 					/*var modalInstance = $modal.open({
 					  animation: true,
