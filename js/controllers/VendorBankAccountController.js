@@ -154,7 +154,16 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 						$scope.apppath= 'https://mnmdesignlabs.com/taste';
-					 if(data.taxinformation != '')
+						var modalInstance = $modal.open({
+						  animation: true,
+						  templateUrl: 'myModalContent.html',
+						  controller: 'ModalInstanceCtrl',
+						  windowClass:'paymentmethods',
+						  resolve: {
+							
+						  }
+						});
+					 /*if(data.taxinformation != '')
 						$scope.taxinformation = data.taxinformation;	
 					
 					 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
@@ -168,7 +177,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 							
 							$('input#paymenttype').val('manual');
 							$('p#selectedpaymentmethod').text('Selected Payment Method : Manual').css('display','block');
-						}
+						}*/
 						$('button#bankinfo').css('display','block');
 						$('form#choosepayment').css('display','none');
 					}
