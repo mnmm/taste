@@ -215,7 +215,12 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			createauthtoken(getunpaidpo);
 		}
 		FormValidation.init();
+		
+			
     });
+    
+    
+
 	
 	
 	$scope.hideBankPopup = function() {
@@ -344,68 +349,18 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 	
     // Can use parseInt(x, 10) on $scope.checkboxSelection or index.toString() if you want to remove the single quotes you see in isCheckboxSelected('1').
     $scope.paymentMethodChosen = function (value) {
+		
+		
 		if(value == 'electronic'){
-			var vendoruserid  = localStorage.getItem('userid');
-			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
-			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200){
-					
-					
-					/*bootbox.dialog({
-						//title: "Your bank account must be a checking account.",
-						//title: "Please add your checking account details",
-						//message: $('#addBankAccount'),
-						message: $('#manageBankAccounts'),
-						show: false,
-						animate:true 
-					})
-					.on('shown.bs.modal', function() {
-						
-						$('#manageBankAccounts').show();     	
-							
-					})
-					.on('hide.bs.modal', function(e) {
-						// Bootbox will remove the modal (including the body which contains the login form)
-						// after hiding the modal
-						// Therefor, we need to backup the form
-						//$('#addBankAccount').hide().appendTo('body');
-						$('#manageBankAccounts').hide().appendTo('body');  
-					})
-					.modal('show');
-					$('#addBankAccount').find('#accountingpopover').click();
-					$('#addBankAccount').find('#routingpopover').click();
-					var routingcss = 0;
-					$('#addBankAccount').find('.popover').each(function(){
-						if(routingcss != 0){
-							$(this).css('display','block');
-						} else {
-							$(this).css('left','231.167px');
-							$(this).css('top','-91.5px');
-						}
-						routingcss++;
-					});
-					$('#addBankAccount').find('input#paymenttype').val('electronic');
-					$('#addBankAccount').find('#payeeinfo').hide();
-					$('#addBankAccount').find('#mailinginfo').hide();
-					$('#addBankAccount').find('input#mailingaddress').prop('disabled',true);
-					$('#addBankAccount').find('input#tax_id').val(data.taxinfo);*/
+			var modalInstance = $modal.open({
+			  animation: true,
+			  templateUrl: 'myModalContent.html',
+			  controller: 'ModalInstanceCtrl',
+			  resolve: {
 				
-					var modalInstance = $modal.open({
-					  animation: true,
-					  templateUrl: 'myModalContent.html',
-					  resolve: {
-						
-					  }
-					});
-					
-            } else {
-				
-					createauthtoken(paymentMethodChosen);
-				
-				}		
+			  }
 			});
+			
 		} else {
 			
 			var vendoruserid  = localStorage.getItem('userid');
@@ -468,71 +423,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 	}
 	
 	
-	$scope.openBankAccountPopUp = function () {
-		
-			var vendoruserid  = localStorage.getItem('userid');
-			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
-			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200){
-					
-					
-					/*bootbox.dialog({
-						//title: "Your bank account must be a checking account.",
-						//title: "Please add your checking account details",
-						//message: $('#addBankAccount'),
-						message: $('#manageBankAccounts'),
-						show: false,
-						animate:true 
-					})
-					.on('shown.bs.modal', function() {
-						
-						$('#manageBankAccounts').show();     	
-							
-					})
-					.on('hide.bs.modal', function(e) {
-						// Bootbox will remove the modal (including the body which contains the login form)
-						// after hiding the modal
-						// Therefor, we need to backup the form
-						//$('#addBankAccount').hide().appendTo('body');
-						$('#manageBankAccounts').hide().appendTo('body');  
-					})
-					.modal('show');
-					$('#addBankAccount').find('#accountingpopover').click();
-					$('#addBankAccount').find('#routingpopover').click();
-					var routingcss = 0;
-					$('#addBankAccount').find('.popover').each(function(){
-						if(routingcss != 0){
-							$(this).css('display','block');
-						} else {
-							$(this).css('left','231.167px');
-							$(this).css('top','-91.5px');
-						}
-						routingcss++;
-					});
-					$('#addBankAccount').find('input#paymenttype').val('electronic');
-					$('#addBankAccount').find('#payeeinfo').hide();
-					$('#addBankAccount').find('#mailinginfo').hide();
-					$('#addBankAccount').find('input#mailingaddress').prop('disabled',true);
-					$('#addBankAccount').find('input#tax_id').val(data.taxinfo);*/
-				
-					var modalInstance = $modal.open({
-					  animation: true,
-					  templateUrl: 'myModalContent.html',
-					  resolve: {
-						
-					  }
-					});
-					
-            } else {
-				
-					createauthtoken(paymentMethodChosen);
-				
-				}		
-			});
-
-	}
+	
 	
 	/*$scope.makeAccountingFocus = function() {
 		$('#account_number').prop('type', 'text');
@@ -612,3 +503,79 @@ return {
     }
 };
 });
+
+ 
+MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
+	$scope.apppath= 'https://mnmdesignlabs.com/taste';
+	$scope.timestamp = Math.floor((new Date().getTime()/1000));
+	$scope.openBankAccountPopUp = function () {
+			
+			var vendoruserid  = localStorage.getItem('userid');
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
+			success(function(data, status, headers, config) {
+				if(data.status_code == 200){
+					
+					
+					/*bootbox.dialog({
+						//title: "Your bank account must be a checking account.",
+						//title: "Please add your checking account details",
+						//message: $('#addBankAccount'),
+						message: $('#manageBankAccounts'),
+						show: false,
+						animate:true 
+					})
+					.on('shown.bs.modal', function() {
+						
+						$('#manageBankAccounts').show();     	
+							
+					})
+					.on('hide.bs.modal', function(e) {
+						// Bootbox will remove the modal (including the body which contains the login form)
+						// after hiding the modal
+						// Therefor, we need to backup the form
+						//$('#addBankAccount').hide().appendTo('body');
+						$('#manageBankAccounts').hide().appendTo('body');  
+					})
+					.modal('show');
+					$('#addBankAccount').find('#accountingpopover').click();
+					$('#addBankAccount').find('#routingpopover').click();
+					var routingcss = 0;
+					$('#addBankAccount').find('.popover').each(function(){
+						if(routingcss != 0){
+							$(this).css('display','block');
+						} else {
+							$(this).css('left','231.167px');
+							$(this).css('top','-91.5px');
+						}
+						routingcss++;
+					});
+					$('#addBankAccount').find('input#paymenttype').val('electronic');
+					$('#addBankAccount').find('#payeeinfo').hide();
+					$('#addBankAccount').find('#mailinginfo').hide();
+					$('#addBankAccount').find('input#mailingaddress').prop('disabled',true);
+					$('#addBankAccount').find('input#tax_id').val(data.taxinfo);*/
+				
+					var modalInstance = $modal.open({
+					  animation: true,
+					  templateUrl: 'addBankAccount.html',
+					  resolve: {
+						
+					  }
+					});
+					
+				} 		
+			});
+
+	}
+	  /*$scope.ok = function () {
+		$modalInstance.close($scope.selected.item);
+	  };
+
+	  $scope.cancel = function () {
+		$modalInstance.dismiss('cancel');
+	  };*/
+});
+
+
