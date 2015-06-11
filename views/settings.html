@@ -1,0 +1,59 @@
+<div class="row" style="text-align:center;">
+	
+</div>
+
+
+<form name="settingsForm" novalidate style="display:none;" id="settingsForm" class="form-horizontal">
+<p style="display:block;" id="vendoraccountloading">Please wait ...</p>
+<p style="display:none;" id="tokenexpired">Token link has been expired!</p>
+<div id="site_statistics_loading" style="display:block;">
+	<img src="{{ $state.current.data.appPath }}/assets/admin/layout/img/loading.gif" alt="loading"/>
+</div>
+<div id="settinginstruction" style="display:none;"></div>
+<div id="settingsform" style="display:none;"> 
+	<div class="form-group">
+			<label class="col-md-5 control-label">Test Secret Key:</label>
+			<div class="col-md-5">
+				<input type="text" placeholder="Test Secret Key" class="form-control" value="" name="test_secret_key" id="test_secret_key" />
+			</div>	
+	</div> 
+
+	<div class="form-group">
+		<label class="col-md-5 control-label">Test Publishable Key:</label>
+		<div class="col-md-5">
+			<input type="text" id="test_publishable_key" name="test_publishable_key" placeholder="Test Publishable Key" required class="form-control" />
+		</div>
+	</div>
+	
+	<div class="form-group">
+			<label class="col-md-5 control-label">Live Secret Key:</label>
+			<div class="col-md-5">
+				<input type="text" placeholder="Live Secret Key" class="form-control" value="" name="live_secret_key" id="live_secret_key" />
+			</div>	
+	</div> 
+
+	<div class="form-group">
+		<label class="col-md-5 control-label">Live Publishable Key:</label>
+		<div class="col-md-5">
+			<input type="text" id="live_publishable_key" name="live_publishable_key" placeholder="Live Publishable Key" required class="form-control" />
+		</div>
+	</div>
+	<input type="hidden" name="actiontype" value="0" id="actiontype">
+	<div class="form-group">
+		 <div class="col-md-6 col-md-offset-5">
+			<button type="submit" class="btn btn-success" id="btnsetting">Save</button>
+		</div>
+	</div>
+</div>
+</form>
+					
+
+					
+<script type="text/javascript">
+jQuery(document).ready(function() { 
+	UIAlertDialogApi.init();
+});
+</script>
+<style type="text/css">
+.modal-footer{ display:none; }
+</style>

@@ -1,0 +1,516 @@
+'use strict';
+
+MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http, $timeout) {
+	$scope.apppath= 'https://mnmdesignlabs.com/taste';
+	$scope.timestamp = Math.floor((new Date().getTime()/1000));
+	console.log($scope.timestamp);
+    $scope.$on('$viewContentLoaded', function() {   
+        Metronic.initAjax(); // initialize core components   
+        var authtoken = localStorage.getItem('access_token');   
+        
+        function callAtTimeout() {
+			//$('.customername').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'All' });
+			$('div.page-content').find('div#site_statistics_loading').each(function(){
+				$(this).css('display','none');
+			});
+		}
+
+        function getunpaidpo(){
+			//var grid = new Datatable();
+			var data = { "action": "payments" ,"fetchdata": "all" };
+			
+			
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+		
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'payments'}).
+			success(function(data, status, headers, config) {
+				if(data.data != ''){
+					$scope.data = data.data;
+					
+					var table = $('#sample_2');
+
+					/* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
+
+					/* Set tabletools buttons and button container */
+
+					/*$.extend(true, $.fn.DataTable.TableTools.classes, {
+						"container": "btn-group tabletools-btn-group pull-right",
+						"buttons": {
+							"normal": "btn btn-sm default",
+							"disabled": "btn btn-sm default disabled"
+						}
+					});*/
+		
+					var oTable = table.dataTable({
+
+						// Internationalisation. For more info refer to http://datatables.net/manual/i18n
+						"language": {
+							"aria": {
+								"sortAscending": ": activate to sort column ascending",
+								"sortDescending": ": activate to sort column descending"
+							},
+							"emptyTable": "No data available in table",
+							"info": "Showing _START_ to _END_ of _TOTAL_ entries",
+							"infoEmpty": "No entries found",
+							"infoFiltered": "(filtered1 from _MAX_ total entries)",
+							"lengthMenu": "Show _MENU_ entries",
+							"search": "Search:",
+							"zeroRecords": "No matching records found"
+						},
+					
+						"order": [
+							[0, 'asc']
+						],
+						"lengthMenu": [
+							[5, 15, 20, -1],
+							[5, 15, 20, "All"] // change per page values here
+						],
+						"data":$scope.data,
+						// set the initial value
+						"pageLength": 10,
+						"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
+						//"data":$scope.podata,
+						// Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
+						// setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
+						// So when dropdowns used the scrollable div should be removed. 
+						//"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
+
+					});
+
+					var tableWrapper = $('#sample_2_wrapper'); // datatable creates the table wrapper by adding with id {your_table_jd}_wrapper
+					tableWrapper.find('.dataTables_length select').select2(); // initialize select2 dropdown
+				}
+						/*if(data.allvendordetails != ''){
+								$scope.allvendorsdetails = data.allvendorsdetails;
+								$timeout(function () {
+									 $timeout(callAtTimeout, 500);
+								});
+						}*/
+			});
+			
+			/*$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getvendorsdetails'}).
+			success(function(data, status, headers, config) {
+				if(data.allvendordetails != ''){
+						$scope.allvendorsdetails = data.allvendorsdetails;
+						$timeout(function () {
+							 $timeout(callAtTimeout, 500);
+						});
+				}
+			});*/
+
+			/*grid.init({
+            src: $("#datatable_orders"),
+            onSuccess: function (grid) {
+                // execute some code after table records loaded
+            },
+            onError: function (grid) {
+                // execute some code on network or other general error  
+            },
+            loadingMessage: 'Loading...',
+            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
+                // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
+                // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js). 
+                // So when dropdowns used the scrollable div should be removed. 
+                //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
+
+                "lengthMenu": [
+                    [5, 10, 15, 20, 25, -1],
+                    [5, 10, 15, 20, 25, "All"] // change per page values here
+                ],
+                "pageLength": 5, // default record count per page
+                 "language": { // language settings
+                        // metronic spesific
+                        "metronicGroupActions": "_TOTAL_ records selected:  ",
+                       // "metronicAjaxRequestGeneralError": "Could not complete request. Please check your internet connection",
+
+                        // data tables spesific
+                        "lengthMenu": "<span class='seperator'>|</span>View _MENU_ records",
+                        "info": "<span class='seperator'>|</span>Found total _TOTAL_ records",
+                        "infoEmpty": "No records found to show",
+                        "emptyTable": "No data available in table",
+                        "zeroRecords": "No matching records found"
+                    },
+              "ajax": {
+                    "url": "https://mnmdesignlabs.com/taste/api/getunpaidpo", // ajax source
+                    "type": "POST",
+                    "data": function(data) { // add request parameters before submit
+							
+							
+							if(data.order[0]['column'] != '' && typeof data.order[0]['column'] !== 'undefined' && data.order[0]['dir'] != '' && typeof data.order[0]['dir'] !== 'undefined'){
+								if(data.order[0]['column'] == 0){
+									data.orderby = 'pono';
+								} else if(data.order[0]['column'] == 1){
+									data.orderby = 'po_date';
+								} else if(data.order[0]['column'] == 2){
+									data.orderby = 'vendorname';
+								} else if(data.order[0]['column'] == 5){
+									data.orderby = 'duedate';
+								} else {
+									if(data.order[0]['column'] == 6){
+										data.orderby = 'paidstatus';
+									}
+								}
+								var orderin = data.order[0]['dir'];
+								data.order = null;
+								data.order = orderin;
+								
+							} else {
+								data.orderby = 'paidstatus';
+								data.order = null;
+								data.order = 'desc';
+							}
+							
+							
+							data.action = 'payments';
+							data.fetchdata = 'all';
+							data.columns = null;
+							data.search = null;
+							
+							data.columns = '1';
+							data.search = 'unpaid';
+						
+							var vendorname = $("input[name='order_customer_name']").val();
+							var due_date_from = $("input[name='order_purchase_price_from']").val();
+							var due_date_to = $("input[name='order_purchase_price_to']").val();
+							var servicedate = $("input[name='order_date_from']").val();
+							var paidstatus = $("select[name='order_status']").val();
+							var po_no = $("input[name='order_id']").val();
+							
+							var searchby = '';
+							var multipleparameterssearch = 0;
+							
+							var vendorArr = [];
+							$('div#vendordata').find('option:selected').each(function () {
+								vendorArr.push($(this).val());
+							});
+							
+							if(vendorArr.length > 0){
+								//data.vendorname = vendorname;
+								data.vendorname = vendorArr.join()
+								searchby = 'vendorname';
+								multipleparameterssearch += 1;
+							}
+							
+							if(po_no != '' && typeof po_no !== 'undefined'){
+								data.order_id = po_no;
+								searchby = 'po_no';
+								multipleparameterssearch += 1;
+							}
+
+							if(due_date_from != '' && typeof due_date_from !== 'undefined'){
+								
+								data.due_date_from = due_date_from;
+								searchby = 'duedate';
+								multipleparameterssearch += 1;
+								if(due_date_to != '' && typeof due_date_to !== 'undefined'){
+									data.due_date_to = due_date_to;
+									multipleparameterssearch += 1;
+								} 
+							} 
+							
+							if(servicedate != '' && typeof servicedate !== 'undefined'){
+								data.servicedate = servicedate;
+								searchby = 'servicedate';
+								multipleparameterssearch += 1;
+							}
+							
+							
+							var paidstatusArr = [];
+							$('div#statusdata').find('option:selected').each(function () {
+								paidstatusArr.push($(this).val());
+							});
+							//console.log(paidstatusArr);
+							if(paidstatusArr.length > 0){
+								//data.vendorname = vendorname;
+								data.paidstatus = paidstatusArr.join()
+								searchby = 'paidstatus';
+								multipleparameterssearch += 1;
+							}
+							
+							var orderamountArr = [];
+							$('div#orderdata').find('option:selected').each(function () {
+								orderamountArr.push($(this).val());
+							});
+							
+							if(orderamountArr.length > 0){
+								data.orderamount = orderamountArr.join()
+								searchby = 'orderamount';
+								multipleparameterssearch += 1;
+							}
+
+							
+							if(multipleparameterssearch > 1 ){
+								data.searchby = 'all';
+							} else {
+								if(searchby != ''){
+									data.searchby = searchby;
+								}
+							}
+
+							JSON.stringify(data);
+                      },
+                  
+                    "dataType":"json",
+                    "headers": { 'x-taste-request-timestamp':Math.floor((new Date().getTime()/1000)),'x-taste-access-token':localStorage.getItem('access_token')},
+                  
+                },
+            }
+        });
+
+        // handle group actionsubmit button click
+        grid.getTableWrapper().on('click', '.table-group-action-submit', function (e) {
+            e.preventDefault();
+            var action = $(".table-group-action-input", grid.getTableWrapper());
+            if (action.val() != "" && grid.getSelectedRowsCount() > 0) {
+                grid.setAjaxParam("customActionType", "group_action");
+                grid.setAjaxParam("customActionName", action.val());
+                grid.setAjaxParam("id", grid.getSelectedRows());
+                grid.getDataTable().ajax.reload();
+                grid.clearAjaxParams();
+            } else if (action.val() == "") {
+                Metronic.alert({
+                    type: 'danger',
+                    icon: 'warning',
+                    message: 'Please select an action',
+                    container: grid.getTableWrapper(),
+                    place: 'prepend'
+                });
+            } else if (grid.getSelectedRowsCount() === 0) {
+                Metronic.alert({
+                    type: 'danger',
+                    icon: 'warning',
+                    message: 'No record selected',
+                    container: grid.getTableWrapper(),
+                    place: 'prepend'
+                });
+            }
+        });*/
+        
+        $('#button#vendorid').on('click', '.table-group-action-submit', function (e) {
+			console.log('her');
+		});
+		}
+		
+        function createauthtoken(callback){
+			
+			$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
+					success(function(data, status, headers, config) {
+						if(data.status_code == 200 ){
+							localStorage.setItem('access_token',data.access_token);
+							callback();
+						}
+			});			
+		}
+		
+        function checktokenauthentication(authtoken,callback){
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =authtoken;
+			$http.post($scope.apppath+'/api/checktokenauthentication').
+				success(function(data, status, headers, config) {
+					if(data.status_code == 200){
+						callback();
+					} else {
+						createauthtoken(callback);
+					}
+			});
+		}
+		
+		
+		function makevendorpayment(poid,paymentamount){
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			//$http.defaults.headers.common['Content-type'] ='application/json';
+			$http.post($scope.apppath+'/api/getunpaidpo',{poid:poid,action:'makevendorpayment',amount:paymentamount}).
+				success(function(data, status, headers, config) {
+					//console.log(data);
+					//console.log(data.status_code);
+					if(data.status_code == 200){
+						bootbox.hideAll();	
+					} else {
+						if(data.status_code == 201){
+							if(data.message != ''){
+								$('div.bootbox').find('div.bootbox-body').append(data.message).css('color','red');
+								
+							} else {
+								//createauthtoken(sendrequestlink);
+							}
+							
+						} 
+						
+					}
+			});
+		}
+		
+        if(authtoken != '' && typeof authtoken !== 'undefined' && authtoken !==null){
+			checktokenauthentication(authtoken, getunpaidpo);
+		} else {
+			createauthtoken(getunpaidpo);
+		}
+		  
+    });
+    
+    
+    $(document).on("click", ".makepayment", function() {
+		var paymentamount = $(this).attr('data-payment-amount');
+		var poid =  $(this).attr('id');
+	
+		//console.log('paymentamount'+paymentamount+'vendorid'+vendorid);
+		if(poid != ''){
+				if(paymentamount != 0){
+							bootbox.dialog({
+							message: "Do you want to make payment to vendor?",
+							title: "Payment Confirmation",
+							size: 'small',
+							buttons: {
+							  danger: {
+								label: "Cancel",
+								className: "primary",
+								callback: function() {
+									bootbox.hideAll();	
+								}
+							  },
+							  success: {
+								label: "Pay",
+								className: "green",
+								callback: function() {
+									
+									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+									//$http.defaults.headers.common['Content-type'] ='application/json';
+									$http.post($scope.apppath+'/api/getunpaidpo',{poid:poid,action:'makevendorpayment',amount:paymentamount}).
+										success(function(data, status, headers, config) {
+											//console.log(data);
+											//console.log(data.status_code);
+											if(data.status_code == 200){
+												$('a#'+poid).removeClass('makepayment');
+												$('a#'+poid).addClass('fade_pay');
+												bootbox.hideAll();	
+											} else {
+												if(data.status_code == 201){
+													if(data.message != ''){
+														$('div.bootbox').find('div.bootbox-body').append('<p style="color:red;">'+data.message+'</p>');
+														
+													} else {
+														//createauthtoken(sendrequestlink);
+													}
+													
+												} 
+												
+											}
+									});
+									return false;
+									
+								}
+							  }
+							}
+					 });
+					 
+				} 
+				
+			}
+	});
+	
+    
+    $(document).on("click", ".requestinfo", function() {
+		var vendorid = $(this).attr('data-request-id');
+		var actiontype =  $(this).attr('id');
+	
+		//console.log($(this).attr('data-request-id'));
+		if(vendorid != ''){
+				if(actiontype == 'updateinfo'){
+							bootbox.dialog({
+							message: "Do you want to send update info link to vendor ?",
+							title: "Update bank info confirmation",
+							size: 'small',
+							buttons: {
+							  danger: {
+								label: "Cancel",
+								className: "primary",
+								callback: function() {
+									bootbox.hideAll();	
+								}
+							  },
+							  success: {
+								label: "Continue",
+								className: "green",
+								callback: function() {
+									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+									$http.post($scope.apppath+'/api/getunpaidpo',{vendorid:vendorid,action:'sendrequesterlink',actiontype:'updateinfo'}).
+										success(function(data, status, headers, config) {
+											if(data.status_code == 200){
+												bootbox.hideAll();	
+											} else {
+												createauthtoken(sendrequestlink);
+											}
+									});
+								}
+							  }
+							}
+					 });
+					 
+				} else {
+					bootbox.dialog({
+							message: "Do you want to send request info link to vendor ?",
+							title: "Request bank info confirmation",
+							size: 'small',
+							buttons: {
+							  danger: {
+								label: "Cancel",
+								className: "primary",
+								callback: function() {
+									bootbox.hideAll();	
+								}
+							  },
+							  success: {
+								label: "Continue",
+								className: "green",
+								callback: function() {
+									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+									$http.post($scope.apppath+'/api/getunpaidpo',{vendorid:vendorid,action:'sendrequesterlink',actiontype:'requestinfo'}).
+										success(function(data, status, headers, config) {
+											if(data.status_code == 200){
+												bootbox.hideAll();	
+											} else {
+												createauthtoken(sendrequestlink);
+											}
+									});
+								}
+							  }
+							}
+					 });
+	
+				}
+				
+			}
+	});
+    
+  
+ /* $scope.sendrequestlink = function(vendorid) {
+		 alert('here');
+			if(vendorid != ''){
+				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+				$http.post($scope.apppath+'/api/getunpaidpo',{vendorid:vendorid,action:'sendrequesterlink'}).
+					success(function(data, status, headers, config) {
+						if(data.status_code == 200){
+							if(data.vendorpodetails != ''){
+								$scope.vendorpodetails = data.vendorpodetails;
+							}	
+						} else {
+							createauthtoken(sendrequestlink);
+						}
+				});
+			}
+	}*/
+	
+
+   
+    // set sidebar closed and body solid layout mode
+    $rootScope.settings.layout.pageBodySolid = true;
+    $rootScope.settings.layout.pageSidebarClosed = false;
+});

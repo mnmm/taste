@@ -1,0 +1,268 @@
+<!--<script type="text/javascript" src="http://localhost/laravel/assets/global/scripts/datatable.js"></script>
+<script type="text/javascript" src="http://localhost/laravel/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="http://localhost/laravel/assets/admin/pages/scripts/ecommerce-orders.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.orderamount').SumoSelect({selectAll:true,csvDispCount:2,selectAlltext:'All' });
+	
+	$('.orderstatus').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'All' });
+});
+</script>-->
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<a href="#/dashboard.html">Home</a>
+			<i class="fa fa-angle-right"></i>
+		</li>
+		<li>
+			<a href="#">Payments</a>
+		</li>
+	</ul>
+	<div class="page-toolbar">
+		<div class="btn-group pull-right">
+			<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true">
+			Actions <i class="fa fa-angle-down"></i>
+			</button>
+			<ul class="dropdown-menu pull-right" role="menu">
+				<li>
+					<a href="#">
+					<i class="icon-user"></i> New User </a>
+				</li>
+				<li>
+					<a href="#">
+					<i class="icon-present"></i> New Event <span class="badge badge-success">4</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<i class="icon-basket"></i> New order </a>
+				</li>
+				<li class="divider">
+				</li>
+				<li>
+					<a href="#">
+					<i class="icon-flag"></i> Pending Orders <span class="badge badge-danger">4</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<i class="icon-users"></i> Pending Users <span class="badge badge-warning">12</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+				<div class="col-md-12">
+					<!--<div class="note note-danger">
+						<p>
+							 NOTE: The below datatable is not connected to a real database so the filter and sorting is just simulated for demo purposes only.
+						</p>
+					</div>-->
+					<!-- Begin: life time stats -->
+					<div class="portlet box green-haze">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-globe"></i>Order Listings
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-striped table-bordered table-hover" id="sample_2">
+							<thead>
+							<tr>
+								<th>
+									Order #
+								</th>
+								<th>
+									Purchased&nbsp;On
+								</th>
+								<th>
+									 Vendor Name
+								</th>
+								<th>
+									 Shipping Address
+								</th>
+								<th>
+									 Amount
+								</th>
+								<th>
+									 Due Date
+								</th>
+								<th>
+									 Paid Status
+								</th>
+								<th>
+									Priority
+								</th>
+								<th>
+									Actions
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<!--<tr ng-repeat="poinfo in podata">
+									<td>{{ poinfo.po_no }}</td>
+									<td>{{ poinfo.po_date }}</td>
+									<td>{{ poinfo.vendor_name }}</td>
+									<td>{{ poinfo.country }},{{ poinfo.state }},{{ poinfo.city }},{{ poinfo.zip }} </td>
+									<td>{{ poinfo.total_amount }}</td>
+									<td>{{ poinfo.due_date }}</td>
+									<td>{{ poinfo.paid_status }}</td>
+								<td><a class="btn btn-xs default btn-editable" href="javascript:void(0);"><i class="fa fa-search"></i> View</a></td>
+							</tr>-->
+							</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<!--<div class="portlet">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-shopping-cart"></i>Order Listing
+							</div>
+							<div class="actions">
+								<a href="javascript:;" class="btn default yellow-stripe">
+								<i class="fa fa-plus"></i>
+								<span class="hidden-480">
+								New Order </span>
+								</a>
+								
+							</div>
+						</div>
+						<div id="site_statistics_loading" style="display:block;">
+							<img src="{{ $state.current.data.appPath }}/assets/admin/layout/img/loading.gif" alt="loading"/>
+						</div>
+						<div class="portlet-body">
+							<div class="table-container order-listing">
+							<div class="col-md-9 nopad">
+							<div class="form-inline col-md-6 nopad">
+							<label>Order ID</label>
+							<input type="text" class="form-control form-filter input-sm" name="order_id">
+							</div>
+							<div class="form-inline col-md-6 nopad">
+								<label>Due Date</label>
+									<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+											<input type="text" class="form-control form-filter input-sm" readonly name="order_purchase_price_from" placeholder="Due Date">
+											<span class="input-group-btn">
+											<button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
+											</span>
+									</div>
+							<span class="btn btn-primary and">&</span>
+							</div>
+							<div class="form-inline col-md-6 nopad" id="vendordata">
+							<label>Vendor Name</label>
+						
+								<select multiple="multiple" placeholder="Vendor name" onchange="console.log($(this).children(':selected').length)" class="customername table-group-action-input form-control input-inline input-small input-sm" name="order_customer_name">
+										  <option ng-repeat="vendorinfo in allvendorsdetails" value="{{ vendorinfo.vendor_id }}" >{{ vendorinfo.vendor_name }}</option>
+								</select>
+							</div>
+							<div class="form-inline col-md-6 nopad">
+							<label>Order Date</label>
+									<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+											<input type="text" class="form-control form-filter input-sm" readonly name="order_date_from" placeholder="Service date">
+											<span class="input-group-btn">
+											<button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
+											</span>
+									</div>	
+									<span class="btn btn-primary and">&</span>
+							</div>
+							<div class="clearfix"></div>
+							<div class="form-inline col-md-6 nopad" id="orderdata">
+							<label>Order Amount</label>
+									<select multiple="multiple" placeholder="Order Amount" onchange="console.log($(this).children(':selected').length)" class="orderamount table-group-action-input form-control input-inline input-small input-sm" name="orderamount">
+										   <option value="0-100">&lt; $100</option>
+										   <option value="100-500">$100 to $500</option>
+										   <option value="500-1000">$500 to $1000</option>
+										    <option value="1000-all">$1000 &gt;</option>
+									</select>
+							</div>
+							
+							<div class="form-inline col-md-6 nopad" id="statusdata">
+							<label>Order Status</label>
+									<select multiple="multiple" placeholder="Order Status" onchange="console.log($(this).children(':selected').length)" class="orderstatus table-group-action-input form-control input-inline input-small input-sm" name="order_status">
+										   <option value="paid">Paid</option>
+										   <option value="unpaid">Upaid</option>
+									</select>
+							</div>
+							</div>
+							<div class="col-md-3 ">
+							<button class="btn btn-primary filter-submit"><i class="fa fa-search"></i>Find Orders</button>
+							<button class="btn red filter-cancel"><i class="fa fa-times"></i> Reset</button>
+							</div>
+								
+								<div class="clearfix"></div>	
+									
+									<div class="table-actions-wrapper clearfix">
+									<span>
+									</span>
+								
+								</div>
+								<table class="table table-striped table-bordered table-hover" id="datatable_orders">
+								<thead>
+								<tr role="row" class="heading">
+									
+									<th width="5%">
+										 Order&nbsp;#
+									</th>
+									<th width="15%">
+										 Purchased&nbsp;On
+									</th>
+									<th width="15%">
+										 Vendor Name
+									</th>
+									<th width="10%">
+										 Shipping Address
+									</th>
+									<th width="10%">
+										 Amount
+									</th>
+									<th width="15%">
+										 Due Date
+									</th>
+								
+									<th width="10%">
+										 Paid Status
+									</th>
+									<th width="10%">
+										 Actions
+									</th>
+								</tr>
+
+								</thead>
+								<tbody>
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+					-->
+<!-- END PAGE CONTENT-->
+
+<script>
+jQuery(document).ready(function() {  
+	// FormValidation.init();
+});
+</script>
+<style>
+	.order-listing .form-inline{ margin-bottom:10px;}
+.nopad{ padding:0}
+.order-listing .form-inline label{ width:30%;}
+.order-listing .form-inline .input-group.date{width:42.5%;}
+.order-listing .btn.and{padding:2px 10px; vertical-align:top; line-height:1.6;}
+.btn.btn-xs.default.btn-editable.fade_pay{ opacity: 0.5; }
+</style>
