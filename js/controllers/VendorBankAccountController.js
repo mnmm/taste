@@ -504,11 +504,7 @@ return {
 };
 });
 
-
-
-
-    
-    
+ 
 MetronicApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
 
 	$scope.openBankAccountPopUp = function () {
