@@ -341,10 +341,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		
 	}
 	
-	
-    // Can use parseInt(x, 10) on $scope.checkboxSelection or index.toString() if you want to remove the single quotes you see in isCheckboxSelected('1').
-    $scope.paymentMethodChosen = function (value) {
-		if(value == 'electronic'){
+	$scope.addPayeeDetails= function () {
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
@@ -352,6 +349,13 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 					
+					var modalInstance = $modal.open({
+					  animation: true,
+					  templateUrl: 'addBankAccount.html',
+					  resolve: {
+						
+					  }
+					});
 					
 					/*bootbox.dialog({
 						//title: "Your bank account must be a checking account.",
@@ -400,12 +404,25 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 					  }
 					});
 					
-            } else {
-				
+				} else {
 					createauthtoken(paymentMethodChosen);
-				
 				}		
 			});
+	}
+	
+    // Can use parseInt(x, 10) on $scope.checkboxSelection or index.toString() if you want to remove the single quotes you see in isCheckboxSelected('1').
+    $scope.paymentMethodChosen = function (value) {
+		
+		
+		if(value == 'electronic'){
+			var modalInstance = $modal.open({
+			  animation: true,
+			  templateUrl: 'myModalContent.html',
+			  resolve: {
+				
+			  }
+			});
+			
 		} else {
 			
 			var vendoruserid  = localStorage.getItem('userid');
