@@ -164,8 +164,9 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						  }
 						});
 						
-						console.log('data.taxinfo'+data.taxinformation);
-					 $('#addBankAccount').find('input#tax_id').val(data.taxinformation)
+					//	console.log('data.taxinfo'+data.taxinformation);
+					localStorage.setItem('taxinfo',data.taxinformation);
+					// $('#addBankAccount').find('input#tax_id').val(data.taxinformation)
 					 /*if(data.taxinformation != '')
 						$scope.taxinformation = data.taxinformation;	
 					
@@ -578,6 +579,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						
 					  }
 					});
+					$('#addBankAccount').find('input#tax_id').val(taxinfo);
 					
 					//$('form#addBankAccount').resetForm();        // Show the login form
 					
