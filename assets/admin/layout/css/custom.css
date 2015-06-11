@@ -68,6 +68,12 @@ background: -webkit-linear-gradient(top, #eff1f4 0%,#f7f8fa 100%); /* Chrome10+,
 background: -o-linear-gradient(top, #eff1f4 0%,#f7f8fa 100%); /* Opera 11.10+ */
 background: -ms-linear-gradient(top, #eff1f4 0%,#f7f8fa 100%); /* IE10+ */
 background: linear-gradient(to bottom, #eff1f4 0%,#f7f8fa 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff1f4', endColorstr='#f7f8fa',GradientType=0 ); /* IE6-9 */ color: #000; font-size: 14px; padding: 5px 10px;
-border:1px #adb2bb solid; border-radius:5px;}
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff1f4', endColorstr='#f7f8fa',GradientType=0 ); /* IE6-9 */ border: 1px solid #adb2bb;
+    border-radius: 5px !important;
+    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0 10px;
+    text-shadow: 0 1px 0 #fff;}
+.addinfo-btn span{ color: #888; font-weight: normal; font-size: 12px;}
 p .go-arrow{ font-size: 10px;}
