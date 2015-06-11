@@ -177,7 +177,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						});
 						
 						$('span#enabledtransfertext').text(transfertext);
-						
+						$('input#transfertypeselected').val(data.transferoption);
 					localStorage.setItem('taxinfo',data.taxinformation);
 					// $('#addBankAccount').find('input#tax_id').val(data.taxinformation)
 					 /*if(data.taxinformation != '')
