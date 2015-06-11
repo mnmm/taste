@@ -549,6 +549,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							className: "main-btn",
 							callback: function() {
 								$('input#savebankinfo').click();
+								return false;
 							}
 						  }
 						} 
