@@ -1601,6 +1601,7 @@ class ApiController extends BaseController {
 							$priority_status = $listingdetail->priority_status;
 							$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
 							
+							$payment_done_hover = '';
 							if($check_bank_details == 0){
 								$request_status = 'Request Info';
 								$request_id = 'requestinfo';
@@ -1616,11 +1617,12 @@ class ApiController extends BaseController {
 								if($check_bank_details == 1){
 									$pay_done_class = 'makepayment';
 								} else {
-									$pay_done_class = 'fade_pay';
+									$pay_done_class = 'fade_pay payment_done';
+									$payment_done_hover = 'accountingpopover data-placement="right"';
 								}
 							}
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
-							$result['data'][]= array($listingdetail->po_no,$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,$priority_status,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
+							$result['data'][]= array($listingdetail->po_no,$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,$priority_status,'<a '.$payment_done_hover.' href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
 						//}
 						$i++;
 					}
