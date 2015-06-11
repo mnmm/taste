@@ -706,7 +706,11 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 						var transfertypeselected = $('input#transfertypeselected').val();
-						alert('transfertypeselected'+transfertypeselected);
+						if(transfertypeselected == 0){
+							var btnlabel = 'Turn off ACH transfers';
+						} else {
+							var btnlabel = 'Turn off automatic transfers';
+						}
 						bootbox.dialog({
 							message: $('#transfers'),
 							show: false,
@@ -722,7 +726,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 								}
 							  },
 							  success: {
-								label: "Turn off ACH transfers",
+								label: btnlabel,
 								className: "main-btn",
 								callback: function() {
 									$('input#changetransfermethod').click();
