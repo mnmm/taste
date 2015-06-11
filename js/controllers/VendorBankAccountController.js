@@ -155,17 +155,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 				if(data.status_code == 200){
 						$scope.apppath= 'https://mnmdesignlabs.com/taste';
 						
-						var transfertext = '';
-						var transferbtntext = '';
-						if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
-							if(data.transferoption  == 1){
-								transfertext ='Automatic transfer enabled';
-								transferbtntext ='Switch to enable ACH transfer';
-							} else {
-								transfertext ='ACH transfers enabled';
-								transferbtntext ='Switch to enable bank accounts';
-							}
-						}
+						
 						var modalInstance = $modal.open({
 						  animation: true,
 						  templateUrl: 'myModalContent.html',
@@ -176,9 +166,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						  }
 						});
 						
-						$('span#enabledtransfertext').text(transfertext);
-						$('input#transfertypeselected').val(data.transferoption);
-						$('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);
+						
 					localStorage.setItem('taxinfo',data.taxinformation);
 					// $('#addBankAccount').find('input#tax_id').val(data.taxinformation)
 					 /*if(data.taxinformation != '')
@@ -676,50 +664,68 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	
 	
 	$scope.toggleTransferMethods = function () {
-			bootbox.dialog({
-				message: $('#transfers'),
-				show: false,
-				animate:true,
-				closeButton: false,
-				className:'transferoptions',
-				buttons: {
-				  danger: {
-					label: "Cancel",
-					className: "btn",
-					callback: function() {
-						bootbox.hideAll();	
-					}
-				  },
-				  success: {
-					label: "Turn off ACH transfers",
-					className: "main-btn",
-					callback: function() {
-						$('input#changetransfermethod').click();
-						return false;
-					}
-				  }
-				} 
-			})
-			.on('shown.bs.modal', function() {
-				
-				$('#transfers').show();     	
+			
+			
 					
-			})
-			.on('hide.bs.modal', function(e) {
-				//$('#addBankAccount').hide().appendTo('body');
-				$('#transfers').hide().appendTo('body');  
-			})
-			.modal('show');
-					
-			/*var vendoruserid  = localStorage.getItem('userid');
+			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
+					
+								
+						bootbox.dialog({
+							message: $('#transfers'),
+							show: false,
+							animate:true,
+							closeButton: false,
+							className:'transferoptions',
+							buttons: {
+							  danger: {
+								label: "Cancel",
+								className: "btn",
+								callback: function() {
+									bootbox.hideAll();	
+								}
+							  },
+							  success: {
+								label: "Turn off ACH transfers",
+								className: "main-btn",
+								callback: function() {
+									$('input#changetransfermethod').click();
+									return false;
+								}
+							  }
+							} 
+						})
+						.on('shown.bs.modal', function() {
+							
+							$('#transfers').show();     	
+								
+						})
+						.on('hide.bs.modal', function(e) {
+							//$('#addBankAccount').hide().appendTo('body');
+							$('#transfers').hide().appendTo('body');  
+						})
+						.modal('show');
+						
+						var transfertext = '';
+						var transferbtntext = '';
+						if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
+							if(data.transferoption  == 1){
+								transfertext ='Automatic transfer enabled';
+								transferbtntext ='Switch to enable ACH transfer';
+							} else {
+								transfertext ='ACH transfers enabled';
+								transferbtntext ='Switch to enable bank accounts';
+							}
+						}
+						$('span#enabledtransfertext').text(transfertext);
+						$('input#transfertypeselected').val(data.transferoption);
+						$('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
 
-
-				}*/ 		
+				} 		
 			});
 
 	}
