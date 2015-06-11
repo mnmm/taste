@@ -505,7 +505,7 @@ return {
 });
 
  
-MetronicApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+MetronicApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
 
 	$scope.openBankAccountPopUp = function () {
 			console.log('here');
