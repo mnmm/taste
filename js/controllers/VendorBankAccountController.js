@@ -190,9 +190,10 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						//console.log('transfertext'+transfertext);
 						//console.log('transferoption'+data.transferoption);
 						var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext;
-						$timeout(function () {
+						/*$timeout(function () {
 							$timeout(makeSettings, 500,optionsfortransfer);
-						});
+						});*/
+						$timeout(function() {makeSettings(optionsfortransfer)}, 500); 
 						$scope.transferoption = data.transferoption;
 						
 						
