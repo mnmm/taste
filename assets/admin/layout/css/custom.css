@@ -61,3 +61,13 @@ Change Quick Sidebar Width
 /*add bank info style*/
 .modal-content{ border-radius: 6px !important;}
 a{color:#008cdd;}
+.addinfo-btn{background: #eff1f4; /* Old browsers */
+background: -moz-linear-gradient(top, #eff1f4 0%, #f7f8fa 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eff1f4), color-stop(100%,#f7f8fa)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #eff1f4 0%,#f7f8fa 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #eff1f4 0%,#f7f8fa 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #eff1f4 0%,#f7f8fa 100%); /* IE10+ */
+background: linear-gradient(to bottom, #eff1f4 0%,#f7f8fa 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff1f4', endColorstr='#f7f8fa',GradientType=0 ); /* IE6-9 */ color: #000; font-size: 14px; padding: 5px 10px;
+border:1px #adb2bb solid; border-radius:5px;}
+p .go-arrow{ font-size: 10px;}
