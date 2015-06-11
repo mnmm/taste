@@ -532,6 +532,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 				if(data.status_code == 200){
 					
 					bootbox.dialog({
+						title:'Please add your checking account details',
 						message: $('#addBankAccount'),
 						show: false,
 						animate:true 
