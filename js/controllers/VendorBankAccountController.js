@@ -177,10 +177,10 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 							
 							$('input#paymenttype').val('manual');
 							$('p#selectedpaymentmethod').text('Selected Payment Method : Manual').css('display','block');
-						}*/
+						}
 						$('button#bankinfo').css('display','block');
 						$('form#choosepayment').css('display','none');
-					}
+					} */
 						
 						var vm = this;
 				} else {
