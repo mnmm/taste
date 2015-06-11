@@ -216,7 +216,13 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		}
 		FormValidation.init();
 		
-			$scope.openBankAccountPopUp = function () {
+			
+    });
+    
+    
+    MetronicApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+
+		$scope.openBankAccountPopUp = function () {
 				console.log('here');
 				var vendoruserid  = localStorage.getItem('userid');
 				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
@@ -281,7 +287,14 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 				});
 
 		}
-    });
+		  /*$scope.ok = function () {
+			$modalInstance.close($scope.selected.item);
+		  };
+
+		  $scope.cancel = function () {
+			$modalInstance.dismiss('cancel');
+		  };*/
+	});
 	
 	
 	$scope.hideBankPopup = function() {
@@ -416,6 +429,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			var modalInstance = $modal.open({
 			  animation: true,
 			  templateUrl: 'myModalContent.html',
+			  controller: 'ModalInstanceCtrl',
 			  resolve: {
 				
 			  }
