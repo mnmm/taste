@@ -706,6 +706,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 						var transfertypeselected = $('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val();
+						console.log('transfertypeselected'+transfertypeselected);
 						if(transfertypeselected == 0){
 							var newtransferstatus = 1;
 							var btnlabel = 'Turn off ACH transfers';
