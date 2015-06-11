@@ -506,9 +506,10 @@ return {
 
  
 MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
-
+	$scope.apppath= 'https://mnmdesignlabs.com/taste';
+	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	$scope.openBankAccountPopUp = function () {
-			console.log('here');
+			
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
