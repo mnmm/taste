@@ -177,8 +177,9 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 								transferbtntext ='Switch to enable bank accounts';
 							}
 						}
-						console.log('transfertext'+transfertext);
-						console.log('transferoption'+data.transferoption);
+						//console.log('transfertext'+transfertext);
+						//console.log('transferoption'+data.transferoption);
+						$scope.transferoption = data.transferoption;
 						$('div#manageBankAccounts').find('span#enabledtransfertext').text(transfertext);
 						$('div#manageBankAccounts').find('input#transfertypeselected').val(data.transferoption);
 						$('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
