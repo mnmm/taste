@@ -156,14 +156,14 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						$scope.apppath= 'https://mnmdesignlabs.com/taste';
 						
 						var transfertext = '';
-						
+						var transferbtntext = '';
 						if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
 							if(data.transferoption  == 1){
 								transfertext ='Automatic transfer enabled';
-							
+								transferbtntext ='Switch to enable ACH transfer';
 							} else {
 								transfertext ='ACH transfers enabled';
-							
+								transferbtntext ='Switch to enable bank accounts';
 							}
 						}
 						var modalInstance = $modal.open({
@@ -178,6 +178,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						
 						$('span#enabledtransfertext').text(transfertext);
 						$('input#transfertypeselected').val(data.transferoption);
+						$('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);
 					localStorage.setItem('taxinfo',data.taxinformation);
 					// $('#addBankAccount').find('input#tax_id').val(data.taxinformation)
 					 /*if(data.taxinformation != '')
