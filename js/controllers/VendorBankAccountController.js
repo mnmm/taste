@@ -219,7 +219,10 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			
     });
     
+    
 
+	
+	
 	$scope.hideBankPopup = function() {
 		bootbox.hideAll();	
 		
