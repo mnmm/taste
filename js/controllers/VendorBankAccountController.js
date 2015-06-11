@@ -685,7 +685,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							}
 						  },
 						  success: {
-							label: "Add Account",
+							label: "Turn off ACH transfers",
 							className: "main-btn",
 							callback: function() {
 								$('input#changetransfermethod').click();
