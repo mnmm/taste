@@ -93,7 +93,7 @@ background: -ms-linear-gradient(top, #008cdd 0%,#0066ba 100%); / IE10+ /
 background: linear-gradient(to bottom, #008cdd 0%,#0066ba 100%); / W3C /
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008cdd', endColorstr='#0066ba',GradientType=0 ); / IE6-9 /}
 
-.modal .modal-header h3 {
+.modal .modal-header h3,.addaccountdetail h4.modal-title {
     font-size: 14px;
     font-weight: bold;
     text-align: center;
@@ -102,3 +102,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008cdd', end
 .addaccountdetail {
 	top:10% !important;
 }
+
