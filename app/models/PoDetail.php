@@ -859,4 +859,11 @@
 			 return $user_details->name;
 	   }
 	}
+	
+	//function to update payment status
+	public static function check_transfer_option($vendorid){
+			
+			$get_vendor_info =  DB::table('users')->where('id','=',$vendorid)->first();
+			return $get_vendor_info->bank_account_option;
+		}
 ?>

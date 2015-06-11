@@ -1758,9 +1758,11 @@ class ApiController extends BaseController {
 			} else if($action == 'gettaxidforvendor'){
 				$get_tax_id = PoDetail::get_tax_info($vendorid);
 				$check_bank_account_exists = PoDetail::check_bank_account_exists($vendorid);
+				$check_transfer_option = PoDetail::check_transfer_option($vendorid);
 				$result['paymenttype'] = $check_bank_account_exists;
 				$result['status_code']=200;
 				$result['taxinformation'] = $get_tax_id;
+				$result['transferoption'] = $check_transfer_option;
 				
 			} else if($action == 'savebankaccountinfo'){
 				if($bankid != '' && $bankid == 0){
