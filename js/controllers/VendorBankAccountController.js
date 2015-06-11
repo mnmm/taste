@@ -576,7 +576,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						
 					  }
 					});
-					$('#addBankAccount').show().validate().resetForm();        // Show the login form
+					$('#addBankAccount').validate().resetForm();        // Show the login form
 					
 					
 				} 		
