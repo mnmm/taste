@@ -1612,17 +1612,20 @@ class ApiController extends BaseController {
 							
 							if($listingdetail->vendor_paid_status == 1){
 								$pay_done_class = 'fade_pay';
+								$payment_done_hover = 'accountingpopover';
 							} else {
 								
 								if($check_bank_details == 1){
 									$pay_done_class = 'makepayment';
 								} else {
 									$pay_done_class = 'fade_pay payment_done';
-									$payment_done_hover = 'accountingpopover data-placement="right"';
+									
 								}
 							}
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
-							$result['data'][]= array($listingdetail->po_no,$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,$priority_status,'<a '.$payment_done_hover.' href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
+							$result['data'][]= array($listingdetail->po_no,$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,$priority_status,'<script type="text/ng-template" id="paymentpopover.html">
+							Your routing number is normally found on a check provided by your bank.
+							</script><a '.$payment_done_hover.' href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" data-placement="top">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
 						//}
 						$i++;
 					}
@@ -2025,6 +2028,40 @@ class ApiController extends BaseController {
 			$json_result = str_replace('null','""',json_encode($result));
 			echo $json_result;
 			exit;
+		}
+		
+	}
+	
+	public function login(){
+		
+		$data1=$this->get_data();
+		
+		if (array_key_exists("email", $data1))
+		{
+			$email = $data1->email;
+		}
+		else
+		{
+			 $email = '';
+		}
+		
+		if (array_key_exists("password", $data1))
+		{
+			$password = $data1->password;
+		}
+		else
+		{
+			 $password = '';
+		}
+		
+		$userdata = array(
+					'email' 	=> $email,
+					'password' 	=> $password
+					
+			);
+		
+		if (Auth::attempt($userdata, (isset($data['remember']) ? true : false))) {
+					$id = Auth::user()->id;
 		}
 		
 	}

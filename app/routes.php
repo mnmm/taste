@@ -57,6 +57,8 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::post('/getunpaidpo', array('uses' => 'ApiController@getunpaidpo'));
 	Route::post('/gettotalunpaidamount', array('uses' => 'ApiController@gettotalunpaidamount'));
 	Route::post('/getpodataforgraphs', array('uses' => 'ApiController@getpodataforgraphs'));
+	Route::post('/login', array('uses' => 'ApiController@login'));
+	Route::post('/logout', array('uses' => 'ApiController@logout'));
 });
 
 Route::get('/','AdminDashboardController@viewdashboard');
