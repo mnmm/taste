@@ -78,7 +78,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff1f4', end
 .addinfo-btn span{ color: #999; font-weight: normal; font-size: 9px; vertical-align: text-top;}
 p .go-arrow{ font-size: 10px;}
 .modal label{ padding-top:0; }
-.modal#paymentmethods .modal-dialog{ width:750px; }
-#paymentmethods .form-group{border-bottom: 1px solid #eee;}
-#paymentmethods .form-group:last-child{ border: none;}
+.modal.paymentmethods .modal-dialog{ width:750px; }
+.paymentmethods #manageBankAccounts .form-group{border-bottom: 1px solid #eee;}
+.paymentmethods #manageBankAccounts .form-group:last-child{ border: none;}
 .text{padding: 10px 0;}
