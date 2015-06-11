@@ -531,10 +531,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 					
-					/*bootbox.dialog({
-						//title: "Your bank account must be a checking account.",
-						//title: "Please add your checking account details",
-						//message: $('#addBankAccount'),
+					bootbox.dialog({
 						message: $('#manageBankAccounts'),
 						show: false,
 						animate:true 
@@ -570,7 +567,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$('#addBankAccount').find('input#mailingaddress').prop('disabled',true);
 					$('#addBankAccount').find('input#tax_id').val(data.taxinfo);*/
 				
-					var modalInstance = $modal.open({
+					/*var modalInstance = $modal.open({
 					  animation: true,
 					  templateUrl: 'addBankAccount.html',
 					  backdrop:false,
@@ -581,7 +578,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					});
 					$('#addBankAccount').find('input#tax_id').val(localStorage.getItem('taxinfo'));
 					
-					//$('form#addBankAccount').resetForm();        // Show the login form
+					//$('form#addBankAccount').resetForm();   */     // Show the login form
 					
 					
 				} 		
