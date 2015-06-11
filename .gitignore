@@ -1,1 +1,9 @@
 gh_hook_d8u4ehex.php
+bootstrap/compiled.php
+vendor
+composer.phar
+composer.lock
+.env.local.php
+.env.php
+Thumbs.db
+app/storage
