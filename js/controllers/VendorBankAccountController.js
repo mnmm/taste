@@ -604,9 +604,73 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			});
 
 	}
-	  $scope.saveAccountDetail = function () {
-		console.log('comes here');
-	  };
+	
+	$scope.addPayeeDetails = function () {
+			
+			var vendoruserid  = localStorage.getItem('userid');
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
+			success(function(data, status, headers, config) {
+				if(data.status_code == 200){
+					
+					bootbox.dialog({
+						title:'Please add your checking account details',
+						message: $('#addBankAccount'),
+						show: false,
+						animate:true,
+						className:'addaccountdetail',
+						buttons: {
+						  danger: {
+							label: "Cancel",
+							className: "btn",
+							callback: function() {
+								bootbox.hideAll();	
+							}
+						  },
+						  success: {
+							label: "Add Account",
+							className: "main-btn",
+							callback: function() {
+								$('input#savebankinfo').click();
+								return false;
+							}
+						  }
+						} 
+					})
+					.on('shown.bs.modal', function() {
+						
+						$('#addBankAccount').show();     	
+							
+					})
+					.on('hide.bs.modal', function(e) {
+						//$('#addBankAccount').hide().appendTo('body');
+						$('#addBankAccount').hide().appendTo('body');  
+					})
+					.modal('show');
+					$('#addBankAccount').find('#accountingpopover').click();
+					$('#addBankAccount').find('#routingpopover').click();
+					var routingcss = 0;
+					$('#addBankAccount').find('.popover').each(function(){
+						if(routingcss != 0){
+							$(this).css('display','block');
+						} else {
+							$(this).css('left','231.167px');
+							$(this).css('top','-91.5px');
+						}
+						routingcss++;
+					});
+					$('#addBankAccount').find('input#paymenttype').val('manual');
+					$('#addBankAccount').find('#payeeinfo').show();
+					$('#addBankAccount').find('#mailinginfo').show();
+					$('#addBankAccount').find('input#mailingaddress').prop('disabled',true);
+					$('#addBankAccount').find('input#tax_id').val(data.taxinfo);
+
+				} 		
+			});
+
+	}
+	  
 
 	  /*$scope.cancel = function () {
 		$modalInstance.dismiss('cancel');
