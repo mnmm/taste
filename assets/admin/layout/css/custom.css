@@ -98,3 +98,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008cdd', end
     font-weight: bold;
     text-align: center;
 }
+
+.addaccountdetail {
+	top:15% !important;
+}
