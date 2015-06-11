@@ -817,7 +817,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                              appPath+'/assets/global/plugins/select2/select2.css',                             
+                              appPath+'/assets/global/plugins/select2/select2.css', 
+                              appPath+'/css/custom_style.css',                              
                               appPath+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
                               appPath+'/assets/global/plugins/select2/select2.min.js',
                               '//mnmdesignlabs.com/trackmydocs_dev/js/component_js/component_js.js',
