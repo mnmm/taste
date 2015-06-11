@@ -1616,7 +1616,7 @@ class ApiController extends BaseController {
 								if($check_bank_details == 1){
 									$pay_done_class = 'makepayment';
 								} else {
-									$pay_done_class = 'fade_pay';
+									$pay_done_class = 'fade_pay payment_done';
 								}
 							}
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
