@@ -577,18 +577,18 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						
 					  }
 					});
-					$('form#addBankAccount').resetForm();        // Show the login form
+					//$('form#addBankAccount').resetForm();        // Show the login form
 					
 					
 				} 		
 			});
 
 	}
-	  /*$scope.ok = function () {
-		$modalInstance.close($scope.selected.item);
+	  $scope.saveAccountDetail = function () {
+		console.log('comes here');
 	  };
 
-	  $scope.cancel = function () {
+	  /*$scope.cancel = function () {
 		$modalInstance.dismiss('cancel');
 	  };*/
 });
