@@ -705,7 +705,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
-						var transfertypeselected = $('input#transfertypeselected').val();
+						var transfertypeselected = $('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val();
 						if(transfertypeselected == 0){
 							var newtransferstatus = 1;
 							var btnlabel = 'Turn off ACH transfers';
