@@ -934,6 +934,35 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                 }]
             }
         })
+		
+		 // User Profile Dashboard
+        .state("login", {
+            url: "/vendor/:param",
+            templateUrl: "views/vendor/login.html",
+            data: {pageTitle: 'Login',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor','admin','all']},
+            controller: "LoginController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',  
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+
+                              appPath+'/assets/global/plugins/select2/select2.css',                             
+                              appPath+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                              appPath+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
+                              appPath+'/assets/global/plugins/select2/select2.min.js',
+                              appPath+'/assets/global/plugins/bootbox/bootbox.min.js',
+                              appPath+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                              appPath+'/js/controllers/AccountController.js'
+                              
+                              
+                        ]                    
+                    });
+                }]
+            }
+        })
+        
 
 }]);
 

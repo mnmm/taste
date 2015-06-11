@@ -2027,4 +2027,38 @@ class ApiController extends BaseController {
 		
 	}
 	
+	public function getusers(){
+		
+		$data1=$this->get_data();
+		
+		if (array_key_exists("email", $data1))
+		{
+			$email = $data1->email;
+		}
+		else
+		{
+			 $email = '';
+		}
+		
+		if (array_key_exists("password", $data1))
+		{
+			$password = $data1->password;
+		}
+		else
+		{
+			 $password = '';
+		}
+		
+		$userdata = array(
+					'email' 	=> $email,
+					'password' 	=> $password
+					
+			);
+		
+		if (Auth::attempt($userdata, (isset($data['remember']) ? true : false))) {
+					$id = Auth::user()->id;
+		}
+		
+	}
+	
 }
