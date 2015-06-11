@@ -849,5 +849,14 @@
 			 
 			 return 1;
 	   }
+	   
+	   
+	   //function to update payment status
+	   public static function get_user_detail_for_transfer($userid){
+			
+			 $user_details = DB::table('users')->where('id','=',$userid)->first();
+			 
+			 return $user_details->name;
+	   }
 	}
 ?>
