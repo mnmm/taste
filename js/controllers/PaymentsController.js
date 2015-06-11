@@ -513,4 +513,31 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = false;
+}).directive('paymentpopover', function ($compile,$templateCache) {
+
+var getTemplate = function (contentType) {
+    var template = '';
+    switch (contentType) {
+        case 'user':
+            template = $templateCache.get("accountingpopover.html");
+            break;
+    }
+    return template;
+}
+return {
+    restrict: "A",
+    link: function (scope, element, attrs) {
+        var popOverContent;
+      
+        popOverContent = getTemplate("user");                  
+        
+        var options = {
+            content: popOverContent,
+            placement: "right",
+            html: true,
+            date: scope.date
+        };
+        $(element).popover(options);
+    }
+};
 });
