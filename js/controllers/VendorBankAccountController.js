@@ -532,13 +532,13 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 				if(data.status_code == 200){
 					
 					bootbox.dialog({
-						message: $('#manageBankAccounts'),
+						message: $('#addBankAccount'),
 						show: false,
 						animate:true 
 					})
 					.on('shown.bs.modal', function() {
 						
-						$('#manageBankAccounts').show();     	
+						$('#addBankAccount').show();     	
 							
 					})
 					.on('hide.bs.modal', function(e) {
@@ -546,7 +546,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						// after hiding the modal
 						// Therefor, we need to backup the form
 						//$('#addBankAccount').hide().appendTo('body');
-						$('#manageBankAccounts').hide().appendTo('body');  
+						$('#addBankAccount').hide().appendTo('body');  
 					})
 					.modal('show');
 					$('#addBankAccount').find('#accountingpopover').click();
