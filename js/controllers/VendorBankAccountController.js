@@ -616,7 +616,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 					bootbox.dialog({
 						title:'Please add your checking account details',
-						message: $('#addBankAccount'),
+						message: $('#manualBankAccount'),
 						show: false,
 						animate:true,
 						className:'addaccountdetail',
@@ -640,31 +640,18 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.on('shown.bs.modal', function() {
 						
-						$('#addBankAccount').show();     	
+						$('#manualBankAccount').show();     	
 							
 					})
 					.on('hide.bs.modal', function(e) {
 						//$('#addBankAccount').hide().appendTo('body');
-						$('#addBankAccount').hide().appendTo('body');  
+						$('#manualBankAccount').hide().appendTo('body');  
 					})
 					.modal('show');
-					$('#addBankAccount').find('#accountingpopover').click();
-					$('#addBankAccount').find('#routingpopover').click();
-					var routingcss = 0;
-					$('#addBankAccount').find('.popover').each(function(){
-						if(routingcss != 0){
-							$(this).css('display','block');
-						} else {
-							$(this).css('left','231.167px');
-							$(this).css('top','-91.5px');
-						}
-						routingcss++;
-					});
-					$('#addBankAccount').find('input#paymenttype').val('manual');
-					$('#addBankAccount').find('#payeeinfo').show();
-					$('#addBankAccount').find('#mailinginfo').show();
-					$('#addBankAccount').find('input#mailingaddress').prop('disabled',true);
-					$('#addBankAccount').find('input#tax_id').val(data.taxinfo);
+					
+					$('#manualBankAccount').find('input#paymenttype').val('manual');
+					$('#manualBankAccount').find('input#mailingaddress').prop('disabled',true);
+					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
 
 				} 		
 			});

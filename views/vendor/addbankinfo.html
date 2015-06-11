@@ -135,7 +135,7 @@
   <div class="form-group">
    <label class="col-md-5 control-label" for="name">Tax ID:</label>
      <div class="col-md-5">
-      <input id="tax_id" name="tax_id" type="text" placeholder="Tax Id" class="form-control input-md" value="{{ taxinformation }}" readonly><div class="icon" tabindex="-1".></div>
+      <input id="tax_id" name="tax_id" type="text" placeholder="Tax Id" class="form-control input-md" value="{{ taxinformation }}" readonly><div class="icon" tabindex="-1"></div>
      </div>
   </div>
   
@@ -154,6 +154,45 @@
 	  <button class="btn" type="button" ng-click="hideBankPopup()">Cancel</button>
       <button class="btn btn-success" type="submit" id="accountbtn">Add Account</button>
      </div>-->
+  </div>
+  
+</form>
+
+<form class="form-horizontal" name="manualBankAccount" novalidate id="manualBankAccount" style="display: none;"> 
+	<p id="accounterror" class="help-error" style="display:none;"></p>
+	
+    <div class="form-group"  id="payeeinfo">
+		<label class="col-md-5 control-label" for="name">Payee Name:</label>
+        <div class="col-md-5">
+            <input id="payeename" name="payeename" type="text" placeholder="Payee Name" class="form-control input-md">
+        </div>
+   </div>
+   
+    <div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Mailing Address:</label>
+        <div class="col-md-5">
+            <input id="mailingaddress" name="mailingaddress" type="text" placeholder="Mailing Address" class="form-control input-md" >
+        </div>
+   </div>
+
+  <div class="form-group">
+   <label class="col-md-5 control-label" for="name">Tax ID:</label>
+     <div class="col-md-5">
+      <input id="tax_id" name="tax_id" type="text" placeholder="Tax Id" class="form-control input-md" value="{{ taxinformation }}" readonly tabindex="-1".><div class="icon" tabindex="-1".></div>
+     </div>
+  </div>
+  
+  <div class="form-group">
+	<p style="color: buttonshadow;font-size: 10px;margin-left:20%;margin-right:15%">
+	Disclaimer: All Credit card and banking information is stored with Stripe and we are PCI compliant. For details, please check
+	<a target="_blank" href="https://stripe.com/help/security">https://stripe.com/help/security</a>
+	</p>
+  </div>
+
+  <input type="hidden" name="paymenttype" value="" id="paymenttype">
+   <input type="hidden" name="bankaccountid" value="0" id="bankaccountid">
+   <input type="submit" id="savebankinfo" style="display:none;">
+
   </div>
   
 </form>
