@@ -83,4 +83,5 @@ p .go-arrow{ font-size: 10px;}
 .paymentmethods #manageBankAccounts .form-group:last-child{ border: none;}
 .text{padding: 10px 0; color: #666;}
 .small-title{color: #333; padding-right: 10px; font-size: 15px;}
-.main-btn{background: #1caf9a; padding: 6px 15px; color: #fff; border: 1px #078573 solid; border-radius: 4px;}
+.main-btn{background: #1caf9a; color: #fff; border: 1px #09ab94 solid; border-radius: 4px; font-size: 15px;
+    padding: 6px 20px;}
