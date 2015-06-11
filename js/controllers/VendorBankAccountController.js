@@ -152,8 +152,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			console.log('optionsfortransfer'+optionsfortransfer);
 			var transfersplit = optionsfortransfer.split('##@##');
 			//$('.customername').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'All' });
-			
-			console.log($('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val());
+			//console.log($('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val());
 			$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfersplit[0]);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(transfersplit[1]);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transfersplit[2]);	
