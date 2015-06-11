@@ -1614,8 +1614,13 @@ class ApiController extends BaseController {
 								$pay_done_class = 'fade_pay';
 								$obj=new ptStripe(STRIPE_KEY);
 
-								$recipient_data=$obj->retrieveTransfer($listingdetail->stripe_payment_id);
-								print_r($recipient_data);exit;								
+								$transferdata=$obj->retrieveTransfer($listingdetail->stripe_payment_id);
+								
+								if(	$transferdata['status'] == 0){
+									$transfer_data = '';
+									
+								}
+															
 							} else {
 								
 								if($check_bank_details == 1){
