@@ -1612,13 +1612,14 @@ class ApiController extends BaseController {
 							
 							if($listingdetail->vendor_paid_status == 1){
 								$pay_done_class = 'fade_pay';
+								$payment_done_hover = 'accountingpopover';
 							} else {
 								
 								if($check_bank_details == 1){
 									$pay_done_class = 'makepayment';
 								} else {
 									$pay_done_class = 'fade_pay payment_done';
-									$payment_done_hover = 'accountingpopover';
+									
 								}
 							}
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
