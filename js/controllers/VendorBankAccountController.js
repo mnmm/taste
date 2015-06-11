@@ -163,6 +163,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 							
 						  }
 						});
+						
+						$('#addBankAccount').find('input#tax_id').val(data.taxinformation)
 					 /*if(data.taxinformation != '')
 						$scope.taxinformation = data.taxinformation;	
 					
@@ -526,7 +528,6 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
-					
 					
 					/*bootbox.dialog({
 						//title: "Your bank account must be a checking account.",
