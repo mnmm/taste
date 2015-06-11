@@ -936,7 +936,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 		
 		 // User Profile Dashboard
         .state("login", {
-            url: "/vendor/:param",
+            url: "/login",
             templateUrl: "views/login.html",
             data: {pageTitle: 'Login',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor','admin','all']},
             controller: "LoginController",
@@ -953,7 +953,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                               appPath+'/assets/global/plugins/select2/select2.min.js',
                               appPath+'/assets/global/plugins/bootbox/bootbox.min.js',
                               appPath+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
-                              appPath+'/js/controllers/AccountController.js'
+                              appPath+'/js/controllers/LoginController.js'
                               
                               
                         ]                    
