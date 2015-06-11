@@ -687,8 +687,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
-					
-								
+						var transfertypeselected = $('input#transfertypeselected').val();
+						alert('transfertypeselected'+transfertypeselected);
 						bootbox.dialog({
 							message: $('#transfers'),
 							show: false,
