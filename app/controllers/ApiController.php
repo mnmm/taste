@@ -1612,7 +1612,7 @@ class ApiController extends BaseController {
 							
 							if($listingdetail->vendor_paid_status == 1){
 								$pay_done_class = 'fade_pay';
-								$payment_done_hover = 'accountingpopover';
+								$payment_done_hover = 'paymentpopover';
 							} else {
 								
 								if($check_bank_details == 1){
