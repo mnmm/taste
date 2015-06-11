@@ -342,6 +342,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 	}
 	
 	$scope.openBankAccountPopUp= function () {
+			console.log('comes here');
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
