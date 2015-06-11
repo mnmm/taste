@@ -535,7 +535,23 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						title:'Please add your checking account details',
 						message: $('#addBankAccount'),
 						show: false,
-						animate:true 
+						animate:true,
+						buttons: {
+						  danger: {
+							label: "Cancel",
+							className: "btn",
+							callback: function() {
+								bootbox.hideAll();	
+							}
+						  },
+						  success: {
+							label: "Add Account",
+							className: "main-btn",
+							callback: function() {
+								
+							}
+						  }
+						} 
 					})
 					.on('shown.bs.modal', function() {
 						
