@@ -1,3 +1,3 @@
 # tasteapi
 https://mnmdesignlabs.com/tasteapi/
-sync: 6
+sync: 7
