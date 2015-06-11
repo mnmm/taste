@@ -570,6 +570,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					var modalInstance = $modal.open({
 					  animation: true,
 					  templateUrl: 'addBankAccount.html',
+					  backdrop:false,
 					  resolve: {
 						
 					  }
