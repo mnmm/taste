@@ -147,6 +147,16 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		$scope.vendortoken = $location.url().split('/')[2];
 		//$scope.location = $location;
 		var vendoruserid  = localStorage.getItem('userid');
+		
+		function makeSettings(optionsfortransfer) {
+			var transfersplit = split('##@##',optionsfortransfer);
+			//$('.customername').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'All' });
+			$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').text(transfersplit[0]);
+			$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(transfersplit[1]);
+			$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transfersplit[2]);	
+		}
+
+
         function getunpaidpo(){
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
@@ -179,11 +189,12 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						}
 						//console.log('transfertext'+transfertext);
 						//console.log('transferoption'+data.transferoption);
-						alert($('div.paymentmethods').find('div#manageBankAccounts').html());
+						var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext;
+						$timeout(function () {
+							$timeout(makeSettings, 500,optionsfortransfer);
+						});
 						$scope.transferoption = data.transferoption;
-						$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').text(transfertext);
-						$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(data.transferoption);
-						$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
+						
 						
 					localStorage.setItem('taxinfo',data.taxinformation);
 					// $('#addBankAccount').find('input#tax_id').val(data.taxinformation)
