@@ -1,0 +1,176 @@
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet light">
+			<div class="portlet-title tabbable-line">
+				<div class="caption caption-md">
+					<i class="icon-globe theme-font hide"></i>
+					<span class="caption-subject font-blue-madison bold uppercase">Payment Method</span>
+				</div>
+				
+			</div>
+			<div class="portlet-body">
+				<div class="tab-content">
+					<!-- PERSONAL INFO TAB -->
+					<p id="selectedpaymentmethod" style="display:none;"></p>
+					<div class="tab-pane active" id="tab_1_1" >
+						<form role="form" id="choosepayment">
+							<div class="form-group">
+								<label>Choose Payment Method</label>
+								
+								<div class="radio-list">
+									<label class="radio-inline">
+									<input type="radio" name="paymentmethod" ng-model="value" value="electronic" ng-change='paymentMethodChosen(value)' id="electronic">Electronic Payment</label>
+									<label class="radio-inline">
+									<input type="radio" name="paymentmethod" ng-model="value" value="manual" ng-change='paymentMethodChosen(value)' id="manual">Manual Payment</label>
+								</div>
+									
+							</div>
+						</form>
+						<button type="button" class="btn btn-success" ng-click="updateBankAccountPopup()" style="display:none;" id="bankinfo">Update Bank Account</button>
+					</div>
+					<!-- END PERSONAL INFO TAB -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Transfers</h3>
+	</div>
+	<div class="modal-body">
+		<div class="form-horizontal" id="manageBankAccounts">
+			<div class="form-group" >
+				<label class="col-md-5 control-label" for="name">Bank Accounts:</label>
+				<div class="col-md-5">
+				   <button type="button" ng-click="openBankAccountPopUp()">Add Bank Account</button>
+				</div>
+			</div>
+			
+			 <div class="form-group" >
+				<label class="col-md-5 control-label" for="name">Manual Checks:</label>
+				<div class="col-md-5">
+				   <button type="button" ng-click="addPayeeDetails()">Add Payee Details</button>
+				</div>
+			</div>
+			
+			 <div class="form-group" >
+				<label class="col-md-5 control-label" for="name">Payment Method:</label>
+				<div class="col-md-5">
+				   <button type="button" ng-click="openBankAccountPopUp()">Add Bank Account</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="">Done</button>
+	</div>
+</script>
+    
+
+<form class="form-horizontal" name="addBankAccount" novalidate id="addBankAccount" style="display: none;"> 
+	<p id="accounterror" class="help-error" style="display:none;"></p>
+	<!--<div class="form-group">
+		<label class="col-md-5 control-label" for="name">Currency:</label>
+		<div class="col-md-5">
+			<select name="currency" id="currency" class="form-control"><option value="usd">USD</option></select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+		<label class="col-md-5 control-label" for="name">Bank country:</label>
+        <div class="col-md-5">
+			<select name="bank_country" id="bank_country" class="form-control" disabled="disabled"><option value="US">United States</option></select>
+        </div>
+    </div>-->
+    
+    <div class="form-group" style="display:none;" id="payeeinfo">
+		<label class="col-md-5 control-label" for="name">Payee Name:</label>
+        <div class="col-md-5">
+            <input id="payeename" name="payeename" type="text" placeholder="Payee Name" class="form-control input-md" readonly>
+        </div>
+   </div>
+   
+    <div class="form-group" style="display:none;" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Mailing Address:</label>
+        <div class="col-md-5">
+            <input id="mailingaddress" name="mailingaddress" type="text" placeholder="Mailing Address" class="form-control input-md" disabled>
+        </div>
+   </div>
+   
+   <div class="form-group">
+		<label class="col-md-5 control-label" for="name">Routing number:</label>
+        <div class="col-md-5">
+			<script type="text/ng-template" id="routingpopover.html">
+					<img src="https://mnmdesignlabs.com/taste/assets/frontend/pages/img/routing_number.png" title="routing info">
+					Your routing number is normally found on a check provided by your bank.
+			</script>
+			
+			
+            <input id="routing" name="routing" type="text" placeholder="111000000" class="form-control input-md" >
+            <i class="icon icon-info" routingpopover data-placement="right" title="title" id="routingpopover"></i>
+            
+        </div>
+   </div>
+   
+  <div class="form-group">
+		<label class="col-md-5 control-label" for="name">Account number:</label>
+        <div class="col-md-5">
+            <!--<input id="account_number" name="account_number" type="password" placeholder="Account Number" class="form-control input-md" maxlength="34" ng-focus="makeAccountingFocus()" ng-blur="makeAccountingBlur()">-->
+            <input id="account_number" name="account_number" type="text" placeholder="Account Number" class="form-control input-md" maxlength="34" >
+            <script type="text/ng-template" id="accountingpopover.html">
+					<img src="https://mnmdesignlabs.com/taste/assets/frontend/pages/img/account_number.png" title="accounting info">
+					Your account number is normally found on a check provided by your bank.
+			</script>
+			 <i class="icon icon-info" accountingpopover data-placement="right" title="title" id="accountingpopover"></i>
+           
+        </div>
+	</div>
+	
+   <div class="form-group">
+		<label class="col-md-5 control-label" for="name">Confirm account number:</label>
+		 <div class="col-md-5">
+		   <!--<input id="confirm_account_number" name="confirm_account_number" type="password" placeholder="Account Number" class="form-control input-md" maxlength="34" ng-focus="makeAccountingConfirmFocus()" ng-blur="makeAccountingConfirmBlur()">-->
+		   <input id="confirm_account_number" name="confirm_account_number" type="text" placeholder="Account Number" class="form-control input-md" maxlength="34" >
+		   <div class="icon"></div>
+		 </div> 
+   </div>
+   
+  <div class="form-group">
+   <label class="col-md-5 control-label" for="name">Tax ID:</label>
+     <div class="col-md-5">
+      <input id="tax_id" name="tax_id" type="text" placeholder="Tax Id" class="form-control input-md" value="{{ taxinformation }}" readonly><div class="icon"></div>
+     </div>
+  </div>
+  
+  <div class="form-group">
+	<p style="color: buttonshadow;font-size: 10px;margin-left:20%;margin-right:15%">
+	Disclaimer: All Credit card and banking information is stored with Stripe and we are PCI compliant. For details, please check
+	<a target="_blank" href="https://stripe.com/help/security">https://stripe.com/help/security</a>
+	</p>
+  </div>
+
+  <input type="hidden" name="paymenttype" value="" id="paymenttype">
+   <input type="hidden" name="bankaccountid" value="0" id="bankaccountid">
+  <div class="form-group">
+     <div class="col-md-6 col-md-offset-5">
+	  <button class="btn" type="button" ng-click="hideBankPopup()">Cancel</button>
+      <button class="btn btn-success" type="submit" id="accountbtn">Add Account</button>
+     </div>
+  </div>
+  
+</form>
+<style type="text/css">
+.popover-title{ display:none; }
+.icon.icon-info {
+    color: #999;
+    font-size: 20px;
+    position: absolute;
+    right: 18px;
+    top: 10px;
+}
+.form-group .popover{max-width: 360px;} 
+</style>
