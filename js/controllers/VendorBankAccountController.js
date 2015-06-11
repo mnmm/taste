@@ -356,6 +356,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			  animation: true,
 			  templateUrl: 'myModalContent.html',
 			  controller: 'ModalInstanceCtrl',
+			  windowClass:'paymentmethods',
 			  resolve: {
 				
 			  }
