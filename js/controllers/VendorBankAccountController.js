@@ -536,6 +536,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						message: $('#addBankAccount'),
 						show: false,
 						animate:true,
+						closeButton: false,
 						className:'addaccountdetail',
 						buttons: {
 						  danger: {
@@ -619,6 +620,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						message: $('#manualBankAccount'),
 						show: false,
 						animate:true,
+						closeButton: false,
 						className:'addaccountdetail',
 						buttons: {
 						  danger: {
