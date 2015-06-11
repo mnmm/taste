@@ -301,11 +301,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, it
 					  }
 					});
 					
-			} else {
-				
-					createauthtoken(paymentMethodChosen);
-				
-				}		
+				} 		
 			});
 
 	}
