@@ -1674,6 +1674,7 @@ class ApiController extends BaseController {
 									
 									$transfer_amount = ($transferdata['data']->amount/100);
 									if(isset($listingdetail->payment_done_by) && $listingdetail->payment_done_by != ''){
+										echo '$listingdetail->payment_done_by'.$listingdetail->payment_done_by;
 										$get_transfer_user_name = PoDetail::get_user_detail_for_transfer($listingdetail->payment_done_by);
 									} else {
 										$get_transfer_user_name = '';
