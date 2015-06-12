@@ -756,6 +756,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 													$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfertext);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(newtransferstatus);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
+													bootbox.hideAll();	
 												}
 											}
 										} 		
