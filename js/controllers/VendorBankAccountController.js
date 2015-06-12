@@ -182,11 +182,11 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						var transferbtntext = '';
 						if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
 							if(data.transferoption  == 1){
-								transfertext ='Automatic transfer enabled';
+								transfertext ='Manual check transfer enabled';
 								transferbtntext ='Switch to enable ACH transfer';
 							} else {
 								transfertext ='ACH transfers enabled';
-								transferbtntext ='Switch to enable bank accounts';
+								transferbtntext ='Switch to enable manual check payment';
 							}
 						}
 						//console.log('transfertext'+transfertext);
@@ -640,6 +640,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 
 	}
 	
+	
+	//function to add payee details
 	$scope.addPayeeDetails = function () {
 			
 			var vendoruserid  = localStorage.getItem('userid');
@@ -680,13 +682,12 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							
 					})
 					.on('hide.bs.modal', function(e) {
-						//$('#addBankAccount').hide().appendTo('body');
+					
 						$('#manualBankAccount').hide().appendTo('body');  
 					})
 					.modal('show');
 					
 					$('#manualBankAccount').find('input#paymenttype').val('manual');
-					$('#manualBankAccount').find('input#mailingaddress').prop('disabled',true);
 					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
 
 				} 		
@@ -695,10 +696,9 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	}
 	
 	
+	//function to change between transfer methods
 	$scope.toggleTransferMethods = function () {
-			
-			
-					
+		
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
@@ -706,7 +706,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 						var transfertypeselected = $('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val();
-						//console.log('transfertypeselected'+transfertypeselected);
+						
 						if(transfertypeselected == 0){
 							var newtransferstatus = 1;
 							var btnlabel = 'Turn off ACH transfers';
@@ -714,7 +714,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							var newtransferstatus = 0;
 							var btnlabel = 'Turn off automatic transfers';
 						}
-						//console.log('newtransferstatus'+newtransferstatus);
+						
 						bootbox.dialog({
 							message: $('#transfers'),
 							show: false,
@@ -743,22 +743,20 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 											if(data.updated == 1 && typeof data.updated != 'undefined'){
 												var transfertext = '';
 												var transferbtntext = '';
-												//console.log('sucess newtransferstatus'+newtransferstatus);
-												//if(newtransferstatus != ''){
-													//console.log('comes hre');
+												
 													if(newtransferstatus  == 1){
-														transfertext ='Automatic transfer enabled';
+														transfertext ='Manual check transfer enabled';
 														transferbtntext ='Switch to enable ACH transfer';
 													} else {
 														transfertext ='ACH transfers enabled';
-														transferbtntext ='Switch to enable bank accounts';
+														transferbtntext ='Switch to enable manual check payment';
 													}
-													
+
 													$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfertext);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(newtransferstatus);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
 													bootbox.hideAll();	
-												//}
+												
 											}
 										} 		
 									});
@@ -778,8 +776,11 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						})
 						.modal('show');
 						
-						
-
+						if(transfertypeselected == 1){
+							$('div.transferoptions').find('div#transfertext').html('After you turn on automatic transfers, we'll send you any remaining available balance and you'll no longer be able to send manual transfers.');
+						} else {
+							$('div.transferoptions').find('div#transfertext').text('<p> Stripe will stop automatically sending transfers and instead allow you to decide where and when to send them. (It may take a couple of days for your currently pending transfers to clear.) </p><p>This will enable paying out to other bank accounts (for example, contactors). There are some<a href="https://support.stripe.com/questions/can-i-pay-out-my-vendors-contractors-or-service-providers" target="_blank">legal and product considerations</a>you should think about before you start doing this in production.<a target="_blank" href="https://support.stripe.com/email">Let us know</a>if you have any questions!</p><p class="submit-note">If you send transfers manually, you agree to the additional<a href="https://stripe.com/terms#transfer-api" target="_blank">Terms of Service</a>covering this feature.</p>');
+						}
 				} 		
 			});
 
