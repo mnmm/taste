@@ -930,6 +930,14 @@
 			}
 		}
 		
+		
+		public static function get_manual_payee_info($vendorid){
+			
+			$get_vendor_info =  DB::table('manual_bank_details')->where('vendorid','=',$vendorid)->first();
+			
+			return $get_vendor_info;
+		}
+		
 	}
 	
 	

@@ -1956,6 +1956,7 @@ class ApiController extends BaseController {
 					if($action == 'getpayeename'){
 						$result['payeename'] = $get_payee_name->payeename;
 						$result['taxinfo'] = $get_payee_name->ein;
+						
 					} else {
 						$get_bank_info  = PoDetail::get_bank_info_for_vendor($vendorid);
 						$result['bankaccountinfo'] = $get_bank_info;
@@ -2056,7 +2057,17 @@ class ApiController extends BaseController {
 					}
 
 				}
-			} 
+			} else if($action == 'getpayeeinfo') {
+				$get_payee_info = PoDetail::get_payee_info($vendorid);
+				
+				if(isset($get_payee_name->id) &&  $get_payee_name->id != ''){
+					$result['status_code']=200;
+					$result['bankaccountinfo'] = $get_payee_info;
+				} else {
+					$result['status_code']=201;
+					$result['message'] = 'Bank Account Info saved sucessfully';
+				}
+			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
 			echo $json_result;

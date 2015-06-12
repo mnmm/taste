@@ -849,7 +849,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeeinfo',vendorid:vendoruserid}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 					
@@ -894,13 +894,76 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					.modal('show');
 					
 					$('#manualBankAccount').find('input#paymenttype').val('manual');
-					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
+					
+					$('#manualBankAccount').find('button.cancel-btn').removeClass('btn');
+					$('#manualBankAccount').find('button.main-btn').removeClass('btn');
+					$('#manualBankAccount').find('input#payeename').val(data.bankaccountinfo.payeename);
+					$('#manualBankAccount').find('input#mailingaddress').val(data.bankaccountinfo.mailingaddress);
+					$('#manualBankAccount').find('input#zicode').val(data.bankaccountinfo.zicode);
+					$('#manualBankAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
 
 				} 		
 			});
 
 	}
 	
+	
+	//function to update payee details
+	$scope.updatePayeeDetails = function () {
+			
+			var vendoruserid  = localStorage.getItem('userid');
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
+			success(function(data, status, headers, config) {
+				if(data.status_code == 200){
+					
+					bootbox.dialog({
+						title:'Please add your checking account details',
+						message: $('#manualBankAccount'),
+						show: false,
+						animate:true,
+						closeButton: false,
+						className:'addaccountdetail',
+						buttons: {
+						  danger: {
+							label: "Cancel",
+							className: "cancel-btn",
+							callback: function() {
+								bootbox.hideAll();	
+							}
+						  },
+						  success: {
+							label: "Update Account",
+							className: "main-btn",
+							callback: function() {
+								
+								$('#manualBankAccount').find('input#savemanualbankinfo').click();
+								return false;
+							}
+						  }
+						} 
+					})
+					.on('shown.bs.modal', function() {
+						
+						$('#manualBankAccount').show(); 
+						$('#manualBankAccount').validate().resetForm();    	
+							
+					})
+					.on('hide.bs.modal', function(e) {
+					
+						$('#manualBankAccount').hide().appendTo('body');  
+						
+					})
+					.modal('show');
+					
+					$('#manualBankAccount').find('input#paymenttype').val('manual');
+					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
+
+				} 		
+			});
+
+	}
 	
 	//function to change between transfer methods
 	$scope.toggleTransferMethods = function () {
