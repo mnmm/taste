@@ -130,7 +130,7 @@ background: -o-linear-gradient(top, #ee7d7d 4%,#df1010 100%) !important; /* Oper
 background: -ms-linear-gradient(top, #ee7d7d 4%,#df1010 100%) !important; /* IE10+ */
 background: linear-gradient(to bottom, #ee7d7d 4%,#df1010 100%) !important; /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee7d7d', endColorstr='#df1010',GradientType=0 ) !important; /* IE6-9 */}
-.off-red-btn:active, .off-red-btn:active{background: #df1010 !important;; /* Old browsers */
+.off-red-btn:active, .off-red-btn:hover, .off-red-btn:focus{background: #df1010 !important;; /* Old browsers */
 background: -moz-linear-gradient(top, #df1010 0%, #ee7d7d 96%) !important;; /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#df1010), color-stop(96%,#ee7d7d)) !important;; /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, #df1010 0%,#ee7d7d 96%) !important;; /* Chrome10+,Safari5.1+ */
