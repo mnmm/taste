@@ -157,6 +157,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfersplit[0]);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(transfersplit[1]);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transfersplit[2]);	
+			console.log(transfersplit[3]+$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[3]).html());
+			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[3]).css('display','block');
 		}
 
 
@@ -191,18 +193,19 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 							}
 						}
 						
+						var displaybuttonclass = 'addbankacnt';
 						 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
 							 if(data.paymenttype == 'electronic'){
-								$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatebankacnt').css('display','block');
+								 displaybuttonclass = 'updatebankacnt'
 							 } else {
-								$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').css('display','block'); 
+								displaybuttonclass = 'addbankacnt';
 							 }
 						 } else {
-							$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').css('display','block'); 
+							displaybuttonclass = 'addbankacnt';
 						 }
 						//console.log('transfertext'+transfertext);
 						//console.log('transferoption'+data.transferoption);
-						var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext;
+						var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass;
 						/*$timeout(function () {
 							$timeout(makeSettings, 500,optionsfortransfer);
 						});*/
