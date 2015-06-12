@@ -703,7 +703,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						$('#addBankAccount').hide().appendTo('body');  
 					})
 					.modal('show');
-					
+					$('#addBankAccount').find('button.cancel-btn').removeClass('btn');
+					$('#addBankAccount').find('button.main-btn').removeClass('btn');
 					$('#addBankAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
 					$('#addBankAccount').find('input#routing').val(data.bankaccountinfo.routing_number);
 					$('#addBankAccount').find('input#account_number').val(data.bankaccountinfo.account_number);
