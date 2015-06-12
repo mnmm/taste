@@ -714,6 +714,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							var newtransferstatus = 0;
 							var btnlabel = 'Turn off automatic transfers';
 						}
+						console.log('newtransferstatus'+newtransferstatus);
 						bootbox.dialog({
 							message: $('#transfers'),
 							show: false,
@@ -742,6 +743,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 											if(data.updated == 1 && typeof data.updated != 'undefined'){
 												var transfertext = '';
 												var transferbtntext = '';
+												console.log('sucess newtransferstatus'+newtransferstatus);
 												if(newtransferstatus != ''){
 													if(newtransferstatus  == 1){
 														transfertext ='Automatic transfer enabled';
