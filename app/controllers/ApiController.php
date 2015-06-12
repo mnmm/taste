@@ -2060,12 +2060,12 @@ class ApiController extends BaseController {
 			} else if($action == 'getpayeeinfo') {
 				$get_payee_info = PoDetail::get_manual_payee_info($vendorid);
 				
-				if(isset($get_payee_name->id) &&  $get_payee_name->id != ''){
+				if(isset($get_payee_info->id) &&  $get_payee_info->id != ''){
 					$result['status_code']=200;
 					$result['bankaccountinfo'] = $get_payee_info;
 				} else {
 					$result['status_code']=201;
-					$result['message'] = 'Bank Account Info saved sucessfully';
+					$result['message'] = 'No records exists';
 				}
 			}
 				
