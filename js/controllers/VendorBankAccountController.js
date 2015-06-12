@@ -193,6 +193,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						
 						 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
 							 if(data.paymenttype == 'electronic'){
+								 console.log('here');
 								$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatebankacnt').css('display','block');
 							 } else {
 								$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').css('display','block'); 
