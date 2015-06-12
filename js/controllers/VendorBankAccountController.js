@@ -191,8 +191,9 @@ var FormValidation = function () {
 											success: function (data) {
 												
 												if(data.status_code == 200 ){
-													bootbox.hideAll();	
-													$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatepayeebtn').css('display','block');
+													bootbox.hideAll();
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addpayeebtn').css('display','none');	
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatepayeebtn').css('display','inline-block');
 												} else {
 												
 													if(data.status_code == 201 ){
