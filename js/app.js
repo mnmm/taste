@@ -759,7 +759,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                              appPath+'/assets/admin/pages/scripts/payments.js',
 								
                              appPath+'/js/controllers/PaymentsController.js'*/
-                              appPath+'/assets/global/plugins/select2/select2.css',                             
+                             appPath+'/assets/global/plugins/select2/select2.css',                             
                              appPath+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css', 
                              appPath+'/assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css',
                              appPath+'/assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css',
