@@ -39,14 +39,16 @@
 		</div>
 	</div>
 	<input type="hidden" name="actiontype" value="0" id="actiontype">
-	<div class="col-md-12 col-sm-12 col-xs-12 text-center nopad" ng-controller="SidebarController">
-		<span id="live" class="settingtext">live</span>
-		<div ng-click="changeSettingStatus();" id="checkwrapper" class="checkwrapper" openstatus="0">
-			<div class="state on th-popup popover-dismiss-acc" data-placement="right" ></div>
-			<div class="state off th-popup popover-dismiss-acc active"></div>
+	<div class="form-group">
+		<div class="col-md-12 col-sm-12 col-xs-12 text-center nopad" ng-controller="SidebarController">
+			<span id="live" class="settingtext">live</span>
+			<div ng-click="changeSettingStatus();" id="checkwrapper" class="checkwrapper" openstatus="0">
+				<div class="state on th-popup popover-dismiss-acc" data-placement="right" ></div>
+				<div class="state off th-popup popover-dismiss-acc active"></div>
+			</div>
+			<span id="test" class="settingtext bright-text">test</span>
+			<input type="submit" id="settingsubmit" style="display:none;">
 		</div>
-		<span id="test" class="settingtext bright-text">test</span>
-		<input type="submit" id="settingsubmit" style="display:none;">
 	</div>
 	<!--<div class="form-group">
 		 <div class="col-md-6 col-md-offset-5">
