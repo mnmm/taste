@@ -744,7 +744,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 												var transfertext = '';
 												var transferbtntext = '';
 												console.log('sucess newtransferstatus'+newtransferstatus);
-												if(newtransferstatus != ''){
+												//if(newtransferstatus != ''){
 													console.log('comes hre');
 													if(newtransferstatus  == 1){
 														transfertext ='Automatic transfer enabled';
@@ -758,7 +758,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 													$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(newtransferstatus);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
 													bootbox.hideAll();	
-												}
+												//}
 											}
 										} 		
 									});
