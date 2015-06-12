@@ -864,6 +864,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							className: "main-btn",
 							callback: function() {
 								//console.log('comes here');
+								
 								$('#manualBankAccount').find('input#savemanualbankinfo').click();
 								return false;
 							}
@@ -872,12 +873,14 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.on('shown.bs.modal', function() {
 						
-						$('#manualBankAccount').show();     	
+						$('#manualBankAccount').show(); 
+						$('#manualBankAccount').validate().resetForm();    	
 							
 					})
 					.on('hide.bs.modal', function(e) {
 					
 						$('#manualBankAccount').hide().appendTo('body');  
+						
 					})
 					.modal('show');
 					
