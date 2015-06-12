@@ -192,7 +192,7 @@ var FormValidation = function () {
 												
 												if(data.status_code == 200 ){
 													bootbox.hideAll();	
-													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').text('Update Bank Account');
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatepayeebtn').css('display','block');
 												} else {
 												
 													if(data.status_code == 201 ){
