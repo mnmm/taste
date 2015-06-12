@@ -914,6 +914,22 @@
 			}
 		}
 		
+		public static function check_manual_bank_account_exists($vendorid){
+			
+			$get_vendor_info =  DB::table('users')->where('id','=',$vendorid)->first();
+			if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
+				$userid = $get_vendor_info->id;
+				$bankdetail = DB::table('manual_bank_details')->where('vendorid','=',$userid)->first();
+				if(isset($bankdetail->id) && $bankdetail->id != ''){
+					return $bankdetail->id;
+				} else{
+					return 0;
+				}
+			} else {
+				return 0;
+			}
+		}
+		
 	}
 	
 	
