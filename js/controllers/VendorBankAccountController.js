@@ -182,11 +182,11 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						var transferbtntext = '';
 						if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
 							if(data.transferoption  == 1){
-								transfertext ='Automatic transfer enabled';
+								transfertext ='Manual check transfer enabled';
 								transferbtntext ='Switch to enable ACH transfer';
 							} else {
 								transfertext ='ACH transfers enabled';
-								transferbtntext ='Switch to enable bank accounts';
+								transferbtntext ='Switch to enable manual check payment';
 							}
 						}
 						//console.log('transfertext'+transfertext);
@@ -745,13 +745,13 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 												var transferbtntext = '';
 												
 													if(newtransferstatus  == 1){
-														transfertext ='Automatic transfer enabled';
+														transfertext ='Manual check transfer enabled';
 														transferbtntext ='Switch to enable ACH transfer';
 													} else {
 														transfertext ='ACH transfers enabled';
-														transferbtntext ='Switch to enable bank accounts';
+														transferbtntext ='Switch to enable manual check payment';
 													}
-													
+
 													$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfertext);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(newtransferstatus);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
