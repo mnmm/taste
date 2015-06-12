@@ -849,7 +849,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeeinfo',vendorid:vendoruserid}).
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 					
@@ -894,13 +894,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					.modal('show');
 					
 					$('#manualBankAccount').find('input#paymenttype').val('manual');
-					
-					$('#manualBankAccount').find('button.cancel-btn').removeClass('btn');
-					$('#manualBankAccount').find('button.main-btn').removeClass('btn');
-					$('#manualBankAccount').find('input#payeename').val(data.bankaccountinfo.payeename);
-					$('#manualBankAccount').find('input#mailingaddress').val(data.bankaccountinfo.mailingaddress);
-					$('#manualBankAccount').find('input#zicode').val(data.bankaccountinfo.zicode);
-					$('#manualBankAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
+					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
 
 				} 		
 			});
@@ -914,7 +908,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeeinfo',vendorid:vendoruserid}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 					
@@ -957,8 +951,13 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.modal('show');
 					
-					$('#manualBankAccount').find('input#paymenttype').val('manual');
-					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
+					
+					$('#manualBankAccount').find('button.cancel-btn').removeClass('btn');
+					$('#manualBankAccount').find('button.main-btn').removeClass('btn');
+					$('#manualBankAccount').find('input#payeename').val(data.bankaccountinfo.payeename);
+					$('#manualBankAccount').find('input#mailingaddress').val(data.bankaccountinfo.mailingaddress);
+					$('#manualBankAccount').find('input#zicode').val(data.bankaccountinfo.zicode);
+					$('#manualBankAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
 
 				} 		
 			});
