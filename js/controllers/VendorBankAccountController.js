@@ -863,7 +863,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							label: "Add Account",
 							className: "main-btn",
 							callback: function() {
-								$('input#savebankinfo').click();
+								$('input#savemanualbankinfo').click();
 								return false;
 							}
 						  }
