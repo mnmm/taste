@@ -1433,7 +1433,7 @@ class ApiController extends BaseController {
 			
 			if (array_key_exists("zipcode", $data1))
 			{
-				$zipcode = $data1->zicode;
+				$zipcode = $data1->zipcode;
 			}
 			else
 			{
