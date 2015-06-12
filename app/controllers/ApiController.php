@@ -1657,7 +1657,39 @@ class ApiController extends BaseController {
 							//$status = $status_list[$listingdetail->status];
 							$paid_status = $paid_status_list[$listingdetail->paid_status];
 							//$status_html = '<span class="label label-sm label-'.$status.'">'.$listingdetail->status.'</span>';
-							$paid_status_html = '<span class="label label-sm label-'.$paid_status.'">'.$listingdetail->paid_status.'</span>';
+							$payment_title = '';
+							$payment_content = '';
+							if($listingdetail->vendor_paid_status == 1){
+								$pay_done_class = 'fade_pay';
+								$payment_status = 'paid';
+								$obj=new ptStripe(STRIPE_KEY);
+
+								$transferdata=$obj->retrieveTransfer($listingdetail->stripe_payment_id);
+								if(	$transferdata['status'] == 0){
+									
+									$transfer_date = date("n/j g:ia", $transferdata['data']->date);
+									
+									$transfer_amount = ($transferdata['data']->amount/100);
+									$get_transfer_user_name = PoDetail::get_user_detail_for_transfer($listingdetail->payment_done_by);
+									
+									$payment_title = 'data-toggle="popover" title="Payment Details"';
+									$payment_content = 'Name : '.$get_transfer_user_name.'<br/>Payment date : '.$transfer_date.'<br/>Amuont : $'.$transfer_amount;
+								}
+															
+							} else {
+								
+								if($check_bank_details == 1){
+									$pay_done_class = 'makepayment';
+									$payment_status = 'unpaid';
+								} else {
+									$pay_done_class = 'fade_pay';
+									$payment_status = 'unpaid';
+									
+								}
+							}
+							
+							$paid_status_html = '<span class="label label-sm label-'.$payment_status.'" data-placement="top"  data-trigger="hover" '.$payment_title.' data-html="true" data-content="'.$payment_content.'">'.$payment_status.'</span>';
+							
 							$podate = date("n/j, Y",strtotime($listingdetail->po_date));
 							$duedate = date("n/j, g:ia",strtotime($listingdetail->due_date)); $duedate= substr($duedate, 0, -1);
 							$payhtml = '';
@@ -1680,35 +1712,9 @@ class ApiController extends BaseController {
 								$request_id = 'updateinfo';
 							}
 							
-							$payment_title = '';
-							$payment_content = '';
-							if($listingdetail->vendor_paid_status == 1){
-								$pay_done_class = 'fade_pay';
-								$obj=new ptStripe(STRIPE_KEY);
-
-								$transferdata=$obj->retrieveTransfer($listingdetail->stripe_payment_id);
-								if(	$transferdata['status'] == 0){
-									
-									$transfer_date = date("n/j g:ia", $transferdata['data']->date);
-									
-									$transfer_amount = ($transferdata['data']->amount/100);
-									$get_transfer_user_name = PoDetail::get_user_detail_for_transfer($listingdetail->payment_done_by);
-									
-									$payment_title = 'data-toggle="popover" title="Payment Details"';
-									$payment_content = 'Name : '.$get_transfer_user_name.'<br/>Payment date : '.$transfer_date.'<br/>Amuont : $'.$transfer_amount;
-								}
-															
-							} else {
-								
-								if($check_bank_details == 1){
-									$pay_done_class = 'makepayment';
-								} else {
-									$pay_done_class = 'fade_pay';
-									
-								}
-							}
+							
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
-							$result['data'][]= array($listingdetail->po_no,$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,$priority_status,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" data-placement="top"  data-trigger="hover" '.$payment_title.' data-html="true" data-content="'.$payment_content.'">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
+							$result['data'][]= array($listingdetail->po_no,$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,$priority_status,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" >Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
 						//}
 						$i++;
 					}
