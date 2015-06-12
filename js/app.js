@@ -265,11 +265,13 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
 						$("#checkwrapper .off").addClass('active');
 						$("#checkwrapper").attr('openstatus','0');
 						$('span#test').addClass('bright-text');
+						$('span#live').removeClass('bright-text');
 					} else {
 						$("#checkwrapper .on").addClass('active');
 						$("#checkwrapper .off").removeClass('active');
 						$("#checkwrapper").attr('openstatus','1');
 						$('span#live').addClass('bright-text');
+						$('span#test').removeClass('bright-text');
 					}
 				}  
 			} else {
