@@ -895,7 +895,7 @@
 		
 		
 		//function to update manual bank account info
-		public static function update_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
+		public static function update_manual_bank_info($bankid,$vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
 			
 			$insertBankDetailAr = array('vendorid' => $vendorid,'payee_name' => $payeename,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
 			
