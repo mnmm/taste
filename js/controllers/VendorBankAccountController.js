@@ -1,6 +1,6 @@
 'use strict';
 var FormValidation = function () {
-	var handleValidation1 = function() {
+	/*var handleValidation1 = function() {
 						var form1 = $('#addBankAccount');
 						var error1 = $('.alert-danger', form1);
 						var success1 = $('.alert-success', form1);	
@@ -13,9 +13,7 @@ var FormValidation = function () {
 								   
 								},
 								rules: {
-									/*payeename: {
-										required: true,
-									},*/
+									
 									mailingaddress: {
 										required: true,
 										email:true
@@ -59,7 +57,7 @@ var FormValidation = function () {
 								},
 
 								submitHandler: function (form) {
-									//console.log($scope.apppath);
+
 									var vendoruserid  = localStorage.getItem('userid');
 									
 									var routing_number = $('input#routing').val();
@@ -71,9 +69,7 @@ var FormValidation = function () {
 									var mailingaddress = $('input#mailingaddress').val();
 								    var authcode = localStorage.getItem('payauthtoken');
 								    var id = $('input#bankaccountid').val();
-								    
-								    
-										//console.log('vendoruserid'+vendoruserid+'routing_number'+routing_number+'account_number'+account_number+'tax_id'+tax_id+'paymentype'+paymentype+'payeename'+payeename+'mailingaddress'+mailingaddress);
+
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
 											type: 'post',
@@ -116,7 +112,7 @@ var FormValidation = function () {
 									
 									}
 								});
-	}
+	}*/
 	
 	var handleManualValidation = function() {
 						var form2 = $('#manualBankAccount');
