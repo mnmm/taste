@@ -218,7 +218,7 @@ var FormValidation = function () {
         //main function to initiate the module
         init: function () {
             handleValidation1();
-          
+            handleManualValidation();
         }
 
     };
