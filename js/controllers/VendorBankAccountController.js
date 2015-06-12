@@ -714,7 +714,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							var newtransferstatus = 0;
 							var btnlabel = 'Turn off automatic transfers';
 						}
-						console.log('newtransferstatus'+newtransferstatus);
+						//console.log('newtransferstatus'+newtransferstatus);
 						bootbox.dialog({
 							message: $('#transfers'),
 							show: false,
@@ -743,9 +743,9 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 											if(data.updated == 1 && typeof data.updated != 'undefined'){
 												var transfertext = '';
 												var transferbtntext = '';
-												console.log('sucess newtransferstatus'+newtransferstatus);
+												//console.log('sucess newtransferstatus'+newtransferstatus);
 												//if(newtransferstatus != ''){
-													console.log('comes hre');
+													//console.log('comes hre');
 													if(newtransferstatus  == 1){
 														transfertext ='Automatic transfer enabled';
 														transferbtntext ='Switch to enable ACH transfer';
