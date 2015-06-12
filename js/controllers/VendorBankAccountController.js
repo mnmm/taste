@@ -119,10 +119,10 @@ var FormValidation = function () {
 	}
 	
 	var handleManualValidation = function() {
-						var form1 = $('#manualBankAccount');
+						var form2 = $('#manualBankAccount');
 						var error1 = $('.alert-danger', form1);
 						var success1 = $('.alert-success', form1);	
-                        form1.validate({
+                        form2.validate({
 								errorElement: 'span', //default input error message container
 								errorClass: 'help-block help-block-error', // default input error message class
 								focusInvalid: false, // do not focus the last invalid input
@@ -164,7 +164,7 @@ var FormValidation = function () {
 										.closest('.form-group').removeClass('has-error'); // set success class to the control group
 								},
 
-								submitHandler: function (form) {
+								submitHandler: function (form2) {
 									
 									var vendoruserid  = localStorage.getItem('userid');
 									
