@@ -876,7 +876,7 @@
 		//function to save manual bank account info
 		public static function save_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
 			
-			$insertBankDetailAr = array('vendorid' => $vendorid,'payee_name' => $get_vendor_name,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
+			$insertBankDetailAr = array('vendorid' => $vendorid,'payee_name' => $payeename,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
 			
 			$id = DB::table('manual_bank_details')->insertGetId($insertBankDetailAr);
 			
@@ -896,7 +896,7 @@
 		//function to update manual bank account info
 		public static function update_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
 			
-			$insertBankDetailAr = array('vendorid' => $vendorid,'payee_name' => $get_vendor_name,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
+			$insertBankDetailAr = array('vendorid' => $vendorid,'payee_name' => $payeename,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
 			
 			DB::table('bank_detail')->where('id','=',$bankid)->update($insertBankDetailAr);
 			
