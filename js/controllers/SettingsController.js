@@ -124,7 +124,24 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 			bootbox.dialog({
 				title: "Please enter API keys for stripe live and test mode",
 				message: $('#settingsForm'),
-				show: false
+				show: false,
+				buttons: {
+				  danger: {
+					label: "Cancel",
+					className: "cancel-btn",
+					callback: function() {
+						bootbox.hideAll();	
+					}
+				  },
+				  success: {
+					label: "Continue",
+					className: "main-btn",
+					callback: function() {
+						$('input#settingsubmit').click();
+						return false;
+					}
+				  }
+				}
 			})
 			.on('shown.bs.modal', function() {
 				$('#settingsForm')
