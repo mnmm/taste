@@ -26,6 +26,7 @@
 	<script src="{{ Request::root() }}/assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
 	<script src="{{ Request::root() }}/assets/global/plugins/angularjs/angular-touch.min.js" type="text/javascript"></script>	
 	<script src="{{ Request::root() }}/assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 	<script src="{{ Request::root() }}/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
 	<script src="{{ Request::root() }}/assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
 	<!-- END CORE ANGULARJS PLUGINS -->

@@ -502,7 +502,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES','$routeP
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-							"https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js",
                             appPath+'/assets/global/plugins/morris/morris.css',
                             appPath+'/assets/admin/pages/css/tasks.css',
                             
