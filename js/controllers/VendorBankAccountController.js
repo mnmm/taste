@@ -745,6 +745,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 												var transferbtntext = '';
 												console.log('sucess newtransferstatus'+newtransferstatus);
 												if(newtransferstatus != ''){
+													console.log('comes hre');
 													if(newtransferstatus  == 1){
 														transfertext ='Automatic transfer enabled';
 														transferbtntext ='Switch to enable ACH transfer';
