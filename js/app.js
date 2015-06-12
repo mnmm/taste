@@ -13,7 +13,9 @@ var MetronicApp = angular.module("MetronicApp", [
     "ui.router", 
     "ui.bootstrap", 
     "oc.lazyLoad",  
-    "ngSanitize"
+    "ngSanitize",
+	"ngRoute", 
+	"ngResource"
 ]).service('Session', function () {
   this.create = function (userId, userRole,userName) {
     this.userId = userId;
@@ -481,10 +483,10 @@ MetronicApp.controller('FooterController', ['$scope', function($scope) {
 }*/
 
 /* Setup Rounting For All Pages */
-MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', function($stateProvider, $urlRouterProvider,USER_ROLES) {
+MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES','$routeProvider',' $locationProvider', function($stateProvider, $urlRouterProvider,USER_ROLES,$routeProvider, $locationProvider) {
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/dashboard.html");  
-	
+	$routeProvider
     $stateProvider
 
         // Dashboard
@@ -494,9 +496,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             data: {pageTitle: 'Admin Dashboard Template',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['admin']},
             controller: "DashboardController",
             resolve: {
-				 permission: function(authorizationService, $route) {
-                         return authorizationService.permissionCheck([roles.admin]);
-                     },
+				
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
@@ -515,7 +515,10 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                            appPath+'/'+'js/controllers/DashboardController.js'
                         ] 
                     });
-                }]
+                }],
+				 permission: function(authorizationService, $route) {
+                         return authorizationService.permissionCheck([roles.admin]);
+                     },
             }
         })
         
