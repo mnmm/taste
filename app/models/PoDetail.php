@@ -897,9 +897,9 @@
 		//function to update manual bank account info
 		public static function update_manual_bank_info($bankid,$vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
 			
-			$insertBankDetailAr = array('vendorid' => $vendorid,'payee_name' => $payeename,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
+			$insertBankDetailAr = array('payee_name' => $payeename,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
 			
-			DB::table('bank_detail')->where('id','=',$bankid)->update($insertBankDetailAr);
+			DB::table('manual_bank_details')->where('id','=',$bankid)->update($insertBankDetailAr);
 			
 			if($id != '' && $authcode != ''){
 				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
