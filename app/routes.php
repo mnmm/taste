@@ -59,6 +59,7 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::post('/getpodataforgraphs', array('uses' => 'ApiController@getpodataforgraphs'));
 	Route::post('/login', array('uses' => 'ApiController@login'));
 	Route::post('/logout', array('uses' => 'ApiController@logout'));
+	Route::get('/permissionService', array('uses' => 'ApiController@permissionService'));
 });
 
 Route::get('/','AdminDashboardController@viewdashboard');
