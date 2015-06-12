@@ -169,7 +169,8 @@ var FormValidation = function () {
 									var payeename = $('#manualBankAccount').find('input#payeename').val();
 									var mailingaddress =  $('#manualBankAccount').find('input#mailingaddress').val();
 									var zipcode =  $('#manualBankAccount').find('input#zipcode').val();
-									var id =$('#manualBankAccount').find('input#bankaccountidmanual').val();
+									var id =$('#manualBankAccount').find('input#bankaccountid').val();
+									
 								     var authcode = localStorage.getItem('payauthtoken');
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
