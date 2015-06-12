@@ -134,7 +134,7 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 					}
 				  },
 				  success: {
-					label: "Continue",
+					label: "Save Settings",
 					className: "main-btn",
 					callback: function() {
 						$('input#settingsubmit').click();
