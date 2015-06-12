@@ -202,7 +202,7 @@
 
 
 <form class="form-horizontal" name="transfers" novalidate id="transfers" style="display: none;"> 
-	<div id="transfertext">
+	<div id="transfertextautomatic" style="display:none;">
 		<p> Stripe will stop automatically sending transfers and instead allow you to decide where and when to send them. (It may take a couple of days for your currently pending transfers to clear.) </p>
 		<p>
 		This will enable paying out to other bank accounts (for example, contactors). There are some
@@ -215,6 +215,10 @@
 		If you send transfers manually, you agree to the additional
 		<a href="https://stripe.com/terms#transfer-api" target="_blank">Terms of Service</a>
 		covering this feature.
+		</p>
+	</div>
+	<div id="transfertextmanual" style="display:none;">
+		<p> After you turn on automatic transfers, we'll send you any remaining available balance and you'll no longer be able to send manual transfers.
 		</p>
 	</div>
 	<input type="hidden" id="currenttransfermode" value="">
