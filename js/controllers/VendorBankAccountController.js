@@ -1,6 +1,6 @@
 'use strict';
 var FormValidation = function () {
-	/*var handleValidation1 = function() {
+	var handleValidation1 = function() {
 						var form1 = $('#addBankAccount');
 						var error1 = $('.alert-danger', form1);
 						var success1 = $('.alert-success', form1);	
@@ -13,7 +13,9 @@ var FormValidation = function () {
 								   
 								},
 								rules: {
-									
+									/*payeename: {
+										required: true,
+									},*/
 									mailingaddress: {
 										required: true,
 										email:true
@@ -112,12 +114,12 @@ var FormValidation = function () {
 									
 									}
 								});
-	}*/
+	}
 	
 	var handleManualValidation = function() {
-						var form2 = $('#manualBankAccount');
-						var error1 = $('.alert-danger', form1);
-						var success1 = $('.alert-success', form1);	
+						var form2 = $('form#manualBankAccount');
+						var error1 = $('.alert-danger', form2);
+						var success1 = $('.alert-success', form2);	
                         form2.validate({
 								errorElement: 'span', //default input error message container
 								errorClass: 'help-block help-block-error', // default input error message class
