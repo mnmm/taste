@@ -1431,13 +1431,13 @@ class ApiController extends BaseController {
 				 $mailingaddress = '';
 			}
 			
-			if (array_key_exists("zicode", $data1))
+			if (array_key_exists("zipcode", $data1))
 			{
-				$zicode = $data1->zicode;
+				$zipcode = $data1->zicode;
 			}
 			else
 			{
-				 $zicode = '';
+				 $zipcode = '';
 			}
 
 			if (array_key_exists("bankid", $data1))
