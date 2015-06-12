@@ -193,12 +193,12 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						
 						 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
 							 if(data.paymenttype == 'electronic'){
-								$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Update Bank Account');
+								$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatebankacnt').css('display','block');
 							 } else {
-								 
+								$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').css('display','block'); 
 							 }
 						 } else {
-							
+							$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').css('display','block'); 
 						 }
 						//console.log('transfertext'+transfertext);
 						//console.log('transferoption'+data.transferoption);
