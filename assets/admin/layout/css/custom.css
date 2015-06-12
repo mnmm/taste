@@ -83,14 +83,15 @@ p .go-arrow{ font-size: 10px;}
 .paymentmethods #manageBankAccounts .form-group:last-child{ border: none;}
 .text{padding: 10px 0; color: #666;}
 .small-title{color: #333; padding-right: 10px; font-size: 15px;}
-.main-btn{ color: #fff; border: 1px #0066BA solid; border-radius: 4px !important; font-size: 15px; box-shadow:0 1px 0 rgba(255, 255, 255, 0.25) inset;   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    padding: 6px 20px; background: #7dc5ee; /* Old browsers */
-background: -moz-linear-gradient(top, #7dc5ee 0%, #008cdd 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7dc5ee), color-stop(100%,#008cdd)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #7dc5ee 0%,#008cdd 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #7dc5ee 0%,#008cdd 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #7dc5ee 0%,#008cdd 100%); /* IE10+ */
-background: linear-gradient(to bottom, #7dc5ee 0%,#008cdd 100%); /* W3C */
+.main-btn{ color: #fff; border: 1px #0066BA solid; border-radius: 4px !important; font-size: 14px;
+    padding: 6px 15px;  box-shadow: 0 1px 0.4px #fff inset, 0 0 9px -4px #fff inset;   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background: #7dc5ee; /* Old browsers */
+background: -moz-linear-gradient(top, #7dc5ee 5%, #008cdd 84%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,#7dc5ee), color-stop(84%,#008cdd)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #7dc5ee 5%,#008cdd 84%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #7dc5ee 5%,#008cdd 84%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #7dc5ee 5%,#008cdd 84%); /* IE10+ */
+background: linear-gradient(to bottom, #7dc5ee 5%,#008cdd 84%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7dc5ee', endColorstr='#008cdd',GradientType=0 ); /* IE6-9 */ }
 
 .paymentmethods .modal-footer{ background: #ecf0f4 linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)) repeat scroll 0 0; border-top: 1px solid #ced4dc;}
