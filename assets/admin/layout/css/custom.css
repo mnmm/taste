@@ -149,3 +149,5 @@ background: -ms-linear-gradient(top, #df1010 0%,#ee7d7d 96%) !important;; /* IE1
 background: linear-gradient(to bottom, #df1010 0%,#ee7d7d 96%) !important;; /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1010', endColorstr='#ee7d7d',GradientType=0 ) !important;; /* IE6-9 */}
 
+.paymentlinkconfirmation .modal-content{ width:400px !important; }
+.requestlinkconfirmation .modal-content{ width:400px !important; }
