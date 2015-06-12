@@ -496,7 +496,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES','$routeP
             data: {pageTitle: 'Admin Dashboard Template',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['admin']},
             controller: "DashboardController",
             resolve: {
-				
+				 permission: function(authorizationService, $route) {
+                         return authorizationService.permissionCheck([roles.admin]);
+                     },
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
@@ -515,10 +517,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES','$routeP
                            appPath+'/'+'js/controllers/DashboardController.js'
                         ] 
                     });
-                }],
-				 permission: function(authorizationService, $route) {
-                         return authorizationService.permissionCheck([roles.admin]);
-                     },
+                }] 
+				
             }
         })
         
