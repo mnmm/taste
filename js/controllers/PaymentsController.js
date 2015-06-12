@@ -364,7 +364,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 							bootbox.dialog({
 							message: "Do you want to make payment to vendor?",
 							title: "Payment Confirmation",
-							size: 'medium',
+							size: 'small',
 							className:'paymentlinkconfirmation',
 							buttons: {
 							  danger: {
@@ -426,7 +426,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 							bootbox.dialog({
 							message: "Do you want to send update info link to vendor ?",
 							title: "Update bank info confirmation",
-							size: 'medium',
+							size: 'small',
 							className:'requestlinkconfirmation',
 							buttons: {
 							  danger: {
@@ -459,7 +459,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 					bootbox.dialog({
 							message: "Do you want to send request info link to vendor ?",
 							title: "Request bank info confirmation",
-							size: 'medium',
+							size: 'small',
 							className:'requestlinkconfirmation',
 							buttons: {
 							  danger: {
