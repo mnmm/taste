@@ -253,7 +253,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transfersplit[2]);	
 			//console.log(transfersplit[3]+$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[3]).html());
 			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[3]).css('display','block');
-			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[4]).css('display','block');
+			
+			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[4]).css('display','inline-block');
 		}
 
 
