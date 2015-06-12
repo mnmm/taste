@@ -1402,6 +1402,64 @@ class ApiController extends BaseController {
 			
 		}
 		
+		if($action == 'savebankaccountinfomanual'){
+			if (array_key_exists("vendorid", $data1))
+			{
+				$vendorid = $data1->vendorid;
+			}
+			else
+			{
+				 $vendorid = '';
+
+			}
+			
+			if (array_key_exists("payeename", $data1))
+			{
+				$payeename = $data1->payeename;
+			}
+			else
+			{
+				 $payeename = '';
+			}
+			
+			if (array_key_exists("mailingaddress", $data1))
+			{
+				$mailingaddress = $data1->mailingaddress;
+			}
+			else
+			{
+				 $mailingaddress = '';
+			}
+			
+			if (array_key_exists("zicode", $data1))
+			{
+				$zicode = $data1->zicode;
+			}
+			else
+			{
+				 $zicode = '';
+			}
+
+			if (array_key_exists("bankid", $data1))
+			{
+				$bankid = $data1->bankid;
+			}
+			else
+			{
+				 $bankid = '';
+			}
+			
+			if (array_key_exists("authcode", $data1))
+			{
+				$authcode = $data1->authcode;
+			}
+			else
+			{
+				$authcode = '';
+			}
+			
+			
+		}
 		
 		if($action == 'savesettings'){
 			
@@ -1975,7 +2033,28 @@ class ApiController extends BaseController {
 				$update_transfer_choice = PoDetail::update_vendor_transfer_choice($vendorid,$transferstatus);
 				$result['status_code']=200;
 				$result['updated']=$update_transfer_choice;
-			}
+			} else if($action == 'savebankaccountinfomanual'){
+				if($bankid != '' && $bankid == 0){
+					$save_manual_bank_info = PoDetail::save_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode);
+					if($save_manual_bank_info != '' && $save_manual_bank_info != 0){
+						$result['status_code']=200;
+						$result['message'] = 'Bank Account Info saved sucessfully';
+					} else{
+						$result['status_code']=201;
+						$result['message'] = 'Token is not valid for Adding bank details';
+					}
+				} else {
+					$update_manual_bank_info = PoDetail::update_manual_bank_info($bankid,$vendorid,$payeename,$mailingaddress,$zipcode,$authcode);
+					if($update_manual_bank_info != '' && $update_manual_bank_info != 0){
+						$result['status_code']=200;
+						$result['message'] = 'Bank Account Info saved sucessfully';
+					} else{
+						$result['status_code']=201;
+						$result['message'] = 'Token is not valid for Adding bank details';
+					}
+
+				}
+			} 
 				
 			$json_result = str_replace('null','""',json_encode($result));
 			echo $json_result;
