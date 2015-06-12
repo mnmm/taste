@@ -190,6 +190,14 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 								transferbtntext ='Switch to enable manual payment';
 							}
 						}
+						
+						 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
+							 if(data.paymenttype == 'electronic'){
+								 console.log('comes here');
+								  console.log($('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').html());
+								 $('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Update Bank Account');
+							 }
+						 }
 						//console.log('transfertext'+transfertext);
 						//console.log('transferoption'+data.transferoption);
 						var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext;
