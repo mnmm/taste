@@ -124,7 +124,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
         function getunpaidpo(){
 			
 			bootbox.dialog({
-				title: "Please create a taste vendor by entering a password below",
+				title: "Register yourself to Taste",
 				message: $('#signupForm'),
 				show: false,
 				buttons: {
