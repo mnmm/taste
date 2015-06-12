@@ -905,7 +905,7 @@
 				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
 				if(isset($expire_auth_code->id ) && $expire_auth_code->id != ''){
 					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
-					return $id;
+					return 1;
 				} else {
 					return 0;
 				} 
