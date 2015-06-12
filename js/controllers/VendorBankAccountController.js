@@ -957,7 +957,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$('#manualBankAccount').find('input#payeename').val(data.bankaccountinfo.payee_name);
 					$('#manualBankAccount').find('input#mailingaddress').val(data.bankaccountinfo.mailing_address);
 					$('#manualBankAccount').find('input#zipcode').val(data.bankaccountinfo.zipcode);
-					$('#manualBankAccount').find('input#bankaccountidmanual').val(data.bankaccountinfo.id);
+					$('#manualBankAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
 
 				} 		
 			});
