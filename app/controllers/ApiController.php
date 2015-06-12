@@ -1657,6 +1657,9 @@ class ApiController extends BaseController {
 							//$status = $status_list[$listingdetail->status];
 							$paid_status = $paid_status_list[$listingdetail->paid_status];
 							//$status_html = '<span class="label label-sm label-'.$status.'">'.$listingdetail->status.'</span>';
+							
+							$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
+
 							$payment_title = '';
 							$payment_content = '';
 							if($listingdetail->vendor_paid_status == 1){
@@ -1701,8 +1704,6 @@ class ApiController extends BaseController {
 								$payhtml = 'javascript:void(0);';
 							}
 							$priority_status = $listingdetail->priority_status;
-							$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
-							
 							
 							if($check_bank_details == 0){
 								$request_status = 'Request Info';
