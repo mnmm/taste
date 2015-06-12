@@ -1286,7 +1286,7 @@ class ApiController extends BaseController {
 			}
 		}
 		
-		if($action == 'gettaxidforvendor' || $action == 'getpayeename' || $action == 'getbankaccountinfo' || $action == 'updatetransfermethod'){
+		if($action == 'gettaxidforvendor' || $action == 'getpayeename' || $action == 'getbankaccountinfo' || $action == 'updatetransfermethod' || $action == 'getpayeeinfo'){
 			if (array_key_exists("vendorid", $data1))
 			{
 				$vendorid = $data1->vendorid;
