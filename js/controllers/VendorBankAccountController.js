@@ -657,6 +657,87 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	}
 	
 	
+	$scope.openUpdateBankAccountPopUp = function () {
+			
+			var vendoruserid  = localStorage.getItem('userid');
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getbankaccountinfo',vendorid:vendoruserid}).
+			success(function(data, status, headers, config) {
+
+					
+					bootbox.dialog({
+						title:'Please add your checking account details',
+						message: $('#addBankAccount'),
+						show: false,
+						animate:true,
+						closeButton: false,
+						className:'addaccountdetail',
+						buttons: {
+						  danger: {
+							label: "Cancel",
+							className: "btn",
+							callback: function() {
+								bootbox.hideAll();	
+							}
+						  },
+						  success: {
+							label: "Update Account",
+							className: "main-btn",
+							callback: function() {
+								$('input#savebankinfo').click();
+								return false;
+							}
+						  }
+						} 
+					})
+					.on('shown.bs.modal', function() {
+						
+						$('#addBankAccount').show();     	
+							
+					})
+					.on('hide.bs.modal', function(e) {
+						
+						// Therefor, we need to backup the form
+						//$('#addBankAccount').hide().appendTo('body');
+						$('#addBankAccount').hide().appendTo('body');  
+					})
+					.modal('show');
+					
+					$('#addBankAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
+					$('#addBankAccount').find('input#routing').val(data.bankaccountinfo.routing_number);
+					$('#addBankAccount').find('input#account_number').val(data.bankaccountinfo.account_number);
+					$('#addBankAccount').find('input#confirm_account_number').val(data.bankaccountinfo.account_number);
+					$('#addBankAccount').find('input#tax_id').val(data.bankaccountinfo.tax_id);
+					
+					$('#addBankAccount').find('input#routing').focus();
+					
+					$('#addBankAccount').find('input#paymenttype').val('electronic');
+					$('#addBankAccount').find('#payeeinfo').hide();
+					$('#addBankAccount').find('#mailinginfo').hide();
+					$('#addBankAccount').find('input#mailingaddress').prop('disabled',true);
+					$('#addBankAccount').find('#accountingpopover').click();
+					$('#addBankAccount').find('#routingpopover').click();
+					var routingcss = 0;
+					$('#addBankAccount').find('.popover').each(function(){
+						if(routingcss != 0){
+							$(this).css('display','block');
+						} else {
+							$(this).css('left','231.167px');
+							$(this).css('top','-91.5px');
+						}
+						routingcss++;
+					});
+					
+				
+			});	
+
+	}
+	
+	
+	
+	
+	
 	//function to add payee details
 	$scope.addPayeeDetails = function () {
 			
