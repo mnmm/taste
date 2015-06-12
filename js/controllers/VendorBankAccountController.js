@@ -193,10 +193,12 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						
 						 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
 							 if(data.paymenttype == 'electronic'){
-								 console.log('comes here');
-								  console.log($('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').html());
-								 $('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Update Bank Account');
+								$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Update Bank Account');
+							 } else {
+								 
 							 }
+						 } else {
+							
 						 }
 						//console.log('transfertext'+transfertext);
 						//console.log('transferoption'+data.transferoption);
@@ -735,14 +737,14 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							buttons: {
 							  danger: {
 								label: "Cancel",
-								className: "btn",
+								className: "cancel-btn",
 								callback: function() {
 									bootbox.hideAll();	
 								}
 							  },
 							  success: {
 								label: btnlabel,
-								className: "main-btn",
+								className: "off-red-btn",
 								callback: function() {
 									//$('input#changetransfermethod').click();
 									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
