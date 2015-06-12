@@ -99,6 +99,7 @@ var FormValidation = function () {
 												
 												if(data.status_code == 200 ){
 													bootbox.hideAll();	
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').text('Update Bank Account');
 												} else {
 												
 													if(data.status_code == 201 ){
@@ -459,6 +460,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 					$('#addBankAccount').find('input#mailingaddress').prop('disabled',false);
 					
 					
+					
 				} else {
 				
 					createauthtoken(paymentMethodChosen);
@@ -603,6 +605,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						$('#addBankAccount').hide().appendTo('body');  
 					})
 					.modal('show');
+					
 					$('#addBankAccount').find('#accountingpopover').click();
 					$('#addBankAccount').find('#routingpopover').click();
 					var routingcss = 0;
