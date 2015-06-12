@@ -893,6 +893,7 @@
 			}
 		}
 		
+		
 		//function to update manual bank account info
 		public static function update_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
 			
