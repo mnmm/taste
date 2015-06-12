@@ -901,7 +901,7 @@
 			
 			DB::table('manual_bank_details')->where('id','=',$bankid)->update($insertBankDetailAr);
 			
-			if($id != '' && $authcode != ''){
+			if($authcode != ''){
 				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
 				if(isset($expire_auth_code->id ) && $expire_auth_code->id != ''){
 					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
