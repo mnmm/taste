@@ -640,6 +640,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 
 	}
 	
+	
+	//function to add payee details
 	$scope.addPayeeDetails = function () {
 			
 			var vendoruserid  = localStorage.getItem('userid');
@@ -680,13 +682,12 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							
 					})
 					.on('hide.bs.modal', function(e) {
-						//$('#addBankAccount').hide().appendTo('body');
+					
 						$('#manualBankAccount').hide().appendTo('body');  
 					})
 					.modal('show');
 					
 					$('#manualBankAccount').find('input#paymenttype').val('manual');
-					$('#manualBankAccount').find('input#mailingaddress').prop('disabled',true);
 					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
 
 				} 		
@@ -695,10 +696,9 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	}
 	
 	
+	//function to change between transfer methods
 	$scope.toggleTransferMethods = function () {
-			
-			
-					
+		
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
@@ -706,7 +706,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 						var transfertypeselected = $('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val();
-						//console.log('transfertypeselected'+transfertypeselected);
+						
 						if(transfertypeselected == 0){
 							var newtransferstatus = 1;
 							var btnlabel = 'Turn off ACH transfers';
@@ -714,7 +714,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							var newtransferstatus = 0;
 							var btnlabel = 'Turn off automatic transfers';
 						}
-						//console.log('newtransferstatus'+newtransferstatus);
+						
 						bootbox.dialog({
 							message: $('#transfers'),
 							show: false,
@@ -743,9 +743,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 											if(data.updated == 1 && typeof data.updated != 'undefined'){
 												var transfertext = '';
 												var transferbtntext = '';
-												//console.log('sucess newtransferstatus'+newtransferstatus);
-												//if(newtransferstatus != ''){
-													//console.log('comes hre');
+												
 													if(newtransferstatus  == 1){
 														transfertext ='Automatic transfer enabled';
 														transferbtntext ='Switch to enable ACH transfer';
@@ -758,7 +756,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 													$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(newtransferstatus);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
 													bootbox.hideAll();	
-												//}
+												
 											}
 										} 		
 									});
