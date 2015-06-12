@@ -47,7 +47,7 @@
 			<div class="form-group" >
 				<label class="col-md-4 control-label" for="name">Bank Accounts:</label>
 				<div class="col-md-7">
-				   <button type="button" ng-click="openBankAccountPopUp()" class="addinfo-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Bank Account</button>
+				   <button type="button" ng-click="openBankAccountPopUp()" class="addinfo-btn" id="addbankacnt"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Bank Account</button>
 	  <p class="text">Charges for a currency without a bank account will be converted to your default currency, USD.<a href=""> What currencies can I charge in? <span class="glyphicon glyphicon-play go-arrow" aria-hidden="true"></span></a></p>			
             </div>
 			</div>
@@ -63,7 +63,7 @@
                         <div class="form-group" >
 				<label class="col-md-4 control-label" for="name">Payment Method:</label>
 				<div class="col-md-7"><span class="small-title" id="enabledtransfertext">ACH transfers enabled</span>
-				   <button type="button" class="addinfo-btn" ng-click="toggleTransferMethods()" id="transferbtn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Switch to enable bank accounts</button>
+				   <button type="button" class="addinfo-btn" ng-click="toggleTransferMethods()" id="transferbtn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Switch to enable manual payment</button>
                            <p class="text">Instead of automatic rolling transfers, you can choose to manually send transfers to yourself or to third parties through the dashboard or the API. For more information, see our <a href="">documentation</a>. </p>
 				</div>
 			</div>
@@ -202,19 +202,25 @@
 
 
 <form class="form-horizontal" name="transfers" novalidate id="transfers" style="display: none;"> 
-	<p> Stripe will stop automatically sending transfers and instead allow you to decide where and when to send them. (It may take a couple of days for your currently pending transfers to clear.) </p>
-	<p>
-	This will enable paying out to other bank accounts (for example, contactors). There are some
-	<a href="https://support.stripe.com/questions/can-i-pay-out-my-vendors-contractors-or-service-providers" target="_blank">legal and product considerations</a>
-	you should think about before you start doing this in production.
-	<a target="_blank" href="https://support.stripe.com/email">Let us know</a>
-	if you have any questions!
-	</p>
-	<p class="submit-note">
-	If you send transfers manually, you agree to the additional
-	<a href="https://stripe.com/terms#transfer-api" target="_blank">Terms of Service</a>
-	covering this feature.
-	</p>
+	<div id="transfertextautomatic" style="display:none;">
+		<p> Stripe will stop automatically sending transfers and instead allow you to decide where and when to send them. (It may take a couple of days for your currently pending transfers to clear.) </p>
+		<p>
+		This will enable paying out to other bank accounts (for example, contactors). There are some
+		<a href="https://support.stripe.com/questions/can-i-pay-out-my-vendors-contractors-or-service-providers" target="_blank">legal and product considerations</a>
+		you should think about before you start doing this in production.
+		<a target="_blank" href="https://support.stripe.com/email">Let us know</a>
+		if you have any questions!
+		</p>
+		<p class="submit-note">
+		If you send transfers manually, you agree to the additional
+		<a href="https://stripe.com/terms#transfer-api" target="_blank">Terms of Service</a>
+		covering this feature.
+		</p>
+	</div>
+	<div id="transfertextmanual" style="display:none;">
+		<p> After you turn on automatic transfers, we'll send you any remaining available balance and you'll no longer be able to send manual transfers.
+		</p>
+	</div>
 	<input type="hidden" id="currenttransfermode" value="">
 	<input type="submit" id="changetransfermethod" style="display:none;">
 </form>

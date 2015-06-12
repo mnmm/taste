@@ -99,6 +99,7 @@ var FormValidation = function () {
 												
 												if(data.status_code == 200 ){
 													bootbox.hideAll();	
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').text('Update Bank Account');
 												} else {
 												
 													if(data.status_code == 201 ){
@@ -182,11 +183,11 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						var transferbtntext = '';
 						if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
 							if(data.transferoption  == 1){
-								transfertext ='Automatic transfer enabled';
+								transfertext ='Manual check transfer enabled';
 								transferbtntext ='Switch to enable ACH transfer';
 							} else {
 								transfertext ='ACH transfers enabled';
-								transferbtntext ='Switch to enable bank accounts';
+								transferbtntext ='Switch to enable manual payment';
 							}
 						}
 						//console.log('transfertext'+transfertext);
@@ -459,6 +460,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 					$('#addBankAccount').find('input#mailingaddress').prop('disabled',false);
 					
 					
+					
 				} else {
 				
 					createauthtoken(paymentMethodChosen);
@@ -603,6 +605,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						$('#addBankAccount').hide().appendTo('body');  
 					})
 					.modal('show');
+					
 					$('#addBankAccount').find('#accountingpopover').click();
 					$('#addBankAccount').find('#routingpopover').click();
 					var routingcss = 0;
@@ -640,6 +643,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 
 	}
 	
+	
+	//function to add payee details
 	$scope.addPayeeDetails = function () {
 			
 			var vendoruserid  = localStorage.getItem('userid');
@@ -680,13 +685,12 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							
 					})
 					.on('hide.bs.modal', function(e) {
-						//$('#addBankAccount').hide().appendTo('body');
+					
 						$('#manualBankAccount').hide().appendTo('body');  
 					})
 					.modal('show');
 					
 					$('#manualBankAccount').find('input#paymenttype').val('manual');
-					$('#manualBankAccount').find('input#mailingaddress').prop('disabled',true);
 					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
 
 				} 		
@@ -695,10 +699,9 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	}
 	
 	
+	//function to change between transfer methods
 	$scope.toggleTransferMethods = function () {
-			
-			
-					
+		
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
@@ -706,7 +709,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 						var transfertypeselected = $('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val();
-						//console.log('transfertypeselected'+transfertypeselected);
+						
 						if(transfertypeselected == 0){
 							var newtransferstatus = 1;
 							var btnlabel = 'Turn off ACH transfers';
@@ -714,7 +717,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							var newtransferstatus = 0;
 							var btnlabel = 'Turn off automatic transfers';
 						}
-						//console.log('newtransferstatus'+newtransferstatus);
+						
 						bootbox.dialog({
 							message: $('#transfers'),
 							show: false,
@@ -743,22 +746,20 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 											if(data.updated == 1 && typeof data.updated != 'undefined'){
 												var transfertext = '';
 												var transferbtntext = '';
-												//console.log('sucess newtransferstatus'+newtransferstatus);
-												//if(newtransferstatus != ''){
-													//console.log('comes hre');
+												
 													if(newtransferstatus  == 1){
-														transfertext ='Automatic transfer enabled';
+														transfertext ='Manual check transfer enabled';
 														transferbtntext ='Switch to enable ACH transfer';
 													} else {
 														transfertext ='ACH transfers enabled';
-														transferbtntext ='Switch to enable bank accounts';
+														transferbtntext ='Switch to enable manual payment';
 													}
-													
+
 													$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfertext);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(newtransferstatus);
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
 													bootbox.hideAll();	
-												//}
+												
 											}
 										} 		
 									});
@@ -778,8 +779,13 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						})
 						.modal('show');
 						
-						
-
+						if(transfertypeselected == 1){
+							$('div.transferoptions').find('div#transfertextmanual').css('display','block');
+							$('div.transferoptions').find('div#transfertextautomatic').css('display','none');
+						} else {
+							$('div.transferoptions').find('div#transfertextautomatic').css('display','block');
+							$('div.transferoptions').find('div#transfertextmanual').css('display','none');
+						}
 				} 		
 			});
 
