@@ -186,7 +186,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 								transferbtntext ='Switch to enable ACH transfer';
 							} else {
 								transfertext ='ACH transfers enabled';
-								transferbtntext ='Switch to enable manual check payment';
+								transferbtntext ='Switch to enable manual payment';
 							}
 						}
 						//console.log('transfertext'+transfertext);
@@ -749,7 +749,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 														transferbtntext ='Switch to enable ACH transfer';
 													} else {
 														transfertext ='ACH transfers enabled';
-														transferbtntext ='Switch to enable manual check payment';
+														transferbtntext ='Switch to enable manual payment';
 													}
 
 													$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfertext);
