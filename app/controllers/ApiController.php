@@ -2097,4 +2097,14 @@ class ApiController extends BaseController {
 		
 	}
 	
+
+	public function permissionService() {
+				
+		$result='admin';
+		$json_result = str_replace('null','""',json_encode($result));
+		echo $json_result;
+		exit;
+	} 
+	
+	
 }
