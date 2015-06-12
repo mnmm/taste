@@ -368,14 +368,14 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 							buttons: {
 							  danger: {
 								label: "Cancel",
-								className: "primary",
+								className: "cancel-btn",
 								callback: function() {
 									bootbox.hideAll();	
 								}
 							  },
 							  success: {
 								label: "Pay",
-								className: "green",
+								className: "main-btn",
 								callback: function() {
 									
 									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
@@ -429,14 +429,14 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 							buttons: {
 							  danger: {
 								label: "Cancel",
-								className: "primary",
+								className: "cancel-btn",
 								callback: function() {
 									bootbox.hideAll();	
 								}
 							  },
 							  success: {
 								label: "Continue",
-								className: "green",
+								className: "main-btn",
 								callback: function() {
 									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
@@ -461,14 +461,14 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 							buttons: {
 							  danger: {
 								label: "Cancel",
-								className: "primary",
+								className: "cancel-btn",
 								callback: function() {
 									bootbox.hideAll();	
 								}
 							  },
 							  success: {
 								label: "Continue",
-								className: "green",
+								className: "main-btn",
 								callback: function() {
 									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
