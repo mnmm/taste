@@ -706,7 +706,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 						var transfertypeselected = $('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val();
-						console.log('transfertypeselected'+transfertypeselected);
+						//console.log('transfertypeselected'+transfertypeselected);
 						if(transfertypeselected == 0){
 							var newtransferstatus = 1;
 							var btnlabel = 'Turn off ACH transfers';
@@ -736,7 +736,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 									var vendoruserid  = localStorage.getItem('userid');
-									$http.post($scope.apppath+'/api/getunpaidpo',{action:'updatetransfermethod',vendorid:vendoruserid,transferstatus:transferstatus}).
+									$http.post($scope.apppath+'/api/getunpaidpo',{action:'updatetransfermethod',vendorid:vendoruserid,transferstatus:newtransferstatus}).
 									success(function(data, status, headers, config) {
 										if(data.status_code == 200){
 											
