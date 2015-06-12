@@ -2058,7 +2058,7 @@ class ApiController extends BaseController {
 
 				}
 			} else if($action == 'getpayeeinfo') {
-				$get_payee_info = PoDetail::get_payee_info($vendorid);
+				$get_payee_info = PoDetail::get_manual_payee_info($vendorid);
 				
 				if(isset($get_payee_name->id) &&  $get_payee_name->id != ''){
 					$result['status_code']=200;
