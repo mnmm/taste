@@ -149,7 +149,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		var vendoruserid  = localStorage.getItem('userid');
 		
 		function makeSettings(optionsfortransfer) {
-			console.log('optionsfortransfer'+optionsfortransfer);
+			//console.log('optionsfortransfer'+optionsfortransfer);
 			var transfersplit = optionsfortransfer.split('##@##');
 			//$('.customername').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'All' });
 			//console.log($('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val());
@@ -739,7 +739,23 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 									$http.post($scope.apppath+'/api/getunpaidpo',{action:'updatetransfermethod',vendorid:vendoruserid,transferstatus:newtransferstatus}).
 									success(function(data, status, headers, config) {
 										if(data.status_code == 200){
-											
+											if(data.updated == 1 && typeof data.updated != 'undefined'){
+												var transfertext = '';
+												var transferbtntext = '';
+												if(newtransferstatus != ''){
+													if(newtransferstatus  == 1){
+														transfertext ='Automatic transfer enabled';
+														transferbtntext ='Switch to enable ACH transfer';
+													} else {
+														transfertext ='ACH transfers enabled';
+														transferbtntext ='Switch to enable bank accounts';
+													}
+													
+													$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfertext);
+													$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(newtransferstatus);
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transferbtntext);	
+												}
+											}
 										} 		
 									});
 									return false;
