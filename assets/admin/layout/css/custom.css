@@ -83,8 +83,13 @@ p .go-arrow{ font-size: 10px;}
 .paymentmethods #manageBankAccounts .form-group:last-child{ border: none;}
 .text{padding: 10px 0; color: #666;}
 .small-title{color: #333; padding-right: 10px; font-size: 15px;}
-.main-btn{ color: #fff; border: 1px #0066BA solid; border-radius: 4px !important; font-size: 14px;
-    padding: 6px 15px;  box-shadow: 0 1px 0.4px #fff inset, 0 0 9px -4px #fff inset;   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+.main-btn{ border: 1px solid #28a0e5;
+    border-radius: 4px !important;
+    box-shadow: 0 0 0.5px 0.5px rgba(255, 255, 255, 0.3) inset, 0 0 9px -4px rgba(255, 255, 255, 0.5) inset;
+    color: #fff;
+    font-size: 14px;
+    padding: 6px 15px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     background: #7dc5ee; /* Old browsers */
 background: -moz-linear-gradient(top, #7dc5ee 5%, #008cdd 84%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,#7dc5ee), color-stop(84%,#008cdd)); /* Chrome,Safari4+ */
@@ -106,4 +111,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7dc5ee', end
 }
 .transferoptions{ top:9% !important; }
 .transferoptions .modal-content {  width:400px;margin:0 auto; }
+.cancel-btn{background: #f7f8fa; /* Old browsers */
+background: -moz-linear-gradient(top, #f7f8fa 4%, #eff1f4 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(4%,#f7f8fa), color-stop(100%,#eff1f4)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #f7f8fa 4%,#eff1f4 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #f7f8fa 4%,#eff1f4 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #f7f8fa 4%,#eff1f4 100%); /* IE10+ */
+background: linear-gradient(to bottom, #f7f8fa 4%,#eff1f4 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f8fa', endColorstr='#eff1f4',GradientType=0 ); /* IE6-9 */ border:1px #ccd0d6 solid; color: #333;  font-size: 14px; padding: 5px 15px;    box-shadow: 0 1px 0 #fff inset; text-shadow: 0 1px 0 #fff;}
+.off-red-btn{ border:1px #e52828 solid;  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2); background: #ee7d7d; /* Old browsers */
+background: -moz-linear-gradient(top, #ee7d7d 4%, #df1010 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(4%,#ee7d7d), color-stop(100%,#df1010)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ee7d7d 4%,#df1010 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ee7d7d 4%,#df1010 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ee7d7d 4%,#df1010 100%); /* IE10+ */
+background: linear-gradient(to bottom, #ee7d7d 4%,#df1010 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee7d7d', endColorstr='#df1010',GradientType=0 ); /* IE6-9 */ padding: 5px 15px; font-size: 14px;}
 
