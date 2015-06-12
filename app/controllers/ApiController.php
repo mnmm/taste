@@ -2038,7 +2038,7 @@ class ApiController extends BaseController {
 				$result['updated']=$update_transfer_choice;
 			} else if($action == 'savebankaccountinfomanual'){
 				if($bankid != '' && $bankid == 0){
-					echo '$zipcode'.$zipcode;exit;
+					
 					$save_manual_bank_info = PoDetail::save_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode);
 					if($save_manual_bank_info != '' && $save_manual_bank_info != 0){
 						$result['status_code']=200;

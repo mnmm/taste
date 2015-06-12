@@ -135,7 +135,7 @@ var FormValidation = function () {
 									mailingaddress: {
 										required: true
 									},
-									zicode: {
+									zipcode: {
 										required:true
 									}
 									
@@ -168,7 +168,7 @@ var FormValidation = function () {
 									
 									var payeename = $('#manualBankAccount').find('input#payeename').val();
 									var mailingaddress =  $('#manualBankAccount').find('input#mailingaddress').val();
-									var zicode =  $('#manualBankAccount').find('input#zicode').val();
+									var zipcode =  $('#manualBankAccount').find('input#zipcode').val();
 									var id =$('#manualBankAccount').find('input#bankaccountidmanual').val();
 								     var authcode = localStorage.getItem('payauthtoken');
 										$.ajax({
@@ -179,7 +179,7 @@ var FormValidation = function () {
 												vendorid:vendoruserid,
 												payeename:payeename,
 												mailingaddress:mailingaddress,
-												zicode:zicode,
+												zipcode:zipcode,
 												bankid:id,
 												authcode:authcode
 											},
@@ -956,7 +956,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$('#manualBankAccount').find('button.main-btn').removeClass('btn');
 					$('#manualBankAccount').find('input#payeename').val(data.bankaccountinfo.payeename);
 					$('#manualBankAccount').find('input#mailingaddress').val(data.bankaccountinfo.mailingaddress);
-					$('#manualBankAccount').find('input#zicode').val(data.bankaccountinfo.zicode);
+					$('#manualBankAccount').find('input#zipcode').val(data.bankaccountinfo.zipcode);
 					$('#manualBankAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
 
 				} 		
