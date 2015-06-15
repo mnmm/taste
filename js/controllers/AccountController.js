@@ -202,7 +202,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 				  },
 				  signup: {
 					label: "SignUp",
-					className: "main-btn",
+					className: "main-btn-new",
 					callback: function() {
 						$('input#signupbtn').click();
 						return false;
