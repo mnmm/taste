@@ -130,7 +130,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 				title: "Register yourself to Taste",
 				message: $('#signupForm'),
 				show: false,
-				windowClass:'registerform',
+				className:'registerform',
 				closeButton:false,
 				buttons: {
 				  danger: {
