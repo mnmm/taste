@@ -160,7 +160,7 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getsettinginfo'}).
 			success(function(data, status, headers, config) {
-				
+				Layout.initSidebar();
 				if(data.status_code == 200){
 					
 					if(data.settings != '' && typeof data.settings != 'undefined'){
@@ -222,6 +222,75 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 		
 		
     });
+    
+    $scope.loadSettingsPage = function() {
+		bootbox.dialog({
+				title: "Please enter API keys for stripe live and test mode",
+				message: $('#settingsForm'),
+				show: false,
+				buttons: {
+				  danger: {
+					label: "Cancel",
+					className: "cancel-btn",
+					callback: function() {
+						bootbox.hideAll();	
+					}
+				  },
+				  success: {
+					label: "Save Settings",
+					className: "main-btn",
+					callback: function() {
+						$('input#settingsubmit').click();
+						return false;
+					}
+				  }
+				}
+			})
+			.on('shown.bs.modal', function() {
+				$('#settingsForm')
+					.show();                             // Show the login form
+					$('#settingsForm').validate().resetForm(); // Reset form
+			})
+			.on('hide.bs.modal', function(e) {
+				// Therefor, we need to backup the form
+				$('#settingsForm').hide().appendTo('body');
+			})
+			.modal('show');
+			
+			var vendoruserid  = localStorage.getItem('userid');		
+			//console.log('vendorid'+vendoruserid);
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getsettinginfo'}).
+			success(function(data, status, headers, config) {
+				Layout.initSidebar();
+				if(data.status_code == 200){
+					
+					if(data.settings != '' && typeof data.settings != 'undefined'){
+						$('#settingsForm').find('input#test_secret_key').val(data.settings.stripe_test_secret_key);	
+						$('#settingsForm').find('input#test_publishable_key').val(data.settings.stripe_test_publishable_key);
+						$('#settingsForm').find('input#live_secret_key').val(data.settings.stripe_live_secret_key);
+						$('#settingsForm').find('input#live_publishable_key').val(data.settings.stripe_live_publishable_key);
+						$('#settingsForm').find('input#live_publishable_key').val(data.settings.stripe_live_publishable_key);
+						$('#settingsForm').find('input#actiontype').val(1);
+						$('#settingsForm').find('button#btnsetting').text('Update');
+						$timeout(function () {
+							$timeout(callAtTimeout, 500);
+						});
+					}  
+				} else {
+					
+					if(data.message == 'Not Exists'){
+						$timeout(function () {
+							$timeout(callAtTimeout, 500);
+						});
+						
+					} else {
+						createauthtoken(getunpaidpo);
+					}
+				}		
+			});
+	}
     
     
   
