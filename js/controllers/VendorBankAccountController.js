@@ -778,6 +778,10 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	$scope.openUpdateBankAccountPopUp = function () {
 			
 			var vendoruserid  = localStorage.getItem('userid');
+			$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					 vendoruserid = $scope.userroleInfo.id;
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getbankaccountinfo',vendorid:vendoruserid}).
@@ -850,6 +854,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 				
 			});	
+		});	
 
 	}
 	
@@ -861,6 +866,11 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	$scope.addPayeeDetails = function () {
 			
 			var vendoruserid  = localStorage.getItem('userid');
+			$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					 vendoruserid = $scope.userroleInfo.id;
+			
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
@@ -912,6 +922,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 
 				} 		
 			});
+		});
 
 	}
 	
@@ -919,7 +930,12 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	//function to update payee details
 	$scope.updatePayeeDetails = function () {
 			
+			
 			var vendoruserid  = localStorage.getItem('userid');
+			$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					 vendoruserid = $scope.userroleInfo.id;
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeeinfo',vendorid:vendoruserid}).
@@ -975,6 +991,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 
 				} 		
 			});
+		});
 
 	}
 	
@@ -982,6 +999,10 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	$scope.toggleTransferMethods = function () {
 		
 			var vendoruserid  = localStorage.getItem('userid');
+			$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					 vendoruserid = $scope.userroleInfo.id;
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
@@ -1067,6 +1088,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						}
 				} 		
 			});
+		});
 
 	}
 	  
