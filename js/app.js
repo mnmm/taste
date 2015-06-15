@@ -163,7 +163,7 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
         role: result.data.role,
         userName: result.data.email
       };
-	  if(userInfo.role==1)
+	  if(result.data.role==1)
 	  {
 		  redirectUrl = 'dashboard';
 	  }
