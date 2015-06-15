@@ -131,6 +131,8 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 					label: "Cancel",
 					className: "cancel-btn",
 					callback: function() {
+						$('#settingsForm').hide();
+						$('#settingsForm').hide();
 						bootbox.hideAll();	
 					}
 				  },
@@ -235,6 +237,8 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 					label: "Cancel",
 					className: "cancel-btn",
 					callback: function() {
+						$('#settingsForm').hide();
+						$('#settingsForm').hide();
 						bootbox.hideAll();	
 					}
 				  },
@@ -276,6 +280,8 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 						$('#settingsForm').find('input#live_publishable_key').val(data.settings.stripe_live_publishable_key);
 						$('#settingsForm').find('input#actiontype').val(1);
 						$('#settingsForm').find('button#btnsetting').text('Update');
+						$('#settingsForm').show();
+						$('#settingsForm').show();
 						$timeout(function () {
 							$timeout(callAtTimeout, 500);
 						});
