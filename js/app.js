@@ -355,7 +355,7 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
     $scope.$on('$includeContentLoaded', function() {
         Layout.initSidebar(); // init sidebar
         $scope.apppath = 'https://mnmdesignlabs.com/taste';
-		$scope.userroleInfo = '';
+		//$scope.userroleInfo = '';
        
         $http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
