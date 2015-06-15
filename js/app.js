@@ -152,7 +152,7 @@ MetronicApp.factory("SideBarService", function() {
 MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
   var userInfo;
   var rootapppath = 'https://mnmdesignlabs.com/taste';
-  function login(email, password) {
+  function login(email, password, redirectUrl) {
     var deferred = $q.defer();
  
     $http.post(rootapppath+"/api/login", {
@@ -166,7 +166,7 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
       $window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
       deferred.resolve(userInfo);
 	  //$state.go('dashboard');
-	  $window.location.href = '#/dashboard';
+	  $window.location.href = '#/'+redirectUrl;
 	  $window.location.reload();
     }, function(error) {
       deferred.reject(error);

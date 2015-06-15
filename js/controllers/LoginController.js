@@ -4,7 +4,7 @@
 
 MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,AUTH_EVENTS,Session,AuthService,authenticationSvc) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
-	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password);}
+	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'dashboard.html');}
 	 
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
