@@ -110,7 +110,7 @@ background: linear-gradient(to bottom, #7dc5ee 5%,#008cdd 84%) !important; /* W3
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7dc5ee', endColorstr='#008cdd',GradientType=0 ) !important; /* IE6-9 */}
 
 .paymentmethods .modal-footer{ background: #ecf0f4 linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)) repeat scroll 0 0; border-top: 1px solid #ced4dc;}
-.modal .modal-header h3,.addaccountdetail h4.modal-title ,.paymentlinkconfirmation .modal-header .modal-title, .requestlinkconfirmation .modal-header .modal-title{
+.modal .modal-header h3,.addaccountdetail h4.modal-title ,.paymentlinkconfirmation .modal-header .modal-title, .requestlinkconfirmation .modal-header .modal-title,.registerform .modal-header .modal-title {
     font-size: 14px;
     font-weight: bold;
     text-align: center;
