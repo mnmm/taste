@@ -127,10 +127,11 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 				title: "Register yourself to Taste",
 				message: $('#signupForm'),
 				show: false,
+				windowClass:'registerform',
 				buttons: {
 				  danger: {
 					label: "Cancel",
-					className: "primary",
+					className: "cancel-btn",
 					callback: function() {
 						var email = $('input#email').val();
 						var password =  $('input#password').val();
@@ -165,7 +166,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 				  },
 				  success: {
 					label: "Continue",
-					className: "green",
+					className: "main-btn",
 					callback: function() {
 						var email = $('input#email').val();
 						var password =  $('input#password').val();
@@ -197,6 +198,14 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 							}
 						});
 						
+					}
+				  },
+				  signup: {
+					label: "SignUp",
+					className: "main-btn",
+					callback: function() {
+						$('input#signupbtn').click();
+						return false;
 					}
 				  }
 				} 
