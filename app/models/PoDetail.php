@@ -524,7 +524,7 @@
 		
 		public static function get_vendor_details($accesshash,$email= ''){
 			
-			if($accesshash ! ''){
+			if($accesshash != ''){
 				$request_details = DB::table('payment_auth_code')->select('payment_auth_code.*')->where('auth_code','=',$accesshash)->where('status','=',1)->get();
 				$vendorArr = array();
 				//print_r($request_details);exit;
