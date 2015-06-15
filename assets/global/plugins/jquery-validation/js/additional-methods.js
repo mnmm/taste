@@ -23,7 +23,7 @@
 		.replace(/[.(),;:!?%#$'\"_+=\/\-“”’]*/g, "");
 	}
 
-	$.validator.addMethod("maxWords", function(value, element, params) {
+	/*$.validator.addMethod("maxWords", function(value, element, params) {
 		return this.optional(element) || stripHtml(value).match(/\b\w+\b/g).length <= params;
 	}, $.validator.format("Please enter {0} words or less."));
 
@@ -35,7 +35,7 @@
 		var valueStripped = stripHtml(value),
 			regex = /\b\w+\b/g;
 		return this.optional(element) || valueStripped.match(regex).length >= params[0] && valueStripped.match(regex).length <= params[1];
-	}, $.validator.format("Please enter between {0} and {1} words."));
+	}, $.validator.format("Please enter between {0} and {1} words."));*/
 
 }());
 
