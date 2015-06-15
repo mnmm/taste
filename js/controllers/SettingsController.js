@@ -117,7 +117,7 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 			$('div#site_statistics_loading').css('display','none');
 			$('p#vendoraccountloading').css('display','none');
 			$('#settingsform').css('display','block');
-			console.log('comes here');
+			console.log($('div.bootbox').find('div.modal-body').find('div#settingsForm').html());
 			$('div.bootbox').find('div.modal-body').find('div#settingsForm').show();
 			$('div.bootbox').find('div.modal-body').find('form#settingsForm').show();
 		}
