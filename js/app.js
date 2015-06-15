@@ -303,7 +303,19 @@ var onlyLoggedIn = function ($location,$q,$window) {
   });
 
 });*/
-MetronicApp.run(function ($rootScope, AUTH_EVENTS, AuthService,Session) {
+MetronicApp.run(function ($rootScope,$location, AUTH_EVENTS, AuthService,Session) {
+	
+	
+	$rootScope.$on("$routeChangeSuccess", function(userInfo) {
+		
+	});
+	 
+	$rootScope.$on("$routeChangeError", function(event, current, previous, eventObj) {
+		if (eventObj.authenticated === false) {
+		  	$location.path("/login");
+		}
+	});	
+	
   $rootScope.$on('$stateChangeStart', function (event, next) {
 	 
    var authorizedRoles = next.data.authorizedRoles;
@@ -343,11 +355,17 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
     $scope.$on('$includeContentLoaded', function() {
         Layout.initSidebar(); // init sidebar
         $scope.apppath = 'https://mnmdesignlabs.com/taste';
+		$scope.userroleInfo = '';
        
         $http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 		$http.post($scope.apppath+'/api/getunpaidpo',{action:'getsettingstatus'}).
 		success(function(data, status, headers, config) {
+			 $http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+				});
+											  
 			
 			if(data.status_code == 200){
 				if(data.currentstatus != '' && typeof data.currentstatus != 'undefined'){
