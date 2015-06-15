@@ -2175,7 +2175,6 @@ class ApiController extends BaseController {
 	public function login(){
 		
 		$data1=$this->get_data();
-		
 		if (array_key_exists("email", $data1))
 		{
 			$email = $data1->email;
@@ -2202,8 +2201,21 @@ class ApiController extends BaseController {
 		
 		if (Auth::attempt($userdata, (isset($data['remember']) ? true : false))) {
 					$id = Auth::user()->id;
+					$result['email'] = Auth::user()->email;
+					$result['role'] = Auth::user()->usertype;
+					$json_result = str_replace('null','""',json_encode($result));
+					return $json_result;
+					exit;
+		}
+		else
+		{
+			return '';
 		}
 		
+	}
+	
+	public function logout(){
+		Auth::logout();
 	}
 	
 
@@ -2215,5 +2227,25 @@ class ApiController extends BaseController {
 		exit;
 	} 
 	
+	public function checklogin(){
+		if (Auth::user())
+		{
+					$id = Auth::user()->id;
+					$result['email'] = Auth::user()->email;
+					$result['role'] = Auth::user()->usertype;
+					$json_result = str_replace('null','""',json_encode($result));
+					return $json_result;
+					exit;
+		}
+		else
+		{
+			$result['email'] = '';
+			$result['role'] = '';
+			$json_result = str_replace('null','""',json_encode($result));
+			return $json_result;
+			exit;
+		}
+		
+	}
 	
 }
