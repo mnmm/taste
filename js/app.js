@@ -151,7 +151,7 @@ MetronicApp.factory("SideBarService", function() {
 //Authorization Service
 MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
   var userInfo;
-  var rootapppath = 'http://localhost/taste';
+  var rootapppath = 'https://mnmdesignlabs.com/taste';
   function login(email, password) {
     var deferred = $q.defer();
  
