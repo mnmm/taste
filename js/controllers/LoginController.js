@@ -2,7 +2,7 @@
 
  
 
-MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,AUTH_EVENTS,Session,AuthService) {
+MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,AUTH_EVENTS,Session,AuthService,authenticationSvc) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password);}
 	 
