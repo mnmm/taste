@@ -695,7 +695,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						buttons: {
 						  danger: {
 							label: "Cancel",
-							className: "btn",
+							className: "cancel-btn",
 							callback: function() {
 								bootbox.hideAll();	
 							}
