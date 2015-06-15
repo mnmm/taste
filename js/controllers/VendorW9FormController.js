@@ -18,28 +18,29 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 				success(function(data1) {
 					$scope.userroleInfo = data1;
 					 useremail = $scope.userroleInfo.email;
-		});
-		$scope.init = function () {
-			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
-			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getw9form',formname:'w9 form',email:useremail,reminder_code:1}).
-			success(function(data, status, headers, config) {
-				if(data.w9signed == 0){
-					if(data.w9response==2)
-					{
-						alert('Some error occured please try again !');
-					}
-					else
-					{
-						lightboxQuickUploadTaste(data.w9response);
-					}
-				} else {
-					localStorage.setItem('w9signed',1);
-					$window.location.href = '#/vendors/addbankinfo';
+					 $scope.init = function () {
+						$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+						
+						$http.post($scope.apppath+'/api/getunpaidpo',{action:'getw9form',formname:'w9 form',email:useremail,reminder_code:1}).
+						success(function(data, status, headers, config) {
+							if(data.w9signed == 0){
+								if(data.w9response==2)
+								{
+									alert('Some error occured please try again !');
+								}
+								else
+								{
+									lightboxQuickUploadTaste(data.w9response);
+								}
+							} else {
+								localStorage.setItem('w9signed',1);
+								$window.location.href = '#/vendors/addbankinfo';
+							}
+						});
 				}
-			});
-		}
+		});
+		
         function getunpaidpo(){
 			var w9signed = localStorage.getItem('w9signed');
 			if(w9signed == 0){
