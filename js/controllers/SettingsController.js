@@ -125,6 +125,7 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 				title: "Please enter API keys for stripe live and test mode",
 				message: $('#settingsForm'),
 				show: false,
+				closeButton:false,
 				buttons: {
 				  danger: {
 					label: "Cancel",
@@ -228,6 +229,7 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 				title: "Please enter API keys for stripe live and test mode",
 				message: $('#settingsForm'),
 				show: false,
+				closeButton:false,
 				buttons: {
 				  danger: {
 					label: "Cancel",
