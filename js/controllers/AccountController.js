@@ -105,7 +105,7 @@ MetronicApp.directive('validPasswordC', function() {
 });
 
 
-MetronicApp.controller('AccountController', function($rootScope, $scope, $http, $timeout, $location,$window ,AUTH_EVENTS,Session,AuthService) {
+MetronicApp.controller('AccountController', function($rootScope, $scope, $http, $timeout, $location,$window ,AUTH_EVENTS,Session,AuthService,authenticationSvc) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
     $scope.$on('$viewContentLoaded', function() {   
@@ -194,8 +194,9 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 									localStorage.setItem("userid", data.vendoruserid);
 									localStorage.setItem("role", 'vendor');
 									localStorage.setItem("name", 'xyz');
-									bootbox.hideAll();	
-									window.location.href = '#/vendors/w9form'; 
+									bootbox.hideAll();
+									$scope.login = function(){authenticationSvc.login(email,password,'vendors/w9form');}	
+									//window.location.href = '#/vendors/w9form'; 
 								} else {
 									createauthtoken(createUserAccount);
 								}
