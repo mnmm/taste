@@ -128,6 +128,7 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 				message: $('#settingsForm'),
 				show: false,
 				closeButton:false,
+				className:'settingsbox',
 				buttons: {
 				  danger: {
 					label: "Cancel",
@@ -235,6 +236,7 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 				message: $('#settingsForm'),
 				show: false,
 				closeButton:false,
+				className:'settingsbox',
 				buttons: {
 				  danger: {
 					label: "Cancel",
