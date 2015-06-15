@@ -163,6 +163,10 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
         role: result.data.role,
         userName: result.data.email
       };
+	  if(userInfo.role==1)
+	  {
+		  redirectUrl = 'dashboard';
+	  }
       $window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
       deferred.resolve(userInfo);
 	  //$state.go('dashboard');
@@ -888,6 +892,27 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             data: {pageTitle: 'Payments',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['admin']},
             controller: "PaymentsController",
             resolve: {
+				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
+					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
+									 if (userLogInfo)
+									 {
+											var userroleInfo = authenticationSvc.getUserInfo();
+											if(userroleInfo.role==1)
+											{
+												return $q.when(userroleInfo);
+											}
+											else
+											{
+												authenticationSvc.logout();
+												return $q.reject({ authenticated: false });
+											} 
+									  } 
+									  else {
+										authenticationSvc.logout();	
+										return $q.reject({ authenticated: false });
+									  }  
+					  });
+					}],
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
@@ -942,6 +967,27 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 				/*auth: function resolveAuthentication(AuthResolver) { 
 						return AuthResolver.resolve();
 				},*/
+				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
+					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
+									 if (userLogInfo)
+									 {
+											var userroleInfo = authenticationSvc.getUserInfo();
+											if(userroleInfo.role==2)
+											{
+												return $q.when(userroleInfo);
+											}
+											else
+											{
+												authenticationSvc.logout();
+												return $q.reject({ authenticated: false });
+											} 
+									  } 
+									  else {
+										authenticationSvc.logout();	
+										return $q.reject({ authenticated: false });
+									  }  
+					  });
+					}],
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
@@ -964,7 +1010,27 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             data: {pageTitle: 'Vendor w9Form',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor']},
             controller: "VendorW9FormController",
             resolve: {
-				
+				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
+					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
+									 if (userLogInfo)
+									 {
+											var userroleInfo = authenticationSvc.getUserInfo();
+											if(userroleInfo.role==2)
+											{
+												return $q.when(userroleInfo);
+											}
+											else
+											{
+												authenticationSvc.logout();
+												return $q.reject({ authenticated: false });
+											} 
+									  } 
+									  else {
+										authenticationSvc.logout();	
+										return $q.reject({ authenticated: false });
+									  }  
+					  });
+					}],
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
