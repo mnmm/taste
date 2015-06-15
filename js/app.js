@@ -127,7 +127,7 @@ MetronicApp.factory('AuthService', function ($http, Session) {
 	
     var a = authorizedRoles.indexOf(currentrole);
  
-    console.log(authService.isAuthenticated() && authorizedRoles.indexOf(currentrole) !== -1);
+    //console.log(authService.isAuthenticated() && authorizedRoles.indexOf(currentrole) !== -1);
     return (authService.isAuthenticated() && authorizedRoles.indexOf(currentrole) !== -1);
   };
  
