@@ -13,12 +13,12 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 		var useremail = localStorage.getItem('useremail');
 		//console.log(localStorage.getItem('vendor_access_token'));
 		localStorage.setItem('w9signed',0);
-		
+		$scope.init = function () {
 		$http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 					$scope.userroleInfo = data1;
 					 useremail = $scope.userroleInfo.email;
-					 $scope.init = function () {
+					
 						$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 						
@@ -38,8 +38,9 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 								$window.location.href = '#/vendors/addbankinfo';
 							}
 						});
-				}
-		});
+				
+				});
+		}
 		
         function getunpaidpo(){
 			var w9signed = localStorage.getItem('w9signed');
