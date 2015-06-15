@@ -117,9 +117,8 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 			$('div#site_statistics_loading').css('display','none');
 			$('p#vendoraccountloading').css('display','none');
 			$('#settingsform').css('display','block');
-			console.log($('div.bootbox').find('div.modal-body').find('div#settingsForm').html());
-			$('div.bootbox').find('div.modal-body').find('div#settingsForm').show();
 			$('div.bootbox').find('div.modal-body').find('form#settingsForm').show();
+			$('div.bootbox').find('div.modal-body').find('div#settingsform').show();
 		}
 		
         function getunpaidpo(){
@@ -285,7 +284,7 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 						$('#settingsForm').find('input#actiontype').val(1);
 						$('#settingsForm').find('button#btnsetting').text('Update');
 						$('div.bootbox').find('div.modal-body').find('div#settingsForm').show();
-						$('div.bootbox').find('div.modal-body').find('form#settingsForm').show();
+						$('div.bootbox').find('div.modal-body').find('form#settingsform').show();
 						$timeout(function () {
 							$timeout(callAtTimeout, 500);
 						});
