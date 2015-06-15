@@ -361,14 +361,12 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
 		$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 		$http.post($scope.apppath+'/api/getunpaidpo',{action:'getsettingstatus'}).
 		success(function(data, status, headers, config) {
-			 $http.get($scope.apppath+"/api/checklogin").
+			if(data.status_code == 200){
+				$http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 					$scope.userroleInfo = data1;
 					  Layout.initSidebar(); // init sidebar
-				});
-											  
-			
-			if(data.status_code == 200){
+				
 				if(data.currentstatus != '' && typeof data.currentstatus != 'undefined'){
 					if(data.currentstatus == 0){
 						$("#checkwrapper .on").removeClass('active');
@@ -383,8 +381,11 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
 						$('span#live').addClass('bright-text');
 						$('span#test').removeClass('bright-text');
 					}
-				}  
-			} else {
+				}  });
+			} 
+			
+			
+			else {
 
 			}		
 		});
