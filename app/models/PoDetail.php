@@ -522,53 +522,80 @@
 			return $request_details;
 		}
 		
-		public static function get_vendor_details($accesshash){
+		public static function get_vendor_details($accesshash,$email= ''){
 			
-			$request_details = DB::table('payment_auth_code')->select('payment_auth_code.*')->where('auth_code','=',$accesshash)->where('status','=',1)->get();
-			$vendorArr = array();
-			//print_r($request_details);exit;
-			if(count($request_details) > 0){
+			if($accesshash ! ''){
+				$request_details = DB::table('payment_auth_code')->select('payment_auth_code.*')->where('auth_code','=',$accesshash)->where('status','=',1)->get();
+				$vendorArr = array();
+				//print_r($request_details);exit;
+				if(count($request_details) > 0){
+					
+					$decrypt_hash_id = base64_decode($accesshash);
+					$get_vendor_id = explode('@@@',$decrypt_hash_id);
 				
-				$decrypt_hash_id = base64_decode($accesshash);
-				$get_vendor_id = explode('@@@',$decrypt_hash_id);
-			
-				if($get_vendor_id[1] != '' && $get_vendor_id[1] != 0){
-					
-					$vendordetails = DB::table('taste_po')->select('taste_po.id','taste_po.vendor_email')->where('vendor_id','=',$get_vendor_id[1])->get();
-					
-					if($vendordetails[0]->id != '' && $vendordetails[0]->vendor_email != ''){
+					if($get_vendor_id[1] != '' && $get_vendor_id[1] != 0){
 						
-							$get_user_id = DB::table('users')->where('email',$vendordetails[0]->vendor_email)->get();
-							if(count($get_user_id) > 0){
-								$id = $get_user_id[0]->id;
-								$currentuser = User::find($id);
-								$usergroup = $currentuser->usertype;
-								$status = $currentuser->status;
-								if($currentuser->tax_id != ''){
-									$w9_signed = $currentuser->tax_id;
-									$vendorArr['w9signed'] = 1;
+						$vendordetails = DB::table('taste_po')->select('taste_po.id','taste_po.vendor_email')->where('vendor_id','=',$get_vendor_id[1])->get();
+						
+						if($vendordetails[0]->id != '' && $vendordetails[0]->vendor_email != ''){
+							
+								$get_user_id = DB::table('users')->where('email',$vendordetails[0]->vendor_email)->get();
+								if(count($get_user_id) > 0){
+									$id = $get_user_id[0]->id;
+									$currentuser = User::find($id);
+									$usergroup = $currentuser->usertype;
+									$status = $currentuser->status;
+									if($currentuser->tax_id != ''){
+										$w9_signed = $currentuser->tax_id;
+										$vendorArr['w9signed'] = 1;
+									} else {
+										$vendorArr['w9signed'] = 0;
+									}
+									if($usergroup == 2) {
+										if($status == 1) {	
+											
+											$vendorArr['aleadyexists'] = $vendordetails[0]->vendor_email;
+											$vendorArr['userid'] = $currentuser->id;
+											$vendorArr['username'] = $currentuser->name;
+										} 
+									}
 								} else {
-									$vendorArr['w9signed'] = 0;
+									$vendorArr['email'] = $vendordetails[0]->vendor_email;
 								}
-								if($usergroup == 2) {
-									if($status == 1) {	
-										
-										$vendorArr['aleadyexists'] = $vendordetails[0]->vendor_email;
-										$vendorArr['userid'] = $currentuser->id;
-										$vendorArr['username'] = $currentuser->name;
-									} 
-								}
-							} else {
-								$vendorArr['email'] = $vendordetails[0]->vendor_email;
-							}
+						} else {
+							$vendorArr['tokenstatus'] = 0;
+						}
 					} else {
 						$vendorArr['tokenstatus'] = 0;
 					}
-				} else {
+				} else{
 					$vendorArr['tokenstatus'] = 0;
 				}
-			} else{
-				$vendorArr['tokenstatus'] = 0;
+			
+			} else {
+				$get_user_id = DB::table('users')->where('email',$email)->get();
+				if(count($get_user_id) > 0){
+					$id = $get_user_id[0]->id;
+					$currentuser = User::find($id);
+					$usergroup = $currentuser->usertype;
+					$status = $currentuser->status;
+					if($currentuser->tax_id != ''){
+						$w9_signed = $currentuser->tax_id;
+						$vendorArr['w9signed'] = 1;
+					} else {
+						$vendorArr['w9signed'] = 0;
+					}
+					if($usergroup == 2) {
+						if($status == 1) {	
+							
+							$vendorArr['aleadyexists'] = $vendordetails[0]->vendor_email;
+							$vendorArr['userid'] = $currentuser->id;
+							$vendorArr['username'] = $currentuser->name;
+						} 
+					}
+				} else {
+					$vendorArr['email'] = $vendordetails[0]->vendor_email;
+				}
 			}
 			
 			return $vendorArr;

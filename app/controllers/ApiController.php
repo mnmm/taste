@@ -1156,6 +1156,17 @@ class ApiController extends BaseController {
 				 $accesshash = '';
 
 			}
+			
+			if (array_key_exists("email", $data1))
+			{
+				$email = $data1->email;
+			}
+			else
+			{
+				 $email = '';
+
+			}
+			
 		}
 		
 		if($action == 'sendrequesterlink'){
@@ -1788,7 +1799,7 @@ class ApiController extends BaseController {
 				}
 			} else if($action == 'getaccountinfo') {
 				//$check_user_exists = PoDetail::check_vendor_exists($accesshash);
-				$vendoraccountinfo  = PoDetail::get_vendor_details($accesshash);
+				$vendoraccountinfo  = PoDetail::get_vendor_details($accesshash,$email);
 
 				if(isset($vendoraccountinfo['email']) || isset($vendoraccountinfo['tokenstatus']) || isset($vendoraccountinfo['aleadyexists'])){ 
 					$result['status_code']=200;
