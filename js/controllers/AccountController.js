@@ -159,7 +159,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 									localStorage.setItem("role", 'vendor');
 									localStorage.setItem("name", 'xyz');
 								//	window.location.href = '#/vendors'; 
-								$scope.login = function(){authenticationSvc.login(email,password,'vendors');}	
+									authenticationSvc.login(email,password,'vendors');	
 									bootbox.hideAll();	
 								} else {
 									createauthtoken(createUserAccount);
@@ -196,7 +196,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 									localStorage.setItem("role", 'vendor');
 									localStorage.setItem("name", 'xyz');
 									bootbox.hideAll();
-									$scope.login = function(){authenticationSvc.login(email,password,'vendors/w9form');}	
+									authenticationSvc.login(email,password,'vendors/w9form');	
 									//window.location.href = '#/vendors/w9form'; 
 								} else {
 									createauthtoken(createUserAccount);
