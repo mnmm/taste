@@ -17,7 +17,7 @@ MetronicApp.controller('VendorDashboardController', function($rootScope, $scope,
 		var userName = Session.userName;
 		//console.log('userid'+userid+'userRole'+userRole+'userName'+userName);
 		Session.create(userid,userRole,userName);
-	
+		Layout.initSidebar();
 		//console.log(localStorage.getItem('vendor_access_token'));
 		/*$scope.init = function () {
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
