@@ -42,7 +42,7 @@ MetronicApp.controller('VendorDashboardController', function($rootScope, $scope,
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getaccountinfo',accesshash:payauthtoken}).
 			success(function(data, status, headers, config) {
-				
+				Layout.initSidebar();
 				if(data.status_code == 200){
 					
 					 if(data.vendorinfo != '')
