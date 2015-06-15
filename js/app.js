@@ -364,6 +364,7 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
 			 $http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 					$scope.userroleInfo = data1;
+					console.log($scope.userroleInfo);
 				});
 											  
 			
