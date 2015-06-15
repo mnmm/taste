@@ -981,7 +981,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							var btnlabel = 'Turn off ACH transfers';
 						} else {
 							var newtransferstatus = 0;
-							var btnlabel = 'Turn off automatic transfers';
+							var btnlabel = 'Turn off manual transfers';
 						}
 						
 						bootbox.dialog({
