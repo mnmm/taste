@@ -127,7 +127,7 @@ MetronicApp.factory('AuthService', function ($http, Session) {
 	
     var a = authorizedRoles.indexOf(currentrole);
  
-    console.log(authService.isAuthenticated() && authorizedRoles.indexOf(currentrole) !== -1);
+    //console.log(authService.isAuthenticated() && authorizedRoles.indexOf(currentrole) !== -1);
     return (authService.isAuthenticated() && authorizedRoles.indexOf(currentrole) !== -1);
   };
  
@@ -146,6 +146,96 @@ MetronicApp.factory("SideBarService", function() {
     }
   };
 })
+
+
+//Authorization Service
+MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
+  var userInfo;
+  var rootapppath = 'https://mnmdesignlabs.com/taste';
+  function login(email, password) {
+    var deferred = $q.defer();
+ 
+    $http.post(rootapppath+"/api/login", {
+      email: email,
+      password: password
+    }).then(function(result) {
+      userInfo = {
+        role: result.data.role,
+        userName: result.data.email
+      };
+      $window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
+      deferred.resolve(userInfo);
+	  //$state.go('dashboard');
+	  $window.location.href = '#/dashboard';
+	  $window.location.reload();
+    }, function(error) {
+      deferred.reject(error);
+    });
+ 
+    return deferred.promise;
+  }
+  
+   
+  function checkloggedIn() {
+	   var deferred = $q.defer();
+	  $http.get(rootapppath+"/api/checklogin").then(function(result) {
+		  if(result.data.role!='')
+		  {
+			  userInfo = {
+				role: result.data.role,
+				userName: result.data.email
+			  };
+			  $window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
+			  deferred.resolve(userInfo);
+		  }
+		  else
+		  {
+			 $window.sessionStorage["userInfo"]=null; 
+			 userInfo = null;
+			 deferred.reject({authenticated: false});
+			// $state.go('login');
+			$window.location.href = '#/login';
+			$window.location.reload();
+		  }
+      
+    }, function(error) {
+      $window.sessionStorage["userInfo"]=null;
+	  userInfo=null;
+	  deferred.reject(error);
+    });
+	return deferred.promise;
+  }
+  
+   function getUserInfo() {
+	return userInfo;
+  }
+  
+  
+  function logout() {
+ 	 var deferred = $q.defer();
+	 $http.post(rootapppath+"/api/logout", {}).then(function(result) {
+		$window.sessionStorage["userInfo"] = null;
+		userInfo = null;
+		deferred.resolve(result);
+		//$state.go('login');
+		 $window.location.href = '#/login';
+		 $window.location.reload();
+	  }, function(error) {
+		deferred.reject(error);
+	  });
+	 
+	  return deferred.promise;
+	}
+ 
+  return {
+    login: login,
+	logout: logout,
+	getUserInfo: getUserInfo,
+	checkloggedIn: checkloggedIn
+  };
+});
+
+
 
 /*MetronicApp.factory('AuthResolver', function ($q, $rootScope, $state) {
   return {
@@ -169,7 +259,8 @@ MetronicApp.factory("SideBarService", function() {
 })*/
 
 /* Setup App Main Controller */
-MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope, $rootScope) {
+MetronicApp.controller('AppController', ['$scope', '$rootScope','authenticationSvc', function($scope, $rootScope, authenticationSvc) {
+	$scope.logout = function(){authenticationSvc.logout();}
     $scope.$on('$viewContentLoaded', function() {
         Metronic.initComponents(); // init core components
         //Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive 
@@ -212,7 +303,19 @@ var onlyLoggedIn = function ($location,$q,$window) {
   });
 
 });*/
-MetronicApp.run(function ($rootScope, AUTH_EVENTS, AuthService,Session) {
+MetronicApp.run(function ($rootScope,$location, AUTH_EVENTS, AuthService,Session) {
+	
+	
+	$rootScope.$on("$routeChangeSuccess", function(userInfo) {
+		
+	});
+	 
+	$rootScope.$on("$routeChangeError", function(event, current, previous, eventObj) {
+		if (eventObj.authenticated === false) {
+		  	$location.path("/login");
+		}
+	});	
+	
   $rootScope.$on('$stateChangeStart', function (event, next) {
 	 
    var authorizedRoles = next.data.authorizedRoles;
@@ -252,11 +355,18 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
     $scope.$on('$includeContentLoaded', function() {
         Layout.initSidebar(); // init sidebar
         $scope.apppath = 'https://mnmdesignlabs.com/taste';
+		$scope.userroleInfo = '';
        
         $http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 		$http.post($scope.apppath+'/api/getunpaidpo',{action:'getsettingstatus'}).
 		success(function(data, status, headers, config) {
+			 $http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					console.log($scope.userroleInfo);
+				});
+											  
 			
 			if(data.status_code == 200){
 				if(data.currentstatus != '' && typeof data.currentstatus != 'undefined'){
@@ -400,7 +510,27 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             data: {pageTitle: 'Admin Dashboard Template',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['admin']},
             controller: "DashboardController",
             resolve: {
-				
+				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
+					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
+									 if (userLogInfo)
+									 {
+											var userroleInfo = authenticationSvc.getUserInfo();
+											if(userroleInfo.role==1)
+											{
+												return $q.when(userroleInfo);
+											}
+											else
+											{
+												authenticationSvc.logout();
+												return $q.reject({ authenticated: false });
+											} 
+									  } 
+									  else {
+										authenticationSvc.logout();	
+										return $q.reject({ authenticated: false });
+									  }  
+					  });
+					}],
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
@@ -430,6 +560,27 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             data: {pageTitle: 'Vendor Settings',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor','admin','all']},
             controller: "SettingsController",
             resolve: {
+				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
+					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
+									 if (userLogInfo)
+									 {
+											var userroleInfo = authenticationSvc.getUserInfo();
+											if(userroleInfo.role==1)
+											{
+												return $q.when(userroleInfo);
+											}
+											else
+											{
+												authenticationSvc.logout();
+												return $q.reject({ authenticated: false });
+											} 
+									  } 
+									  else {
+										authenticationSvc.logout();	
+										return $q.reject({ authenticated: false });
+									  }  
+					  });
+					}],
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  

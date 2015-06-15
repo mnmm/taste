@@ -18,7 +18,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 				$('div.page-content').find('div#site_statistics_loading').each(function(){
 					$(this).css('display','none');
 				});
-				
+				Layout.initSidebar();
 				if(data.status_code == 200){
 					
 					 if(data.unpaidorders != '')
