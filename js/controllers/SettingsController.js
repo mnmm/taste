@@ -271,7 +271,9 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 			success(function(data, status, headers, config) {
 				Layout.initSidebar();
 				if(data.status_code == 200){
-					
+					alert('comes here');
+					alert($('div.bootbox').find('div.modal-body').html());
+					alert($('div.bootbox').find('div.modal-body').find('div#settingsForm').html());
 					if(data.settings != '' && typeof data.settings != 'undefined'){
 						$('#settingsForm').find('input#test_secret_key').val(data.settings.stripe_test_secret_key);	
 						$('#settingsForm').find('input#test_publishable_key').val(data.settings.stripe_test_publishable_key);
