@@ -165,7 +165,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 					}
 				  },
 				  success: {
-					label: "Continue",
+					label: "SignUp",
 					className: "main-btn",
 					callback: function() {
 						var email = $('input#email').val();
