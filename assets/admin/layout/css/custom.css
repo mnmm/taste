@@ -151,3 +151,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1010', end
 
 .paymentlinkconfirmation .modal-content{ width:400px !important; }
 .requestlinkconfirmation .modal-content{ width:400px !important; }
+
+
+.logo-title {
+    color: #007fc4;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#loginForm > div#signform {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 10px !important;
+    margin: 10% auto;
+    padding: 20px;
+    width: 350px;
+}
+
+.form-horizontal .control-label {
+       padding-right: 0;
+    }

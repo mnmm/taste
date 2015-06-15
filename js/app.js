@@ -347,10 +347,14 @@ MetronicApp.run(function ($rootScope,$location, AUTH_EVENTS, AuthService,Session
 })
 
 /* Setup Layout Part - Header */
-MetronicApp.controller('HeaderController', ['$scope', function($scope) {
+MetronicApp.controller('HeaderController', ['$scope', '$http', function($scope, $http) {
     $scope.$on('$includeContentLoaded', function() {
         Layout.initHeader(); // init header
         $scope.apppath = 'https://mnmdesignlabs.com/taste';
+		$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+				});
     });
 }]);
 
