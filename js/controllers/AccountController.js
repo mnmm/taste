@@ -131,6 +131,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 				message: $('#signupForm'),
 				show: false,
 				windowClass:'registerform',
+				closeButton:false,
 				buttons: {
 				  danger: {
 					label: "Cancel",
