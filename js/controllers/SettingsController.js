@@ -169,13 +169,13 @@ MetronicApp.controller('SettingsController', function($rootScope, $scope, $http,
 				if(data.status_code == 200){
 					
 					if(data.settings != '' && typeof data.settings != 'undefined'){
-						$('#settingsForm').find('input#test_secret_key').val(data.settings.stripe_test_secret_key);	
-						$('#settingsForm').find('input#test_publishable_key').val(data.settings.stripe_test_publishable_key);
-						$('#settingsForm').find('input#live_secret_key').val(data.settings.stripe_live_secret_key);
-						$('#settingsForm').find('input#live_publishable_key').val(data.settings.stripe_live_publishable_key);
-						$('#settingsForm').find('input#live_publishable_key').val(data.settings.stripe_live_publishable_key);
-						$('#settingsForm').find('input#actiontype').val(1);
-						$('#settingsForm').find('button#btnsetting').text('Update');
+						$('div.bootbox').find('div.modal-body').find('#settingsForm').find('input#test_secret_key').val(data.settings.stripe_test_secret_key);	
+						$('div.bootbox').find('div.modal-body').find('#settingsForm').find('input#test_publishable_key').val(data.settings.stripe_test_publishable_key);
+						$('div.bootbox').find('div.modal-body').find('#settingsForm').find('input#live_secret_key').val(data.settings.stripe_live_secret_key);
+						$('div.bootbox').find('div.modal-body').find('#settingsForm').find('input#live_publishable_key').val(data.settings.stripe_live_publishable_key);
+						$('div.bootbox').find('div.modal-body').find('#settingsForm').find('input#live_publishable_key').val(data.settings.stripe_live_publishable_key);
+						$('div.bootbox').find('div.modal-body').find('#settingsForm').find('input#actiontype').val(1);
+						$('div.bootbox').find('div.modal-body').find('#settingsForm').find('button#btnsetting').text('Update');
 						
 						$timeout(function () {
 							$timeout(callAtTimeout, 500);
