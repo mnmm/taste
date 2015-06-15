@@ -46,12 +46,15 @@ var FormValidation = function () {
 								},
 
 								submitHandler: function (form1) {
-										alert('comes here');
+										
 										$('div.bootbox').find('div#signform').css('display','none');
 										$('div.bootbox').find('div#w9instruction').css('display','block');
 										$('div.bootbox').find('div#w9instruction').html('We need your W9 information in order to make payments to you. Please fill out the W9 form electronically by clicking next below');
 										$('div.bootbox').find('h4.modal-title').text('W9 Confirmation');
 										$('div.modal-footer').css('display','block');
+										$('div.modal-footer').find('.main-btn-new').css('display','none');
+										$('div.modal-footer').find('.cancel-btn').css('display','inline-block');
+										$('div.modal-footer').find('.main-btn').css('display','inline-block');
 									}
 								});
 	}
