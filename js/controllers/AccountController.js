@@ -158,7 +158,8 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 									localStorage.setItem("userid", data.vendoruserid);
 									localStorage.setItem("role", 'vendor');
 									localStorage.setItem("name", 'xyz');
-									window.location.href = '#/vendors'; 
+								//	window.location.href = '#/vendors'; 
+								$scope.login = function(){authenticationSvc.login(email,password,'vendors');}	
 									bootbox.hideAll();	
 								} else {
 									createauthtoken(createUserAccount);
