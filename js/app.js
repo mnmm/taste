@@ -353,7 +353,7 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
 /* Setup Layout Part - Sidebar */
 MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, $http) {
     $scope.$on('$includeContentLoaded', function() {
-        Layout.initSidebar(); // init sidebar
+      
         $scope.apppath = 'https://mnmdesignlabs.com/taste';
 		$scope.userroleInfo = '';
        
@@ -364,7 +364,7 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
 			 $http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 					$scope.userroleInfo = data1;
-					console.log($scope.userroleInfo);
+					  Layout.initSidebar(); // init sidebar
 				});
 											  
 			
