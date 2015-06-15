@@ -13,9 +13,16 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 		var useremail = localStorage.getItem('useremail');
 		//console.log(localStorage.getItem('vendor_access_token'));
 		localStorage.setItem('w9signed',0);
+		
+		$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					 useremail = $scope.userroleInfo.email;
+		});
 		$scope.init = function () {
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getw9form',formname:'w9 form',email:useremail,reminder_code:1}).
 			success(function(data, status, headers, config) {
 				if(data.w9signed == 0){

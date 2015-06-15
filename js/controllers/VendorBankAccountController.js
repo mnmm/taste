@@ -256,6 +256,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[3]).css('display','block');
 			
 			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[4]).css('display','inline-block');
+			
+			
 		}
 
 
