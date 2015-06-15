@@ -44,6 +44,10 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
         function getunpaidpo(){
 			var w9signed = localStorage.getItem('w9signed');
 			if(w9signed == 0){
+				$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					 useremail = $scope.userroleInfo.email;
 				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getaccountinfo',accesshash:payauthtoken}).
@@ -63,6 +67,8 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 						}
 					}		
 				});
+				});
+				
 			}
 		}
 		
