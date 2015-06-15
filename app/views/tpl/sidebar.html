@@ -1,4 +1,4 @@
-<div class="page-sidebar navbar-collapse collapse" ng-controller="SidebarController">
+<div class="page-sidebar navbar-collapse collapse" >
 	<!-- BEGIN SIDEBAR MENU -->
 	<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
 	<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
@@ -26,7 +26,7 @@
 			<!-- END RESPONSIVE QUICK SEARCH FORM -->
 			
 		</li>
-		<li class="start" ng-if="userroleInfo.role === 1">
+		<li class="start">
 			<a href="#/dashboard.html">
 			<i class="icon-home"></i>
 			<span class="title">Dashboard</span>
@@ -103,28 +103,28 @@
 				</li>
 			</ul>
 		</li>-->
-		<li ng-if="userroleInfo.role === 2">
+		<li >
 			<a href="#/payments" id="sidebar_menu_link_profile">
 			<i class="icon-user"></i>
 			<span class="title">Payments</span>
 			</a>
 		</li>
 		
-		<li class="start" ng-if="userroleInfo.role === 2">
+		<li class="start">
 			<a href="#/vendors">
 			<i class="icon-home"></i>
 			<span class="title">Dashboard</span>
 			</a>
 		</li>
 		
-		<li class="start" ng-if="userroleInfo.role === 2">
+		<li class="start">
 			<a href="#/vendors/w9form">
 			<i class="icon-home"></i>
 			<span class="title">W9Form</span>
 			</a>
 		</li>
 		
-		<li class="start" ng-if="userroleInfo.role === 1">
+		<li class="start">
 			<a href="#/settings">
 			<i class="icon-home"></i>
 			<span class="title">Settings</span>
