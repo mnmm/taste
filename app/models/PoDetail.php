@@ -523,10 +523,10 @@
 		}
 		
 		public static function get_vendor_details($accesshash,$email= ''){
-			
+			$vendorArr = array();
 			if($accesshash != ''){
 				$request_details = DB::table('payment_auth_code')->select('payment_auth_code.*')->where('auth_code','=',$accesshash)->where('status','=',1)->get();
-				$vendorArr = array();
+				
 				//print_r($request_details);exit;
 				if(count($request_details) > 0){
 					
