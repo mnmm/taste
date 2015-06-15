@@ -407,6 +407,10 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		
 		var paymenttype= $('input#paymenttype').val();
 		var vendoruserid  = localStorage.getItem('userid');
+		$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					 vendoruserid = $scope.userroleInfo.id;
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 		$http.post($scope.apppath+'/api/getunpaidpo',{action:'getbankaccountinfo',vendorid:vendoruserid}).
@@ -516,6 +520,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 					});*/
 				}
 				
+			});	
 			});	
 		
 	}
