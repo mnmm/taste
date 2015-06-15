@@ -70,7 +70,7 @@ var FormValidation = function () {
 									var payeename = $('input#payeename').val();
 									var mailingaddress = $('input#mailingaddress').val();
 								    var authcode = localStorage.getItem('payauthtoken');
-								    var id = $('input#bankaccountid').val();
+								    var id = $('#addBankAccount').find('input#bankaccountid').val();
 
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
