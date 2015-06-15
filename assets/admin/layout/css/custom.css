@@ -100,7 +100,7 @@ background: -o-linear-gradient(top, #7dc5ee 5%,#008cdd 84%) !important; /* Opera
 background: -ms-linear-gradient(top, #7dc5ee 5%,#008cdd 84%) !important; /* IE10+ */
 background: linear-gradient(to bottom, #7dc5ee 5%,#008cdd 84%) !important; /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7dc5ee', endColorstr='#008cdd',GradientType=0 ) !important; /* IE6-9 */ }
-.main-btn:hover,.main-btn:active,.main-btn:focus{background: #7dc5ee !important; /* Old browsers */
+.main-btn:hover,.main-btn:active,.main-btn:focus,.main-btn-new,.main-btn-new:active,.main-btn-new:focus{background: #7dc5ee !important; /* Old browsers */
 background: -moz-linear-gradient(top, #7dc5ee 5%, #008cdd 84%)!important; /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,#7dc5ee), color-stop(84%,#008cdd)) !important; /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, #7dc5ee 5%,#008cdd 84%) !important; /* Chrome10+,Safari5.1+ */
