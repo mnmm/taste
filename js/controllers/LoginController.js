@@ -20,12 +20,12 @@
 									}
 								},
 								messages: {
-											email: {
-												required: "Email is required",
-												email: "Please provide a valid email address"
-											},
-											password: "Password is required",
+										email: {
+											required: "Email is required",
+											email: "Please provide a valid email address"
 										},
+										password: "Password is required",
+								},
 								invalidHandler: function (event, validator) { //display error alert on form submit              
 									success1.hide();
 									error1.show();
