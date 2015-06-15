@@ -17,7 +17,7 @@ MetronicApp.controller('VendorDashboardController', function($rootScope, $scope,
 		var userName = Session.userName;
 		//console.log('userid'+userid+'userRole'+userRole+'userName'+userName);
 		Session.create(userid,userRole,userName);
-	
+		Layout.initSidebar();
 		//console.log(localStorage.getItem('vendor_access_token'));
 		/*$scope.init = function () {
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
@@ -42,7 +42,7 @@ MetronicApp.controller('VendorDashboardController', function($rootScope, $scope,
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getaccountinfo',accesshash:payauthtoken}).
 			success(function(data, status, headers, config) {
-				
+				Layout.initSidebar();
 				if(data.status_code == 200){
 					
 					 if(data.vendorinfo != '')
