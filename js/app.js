@@ -162,7 +162,8 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
       userInfo = {
         role: result.data.role,
         email: result.data.email,
-		name: result.data.name
+		name: result.data.name,
+		id:result.data.id
       };
 	  if(result.data.role==1)
 	  {

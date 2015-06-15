@@ -265,11 +265,11 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			$http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 					$scope.userroleInfo = data1;
-					 useremail = $scope.userroleInfo.email;
+					 vendoruserid = $scope.userroleInfo.id;
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'gettaxidforvendor',vendorid:vendoruserid,email:useremail}).
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'gettaxidforvendor',vendorid:vendoruserid}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 						$scope.apppath= 'https://mnmdesignlabs.com/taste';
