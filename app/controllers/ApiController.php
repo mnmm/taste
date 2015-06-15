@@ -2203,6 +2203,7 @@ class ApiController extends BaseController {
 					$id = Auth::user()->id;
 					$result['email'] = Auth::user()->email;
 					$result['role'] = Auth::user()->usertype;
+					$result['name'] = Auth::user()->name;
 					$json_result = str_replace('null','""',json_encode($result));
 					return $json_result;
 					exit;
@@ -2233,6 +2234,7 @@ class ApiController extends BaseController {
 					$id = Auth::user()->id;
 					$result['email'] = Auth::user()->email;
 					$result['role'] = Auth::user()->usertype;
+					$result['name'] = Auth::user()->name;
 					$json_result = str_replace('null','""',json_encode($result));
 					return $json_result;
 					exit;
@@ -2241,6 +2243,7 @@ class ApiController extends BaseController {
 		{
 			$result['email'] = '';
 			$result['role'] = '';
+			$result['name'] = '';
 			$json_result = str_replace('null','""',json_encode($result));
 			return $json_result;
 			exit;

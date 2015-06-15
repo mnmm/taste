@@ -161,7 +161,8 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
     }).then(function(result) {
       userInfo = {
         role: result.data.role,
-        userName: result.data.email
+        email: result.data.email,
+		name: result.data.name
       };
 	  if(result.data.role==1)
 	  {
@@ -373,7 +374,6 @@ MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, 
 			 $http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 					$scope.userroleInfo = data1;
-					console.log($scope.userroleInfo);
 				});
 											  
 			
