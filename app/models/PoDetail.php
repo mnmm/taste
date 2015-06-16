@@ -903,7 +903,7 @@
 	   //function to update payment status
 	   public static function update_payment_status($poid,$transfer_id,$status){
 			
-			 $upadte_payment_status_po = DB::table('taste_po')->where('po_no','=',$poid)->update(array('vendor_paid_status'=> $status,'stripe_payment_id' => $transfer_id));
+			 $upadte_payment_status_po = DB::table('taste_po')->where('po_no','=',$poid)->update(array('vendor_paid_status'=> $status,'stripe_payment_id' => $transfer_id,'payment_type' => 1 ));
 			 
 			 return 1;
 	   }
