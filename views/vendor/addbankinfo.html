@@ -204,7 +204,67 @@
 </form>
 
 <form class="form-horizontal" name="manualAccount" novalidate id="manualAccount" style="display: none;"> 
-	<p id="accounterror" class="help-error" style="display:none;"></p>
+	
+	<div class="form-group"  id="payeeinfo">
+		<label class="col-md-5 control-label" for="name">Bank Name:</label>
+        <div class="col-md-5">
+            <input id="bankname" name="bankname" type="text" placeholder="Bank Name" class="form-control input-md">
+        </div>
+	</div>
+	
+	<div class="form-group"  id="payeeinfo">
+		<label class="col-md-5 control-label" for="name">Name on Account:</label>
+        <div class="col-md-5">
+            <input id="nameonaccount" name="nameonaccount" type="text" placeholder="Name on Account" class="form-control input-md">
+        </div>
+	</div>
+	
+	<div class="form-group"  id="payeeinfo">
+		<label class="col-md-5 control-label" for="name">Address on Account:</label>
+        <div class="col-md-5">
+            <input id="accountaddress" name="accountaddress" type="text" placeholder="Address on Account" class="form-control input-md" value="123 street,San francisco,11123" readonly >
+        </div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-md-5 control-label" for="name">Routing number:</label>
+        <div class="col-md-5">
+			<script type="text/ng-template" id="routingpopover.html">
+					<img src="https://mnmdesignlabs.com/taste/assets/frontend/pages/img/routing_number.png" title="routing info">
+					Your routing number is normally found on a check provided by your bank.
+			</script>
+			
+			
+            <input id="routing" name="routing" type="text" placeholder="111000000" class="form-control input-md" >
+            <i class="icon icon-info" routingpopover data-placement="right" title="title" id="routingpopover"></i>
+            
+        </div>
+   </div>
+   
+  <div class="form-group">
+		<label class="col-md-5 control-label" for="name">Account number:</label>
+        <div class="col-md-5">
+           
+            <input id="account_number" name="account_number" type="text" placeholder="Account Number" class="form-control input-md" maxlength="34" >
+            <script type="text/ng-template" id="accountingpopover.html">
+					<img src="https://mnmdesignlabs.com/taste/assets/frontend/pages/img/account_number.png" title="accounting info">
+					Your account number is normally found on a check provided by your bank.
+			</script>
+			 <i class="icon icon-info" accountingpopover data-placement="right" title="title" id="accountingpopover"></i>
+           
+        </div>
+	</div>
+	
+   <div class="form-group">
+		<label class="col-md-5 control-label" for="name">Confirm account number:</label>
+		 <div class="col-md-5">
+		   
+		   <input id="confirm_account_number" name="confirm_account_number" type="text" placeholder="Account Number" class="form-control input-md" maxlength="34" >
+		   <div class="icon"></div>
+		 </div> 
+   </div>
+	
+	<!--<p id="accounterror" class="help-error" style="display:none;"></p>
 	<input type="hidden" id="datepickerhide" value="0">
     <div class="form-group"  id="payeeinfo">
 		<label class="col-md-5 control-label" for="name">Check #:</label>
@@ -248,7 +308,7 @@
         <div class="col-md-5">
             <input id="mailingaddress" name="mailingaddress" type="text" placeholder="Mailing Address" class="form-control input-md" value="123 street,San francisco,11123" readonly >
         </div>
-   </div>
+   </div>-->
    
    <!--<div class="form-group" id="mailinginfo">
 		<label class="col-md-5 control-label" for="name">Location Name:</label>
