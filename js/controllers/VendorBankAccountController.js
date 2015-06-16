@@ -1201,10 +1201,13 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 					$('#manualAccount').find('button.cancel-btn').removeClass('btn');
 					$('#manualAccount').find('button.main-btn').removeClass('btn');
+					
 					$('#manualAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
+					$('#manualAccount').find('input#bankname').val(data.bankaccountinfo.bankname);
+					$('#manualAccount').find('input#nameonaccount').val(data.bankaccountinfo.nameonaccount);
 					$('#manualAccount').find('input#routing').val(data.bankaccountinfo.routing_number);
-					$('#manualAccount').find('input#account_number').val(data.bankaccountinfo.account_number);
-					$('#manualAccount').find('input#confirm_account_number').val(data.bankaccountinfo.account_number);
+					$('#manualAccount').find('input#account_number_manual').val(data.bankaccountinfo.account_number_manual);
+					$('#manualAccount').find('input#confirm_account_number_manual').val(data.bankaccountinfo.account_number_manual);
 					
 					$('#manualAccount').find('input#routing').focus();
 					
