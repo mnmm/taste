@@ -353,9 +353,8 @@ var ComponentsPickers = function () {
                 orientation: "left",
                 autoclose: true
             }).on('changeDate', function (ev) {
-				ev.preventDefault();
-				   //$('div.addaccountdetail').find('.modal-body').find('.bootbox-body').html($('form#manualAccount').clone());
-				  //  $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').find('form#manualAccount').validate();
+				   $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').html($('form#manualAccount').clone());
+				    $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').find('form#manualAccount').validate();
                   // $(this).blur();
                  //  $(this).datepicker('hide');  
             });
