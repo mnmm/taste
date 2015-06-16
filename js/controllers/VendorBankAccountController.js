@@ -352,8 +352,12 @@ var ComponentsPickers = function () {
               //  rtl: Metronic.isRTL(),
                 orientation: "left",
                 autoclose: true
+            }).on('changeDate', function (ev) {
+				alert('comes here');
+                   $(this).blur();
+                   $(this).datepicker('hide');
             });
-            $('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
+            
         }
 
         /* Workaround to restrict daterange past date select: http://stackoverflow.com/questions/11933173/how-to-restrict-the-selectable-date-ranges-in-bootstrap-datepicker */
