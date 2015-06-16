@@ -62,8 +62,8 @@ var FormValidation = function () {
 
 									var vendoruserid  = localStorage.getItem('userid');
 									
-									var routing_number = $('input#routing').val();
-									var account_number = $('input#account_number').val();
+									var routing_number = $('#addBankAccount').find('input#routing').val();
+									var account_number = $('#addBankAccount').find('input#account_number').val();
 									var country  ='US';
 									var tax_id =  $('#tax_id').val();
 									var paymenttype = $('input#paymenttype').val();
