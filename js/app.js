@@ -952,7 +952,24 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                              Globals.url+'/assets/admin/pages/scripts/payments.js',
 								
                              Globals.url+'/js/controllers/PaymentsController.js'*/
-                             Globals.url+'/assets/global/plugins/select2/select2.css',                             
+                             Globals.url+'/assets/global/plugins/select2/select2.css', 
+                             Globals.url+'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                              Globals.url+'/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+                              Globals.url+'/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+                              Globals.url+'/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css',
+                              Globals.url+'/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+
+                              Globals.url+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                              Globals.url+'/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+                              Globals.url+'/assets/global/plugins/clockface/js/clockface.js',
+                              Globals.url+'/assets/global/plugins/bootstrap-daterangepicker/moment.min.js',
+                              Globals.url+'/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js',
+                              Globals.url+'/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
+                              Globals.url+'/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+
+                              Globals.url+'/assets/admin/pages/scripts/components-pickers.js',
+                              Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                              Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',                                         
                              Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css', 
                              Globals.url+'/assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css',
                              Globals.url+'/assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css',
