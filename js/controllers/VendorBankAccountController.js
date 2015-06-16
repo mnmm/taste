@@ -1206,8 +1206,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$('#manualAccount').find('input#bankname').val(data.bankaccountinfo.bankname);
 					$('#manualAccount').find('input#nameonaccount').val(data.bankaccountinfo.nameonaccount);
 					$('#manualAccount').find('input#routing').val(data.bankaccountinfo.routing_number);
-					$('#manualAccount').find('input#account_number_manual').val(data.bankaccountinfo.account_number_manual);
-					$('#manualAccount').find('input#confirm_account_number_manual').val(data.bankaccountinfo.account_number_manual);
+					$('#manualAccount').find('input#account_number_manual').val(data.bankaccountinfo.account_number);
+					$('#manualAccount').find('input#confirm_account_number_manual').val(data.bankaccountinfo.account_number);
 					
 					$('#manualAccount').find('input#routing').focus();
 					
