@@ -477,7 +477,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 										
 										 
 									}
-									
+									console.log('prefilledHtml'+prefilledHtml);
 									var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass+'##@##'+prefilledHtml;
 									/*$timeout(function () {
 										$timeout(makeSettings, 500,optionsfortransfer);
