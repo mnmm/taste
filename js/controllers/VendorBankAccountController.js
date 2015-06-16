@@ -348,7 +348,7 @@ var ComponentsPickers = function () {
             $('.date-picker').datepicker({
               //  rtl: Metronic.isRTL(),
                 orientation: "left",
-                autoclose: true,
+                autoclose: false,
                 
             }).on('changeDate', function (ev) {
 				
