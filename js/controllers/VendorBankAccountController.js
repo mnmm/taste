@@ -355,6 +355,7 @@ var ComponentsPickers = function () {
             }).on('changeDate', function (ev) {
 				   $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').html($('form#manualAccount').clone());
 				    $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').find('form#manualAccount').validate();
+				     ManualBankAccountValidation()
                   // $(this).blur();
                  //  $(this).datepicker('hide');  
             });
