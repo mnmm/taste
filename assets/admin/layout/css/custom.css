@@ -174,3 +174,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1010', end
        padding-right: 0;
     }
 .help-error{ color:red; }
+.input-group.date.date-picker.col-md-5 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
