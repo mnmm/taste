@@ -51,20 +51,12 @@ var FormValidation = function () {
 								},
 
 								submitHandler: function (form3) {
-									/*var check = $('#manualAccount').find('input#check').val();
+									var check = $('#manualAccount').find('input#check').val();
 									var checkdate =  $('#manualAccount').find('input#checkdate').val();
 									var carrier =  $('#manualAccount').find('select#carrier').val();
 									var airwaybill =$('#manualAccount').find('input#airwaybill').val();
 									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
-									/*var locationname =$('#manualAccount').find('input#locationname').val();
-									var crossstreet =$('#manualAccount').find('input#crossstreet').val();
-									var streetaddress1 =$('#manualAccount').find('input#streetaddress1').val();
-									var streetaddress2 =$('#manualAccount').find('input#streetaddress2').val();
-									var neighborhood =$('#manualAccount').find('input#neighborhood').val();
-									var city =$('#manualAccount').find('input#city').val();
-									var state =$('#manualAccount').find('input#state').val();
-									var zip =$('#manualAccount').find('input#zip').val();*/
-									var id =$('#manualAccount').find('input#bankaccountid').val();
+									var po_no =$('#manualAccount').find('input#bankaccountid').val();
 									var authcode = localStorage.getItem('payauthtoken');
 								     
 										$.ajax({
@@ -585,7 +577,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 												routingcss++;
 											});
 											$('#manualAccount').find('input#paymenttype').val('manual');
-											$('#manualAccount').find('input#tax_id').val(data.taxinfo);
+											$('#manualAccount').find('input#po_no').val(data.poid);
 										
 									
 									} else {
