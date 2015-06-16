@@ -35,7 +35,7 @@
 		<ul class="nav navbar-nav pull-right" ng-if="userroleInfo.role!=''">
 			<!-- BEGIN NOTIFICATION DROPDOWN -->
 			<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-			<li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar" >
+			<li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar" style="display:none;">
 				<a href="#" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
 				<i class="icon-envelope-open"></i>
 				<span class="badge badge-default">
@@ -125,7 +125,7 @@
 			<!-- END INBOX DROPDOWN -->
 			<!-- BEGIN TODO DROPDOWN -->
 			<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-			<li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
+			<li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar" style="display:none;">
 				<a href="#" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
 				<i class="icon-calendar"></i>
 				<span class="badge badge-default">
@@ -222,7 +222,7 @@
 			<!-- END TODO DROPDOWN -->
 			<!-- BEGIN LANGUAGE BAR -->
 			<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-			<li class="dropdown dropdown-language hide">
+			<li class="dropdown dropdown-language hide" style="display:none;">
 				<a href="#" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
 				<img alt="" src="{{ apppath }}/assets/global/img/flags/us.png">
 				<span class="langname">
