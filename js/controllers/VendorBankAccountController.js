@@ -238,24 +238,6 @@ var FormValidation = function () {
 									carrier: {
 										required:true
 									},
-									locationname: {
-										required:true
-									},
-									streetaddress1:{
-										required:true
-									},
-									crossstreet: {
-										required:true
-									},
-									city: {
-										required:true
-									},
-									state: {
-										required:true
-									},
-									zip: {
-										required:true
-									},
 									airwaybill: {
 										required:true
 									}
