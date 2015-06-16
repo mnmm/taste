@@ -251,10 +251,6 @@ var FormValidation = function () {
 									nameonaccount:{
 										required:true,
 									},
-									mailingaddress: {
-										required: true,
-										email:true
-									},
 									routing: {
 										checkroutingnumber:true,
 										required: true,
