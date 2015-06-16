@@ -1123,6 +1123,12 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 
 	}
 	
+	//function to redirect to dashboard
+	$scope.redirecToDashboard = function () {
+		$window.location.href = '#/vendors';
+	}
+	
+	
 	//function to change between transfer methods
 	$scope.toggleTransferMethods = function () {
 		
