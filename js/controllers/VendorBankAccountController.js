@@ -213,12 +213,116 @@ var FormValidation = function () {
 								});
 	}
 	
+	
+	
+	var ManualBankAccountValidation = function() {
+						var form3 = $('form#manualAccount');
+						var error1 = $('.alert-danger', form2);
+						var success1 = $('.alert-success', form2);	
+                        form2.validate({
+								errorElement: 'span', //default input error message container
+								errorClass: 'help-block help-block-error', // default input error message class
+								focusInvalid: false, // do not focus the last invalid input
+								ignore: "",  // validate all fields including form hidden input
+								messages: {
+								   
+								},
+								rules: {
+									cheque:{
+										required:true
+									},
+									chequedate: {
+										required: true
+									},
+									carrier: {
+										required:true
+									},
+									mailingaddress: {
+										required:true
+									},
+									airwaybill: {
+										required:true
+									}
+								},
+
+								invalidHandler: function (event, validator) { //display error alert on form submit              
+									success1.hide();
+									error1.show();
+									Metronic.scrollTo(error1, -200);
+								},
+
+								highlight: function (element) { // hightlight error inputs
+									$(element)
+										.closest('.form-group').addClass('has-error'); // set error class to the control group
+								},
+
+								unhighlight: function (element) { // revert the change done by hightlight
+									$(element)
+										.closest('.form-group').removeClass('has-error'); // set error class to the control group
+								},
+
+								success: function (label) {
+									label
+										.closest('.form-group').removeClass('has-error'); // set success class to the control group
+								},
+
+								submitHandler: function (form2) {
+									
+									var vendoruserid  = localStorage.getItem('userid');
+									
+									var payeename = $('#manualAccount').find('input#payeename').val();
+									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
+									var zipcode =  $('#manualAccount').find('input#zipcode').val();
+									var id =$('#manualAccount').find('input#bankaccountid').val();
+									
+								     var authcode = localStorage.getItem('payauthtoken');
+										$.ajax({
+											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
+											type: 'post',
+											data: {
+												action: 'savebankaccountinfomanual',
+												vendorid:vendoruserid,
+												payeename:payeename,
+												mailingaddress:mailingaddress,
+												zipcode:zipcode,
+												bankid:id,
+												authcode:authcode
+											},
+											headers: {
+												"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
+												"x-taste-access-token": localStorage.getItem('access_token')
+											},
+											dataType:'json',
+											success: function (data) {
+												
+												if(data.status_code == 200 ){
+													bootbox.hideAll();
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addpayeebtn').css('display','none');	
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatepayeebtn').css('display','inline-block');
+												} else {
+												
+													if(data.status_code == 201 ){
+														
+														if(data.message != ''){
+															$('p#accounterror').html(data.message).css('display','block');
+														} else {
+															
+														}
+ 													} 
+												}
+											}
+										});
+									
+									}
+								});
+	}
 
 	return {
         //main function to initiate the module
         init: function () {
             handleValidation1();
             handleManualValidation();
+            ManualBankAccountValidation();
         }
 
     };
@@ -859,7 +963,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 					bootbox.dialog({
 						title:'Please add your checking account details',
-						message: $('#manualBankAccount'),
+						//message: $('#manualBankAccount'),
+						message: $('#manualAccount'),
 						show: false,
 						animate:true,
 						closeButton: false,
@@ -878,7 +983,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							callback: function() {
 								//console.log('comes here');
 								
-								$('#manualBankAccount').find('input#savemanualbankinfo').click();
+								//$('#manualBankAccount').find('input#savemanualbankinfo').click();
+								$('#manualAccount').find('input#savemanualbankinfo').click();
 								return false;
 							}
 						  }
