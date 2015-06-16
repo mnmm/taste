@@ -1167,7 +1167,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	//function to redirect to dashboard
 	$scope.redirecToDashboard = function () {
 		bootbox.hideAll();	
-		$('body').click();
+		$('body').find('.modal-backdrop').click();
 		$window.location.href = '#/vendors';
 		
 	}
