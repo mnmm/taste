@@ -586,7 +586,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 												routingcss++;
 											});
 											$('#manualAccount').find('input#paymenttype').val('manual');
-											$('#manualAccount').find('input#po_no').val(data.poid);
+											$('#manualAccount').find('input#po_no').val(poid);
 										
 									
 									} else {
