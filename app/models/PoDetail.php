@@ -1052,7 +1052,7 @@
 			return $get_vendor_info;
 		}
 		
-		public static function check_transfer_option($poid){
+		public static function check_transfer_option_vendor($poid){
 			
 			$get_vendor_info =  DB::table('taste_po')->where('id','=',$vendor_email)->first();
 			
