@@ -315,9 +315,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						 } else {
 							displaypayeebuttonclass = 'addpayeebtn';
 						 }
-						 
-						//console.log('transfertext'+transfertext);
-						//console.log('transferoption'+data.transferoption);
+						
 						var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass;
 						/*$timeout(function () {
 							$timeout(makeSettings, 500,optionsfortransfer);
@@ -326,27 +324,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						$scope.transferoption = data.transferoption;
 						
 						
-					localStorage.setItem('taxinfo',data.taxinformation);
-					// $('#addBankAccount').find('input#tax_id').val(data.taxinformation)
-					 /*if(data.taxinformation != '')
-						$scope.taxinformation = data.taxinformation;	
+						localStorage.setItem('taxinfo',data.taxinformation);
 					
-					 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
-						
-						$scope.paymenttype = data.paymenttype;
-						if(data.paymenttype == 'E'){
-
-							$('input#paymenttype').val('electronic');
-							$('p#selectedpaymentmethod').text('Selected Payment Method : Electronic').css('display','block');
-						} else {
-							
-							$('input#paymenttype').val('manual');
-							$('p#selectedpaymentmethod').text('Selected Payment Method : Manual').css('display','block');
-						}
-						$('button#bankinfo').css('display','block');
-						$('form#choosepayment').css('display','none');
-					} */
-						
 						var vm = this;
 				} else {
 					
@@ -907,19 +886,25 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.on('shown.bs.modal', function() {
 						
-						$('#manualBankAccount').show(); 
-						$('#manualBankAccount').validate().resetForm();    	
+						//$('#manualBankAccount').show(); 
+						//$('#manualBankAccount').validate().resetForm();    
+						$('#manualAccount').show(); 
+						$('#manualAccount').validate().resetForm(); 	
 							
 					})
 					.on('hide.bs.modal', function(e) {
 					
-						$('#manualBankAccount').hide().appendTo('body');  
+						//$('#manualBankAccount').hide().appendTo('body');  
+						$('#manualAccount').hide().appendTo('body');  
 						
 					})
 					.modal('show');
 					
-					$('#manualBankAccount').find('input#paymenttype').val('manual');
-					$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
+					//$('#manualBankAccount').find('input#paymenttype').val('manual');
+					//$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
+					
+					$('#manualAccount').find('input#paymenttype').val('manual');
+					$('#manualAccount').find('input#tax_id').val(data.taxinfo);
 
 				} 		
 			});
