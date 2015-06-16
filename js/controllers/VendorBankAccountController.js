@@ -406,6 +406,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			
 			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[4]).css('display','inline-block');
 			
+			$('div.paymentmethods').find('div#manageBankAccounts').find('div#prefilledinfo').find('div#bankaccountprefilled').text(+transfersplit[5]).css('display','inline-block');
+			
 			
 		}
 
@@ -465,18 +467,18 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 										displaypayeebuttonclass = 'addpayeebtn';
 									 }
 									 
+									var prefilledHtml = '';
 									if(data.electricdetails != '' &&  typeof data.electricdetails != 'undefined' && data.electricdetails != 0 ){
 										//console.log(data.electricdetails);
 										var accountingnumber = data.electricdetails.account_number;
 										var accno = accountingnumber.substr(accountingnumber.length - 4);
-										var prefilledHtml = '<span class="country-code">USD</span><span class="fourdigitcode">****'+accno+'</span><span class="slash">/</span><span class="routingcode">'+data.electricdetails.routing_number+'</span>';
-										console.log(prefilledHtml);
-										console.log($('div.paymentmethods').find('div#manageBankAccounts').find('div#prefilledinfo').html());
-										$('div.paymentmethods').find('div#manageBankAccounts').find('div#prefilledinfo').find('div#bankaccountprefilled').text(prefilledHtml).css('display','inline-block');
-										  
+										var prefilledHtml = '<span class="country-code">USD</span><span class="fourdigitcode">****'+accno+'</span><span class="slash">/</span><span class="routingcode">'+data.electricdetails.routing_number+'</span>'; 
+																				
+										
+										 
 									}
 									
-									var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass;
+									var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass+'##@##'+prefilledHtml;
 									/*$timeout(function () {
 										$timeout(makeSettings, 500,optionsfortransfer);
 									});*/
