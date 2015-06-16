@@ -391,12 +391,11 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		function makeSettings(optionsfortransfer) {
 			//console.log('optionsfortransfer'+optionsfortransfer);
 			var transfersplit = optionsfortransfer.split('##@##');
-			//$('.customername').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'All' });
-			//console.log($('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val());
+			
 			$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfersplit[0]);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(transfersplit[1]);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transfersplit[2]);	
-			//console.log(transfersplit[3]+$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[3]).html());
+
 			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[3]).css('display','block');
 			
 			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[4]).css('display','inline-block');
@@ -408,78 +407,78 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
         function getunpaidpo(){
 			$http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
-					$scope.userroleInfo = data1;
-					 vendoruserid = $scope.userroleInfo.id;
-					  localStorage.setItem('userid',vendoruserid);
-			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
-			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'gettaxidforvendor',vendorid:vendoruserid}).
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200){
-						$scope.apppath= 'https://mnmdesignlabs.com/taste';
+						$scope.userroleInfo = data1;
+						vendoruserid = $scope.userroleInfo.id;
+						localStorage.setItem('userid',vendoruserid);
+						$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 						
-						
-						var modalInstance = $modal.open({
-						  animation: true,
-						  templateUrl: 'myModalContent.html',
-						  controller: 'ModalInstanceCtrl',
-						  windowClass:'paymentmethods',
-						  resolve: {
-							
-						  }
-						});
-						
-						var transfertext = '';
-						var transferbtntext = '';
-						if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
-							if(data.transferoption  == 1){
-								transfertext ='Manual check transfer enabled';
-								transferbtntext ='Switch to enable ACH transfer';
+						$http.post($scope.apppath+'/api/getunpaidpo',{action:'gettaxidforvendor',vendorid:vendoruserid}).
+						success(function(data, status, headers, config) {
+							if(data.status_code == 200){
+									$scope.apppath= 'https://mnmdesignlabs.com/taste';
+									
+									
+									var modalInstance = $modal.open({
+									  animation: true,
+									  templateUrl: 'myModalContent.html',
+									  controller: 'ModalInstanceCtrl',
+									  windowClass:'paymentmethods',
+									  resolve: {
+										
+									  }
+									});
+									
+									var transfertext = '';
+									var transferbtntext = '';
+									if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
+										if(data.transferoption  == 1){
+											transfertext ='Manual check transfer enabled';
+											transferbtntext ='Switch to enable ACH transfer';
+										} else {
+											transfertext ='ACH transfers enabled';
+											transferbtntext ='Switch to enable manual payment';
+										}
+									}
+									
+									var displaybuttonclass = 'addbankacnt';
+									 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
+										 if(data.paymenttype == 'electronic'){
+											 displaybuttonclass = 'updatebankacnt'
+										 } else {
+											displaybuttonclass = 'addbankacnt';
+										 }
+									 } else {
+										displaybuttonclass = 'addbankacnt';
+									 }
+									 
+									var displaypayeebuttonclass = 'addpayeebtn';
+									if(data.manualexists != '' &&  typeof data.manualexists != 'undefined' && data.manualexists != 0 ){
+										displaypayeebuttonclass = 'updatepayeebtn'
+									 } else {
+										displaypayeebuttonclass = 'addpayeebtn';
+									 }
+									
+									var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass;
+									/*$timeout(function () {
+										$timeout(makeSettings, 500,optionsfortransfer);
+									});*/
+									$timeout(function() {makeSettings(optionsfortransfer)}, 500); 
+									$scope.transferoption = data.transferoption;
+									
+									
+									localStorage.setItem('taxinfo',data.taxinformation);
+								
+									var vm = this;
 							} else {
-								transfertext ='ACH transfers enabled';
-								transferbtntext ='Switch to enable manual payment';
-							}
-						}
-						
-						var displaybuttonclass = 'addbankacnt';
-						 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
-							 if(data.paymenttype == 'electronic'){
-								 displaybuttonclass = 'updatebankacnt'
-							 } else {
-								displaybuttonclass = 'addbankacnt';
-							 }
-						 } else {
-							displaybuttonclass = 'addbankacnt';
-						 }
-						 
-						var displaypayeebuttonclass = 'addpayeebtn';
-						if(data.manualexists != '' &&  typeof data.manualexists != 'undefined' && data.manualexists != 0 ){
-							displaypayeebuttonclass = 'updatepayeebtn'
-						 } else {
-							displaypayeebuttonclass = 'addpayeebtn';
-						 }
-						
-						var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass;
-						/*$timeout(function () {
-							$timeout(makeSettings, 500,optionsfortransfer);
-						});*/
-						$timeout(function() {makeSettings(optionsfortransfer)}, 500); 
-						$scope.transferoption = data.transferoption;
-						
-						
-						localStorage.setItem('taxinfo',data.taxinformation);
-					
-						var vm = this;
-				} else {
-					console.log('data.status_message'+data.status_message);
-					if(data.status_message == 'Invalid token'){
-						
-					} else {
-						createauthtoken(getunpaidpo);
-					}
-				}		
-			});
+								console.log('data.status_message'+data.status_message);
+								if(data.status_message == 'Invalid token'){
+									
+								} else {
+									createauthtoken(getunpaidpo);
+								}
+							}		
+						});
 			});	
 		}
 
@@ -1127,6 +1126,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	//function to redirect to dashboard
 	$scope.redirecToDashboard = function () {
 		bootbox.hideAll();	
+		modalInstance.$promise.then(modalInstance.hide);
 		$window.location.href = '#/vendors';
 		
 	}
