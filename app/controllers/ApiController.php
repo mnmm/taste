@@ -2263,7 +2263,7 @@ class ApiController extends BaseController {
 				$check_transfer_option_vendor = PoDetail::pay_via_check($poid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress);
 				if(isset($check_transfer_option_vendor) &&  $check_transfer_option_vendor != ''){
 					$result['status_code']=200;
-					$result['transferoption'] = $check_transfer_option_vendor;
+					$result['paymentdone'] = $check_transfer_option_vendor;
 				} else {
 					$result['status_code']=201;
 					$result['message'] = 'No option exists';
