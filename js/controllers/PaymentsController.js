@@ -123,6 +123,39 @@ var FormValidation = function () {
 
     };
 }();
+
+var ComponentsPickers = function () {
+
+    var handleDatePickers = function () {
+
+        if (jQuery().datepicker) {
+            $('.date-picker').datepicker({
+              //  rtl: Metronic.isRTL(),
+                orientation: "left",
+                autoclose: false,
+                
+            }).on('changeDate', function (ev) {
+				$('#manualAccount').find('input#datepickerhide').val(1);
+				 $(this).datepicker('hide');
+				 ev.preventDefault();
+            }).on('hide', function (ev) {
+				$('#manualAccount').find('input#datepickerhide').val(1);
+				 $(this).datepicker('hide');
+				 ev.preventDefault();
+            });
+            
+        }
+
+        /* Workaround to restrict daterange past date select: http://stackoverflow.com/questions/11933173/how-to-restrict-the-selectable-date-ranges-in-bootstrap-datepicker */
+    }
+     return {
+        //main function to initiate the module
+        init: function () {
+            handleDatePickers();
+        }
+    };
+
+}();
 MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http, $timeout) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
@@ -475,6 +508,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		}
 		
 		FormValidation.init();
+		ComponentsPickers.init();
 		  
     });
     
