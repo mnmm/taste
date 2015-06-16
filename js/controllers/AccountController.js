@@ -231,7 +231,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getaccountinfo',accesshash:$scope.vendortoken}).
 			success(function(data, status, headers, config) {
-				
+				console.log(data);
 				if(data.status_code == 200){
 					
 					if(data.aleadyexists != '' && typeof data.aleadyexists != 'undefined'){
