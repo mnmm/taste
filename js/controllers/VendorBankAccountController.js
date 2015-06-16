@@ -1096,11 +1096,11 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						$('#manualAccount').validate().resetForm();    	
 							
 					})
-					.on('hide.bs.modal', function(e) {
+					/*.on('hide.bs.modal', function(e) {
 					
 						$('#manualAccount').hide().appendTo('.fade-in-up');  
 						
-					})
+					})*/
 					.modal('show');
 					
 					
