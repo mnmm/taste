@@ -846,7 +846,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						// after hiding the modal
 						// Therefor, we need to backup the form
 						//$('#addBankAccount').hide().appendTo('body');
-						$('#addBankAccount').hide().appendTo('body');  
+						//$('#addBankAccount').hide().appendTo('body');
+						$('#addBankAccount').hide().appendTo('.fade-in-up');    
 					})
 					.modal('show');
 					
@@ -935,7 +936,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						
 						// Therefor, we need to backup the form
 						//$('#addBankAccount').hide().appendTo('body');
-						$('#addBankAccount').hide().appendTo('body');  
+						//$('#addBankAccount').hide().appendTo('body');  
+						$('#addBankAccount').hide().appendTo('.fade-in-up');  
 					})
 					.modal('show');
 					$('#addBankAccount').find('button.cancel-btn').removeClass('btn');
@@ -1032,6 +1034,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 						//$('#manualBankAccount').hide().appendTo('body');  
 						//$('#manualAccount').hide().appendTo('body');  
+						$('#manualAccount').hide().appendTo('.fade-in-up');  
 						
 					})
 					.modal('show');
@@ -1096,11 +1099,11 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						$('#manualAccount').validate().resetForm();    	
 							
 					})
-					/*.on('hide.bs.modal', function(e) {
+					.on('hide.bs.modal', function(e) {
 					
 						$('#manualAccount').hide().appendTo('.fade-in-up');  
 						
-					})*/
+					})
 					.modal('show');
 					
 					
