@@ -352,6 +352,7 @@ var ComponentsPickers = function () {
                 
             }).on('changeDate', function (ev) {
 				 $(this).datepicker('hide');
+				 ev.preventDefault();
             });
             
         }
