@@ -260,8 +260,8 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 						 } 
 					} 
 				} else {
-					
-					if(data.status_message == 'Invalid token'){
+					console.log('data.status_message'+data.status_message);
+					if(data.status_message === 'Invalid token'){
 						
 						$scope.vendorinfo = '';
 						$('input#email').prop('disabled',true);
