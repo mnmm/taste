@@ -1849,7 +1849,8 @@ class ApiController extends BaseController {
 								} else {
 									$pay_done_class = 'fade_pay';
 									$payment_status = 'paid';
-									$transfer_date = date("n/j g:ia", $listingdetail->payment_date);
+									
+									$transfer_date = date("n/j g:ia", strtomtime($listingdetail->payment_date));
 									
 									$transfer_amount = $listingdetail->total_amount;
 									if(isset($listingdetail->payment_done_by) && $listingdetail->payment_done_by != ''){
