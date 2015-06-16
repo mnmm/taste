@@ -472,8 +472,9 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 					
 						var vm = this;
 				} else {
-					
+					console.log('data.status_message'+data.status_message);
 					if(data.status_message == 'Invalid token'){
+						
 					} else {
 						createauthtoken(getunpaidpo);
 					}
