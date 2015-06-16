@@ -1844,7 +1844,7 @@ class ApiController extends BaseController {
 										}
 										
 										$payment_title = 'data-toggle="popover" title="Payment Details"';
-										$payment_content = 'Name : '.$get_transfer_user_name.'<br/>Payment date : '.$transfer_date.'<br/>Amuont : $'.$transfer_amount;
+										$payment_content = 'Name : '.$get_transfer_user_name.'<br/>Payment date : '.$transfer_date.'<br/>Amuont : $'.$transfer_amount.'<br/>Payment mode : ACH';
 									}
 								} else {
 									$pay_done_class = 'fade_pay';
@@ -1865,7 +1865,7 @@ class ApiController extends BaseController {
 									}
 									
 									$payment_title = 'data-toggle="popover" title="Payment Details"';
-									$payment_content = 'Name : '.$get_transfer_user_name.'<br/>Payment date : '.$transfer_date.'<br/>Amuont : $'.$transfer_amount;
+									$payment_content = 'Name : '.$get_transfer_user_name.'<br/>Payment date : '.$transfer_date.'<br/>Amuont : $'.$transfer_amount.'<br/>Payment mode : manual';
 									
 								}
 								
