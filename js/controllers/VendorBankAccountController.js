@@ -406,7 +406,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			
 			$('div.paymentmethods').find('div.modal-body').find('div#manageBankAccounts').find('button#'+transfersplit[4]).css('display','inline-block');
 			
-			$('div.paymentmethods').find('div#manageBankAccounts').find('div#prefilledinfo').find('div#bankaccountprefilled').text(+transfersplit[5]).css('display','inline-block');
+			$('div.paymentmethods').find('div#manageBankAccounts').find('div#prefilledinfo').find('div#bankaccountprefilled').html(transfersplit[5]).css('display','inline-block');
 			
 			
 		}
