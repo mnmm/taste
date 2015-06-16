@@ -1632,7 +1632,7 @@ class ApiController extends BaseController {
 			
 		}
 		
-		if($action == 'makevendorpayment' || $action == 'checktransferoption' ){
+		if($action == 'makevendorpayment' || $action == 'checktransferoption' || $action == 'payviamanualmode'){
 			
 			if (array_key_exists("poid", $data1))
 			{
@@ -1641,6 +1641,68 @@ class ApiController extends BaseController {
 			else
 			{
 				$poid = '';
+
+			}
+		}
+		
+		if($action == 'payviamanualmode'){
+			if (array_key_exists("check", $data1))
+			{
+				$check = $data1->check;
+			}
+			else
+			{
+				$check = '';
+
+			}
+			
+			if (array_key_exists("check", $data1))
+			{
+				$check = $data1->check;
+			}
+			else
+			{
+				$check = '';
+
+			}
+			
+			if (array_key_exists("checkdate", $data1))
+			{
+				$checkdate = $data1->checkdate;
+			}
+			else
+			{
+				$checkdate = '';
+
+			}
+			
+			if (array_key_exists("carrier", $data1))
+			{
+				$carrier = $data1->carrier;
+			}
+			else
+			{
+				$carrier = '';
+
+			}
+			
+			if (array_key_exists("airwaybill", $data1))
+			{
+				$airwaybill = $data1->airwaybill;
+			}
+			else
+			{
+				$airwaybill = '';
+
+			}
+			
+			if (array_key_exists("mailingaddress", $data1))
+			{
+				$mailingaddress = $data1->mailingaddress;
+			}
+			else
+			{
+				$mailingaddress = '';
 
 			}
 		}
@@ -2190,6 +2252,15 @@ class ApiController extends BaseController {
 				}
 			} else if($action == 'checktransferoption'){
 				$check_transfer_option_vendor = PoDetail::check_transfer_option_vendor($poid);
+				if(isset($check_transfer_option_vendor) &&  $check_transfer_option_vendor != ''){
+					$result['status_code']=200;
+					$result['transferoption'] = $check_transfer_option_vendor;
+				} else {
+					$result['status_code']=201;
+					$result['message'] = 'No option exists';
+				}
+			} else if($action == 'payviamanualmode'){
+				$check_transfer_option_vendor = PoDetail::pay_via_check($poid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress);
 				if(isset($check_transfer_option_vendor) &&  $check_transfer_option_vendor != ''){
 					$result['status_code']=200;
 					$result['transferoption'] = $check_transfer_option_vendor;

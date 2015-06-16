@@ -56,26 +56,19 @@ var FormValidation = function () {
 									var carrier =  $('#manualAccount').find('select#carrier').val();
 									var airwaybill =$('#manualAccount').find('input#airwaybill').val();
 									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
-									var po_no =$('#manualAccount').find('input#bankaccountid').val();
-									var authcode = localStorage.getItem('payauthtoken');
-								     
+									var po_no =$('#manualAccount').find('input#po_no').val();
+									
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
 											type: 'post',
 											data: {
-												action: 'savebankaccountinfomanual',
-												vendorid:vendoruserid,
-												/*check:check,
+												action: 'payviamanualmode',
+												poid:po_no,
+												check:check,
 												checkdate:checkdate,
 												carrier:carrier,
-												airwaybill:airwaybill,*/
-												bankname:bankname,
-												nameonaccount:nameonaccount,
-												routing_number:routing_number,
-												account_number:account_number,
-												mailingaddress:mailingaddress,
-												bankid:id,
-												authcode:authcode
+												airwaybill:airwaybill,
+												mailingaddress:mailingaddress
 											},
 											headers: {
 												"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
@@ -84,7 +77,23 @@ var FormValidation = function () {
 											dataType:'json',
 											success: function (data) {
 												
-												if(data.status_code == 200 ){
+												if(data.status_code == 200){
+													$('a#'+po_no).removeClass('makepayment');
+													$('a#'+po_no).addClass('fade_pay');
+													bootbox.hideAll();	
+												} else {
+													if(data.status_code == 201){
+														if(data.message != ''){
+															$('div.bootbox').find('div.bootbox-body').append('<p style="color:red;">'+data.message+'</p>');
+															
+														} else {
+															//createauthtoken(sendrequestlink);
+														}
+														
+													} 
+													
+												}
+												/*if(data.status_code == 200 ){
 													bootbox.hideAll();
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addpayeebtn').css('display','none');	
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatepayeebtn').css('display','inline-block');
@@ -98,7 +107,7 @@ var FormValidation = function () {
 															
 														}
  													} 
-												}
+												}*/
 											}
 										});
 									
@@ -535,7 +544,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 												}
 											  },
 											  success: {
-												label: "Save",
+												label: "Pay",
 												className: "main-btn",
 												callback: function() {
 													$('#manualAccount').find('input#savemanualbankinfo').click();
