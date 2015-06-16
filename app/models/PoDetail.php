@@ -927,7 +927,7 @@
 				$new_check_date = $convertdate[2].'-'.$convertdate[0].'-'.$convertdate[1];
 				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
 				if(isset($expire_auth_code->id ) && $expire_auth_code->id != '' && $expire_auth_code->status == 1){
-					$insertBankDetailAr = array('vendorid' => $vendorid,'check' => $new_check_date,'checkdate'=>$new_check_date,'carrier'=>$carrier,'airwaybill'=>$airwaybill,'mailing_address' => $mailingaddress); 
+					$insertBankDetailAr = array('vendorid' => $vendorid,'check' => $check,'checkdate'=>$new_check_date,'carrier'=>$carrier,'airwaybill'=>$airwaybill,'mailing_address' => $mailingaddress); 
 					$id = DB::table('manual_bank_details')->insertGetId($insertBankDetailAr);
 					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
 					return $id;
