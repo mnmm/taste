@@ -1093,7 +1093,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							console.log('hiddendatepicker'+hiddendatepicker);
 							$('#manualAccount').hide().appendTo('.fade-in-up');  
 						}*/
-						
+						$('#manualAccount').hide().appendTo('body');  
 						
 					})
 					.modal('show');
@@ -1173,6 +1173,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.on('hide.bs.modal', function(e) {
 						
+						$('#manualAccount').hide().appendTo('body');  
 						/*var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val();
 						
 						if (hiddendatepicker == 1) {
