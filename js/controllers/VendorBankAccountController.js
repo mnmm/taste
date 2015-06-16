@@ -367,15 +367,15 @@ var ComponentsPickers = function () {
 
 }();
             
-$('body').on('click', function (e) {
+/*$('body').on('click', function (e) {
     $('.icon-info').each(function () {
 		//alert(e.target);
         if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-			alert('comes here');
+			
             $(this).popover('hide');
         }
     });
-});
+});*/
 
 MetronicApp.controller('VendorBankAccountController', function($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
