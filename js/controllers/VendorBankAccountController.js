@@ -228,16 +228,31 @@ var FormValidation = function () {
 								   
 								},
 								rules: {
-									cheque:{
+									check:{
 										required:true
 									},
-									chequedate: {
+									checkdate: {
 										required: true
 									},
 									carrier: {
 										required:true
 									},
-									mailingaddress: {
+									locationname: {
+										required:true
+									},
+									streetaddress1:{
+										required:true
+									},
+									crossstreet: {
+										required:true
+									},
+									city: {
+										required:true
+									},
+									state: {
+										required:true
+									},
+									zip: {
 										required:true
 									},
 									airwaybill: {
