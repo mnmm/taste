@@ -366,7 +366,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						$http.post($scope.apppath+'/api/getunpaidpo',{poid:poid,action:'checktransferoption'}).
 							success(function(data, status, headers, config) {
 								if(data.status_code == 200){
-									if(data.transfer_option == 1){
+									if(data.transferoption == 1){
 										
 									} else {
 										bootbox.dialog({

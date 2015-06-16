@@ -2189,8 +2189,14 @@ class ApiController extends BaseController {
 					$result['message'] = 'No records exists';
 				}
 			} else if($action == 'checktransferoption'){
-				$change_setting_status = PoDetail::check_transfer_option_vendor($poid);
-				
+				$check_transfer_option_vendor = PoDetail::check_transfer_option_vendor($poid);
+				if(isset($check_transfer_option_vendor->id) &&  $get_payee_info->id != ''){
+					$result['status_code']=200;
+					$result['transferoption'] = $check_transfer_option_vendor;
+				} else {
+					$result['status_code']=201;
+					$result['message'] = 'No option exists';
+				}
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
