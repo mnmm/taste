@@ -173,3 +173,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1010', end
 .form-horizontal .control-label {
        padding-right: 0;
     }
+.help-error{ color:red; }
