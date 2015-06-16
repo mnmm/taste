@@ -371,6 +371,7 @@ $('body').on('click', function (e) {
     $('.icon-info').each(function () {
 		//alert(e.target);
         if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+			alert('comes here');
             $(this).popover('hide');
         }
     });
