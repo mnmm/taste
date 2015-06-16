@@ -217,8 +217,8 @@ var FormValidation = function () {
 	
 	var ManualBankAccountValidation = function() {
 						var form3 = $('form#manualAccount');
-						var error1 = $('.alert-danger', form2);
-						var success1 = $('.alert-success', form2);	
+						var error1 = $('.alert-danger', form3);
+						var success1 = $('.alert-success', form3);	
                         form3.validate({
 								errorElement: 'span', //default input error message container
 								errorClass: 'help-block help-block-error', // default input error message class
@@ -266,7 +266,7 @@ var FormValidation = function () {
 										.closest('.form-group').removeClass('has-error'); // set success class to the control group
 								},
 
-								submitHandler: function (form2) {
+								submitHandler: function (form3) {
 									
 									var vendoruserid  = localStorage.getItem('userid');
 									
