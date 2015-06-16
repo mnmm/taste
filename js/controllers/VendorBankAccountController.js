@@ -353,9 +353,11 @@ var ComponentsPickers = function () {
                 orientation: "left",
                 autoclose: true
             }).on('changeDate', function (ev) {
-				alert('comes here');
+			
                    $(this).blur();
                    $(this).datepicker('hide');
+                   $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').html($('form#manualAccount').html());
+                   
             });
             
         }
