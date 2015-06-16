@@ -857,7 +857,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.modal('show');
 					
-					$('#addBankAccount').find('#accountingpopover').click();
+					//$('#addBankAccount').find('#accountingpopover').click();
 					$('#addBankAccount').find('#routingpopover').click();
 					var routingcss = 0;
 					$('#addBankAccount').find('.popover').each(function(){
