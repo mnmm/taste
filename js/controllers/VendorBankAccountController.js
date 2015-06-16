@@ -172,6 +172,7 @@ var FormValidation = function () {
 									var id =$('#manualBankAccount').find('input#bankaccountid').val();
 									
 								     var authcode = localStorage.getItem('payauthtoken');
+								     
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
 											type: 'post',
@@ -285,21 +286,35 @@ var FormValidation = function () {
 									
 									var vendoruserid  = localStorage.getItem('userid');
 									
-									var payeename = $('#manualAccount').find('input#payeename').val();
+									var check = $('#manualAccount').find('input#check').val();
+									var checkdate =  $('#manualAccount').find('input#checkdate').val();
+									var carrier =  $('#manualAccount').find('select#carrier').val();
+									var airwaybill =$('#manualAccount').find('input#airwaybill').val();
 									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
-									var zipcode =  $('#manualAccount').find('input#zipcode').val();
+									/*var locationname =$('#manualAccount').find('input#locationname').val();
+									var crossstreet =$('#manualAccount').find('input#crossstreet').val();
+									var streetaddress1 =$('#manualAccount').find('input#streetaddress1').val();
+									var streetaddress2 =$('#manualAccount').find('input#streetaddress2').val();
+									var neighborhood =$('#manualAccount').find('input#neighborhood').val();
+									var city =$('#manualAccount').find('input#city').val();
+									var state =$('#manualAccount').find('input#state').val();
+									var zip =$('#manualAccount').find('input#zip').val();*/
+									
 									var id =$('#manualAccount').find('input#bankaccountid').val();
 									
 								     var authcode = localStorage.getItem('payauthtoken');
+								     
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
 											type: 'post',
 											data: {
 												action: 'savebankaccountinfomanual',
 												vendorid:vendoruserid,
-												payeename:payeename,
+												check:check,
+												checkdate:checkdate,
+												carrier:carrier,
+												airwaybill:airwaybill,
 												mailingaddress:mailingaddress,
-												zipcode:zipcode,
 												bankid:id,
 												authcode:authcode
 											},

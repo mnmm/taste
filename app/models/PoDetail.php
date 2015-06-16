@@ -901,7 +901,7 @@
 		}
 		
 		//function to save manual bank account info
-		public static function save_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
+		/*public static function save_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
 			
 			$insertBankDetailAr = array('vendorid' => $vendorid,'payee_name' => $payeename,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
 			
@@ -918,19 +918,37 @@
 			} else {
 				return 0;
 			}
+		}*/
+		
+		//function to save manual bank account info
+		public static function save_manual_bank_info($vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode){
+			
+			
+			
+			if($id != '' && $authcode != ''){
+				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
+				if(isset($expire_auth_code->id ) && $expire_auth_code->id != '' && $expire_auth_code->status == 1){
+					$insertBankDetailAr = array('vendorid' => $vendorid,'check' => $check,'checkdate'=>$checkdate,'carrier'=>$carrier,'airwaybill'=>$airwaybill,'mailing_address' => $mailingaddress); 
+					$id = DB::table('manual_bank_details')->insertGetId($insertBankDetailAr);
+					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
+					return $id;
+				} else {
+					return 0;
+				} 
+			} else {
+				return 0;
+			}
 		}
 		
 		
 		//function to update manual bank account info
-		public static function update_manual_bank_info($bankid,$vendorid,$payeename,$mailingaddress,$zipcode,$authcode){
-			
-			$insertBankDetailAr = array('payee_name' => $payeename,'mailing_address' => $mailingaddress,'zipcode'=>$zipcode); 
-			
-			DB::table('manual_bank_details')->where('id','=',$bankid)->update($insertBankDetailAr);
-			
+		public static function update_manual_bank_info($bankid,$vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode){
+
 			if($authcode != ''){
 				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
-				if(isset($expire_auth_code->id ) && $expire_auth_code->id != ''){
+				if(isset($expire_auth_code->id ) && $expire_auth_code->id != '' && $expire_auth_code->status == 1){
+					$insertBankDetailAr = array('check' => $check,'checkdate' => $checkdate,'carrier'=>$carrier,'airwaybill'=>$airwaybill,'mailing_address'=>$mailingaddress); 
+					DB::table('manual_bank_details')->where('id','=',$bankid)->update($insertBankDetailAr);
 					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
 					return 1;
 				} else {

@@ -1424,13 +1424,44 @@ class ApiController extends BaseController {
 
 			}
 			
-			if (array_key_exists("payeename", $data1))
+			if (array_key_exists("check", $data1))
 			{
-				$payeename = $data1->payeename;
+				$check = $data1->check;
 			}
 			else
 			{
-				 $payeename = '';
+				 $check = '';
+
+			}
+			
+			if (array_key_exists("checkdate", $data1))
+			{
+				$checkdate = $data1->checkdate;
+			}
+			else
+			{
+				$checkdate = '';
+
+			}
+			
+			if (array_key_exists("carrier", $data1))
+			{
+				$carrier = $data1->carrier;
+			}
+			else
+			{
+				$carrier = '';
+
+			}
+			
+			if (array_key_exists("airwaybill", $data1))
+			{
+				$airwaybill = $data1->airwaybill;
+			}
+			else
+			{
+				$airwaybill = '';
+
 			}
 			
 			if (array_key_exists("mailingaddress", $data1))
@@ -1442,6 +1473,19 @@ class ApiController extends BaseController {
 				 $mailingaddress = '';
 			}
 			
+			
+			
+			/*if (array_key_exists("payeename", $data1))
+			{
+				$payeename = $data1->payeename;
+			}
+			else
+			{
+				 $payeename = '';
+			}
+			
+			
+			
 			if (array_key_exists("zipcode", $data1))
 			{
 				$zipcode = $data1->zipcode;
@@ -1449,7 +1493,7 @@ class ApiController extends BaseController {
 			else
 			{
 				 $zipcode = '';
-			}
+			}*/
 
 			if (array_key_exists("bankid", $data1))
 			{
@@ -2066,7 +2110,8 @@ class ApiController extends BaseController {
 			} else if($action == 'savebankaccountinfomanual'){
 				if($bankid != '' && $bankid == 0){
 					
-					$save_manual_bank_info = PoDetail::save_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode);
+					//$save_manual_bank_info = PoDetail::save_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode);
+					$save_manual_bank_info = PoDetail::save_manual_bank_info($vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode);
 					if($save_manual_bank_info != '' && $save_manual_bank_info != 0){
 						$result['status_code']=200;
 						$result['message'] = 'Bank Account Info saved sucessfully';
@@ -2075,7 +2120,7 @@ class ApiController extends BaseController {
 						$result['message'] = 'Token is not valid for Adding bank details';
 					}
 				} else {
-					$update_manual_bank_info = PoDetail::update_manual_bank_info($bankid,$vendorid,$payeename,$mailingaddress,$zipcode,$authcode);
+					$update_manual_bank_info = PoDetail::update_manual_bank_info($bankid,$vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode);
 					if($update_manual_bank_info != '' && $update_manual_bank_info != 0){
 						$result['status_code']=200;
 						$result['message'] = 'Bank Account Info saved sucessfully';
