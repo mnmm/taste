@@ -466,8 +466,12 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 									 }
 									 
 									if(data.electricdetails != '' &&  typeof data.electricdetails != 'undefined' && data.electricdetails != 0 ){
+										console.log(data.electricdetails);
 										var accountingnumber = data.electricdetails.account_number;
+										console.log(data.accountingnumber);
 										var accno = accountingnumber.substr(accountingnumber.length - 4);
+										console.log(accno);
+										console.log(data.electricdetails.routing_number);
 										  var prefilledHtml = '<span class="country-code">USD</span><span class="fourdigitcode">****'+accno+'</span><span class="slash">/</span><span class="routingcode">'+data.electricdetails.routing_number+'</span>';
 										  $('div.paymentmethods').find('div#manageBankAccounts').find('#bankaccountprefilled').html(prefilledHtml).css('display','inline-block');
 										  
