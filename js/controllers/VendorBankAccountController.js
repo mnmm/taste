@@ -864,7 +864,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						if(routingcss != 0){
 							$(this).css('display','block');
 						} else {
-							$(this).css('display','none');
+							
 							$(this).css('left','231.167px');
 							$(this).css('top','-91.5px');
 						}
