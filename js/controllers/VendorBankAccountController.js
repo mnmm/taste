@@ -1177,20 +1177,20 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.on('hide.bs.modal', function(e) {
 						
-						var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val();
+						/*var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val();
 						
 						if (hiddendatepicker == 1) {
 							// datepicker is open. you need the second condition because it starts off as visible but empty
 						} else {
 							console.log('hiddendatepicker'+hiddendatepicker);
 							$('#manualAccount').hide().appendTo('.fade-in-up');  
-						}
+						}*/
 						
 					})
 					.modal('show');
 					
 					
-					$('#manualAccount').find('button.cancel-btn').removeClass('btn');
+					/*$('#manualAccount').find('button.cancel-btn').removeClass('btn');
 					$('#manualAccount').find('button.main-btn').removeClass('btn');
 					$('#manualAccount').find('input#check').val(data.bankaccountinfo.check);
 					var checkdate = data.bankaccountinfo.checkdate;
@@ -1201,7 +1201,32 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$('#manualAccount').find('select#carrier').val(data.bankaccountinfo.carrier);
 					$('#manualAccount').find('input#airwaybill').val(data.bankaccountinfo.airwaybill);
 					$('#manualAccount').find('input#mailing_address').val(data.bankaccountinfo.mailing_address);
+					$('#manualAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);*/
+					
+					$('#manualAccount').find('button.cancel-btn').removeClass('btn');
+					$('#manualAccount').find('button.main-btn').removeClass('btn');
 					$('#manualAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
+					$('#manualAccount').find('input#routing').val(data.bankaccountinfo.routing_number);
+					$('#manualAccount').find('input#account_number').val(data.bankaccountinfo.account_number);
+					$('#manualAccount').find('input#confirm_account_number').val(data.bankaccountinfo.account_number);
+					
+					$('#manualAccount').find('input#routing').focus();
+					
+					$('#manualAccount').find('input#paymenttype').val('manual');
+
+					$('#manualAccount').find('input#mailingaddress').prop('disabled',true);
+					$('#manualAccount').find('#accountingpopover').click();
+					$('#manualAccount').find('#routingpopover').click();
+					var routingcss = 0;
+					$('#manualAccount').find('.popover').each(function(){
+						if(routingcss != 0){
+							$(this).css('display','block');
+						} else {
+							$(this).css('left','231.167px');
+							$(this).css('top','-91.5px');
+						}
+						routingcss++;
+					});
 
 				} 		
 			});
