@@ -219,7 +219,7 @@ var FormValidation = function () {
 						var form3 = $('form#manualAccount');
 						var error1 = $('.alert-danger', form2);
 						var success1 = $('.alert-success', form2);	
-                        form2.validate({
+                        form3.validate({
 								errorElement: 'span', //default input error message container
 								errorClass: 'help-block help-block-error', // default input error message class
 								focusInvalid: false, // do not focus the last invalid input
