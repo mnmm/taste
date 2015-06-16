@@ -98,6 +98,10 @@ var FormValidation = function () {
 												if(data.status_code == 200 ){
 													bootbox.hideAll();	
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').text('Update Bank Account');
+													
+													var accno = account_number.substr(account_number.length - 4);
+													var prefilledHtml = '<span class="country-code">USD</span><span class="fourdigitcode">****'+accno+'</span><span class="slash">/</span><span class="routingcode">'+routing_number+'</span>'; 
+													$('div.paymentmethods').find('div#manageBankAccounts').find('div#prefilledinfo').find('div#bankaccountprefilled').html(prefilledHtml).css('display','inline-block');
 												} else {
 												
 													if(data.status_code == 201 ){
