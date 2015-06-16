@@ -656,13 +656,6 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						}
 						routingcss++;
 					});
-					/*var routingcss = 0;
-					$('#addBankAccount').find('.popover').each(function(){
-						if(routingcss == 0){
-							$(this).css('display','block');
-						}
-						routingcss++;
-					});*/
 				}
 				
 			});	
@@ -696,9 +689,6 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 				if(data.status_code == 200){
 					
 					 bootbox.dialog({
-						//title: "Your bank account must be a checking account.",
-						//title: "Please add your checking account details",
-						//message: $('#addBankAccount'),
 						message: $('#manageBankAccounts'),
 						show: false,
 						animate:true  
@@ -712,7 +702,6 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 					})
 					.on('hide.bs.modal', function(e) {
 						// Therefor, we need to backup the form
-						//$('#addBankAccount').hide().appendTo('body');
 						$('#manageBankAccounts').hide().appendTo('body'); 
 					})
 					.modal('show');
