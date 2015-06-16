@@ -50,9 +50,11 @@ MetronicApp.controller('VendorDashboardController', function($rootScope, $scope,
 						
 					 var vm = this;
 				} else {
-				
-					createauthtoken(getunpaidpo);
-				
+					if(data.status_message === 'Invalid token'){
+						
+					} else {
+						createauthtoken(getunpaidpo);
+					}
 				}		
 			});
 		}
