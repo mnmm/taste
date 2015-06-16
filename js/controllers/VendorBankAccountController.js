@@ -354,6 +354,7 @@ var ComponentsPickers = function () {
                 autoclose: true
             }).on('changeDate', function (ev) {
 				   $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').html($('form#manualAccount').clone());
+				    $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').find('form#manualAccount').validate();
                   // $(this).blur();
                  //  $(this).datepicker('hide');  
             });
