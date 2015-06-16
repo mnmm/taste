@@ -1107,7 +1107,11 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$('#manualAccount').find('button.cancel-btn').removeClass('btn');
 					$('#manualAccount').find('button.main-btn').removeClass('btn');
 					$('#manualAccount').find('input#check').val(data.bankaccountinfo.check);
-					$('#manualAccount').find('input#checkdate').val(data.bankaccountinfo.checkdate);
+					var checkdate = data.bankaccountinfo.checkdate;
+					var extractdate =  checkdate.split('-');
+					var newdate = extractdate[1]+'-'+extractdate[2]+'-'+extractdate[0];
+					$('#manualAccount').find('input#checkdate').val(newdate);
+					
 					$('#manualAccount').find('select#carrier').val(data.bankaccountinfo.carrier);
 					$('#manualAccount').find('input#airwaybill').val(data.bankaccountinfo.airwaybill);
 					$('#manualAccount').find('input#mailing_address').val(data.bankaccountinfo.mailing_address);
