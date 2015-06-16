@@ -2117,7 +2117,7 @@ class ApiController extends BaseController {
 						$result['message'] = 'Bank Account Info saved sucessfully';
 					} else{
 						$result['status_code']=201;
-						$result['message'] = 'Token is not valid for Adding bank details';
+						$result['message'] = 'Token link for adding/updating bank details has been expired.';
 					}
 				} else {
 					$update_manual_bank_info = PoDetail::update_manual_bank_info($bankid,$vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode);
@@ -2126,7 +2126,7 @@ class ApiController extends BaseController {
 						$result['message'] = 'Bank Account Info saved sucessfully';
 					} else{
 						$result['status_code']=201;
-						$result['message'] = 'Token is not valid for Adding bank details';
+						$result['message'] = 'Token link for adding/updating bank details has been expired.';
 					}
 
 				}
