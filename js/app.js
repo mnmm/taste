@@ -1018,6 +1018,49 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             }
         })
         
+         //vendor dashboard url
+        .state("serviceagreement", {
+            url: "/vendors/serviceagreement",
+            templateUrl: "views/vendor/serviceagreement.html",
+            data: {pageTitle: 'Taste Service Agreement', authorizedRoles: ['vendor']},
+            controller: "ServiceAgreementController",
+            resolve: {
+				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
+					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
+									 if (userLogInfo)
+									 {
+											var userroleInfo = authenticationSvc.getUserInfo();
+											if(userroleInfo.role==2)
+											{
+												return $q.when(userroleInfo);
+											}
+											else
+											{
+												authenticationSvc.logout();
+												return $q.reject({ authenticated: false });
+											} 
+									  } 
+									  else {
+										authenticationSvc.logout();	
+										return $q.reject({ authenticated: false });
+									  }  
+					  });
+					}],
+                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',  
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                              Globals.url+'/assets/global/plugins/select2/select2.css',                             
+                              Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
+                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
+                              Globals.url+'/js/controllers/ServiceAgreementController.js'
+                        ]                    
+                    });
+                }]
+            }
+        })
+        
         //vendor dashboard url
         .state("vendorw9form", {
             url: "/vendors/w9form",
