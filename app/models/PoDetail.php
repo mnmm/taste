@@ -1077,7 +1077,7 @@
 			
 			$id =  DB::table('bank_details_manual')->insertGetId($insertBankDetailAr);
 			
-			DB::table('taste_po')->where('po_no','=',$poid)->update(array('vendor_paid_status'=> 1,'payment_date' => date('Y-m-d H:i:s'), ' 	payment_type' => 2 ,'manual_payment_id'	=> $id));
+			DB::table('taste_po')->where('po_no','=',$poid)->update(array('vendor_paid_status'=> 1,'payment_date' => date('Y-m-d H:i:s'), 'payment_type' => 2 ,'manual_payment_id'	=> $id));
 			return 1;
 
 	}
