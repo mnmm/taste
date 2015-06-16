@@ -1066,7 +1066,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 					bootbox.dialog({
 						title:'Please add your checking account details',
-						message: $('#manualBankAccount'),
+						message: $('#manualAccount'),
 						show: false,
 						animate:true,
 						closeButton: false,
@@ -1084,7 +1084,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							className: "main-btn",
 							callback: function() {
 								
-								$('#manualBankAccount').find('input#savemanualbankinfo').click();
+								$('#manualAccount').find('input#savemanualbankinfo').click();
 								return false;
 							}
 						  }
@@ -1092,24 +1092,26 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.on('shown.bs.modal', function() {
 						
-						$('#manualBankAccount').show(); 
-						$('#manualBankAccount').validate().resetForm();    	
+						$('#manualAccount').show(); 
+						$('#manualAccount').validate().resetForm();    	
 							
 					})
 					.on('hide.bs.modal', function(e) {
 					
-						$('#manualBankAccount').hide().appendTo('body');  
+						//$('#manualBankAccount').hide().appendTo('body');  
 						
 					})
 					.modal('show');
 					
 					
-					$('#manualBankAccount').find('button.cancel-btn').removeClass('btn');
-					$('#manualBankAccount').find('button.main-btn').removeClass('btn');
-					$('#manualBankAccount').find('input#payeename').val(data.bankaccountinfo.payee_name);
-					$('#manualBankAccount').find('input#mailingaddress').val(data.bankaccountinfo.mailing_address);
-					$('#manualBankAccount').find('input#zipcode').val(data.bankaccountinfo.zipcode);
-					$('#manualBankAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
+					$('#manualAccount').find('button.cancel-btn').removeClass('btn');
+					$('#manualAccount').find('button.main-btn').removeClass('btn');
+					$('#manualAccount').find('input#check').val(data.bankaccountinfo.check);
+					$('#manualAccount').find('input#checkdate').val(data.bankaccountinfo.checkdate);
+					$('#manualAccount').find('select#carrier').val(data.bankaccountinfo.carrier);
+					$('#manualAccount').find('input#airwaybill').val(data.bankaccountinfo.airwaybill);
+					$('#manualAccount').find('input#mailing_address').val(data.bankaccountinfo.mailing_address);
+					$('#manualAccount').find('input#bankaccountid').val(data.bankaccountinfo.id);
 
 				} 		
 			});
