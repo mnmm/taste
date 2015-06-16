@@ -147,18 +147,11 @@ MetronicApp.factory("SideBarService", function() {
   };
 })
 
-//GlobalUrl Service
-MetronicApp.factory('Globals', function() {
-  return {
-      url : 'https://mnmdesignlabs.com/taste'
-  };
-});
-
 
 //Authorization Service
-MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state, Globals) {
+MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state) {
   var userInfo;
-  var rootapppath = Globals.url;
+  var rootapppath = 'https://mnmdesignlabs.com/taste';
   function login(email, password, redirectUrl) {
     var deferred = $q.defer();
  
@@ -272,12 +265,12 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state, Gl
 })*/
 
 /* Setup App Main Controller */
-MetronicApp.controller('AppController', ['$scope', '$rootScope','authenticationSvc', 'Globals', function($scope, $rootScope, authenticationSvc, Globals) {
+MetronicApp.controller('AppController', ['$scope', '$rootScope','authenticationSvc', function($scope, $rootScope, authenticationSvc) {
 	$scope.logout = function(){authenticationSvc.logout();}
     $scope.$on('$viewContentLoaded', function() {
         Metronic.initComponents(); // init core components
         //Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive 
-        $scope.apppath = Globals.url;
+        $scope.apppath = 'https://mnmdesignlabs.com/taste';
     });
 }]);
 
@@ -356,25 +349,23 @@ MetronicApp.run(function ($rootScope,$location, AUTH_EVENTS, AuthService,Session
 })
 
 /* Setup Layout Part - Header */
-MetronicApp.controller('HeaderController', ['$scope', '$http', 'Globals', function($scope, $http, Globals) {
-	$scope.apppath = Globals.url;
+MetronicApp.controller('HeaderController', ['$scope', '$http', function($scope, $http) {
     $scope.$on('$includeContentLoaded', function() {
 		$scope.userroleInfo = '';
-        
-        
+        Layout.initHeader(); // init header
+        $scope.apppath = 'https://mnmdesignlabs.com/taste';
 		$http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 					$scope.userroleInfo = data1;
-					Layout.initHeader(); // init header
 				});
     });
 }]);
 
 /* Setup Layout Part - Sidebar */
-MetronicApp.controller('SidebarController', ['$scope','$http', 'Globals', function($scope, $http, Globals) {
+MetronicApp.controller('SidebarController', ['$scope','$http', function($scope, $http) {
     $scope.$on('$includeContentLoaded', function() {
         Layout.initSidebar(); // init sidebar
-        $scope.apppath = Globals.url;
+        $scope.apppath = 'https://mnmdesignlabs.com/taste';
 		$scope.userroleInfo = '';
        
         $http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
@@ -454,30 +445,30 @@ MetronicApp.controller('SidebarController', ['$scope','$http', 'Globals', functi
 }]);
 
 /* Setup Layout Part - Quick Sidebar */
-MetronicApp.controller('QuickSidebarController', ['$scope', 'Globals', function($scope, Globals) {    
+MetronicApp.controller('QuickSidebarController', ['$scope', function($scope) {    
     $scope.$on('$includeContentLoaded', function() {
         setTimeout(function(){
             QuickSidebar.init(); // init quick sidebar  
-            $scope.apppath = Globals.url;      
+            $scope.apppath = 'https://mnmdesignlabs.com/taste';      
         }, 2000)
     });
 }]);
 
 /* Setup Layout Part - Theme Panel */
-MetronicApp.controller('ThemePanelController', ['$scope', 'Globals', function($scope, Globals) {    
+MetronicApp.controller('ThemePanelController', ['$scope', function($scope) {    
     $scope.$on('$includeContentLoaded', function() {
 		
         Demo.init(); // init theme panel
-        $scope.apppath = Globals.url;
+        $scope.apppath = 'https://mnmdesignlabs.com/taste';
     });
 }]);
 
 /* Setup Layout Part - Footer */
-MetronicApp.controller('FooterController', ['$scope', 'Globals', function($scope, Globals) {
+MetronicApp.controller('FooterController', ['$scope', function($scope) {
     $scope.$on('$includeContentLoaded', function() {
 		
         Layout.initFooter(); // init footer
-        $scope.apppath = Globals.url;
+        $scope.apppath = 'https://mnmdesignlabs.com/taste';
     });
 }]);
 
@@ -526,7 +517,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state('dashboard', {
             url: "/dashboard.html",
             templateUrl: "views/dashboard.html",            
-            data: {pageTitle: 'Admin Dashboard Template', authorizedRoles: ['admin']},
+            data: {pageTitle: 'Admin Dashboard Template',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['admin']},
             controller: "DashboardController",
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
@@ -550,22 +541,22 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 									  }  
 					  });
 					}],
-                deps: ['$ocLazyLoad','Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            Globals.url+'/assets/global/plugins/morris/morris.css',
-                            Globals.url+'/assets/admin/pages/css/tasks.css',
+                            appPath+'/assets/global/plugins/morris/morris.css',
+                            appPath+'/assets/admin/pages/css/tasks.css',
                             
-                            Globals.url+'/assets/global/plugins/morris/morris.min.js',
-                            Globals.url+'/assets/global/plugins/morris/raphael-min.js',
-                            Globals.url+'/assets/global/plugins/jquery.sparkline.min.js',
+                            appPath+'/assets/global/plugins/morris/morris.min.js',
+                            appPath+'/assets/global/plugins/morris/raphael-min.js',
+                            appPath+'/assets/global/plugins/jquery.sparkline.min.js',
 
-                            Globals.url+'/assets/admin/pages/scripts/index3.js',
-                            Globals.url+'/assets/admin/pages/scripts/tasks.js',
+                            appPath+'/assets/admin/pages/scripts/index3.js',
+                            appPath+'/assets/admin/pages/scripts/tasks.js',
 
-                            Globals.url+'/'+'js/controllers/DashboardController.js'
+                           appPath+'/'+'js/controllers/DashboardController.js'
                         ] 
                     });
                 }]
@@ -576,7 +567,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("settings", {
             url: "/settings",
             templateUrl: "views/settings.html",
-            data: {pageTitle: 'Vendor Settings', authorizedRoles: ['vendor','admin','all']},
+            data: {pageTitle: 'Vendor Settings',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor','admin','all']},
             controller: "SettingsController",
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
@@ -600,19 +591,19 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 									  }  
 					  });
 					}],
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
 
-                              Globals.url+'/assets/global/plugins/select2/select2.css',                             
-                              Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
-                              Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
-                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                              Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
-                              Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
-                              Globals.url+'/js/controllers/SettingsController.js'
+                              appPath+'/assets/global/plugins/select2/select2.css',                             
+                              appPath+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                              appPath+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
+                              appPath+'/assets/global/plugins/select2/select2.min.js',
+                              appPath+'/assets/global/plugins/bootbox/bootbox.min.js',
+                              appPath+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                              appPath+'/js/controllers/SettingsController.js'
                               
                               
                         ]                    
@@ -657,16 +648,16 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             data: {pageTitle: 'AngularJS File Upload'},
             controller: "GeneralPageController",
             resolve: {
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load([{
                         name: 'angularFileUpload',
                         files: [
-                            Globals.url+'assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js',
+                            '../../../assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js',
                         ] 
                     }, {
                         name: 'MetronicApp',
                         files: [
-                            Globals.url+'js/controllers/GeneralPageController.js'
+                            'js/controllers/GeneralPageController.js'
                         ]
                     }]);
                 }]
@@ -904,7 +895,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("payments", {
             url: "/payments",
             templateUrl: "views/payments.html",
-            data: {pageTitle: 'Payments', authorizedRoles: ['admin']},
+            data: {pageTitle: 'Payments',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['admin']},
             controller: "PaymentsController",
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
@@ -928,42 +919,42 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 									  }  
 					  });
 					}],
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
 
-                             /*Globals.url+'/assets/global/plugins/select2/select2.css',
-                             Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
-                             Globals.url+'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
-                             Globals.url+'/assets/global/plugins/sumoselect/sumoselect.css',
+                             /*appPath+'/assets/global/plugins/select2/select2.css',
+                             appPath+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
+                             appPath+'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                             appPath+'/assets/global/plugins/sumoselect/sumoselect.css',
                             
-                             Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                             Globals.url+'/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js',
+                             appPath+'/assets/global/plugins/select2/select2.min.js',
+                             appPath+'/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js',
                             
-                             Globals.url+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
-                             Globals.url+'/assets/global/plugins/sumoselect/jquery.sumoselect.js',
-                             Globals.url+'/assets/admin/layout/scripts/demo.js',
+                             appPath+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                             appPath+'/assets/global/plugins/sumoselect/jquery.sumoselect.js',
+                             appPath+'/assets/admin/layout/scripts/demo.js',
 							 
-							 Globals.url+'/assets/admin/pages/scripts/ecommerce-orders.js',
+							 appPath+'/assets/admin/pages/scripts/ecommerce-orders.js',
 							 
 							
-                             Globals.url+'/assets/admin/pages/scripts/payments.js',
+                             appPath+'/assets/admin/pages/scripts/payments.js',
 								
-                             Globals.url+'/js/controllers/PaymentsController.js'*/
-                             Globals.url+'/assets/global/plugins/select2/select2.css',                             
-                             Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css', 
-                             Globals.url+'/assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css',
-                             Globals.url+'/assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css',
+                             appPath+'/js/controllers/PaymentsController.js'*/
+                             appPath+'/assets/global/plugins/select2/select2.css',                             
+                             appPath+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css', 
+                             appPath+'/assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css',
+                             appPath+'/assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css',
 
-                             Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                             Globals.url+'/assets/global/plugins/datatables/all.min.js',
-                             Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
-                             Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
-                            // Globals.url+'/js/scripts/table-advanced.js',
-							 Globals.url+'/assets/admin/pages/scripts/payments.js',
-                             Globals.url+'/js/controllers/PaymentsController.js'
+                             appPath+'/assets/global/plugins/select2/select2.min.js',
+                             appPath+'/assets/global/plugins/datatables/all.min.js',
+                             appPath+'/assets/global/plugins/bootbox/bootbox.min.js',
+                             appPath+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                            // appPath+'/js/scripts/table-advanced.js',
+							 appPath+'/assets/admin/pages/scripts/payments.js',
+                             appPath+'/js/controllers/PaymentsController.js'
                               
                               
                         ]                    
@@ -976,7 +967,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("vendordashboard", {
             url: "/vendors",
             templateUrl: "views/vendor/dashboard.html",
-            data: {pageTitle: 'Vendor Account', authorizedRoles: ['vendor']},
+            data: {pageTitle: 'Vendor Account',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor']},
             controller: "VendorDashboardController",
             resolve: {
 				/*auth: function resolveAuthentication(AuthResolver) { 
@@ -1003,15 +994,15 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 									  }  
 					  });
 					}],
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                              Globals.url+'/assets/global/plugins/select2/select2.css',                             
-                              Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
-                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                              Globals.url+'/js/controllers/VendorDashboardController.js'
+                              appPath+'/assets/global/plugins/select2/select2.css',                             
+                              appPath+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
+                              appPath+'/assets/global/plugins/select2/select2.min.js',
+                              appPath+'/js/controllers/VendorDashboardController.js'
                         ]                    
                     });
                 }]
@@ -1022,7 +1013,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("vendorw9form", {
             url: "/vendors/w9form",
             templateUrl: "views/vendor/w9form.html",
-            data: {pageTitle: 'Vendor w9Form', authorizedRoles: ['vendor']},
+            data: {pageTitle: 'Vendor w9Form',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor']},
             controller: "VendorW9FormController",
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
@@ -1046,17 +1037,17 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 									  }  
 					  });
 					}],
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                              Globals.url+'/assets/global/plugins/select2/select2.css', 
-                              Globals.url+'/css/custom_style.css',                              
-                              Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
-                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
+                              appPath+'/assets/global/plugins/select2/select2.css', 
+                              appPath+'/css/custom_style.css',                              
+                              appPath+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
+                              appPath+'/assets/global/plugins/select2/select2.min.js',
                               '//mnmdesignlabs.com/trackmydocs_dev/js/component_js/component_js.js',
-                              Globals.url+'/js/controllers/VendorW9FormController.js'
+                              appPath+'/js/controllers/VendorW9FormController.js'
                         ]                    
                     });
                 }]
@@ -1066,24 +1057,24 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("addbankinfo", {
             url: "/vendors/addbankinfo",
             templateUrl: "views/vendor/addbankinfo.html",
-            data: {pageTitle: 'Vendor Bank Account Info', authorizedRoles: ['vendor']},
+            data: {pageTitle: 'Vendor Bank Account Info',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor']},
             controller: "VendorBankAccountController",
             resolve: {
 				
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-                              Globals.url+'/assets/global/plugins/select2/select2.css',  
-                              Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
-                              Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',                           
-                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                              Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
-                              Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
-                              Globals.url+'/assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js',
-                             // Globals.url+'/assets/admin/pages/scripts/form-validation.js',
-                              Globals.url+'/js/controllers/VendorBankAccountController.js'
+                              appPath+'/assets/global/plugins/select2/select2.css',  
+                              appPath+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                              appPath+'/assets/global/plugins/jquery-validation/js/additional-methods.js',                           
+                              appPath+'/assets/global/plugins/select2/select2.min.js',
+                              appPath+'/assets/global/plugins/bootbox/bootbox.min.js',
+                              appPath+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                              appPath+'/assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js',
+                             // appPath+'/assets/admin/pages/scripts/form-validation.js',
+                              appPath+'/js/controllers/VendorBankAccountController.js'
                         ]                    
                     });
                 }]
@@ -1094,22 +1085,22 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("createaccount", {
             url: "/vendor/:param",
             templateUrl: "views/vendor/createaccount.html",
-            data: {pageTitle: 'User Account', authorizedRoles: ['vendor','admin','all']},
+            data: {pageTitle: 'User Account',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor','admin','all']},
             controller: "AccountController",
             resolve: {
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
 
-                              Globals.url+'/assets/global/plugins/select2/select2.css',                             
-                              Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
-                              Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
-                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                              Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
-                              Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
-                              Globals.url+'/js/controllers/AccountController.js'
+                              appPath+'/assets/global/plugins/select2/select2.css',                             
+                              appPath+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                              appPath+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
+                              appPath+'/assets/global/plugins/select2/select2.min.js',
+                              appPath+'/assets/global/plugins/bootbox/bootbox.min.js',
+                              appPath+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                              appPath+'/js/controllers/AccountController.js'
                               
                               
                         ]                    
@@ -1147,7 +1138,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             data: {pageTitle: 'Todo'},
             controller: "TodoController",
             resolve: {
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({ 
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
@@ -1172,22 +1163,22 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("login", {
             url: "/login",
             templateUrl: "views/login.html",
-            data: {pageTitle: 'Login', authorizedRoles: ['vendor','admin','all']},
+            data: {pageTitle: 'Login',appPath:'https://mnmdesignlabs.com/taste', authorizedRoles: ['vendor','admin','all']},
             controller: "LoginController",
             resolve: {
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
 
-                              Globals.url+'/assets/global/plugins/select2/select2.css',                             
-                              Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
-                              Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
-                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                              Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
-                              Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
-                              Globals.url+'/js/controllers/LoginController.js'
+                              appPath+'/assets/global/plugins/select2/select2.css',                             
+                              appPath+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                              appPath+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
+                              appPath+'/assets/global/plugins/select2/select2.min.js',
+                              appPath+'/assets/global/plugins/bootbox/bootbox.min.js',
+                              appPath+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                              appPath+'/js/controllers/LoginController.js'
                               
                               
                         ]                    
