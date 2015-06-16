@@ -354,6 +354,10 @@ var ComponentsPickers = function () {
 				$('#manualAccount').find('input#datepickerhide').val(1);
 				 $(this).datepicker('hide');
 				 ev.preventDefault();
+            }).on('hide', function (ev) {
+				$('#manualAccount').find('input#datepickerhide').val(1);
+				 $(this).datepicker('hide');
+				 ev.preventDefault();
             });
             
         }
