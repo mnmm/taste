@@ -1,5 +1,128 @@
 'use strict';
+var FormValidation = function () {
+	
+	var ManualBankAccountValidation = function() {
+						var form3 = $('form#manualAccount');
+						var error1 = $('.alert-danger', form3);
+						var success1 = $('.alert-success', form3);	
+                        form3.validate({
+								errorElement: 'span', //default input error message container
+								errorClass: 'help-block help-block-error', // default input error message class
+								focusInvalid: false, // do not focus the last invalid input
+								ignore: "",  // validate all fields including form hidden input
+								messages: {
+								   
+								},
+								rules: {
+									check:{
+										required:true
+									},
+									checkdate: {
+										required: true
+									},
+									carrier: {
+										required:true
+									},
+									airwaybill: {
+										required:true
+									}
+									
+								},
 
+								invalidHandler: function (event, validator) { //display error alert on form submit              
+									success1.hide();
+									error1.show();
+									Metronic.scrollTo(error1, -200);
+								},
+
+								highlight: function (element) { // hightlight error inputs
+									$(element)
+										.closest('.form-group').addClass('has-error'); // set error class to the control group
+								},
+
+								unhighlight: function (element) { // revert the change done by hightlight
+									$(element)
+										.closest('.form-group').removeClass('has-error'); // set error class to the control group
+								},
+
+								success: function (label) {
+									label
+										.closest('.form-group').removeClass('has-error'); // set success class to the control group
+								},
+
+								submitHandler: function (form3) {
+									/*var check = $('#manualAccount').find('input#check').val();
+									var checkdate =  $('#manualAccount').find('input#checkdate').val();
+									var carrier =  $('#manualAccount').find('select#carrier').val();
+									var airwaybill =$('#manualAccount').find('input#airwaybill').val();
+									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
+									/*var locationname =$('#manualAccount').find('input#locationname').val();
+									var crossstreet =$('#manualAccount').find('input#crossstreet').val();
+									var streetaddress1 =$('#manualAccount').find('input#streetaddress1').val();
+									var streetaddress2 =$('#manualAccount').find('input#streetaddress2').val();
+									var neighborhood =$('#manualAccount').find('input#neighborhood').val();
+									var city =$('#manualAccount').find('input#city').val();
+									var state =$('#manualAccount').find('input#state').val();
+									var zip =$('#manualAccount').find('input#zip').val();*/
+									var id =$('#manualAccount').find('input#bankaccountid').val();
+									var authcode = localStorage.getItem('payauthtoken');
+								     
+										$.ajax({
+											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
+											type: 'post',
+											data: {
+												action: 'savebankaccountinfomanual',
+												vendorid:vendoruserid,
+												/*check:check,
+												checkdate:checkdate,
+												carrier:carrier,
+												airwaybill:airwaybill,*/
+												bankname:bankname,
+												nameonaccount:nameonaccount,
+												routing_number:routing_number,
+												account_number:account_number,
+												mailingaddress:mailingaddress,
+												bankid:id,
+												authcode:authcode
+											},
+											headers: {
+												"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
+												"x-taste-access-token": localStorage.getItem('access_token')
+											},
+											dataType:'json',
+											success: function (data) {
+												
+												if(data.status_code == 200 ){
+													bootbox.hideAll();
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addpayeebtn').css('display','none');	
+													$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatepayeebtn').css('display','inline-block');
+												} else {
+												
+													if(data.status_code == 201 ){
+														
+														if(data.message != ''){
+															$('p#accounterror').html(data.message).css('display','block');
+														} else {
+															
+														}
+ 													} 
+												}
+											}
+										});
+									
+									}
+								});
+	}
+
+	return {
+        //main function to initiate the module
+        init: function () {
+          
+            ManualBankAccountValidation();
+        }
+
+    };
+}();
 MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http, $timeout) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
@@ -350,6 +473,8 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		} else {
 			createauthtoken(getunpaidpo);
 		}
+		
+		FormValidation.init();
 		  
     });
     
