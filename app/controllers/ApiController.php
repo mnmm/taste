@@ -2190,7 +2190,7 @@ class ApiController extends BaseController {
 				}
 			} else if($action == 'checktransferoption'){
 				$check_transfer_option_vendor = PoDetail::check_transfer_option_vendor($poid);
-				if(isset($check_transfer_option_vendor->id) &&  $get_payee_info->id != ''){
+				if(isset($check_transfer_option_vendor) &&  $check_transfer_option_vendor != ''){
 					$result['status_code']=200;
 					$result['transferoption'] = $check_transfer_option_vendor;
 				} else {
