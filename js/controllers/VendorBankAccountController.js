@@ -351,6 +351,7 @@ var ComponentsPickers = function () {
                 autoclose: false,
                 
             }).on('changeDate', function (ev) {
+				console.log('first comes here');
 				 $(this).datepicker('hide');
 				 ev.preventDefault();
             });
@@ -1101,8 +1102,12 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							
 					})
 					.on('hide.bs.modal', function(e) {
-					
-						$('#manualAccount').hide().appendTo('.fade-in-up');  
+						console.log('then comes here');
+						if ($(".datepicker-dropdown").is(":visible") && $(".datepicker-dropdown").html() != "") {
+							// datepicker is open. you need the second condition because it starts off as visible but empty
+						} else {
+							$('#manualAccount').hide().appendTo('.fade-in-up');  
+						}
 						
 					})
 					.modal('show');
