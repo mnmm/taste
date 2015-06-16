@@ -1003,7 +1003,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							}
 						  },
 						  success: {
-							label: "Add Account",
+							label: "Save",
 							className: "main-btn",
 							callback: function() {
 								//console.log('comes here');
