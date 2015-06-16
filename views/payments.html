@@ -56,7 +56,60 @@ $(document).ready(function(){
 	</div>
 </div>
 <!-- END PAGE HEADER-->
+<form class="form-horizontal" name="manualAccount" novalidate id="manualAccount" style="display: none;"> 
+	<p id="accounterror" class="help-error" style="display:none;"></p>
+	<p id="accounterror" class="help-error" style="display:none;"></p>
+	<input type="hidden" id="datepickerhide" value="0">
+    <div class="form-group"  id="payeeinfo">
+		<label class="col-md-5 control-label" for="name">Check #:</label>
+        <div class="col-md-5">
+            <input id="check" name="check" type="text" placeholder="Check Number" class="form-control input-md">
+        </div>
+   </div>
+   
+    <div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Check Date:</label>
+		<div class="input-group input-medium date date-picker col-md-5" data-date-format="mm-dd-yyyy" data-date-start-date="+0d">
+			<input type="text" class="form-control" id="checkdate" name="checkdate">
+			<span class="input-group-btn">
+			<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+			</span>
+		</div>
+   </div>
+   
+    <div class="form-group" id="zipcodefield">
+		<label class="col-md-5 control-label" for="name">Select Carrier:</label>
+        <div class="col-md-5">
+            <select name="carrier" id="carrier" class="form-control">
+				<option value="">Select Carrier</option>
+				<option value="usps">USPS</option>
+				<option value="fedex">FedEx</option>
+				<option value="ups">UPS</option>
+				<option value="prioritymail">Priority Mail</option>
+            </select>
+        </div>
+   </div>
 
+   <div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Airway Bill #:</label>
+        <div class="col-md-5">
+            <input id="airwaybill" name="airwaybill" type="text" placeholder="Airway Bill" class="form-control input-md" >
+        </div>
+   </div>
+   
+    <div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Mailing Address:</label>
+        <div class="col-md-5">
+            <input id="mailingaddress" name="mailingaddress" type="text" placeholder="Mailing Address" class="form-control input-md" value="123 street,San francisco,11123" readonly >
+        </div>
+   </div>
+	<input type="hidden" name="paymenttype" value="" id="paymenttypemanual">
+   <input type="hidden" name="bankaccountid" value="0" id="bankaccountid">
+   <input type="submit" id="savemanualbankinfo" style="display:none;">
+
+  </div>
+  
+</form>
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
 				<div class="col-md-12">
