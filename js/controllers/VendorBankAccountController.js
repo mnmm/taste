@@ -1103,10 +1103,12 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.on('hide.bs.modal', function(e) {
 						console.log('then comes here');
-						var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val(1);
+						var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val();
+						console.log('hiddendatepicker'+hiddendatepicker);
 						if (hiddendatepicker == 1) {
 							// datepicker is open. you need the second condition because it starts off as visible but empty
 						} else {
+							console.log('hiddendatepicker'+hiddendatepicker);
 							$('#manualAccount').hide().appendTo('.fade-in-up');  
 						}
 						
