@@ -464,6 +464,14 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 									 } else {
 										displaypayeebuttonclass = 'addpayeebtn';
 									 }
+									 
+									if(data.electricdetails != '' &&  typeof data.electricdetails != 'undefined' && data.electricdetails != 0 ){
+										var accountingnumber = data.electricdetails.account_number;
+										var accno = accountingnumber.substr(accountingnumber.length - 4);
+										  var prefilledHtml = '<span class="country-code">USD</span><span class="fourdigitcode">****'+accno+'</span><span class="slash">/</span><span class="routingcode">'+data.electricdetails.routing_number+'</span>';
+										  $('div.paymentmethods').find('div#manageBankAccounts').find('#bankaccountprefilled').html(prefilledHtml).css('display','inline-block');
+										  
+									}
 									
 									var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass;
 									/*$timeout(function () {

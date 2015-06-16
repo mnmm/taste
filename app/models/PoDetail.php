@@ -760,6 +760,37 @@
 			}
 		}
 		
+		public static function get_bank_account_detail_automatic($vendorid){
+			
+			$get_vendor_info =  DB::table('users')->where('id','=',$vendorid)->first();
+			if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
+				$userid = $get_vendor_info->id;
+				$bankdetail = DB::table('bank_detail')->where('vendorid','=',$userid)->first();
+				if(isset($bankdetail->id) && $bankdetail->id != ''){
+					return $bankdetail;
+				} else{
+					return 0;
+				}
+			} else {
+				return 0;
+			}
+		}
+		
+		public static function get_bank_account_detail_manual($vendorid){
+			$get_vendor_info =  DB::table('users')->where('id','=',$vendorid)->first();
+			if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
+				$userid = $get_vendor_info->id;
+				$bankdetail = DB::table('manual_bank_details')->where('vendorid','=',$userid)->first();
+				if(isset($bankdetail->id) && $bankdetail->id != ''){
+					return $bankdetail;
+				} else{
+					return 0;
+				}
+			} else {
+				return 0;
+			}
+		}
+		
 		public static function get_bank_info_for_vendor($vendorid){
 			
 			$get_bank_info =  DB::table('bank_detail')->where('vendorid','=',$vendorid)->first();

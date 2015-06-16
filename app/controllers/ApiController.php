@@ -1901,11 +1901,15 @@ class ApiController extends BaseController {
 				$check_bank_account_exists = PoDetail::check_bank_account_exists($vendorid);
 				$check_transfer_option = PoDetail::check_transfer_option($vendorid);
 				$check_manual_bank_account_exists = PoDetail::check_manual_bank_account_exists($vendorid);
+				$get_bank_account_detail_automatic = PoDetail::get_bank_account_detail_automatic($vendorid);
+				$get_bank_account_detail_manual = PoDetail::get_bank_account_detail_manual($vendorid);
 				$result['paymenttype'] = $check_bank_account_exists;
 				$result['status_code']=200;
 				$result['taxinformation'] = $get_tax_id;
 				$result['transferoption'] = $check_transfer_option;
 				$result['manualexists'] = $check_manual_bank_account_exists;
+				$result['electricdetails'] = $get_bank_account_detail_automatic;
+				$result['manualdetails'] = $get_bank_account_detail_manual;
 				
 			} else if($action == 'savebankaccountinfo'){
 				if($bankid != '' && $bankid == 0){
