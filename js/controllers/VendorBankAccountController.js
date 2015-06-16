@@ -312,7 +312,7 @@ var FormValidation = function () {
 									var nameonaccount = $('#manualAccount').find('input#nameonaccount').val();
 									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
 									var routing_number =  $('#manualAccount').find('input#routing').val();
-									var account_number =  $('#manualAccount').find('input#account_number').val();
+									var account_number =  $('#manualAccount').find('input#account_number_manual').val();
 									var id =$('#manualAccount').find('input#bankaccountid').val();
 									var authcode = localStorage.getItem('payauthtoken');
 								     
