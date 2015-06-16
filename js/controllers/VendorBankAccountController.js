@@ -1085,6 +1085,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							label: "Cancel",
 							className: "cancel-btn",
 							callback: function() {
+								$('#manualAccount').find('input#datepickerhide').val(0);
 								bootbox.hideAll();	
 							}
 						  },
