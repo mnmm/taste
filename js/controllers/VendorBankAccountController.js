@@ -401,7 +401,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		function makeSettings(optionsfortransfer) {
 			//console.log('optionsfortransfer'+optionsfortransfer);
 			var transfersplit = optionsfortransfer.split('##@##');
-			console.log('transfersplit'+transfersplit);
+			//console.log('transfersplit'+transfersplit);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('span#enabledtransfertext').html(transfersplit[0]);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('input#transfertypeselected').val(transfersplit[1]);
 			$('div.paymentmethods').find('div#manageBankAccounts').find('button#transferbtn').html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'+transfersplit[2]);	
@@ -1167,7 +1167,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	//function to redirect to dashboard
 	$scope.redirecToDashboard = function () {
 		bootbox.hideAll();	
-		modalInstance.$promise.then(modalInstance.hide);
+		$('body').click();
 		$window.location.href = '#/vendors';
 		
 	}
