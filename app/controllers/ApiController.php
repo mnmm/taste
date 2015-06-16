@@ -1821,16 +1821,37 @@ class ApiController extends BaseController {
 							$payment_title = '';
 							$payment_content = '';
 							if($listingdetail->vendor_paid_status == 1){
-								$pay_done_class = 'fade_pay';
-								$payment_status = 'paid';
-								$obj=new ptStripe(STRIPE_KEY);
+								if($listingdetail->payment_type != 2){
+									$pay_done_class = 'fade_pay';
+									$payment_status = 'paid';
+									$obj=new ptStripe(STRIPE_KEY);
 
-								$transferdata=$obj->retrieveTransfer($listingdetail->stripe_payment_id);
-								if(	$transferdata['status'] == 0){
+									$transferdata=$obj->retrieveTransfer($listingdetail->stripe_payment_id);
+									if(	$transferdata['status'] == 0){
+										
+										$transfer_date = date("n/j g:ia", $transferdata['data']->date);
+										
+										$transfer_amount = ($transferdata['data']->amount/100);
+										if(isset($listingdetail->payment_done_by) && $listingdetail->payment_done_by != ''){
+											if($listingdetail->payment_done_by == 0){
+												$get_transfer_user_name = 'Admin';
+											} else {
+												$get_transfer_user_name = PoDetail::get_user_detail_for_transfer($listingdetail->payment_done_by);
+											}
+											
+										} else {
+											$get_transfer_user_name = '';
+										}
+										
+										$payment_title = 'data-toggle="popover" title="Payment Details"';
+										$payment_content = 'Name : '.$get_transfer_user_name.'<br/>Payment date : '.$transfer_date.'<br/>Amuont : $'.$transfer_amount;
+									}
+								} else {
+									$pay_done_class = 'fade_pay';
+									$payment_status = 'paid';
+									$transfer_date = date("n/j g:ia", $listingdetail->payment_date);
 									
-									$transfer_date = date("n/j g:ia", $transferdata['data']->date);
-									
-									$transfer_amount = ($transferdata['data']->amount/100);
+									$transfer_amount = $listingdetail->total_amount;
 									if(isset($listingdetail->payment_done_by) && $listingdetail->payment_done_by != ''){
 										if($listingdetail->payment_done_by == 0){
 											$get_transfer_user_name = 'Admin';
@@ -1844,7 +1865,9 @@ class ApiController extends BaseController {
 									
 									$payment_title = 'data-toggle="popover" title="Payment Details"';
 									$payment_content = 'Name : '.$get_transfer_user_name.'<br/>Payment date : '.$transfer_date.'<br/>Amuont : $'.$transfer_amount;
+									
 								}
+								
 															
 							} else {
 								
