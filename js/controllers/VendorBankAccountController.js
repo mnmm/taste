@@ -328,6 +328,12 @@ var FormValidation = function () {
     };
 }();
 
+$('.date-picker').datepicker({
+	rtl: Metronic.isRTL(),
+	orientation: "left",
+	autoclose: true
+});
+            
 $('body').on('click', function (e) {
     $('.icon-info').each(function () {
 		//alert(e.target);
@@ -949,6 +955,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	//function to add payee details
 	$scope.addPayeeDetails = function () {
 			
+			
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
@@ -1011,6 +1018,12 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 					$('#manualAccount').find('input#paymenttype').val('manual');
 					$('#manualAccount').find('input#tax_id').val(data.taxinfo);
+					$('.date-picker').datepicker({
+						rtl: Metronic.isRTL(),
+						orientation: "left",
+						autoclose: true
+					});
+
 
 				} 		
 			});
