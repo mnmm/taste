@@ -1065,7 +1065,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 				if(data.status_code == 200){
 					
 					bootbox.dialog({
-						title:'Please add your checking account details',
+						title:'Please update your checking account details',
 						message: $('#manualAccount'),
 						show: false,
 						animate:true,
@@ -1080,7 +1080,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							}
 						  },
 						  success: {
-							label: "Update Account",
+							label: "Update",
 							className: "main-btn",
 							callback: function() {
 								
