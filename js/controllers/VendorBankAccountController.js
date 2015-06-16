@@ -353,7 +353,7 @@ var ComponentsPickers = function () {
                 orientation: "left",
                 autoclose: true
             }).on('changeDate', function (ev) {
-				   $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').html($('form#manualAccount').html());
+				   $('div.addaccountdetail').find('.modal-body').find('.bootbox-body').html($('form#manualAccount').clone());
                   // $(this).blur();
                  //  $(this).datepicker('hide');  
             });
