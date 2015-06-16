@@ -553,8 +553,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 											$('#manualAccount').find('input#paymenttype').val('manual');
 											$('#manualAccount').find('input#tax_id').val(data.taxinfo);
 										
-									} 		
-								});
+									
 									} else {
 										bootbox.dialog({
 											message: "Do you want to make payment to vendor?",
