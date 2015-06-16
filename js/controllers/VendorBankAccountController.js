@@ -352,6 +352,9 @@ var ComponentsPickers = function () {
               //  rtl: Metronic.isRTL(),
                 orientation: "left",
                 autoclose: true
+            }).on('changeDate', function (ev) {
+                   $(this).blur();
+                   $(this).datepicker('hide');
             });
             //$('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
         }
