@@ -1098,7 +1098,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.on('hide.bs.modal', function(e) {
 					
-						//$('#manualBankAccount').hide().appendTo('body');  
+						$('#manualBankAccount').hide().appendTo('.fade-in-up');  
 						
 					})
 					.modal('show');
