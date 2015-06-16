@@ -1076,6 +1076,21 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
                               Globals.url+'/assets/global/plugins/select2/select2.css',  
+                              '../../../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            '../../../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+                            '../../../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+                            '../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css',
+                            '../../../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+
+                            '../../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            '../../../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+                            '../../../assets/global/plugins/clockface/js/clockface.js',
+                            '../../../assets/global/plugins/bootstrap-daterangepicker/moment.min.js',
+                            '../../../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js',
+                            '../../../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
+                            '../../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+
+                            '../../../assets/admin/pages/scripts/components-pickers.js',
                               Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
                               Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',                           
                               Globals.url+'/assets/global/plugins/select2/select2.min.js',

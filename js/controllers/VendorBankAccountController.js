@@ -328,11 +328,6 @@ var FormValidation = function () {
     };
 }();
 
-$('.date-picker').datepicker({
-	rtl: Metronic.isRTL(),
-	orientation: "left",
-	autoclose: true
-});
             
 $('body').on('click', function (e) {
     $('.icon-info').each(function () {
@@ -1018,13 +1013,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 					$('#manualAccount').find('input#paymenttype').val('manual');
 					$('#manualAccount').find('input#tax_id').val(data.taxinfo);
-					$('.date-picker').datepicker({
-						rtl: Metronic.isRTL(),
-						orientation: "left",
-						autoclose: true
-					});
-
-
+					
 				} 		
 			});
 		});
