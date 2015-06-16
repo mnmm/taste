@@ -256,13 +256,13 @@ var FormValidation = function () {
 										required: true,
 										digits:true
 									},
-									account_number: {
+									account_number_manual: {
 										required:true,
 										digits:true,
 										maxlength:17
 									},
-									confirm_account_number: {
-										equalTo : "#account_number",
+									confirm_account_number_manual: {
+										equalTo : "#account_number_manual",
 										digits: true,
 										maxlength:17
 									}
