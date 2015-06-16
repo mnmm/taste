@@ -233,7 +233,7 @@ var FormValidation = function () {
 								   
 								},
 								rules: {
-									check:{
+									/*check:{
 										required:true
 									},
 									checkdate: {
@@ -244,7 +244,33 @@ var FormValidation = function () {
 									},
 									airwaybill: {
 										required:true
+									}*/
+									bankname:{
+										required:true,
+									},
+									nameonaccount:{
+										required:true,
+									},
+									mailingaddress: {
+										required: true,
+										email:true
+									},
+									routing: {
+										checkroutingnumber:true,
+										required: true,
+										digits:true
+									},
+									account_number: {
+										required:true,
+										digits:true,
+										maxlength:17
+									},
+									confirm_account_number: {
+										equalTo : "#account_number",
+										digits: true,
+										maxlength:17
 									}
+									
 								},
 
 								invalidHandler: function (event, validator) { //display error alert on form submit              
@@ -272,7 +298,7 @@ var FormValidation = function () {
 									
 									var vendoruserid  = localStorage.getItem('userid');
 									
-									var check = $('#manualAccount').find('input#check').val();
+									/*var check = $('#manualAccount').find('input#check').val();
 									var checkdate =  $('#manualAccount').find('input#checkdate').val();
 									var carrier =  $('#manualAccount').find('select#carrier').val();
 									var airwaybill =$('#manualAccount').find('input#airwaybill').val();
@@ -286,9 +312,13 @@ var FormValidation = function () {
 									var state =$('#manualAccount').find('input#state').val();
 									var zip =$('#manualAccount').find('input#zip').val();*/
 									
+									var bankname = $('#manualAccount').find('input#bankname').val();
+									var nameonaccount = $('#manualAccount').find('input#nameonaccount').val();
+									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
+									var routing_number =  $('#manualAccount').find('input#routing').val();
+									var account_number =  $('#manualAccount').find(input#account_number').val();
 									var id =$('#manualAccount').find('input#bankaccountid').val();
-									
-								     var authcode = localStorage.getItem('payauthtoken');
+									var authcode = localStorage.getItem('payauthtoken');
 								     
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
@@ -296,10 +326,14 @@ var FormValidation = function () {
 											data: {
 												action: 'savebankaccountinfomanual',
 												vendorid:vendoruserid,
-												check:check,
+												/*check:check,
 												checkdate:checkdate,
 												carrier:carrier,
-												airwaybill:airwaybill,
+												airwaybill:airwaybill,*/
+												bankname:bankname,
+												nameonaccount:nameonaccount,
+												routing_number:routing_number,
+												account_number:account_number,
 												mailingaddress:mailingaddress,
 												bankid:id,
 												authcode:authcode
@@ -875,7 +909,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					})
 					.modal('show');
 					
-					//$('#addBankAccount').find('#accountingpopover').click();
+					$('#addBankAccount').find('#accountingpopover').click();
 					$('#addBankAccount').find('#routingpopover').click();
 					var routingcss = 0;
 					$('#addBankAccount').find('.popover').each(function(){
@@ -1020,7 +1054,6 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					
 					bootbox.dialog({
 						title:'Please add your checking account details',
-						//message: $('#manualBankAccount'),
 						message: $('#manualAccount'),
 						show: false,
 						animate:true,
@@ -1049,30 +1082,41 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						} 
 					})
 					.on('shown.bs.modal', function() {
-						
-						//$('#manualBankAccount').show(); 
-						//$('#manualBankAccount').validate().resetForm();    
+
 						$('#manualAccount').show(); 
 						$('#manualAccount').validate().resetForm(); 	
 							
 					})
 					.on('hide.bs.modal', function(e) {
 					
-						var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val();
+						/*var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val();
 						
 						if (hiddendatepicker == 1) {
 							// datepicker is open. you need the second condition because it starts off as visible but empty
 						} else {
 							console.log('hiddendatepicker'+hiddendatepicker);
 							$('#manualAccount').hide().appendTo('.fade-in-up');  
-						}
+						}*/
+						
 						
 					})
 					.modal('show');
 					
 					//$('#manualBankAccount').find('input#paymenttype').val('manual');
 					//$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
-					
+					$('#manualAccount').find('#accountingpopover').click();
+					$('#manualAccount').find('#routingpopover').click();
+					var routingcss = 0;
+					$('#manualAccount').find('.popover').each(function(){
+						if(routingcss != 0){
+							$(this).css('display','block');
+						} else {
+							
+							$(this).css('left','231.167px');
+							$(this).css('top','-91.5px');
+						}
+						routingcss++;
+					});
 					$('#manualAccount').find('input#paymenttype').val('manual');
 					$('#manualAccount').find('input#tax_id').val(data.taxinfo);
 					

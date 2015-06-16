@@ -971,6 +971,43 @@
 		}
 		
 		
+		//function to save manual bank account info
+		public static function save_manual_bank_info_new($vendorid,$bankname,$nameonaccount,$routing_number,$account_number,$mailingaddress,$authcode){
+			if($authcode != ''){
+				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
+				if(isset($expire_auth_code->id ) && $expire_auth_code->id != '' && $expire_auth_code->status == 1){
+					$insertBankDetailAr = array('vendorid' => $vendorid,'bankname' => $bankname,'nameonaccount'=>$nameonaccount,'routing_number'=>$routing_number,'account_number'=>$account_number,'mailing_address' => $mailingaddress); 
+					$id = DB::table('bank_details_info_manual')->insertGetId($insertBankDetailAr);
+					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
+					return $id;
+				} else {
+					return 0;
+				} 
+			} else {
+				return 0;
+			}
+		}
+		
+		//function to update manual bank account info
+		public static function update_manual_bank_info_new($bankid,$vendorid,$bankname,$nameonaccount,$routing_number,$account_number,$mailingaddress,$authcode){
+
+			if($authcode != ''){
+				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
+				if(isset($expire_auth_code->id ) && $expire_auth_code->id != '' && $expire_auth_code->status == 1){
+					
+					$insertBankDetailAr = array('bankname' => $bankname,'nameonaccount' => $nameonaccount,'routing_number'=>$routing_number,'account_number'=>$account_number,'mailing_address'=>$mailingaddress); 
+					DB::table('bank_details_info_manual')->where('id','=',$bankid)->update($insertBankDetailAr);
+					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
+					return 1;
+				} else {
+					return 0;
+				} 
+			} else {
+				return 0;
+			}
+		}
+		
+		
 		//function to update manual bank account info
 		public static function update_manual_bank_info($bankid,$vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode){
 

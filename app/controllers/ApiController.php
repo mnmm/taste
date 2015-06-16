@@ -1424,7 +1424,7 @@ class ApiController extends BaseController {
 
 			}
 			
-			if (array_key_exists("check", $data1))
+			/*if (array_key_exists("check", $data1))
 			{
 				$check = $data1->check;
 			}
@@ -1462,6 +1462,42 @@ class ApiController extends BaseController {
 			{
 				$airwaybill = '';
 
+			}*/
+			
+			if (array_key_exists("bankname", $data1))
+			{
+				$bankname = $data1->bankname;
+			}
+			else
+			{
+				 $bankname = '';
+			}
+			
+			if (array_key_exists("nameonaccount", $data1))
+			{
+				$nameonaccount = $data1->nameonaccount;
+			}
+			else
+			{
+				 $nameonaccount = '';
+			}
+			
+			if (array_key_exists("routing_number", $data1))
+			{
+				$routing_number = $data1->routing_number;
+			}
+			else
+			{
+				 $routing_number = '';
+			}
+			
+			if (array_key_exists("account_number", $data1))
+			{
+				$account_number = $data1->account_number;
+			}
+			else
+			{
+				 $account_number = '';
 			}
 			
 			if (array_key_exists("mailingaddress", $data1))
@@ -2115,7 +2151,8 @@ class ApiController extends BaseController {
 				if($bankid != '' && $bankid == 0){
 					
 					//$save_manual_bank_info = PoDetail::save_manual_bank_info($vendorid,$payeename,$mailingaddress,$zipcode,$authcode);
-					$save_manual_bank_info = PoDetail::save_manual_bank_info($vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode);
+					//$save_manual_bank_info = PoDetail::save_manual_bank_info($vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode);
+					$save_manual_bank_info = PoDetail::save_manual_bank_info_new($vendorid,$bankname,$nameonaccount,$routing_number,$account_number,$mailingaddress,$authcode);
 					if($save_manual_bank_info != '' && $save_manual_bank_info != 0){
 						$result['status_code']=200;
 						$result['message'] = 'Bank Account Info saved sucessfully';
@@ -2124,7 +2161,9 @@ class ApiController extends BaseController {
 						$result['message'] = 'Token link for adding/updating bank details has been expired.';
 					}
 				} else {
-					$update_manual_bank_info = PoDetail::update_manual_bank_info($bankid,$vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode);
+					/*$update_manual_bank_info = PoDetail::update_manual_bank_info($bankid,$vendorid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$authcode);*/
+					
+					$update_manual_bank_info = PoDetail::update_manual_bank_info_new($bankid,$vendorid,$bankname,$nameonaccount,$routing_number,$account_number,$mailingaddress,$authcode);
 					if($update_manual_bank_info != '' && $update_manual_bank_info != 0){
 						$result['status_code']=200;
 						$result['message'] = 'Bank Account Info saved sucessfully';
