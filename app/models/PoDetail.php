@@ -1052,6 +1052,19 @@
 			return $get_vendor_info;
 		}
 		
+		public static function check_transfer_option($poid){
+			
+			$get_vendor_info =  DB::table('taste_po')->where('id','=',$vendor_email)->first();
+			
+			if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
+				$user_data = DB::table('users')->where('email','=',$get_vendor_info->vendor_email)->first();
+				return $user_data->transfer_option;
+			} else {
+				return 0;
+			}
+			
+		}
+		
 	}
 	
 	

@@ -2183,6 +2183,9 @@ class ApiController extends BaseController {
 					$result['status_code']=201;
 					$result['message'] = 'No records exists';
 				}
+			} else if($action == 'checktransferoption'){
+				$change_setting_status = PoDetail::check_transfer_option($poid);
+				
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
