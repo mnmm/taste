@@ -361,54 +361,72 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		//console.log('paymentamount'+paymentamount+'vendorid'+vendorid);
 		if(poid != ''){
 				if(paymentamount != 0){
-							bootbox.dialog({
-							message: "Do you want to make payment to vendor?",
-							title: "Payment Confirmation",
-							size: 'small',
-							className:'paymentlinkconfirmation',
-							buttons: {
-							  danger: {
-								label: "Cancel",
-								className: "cancel-btn",
-								callback: function() {
-									bootbox.hideAll();	
-								}
-							  },
-							  success: {
-								label: "Pay",
-								className: "main-btn",
-								callback: function() {
-									
-									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
-									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-									//$http.defaults.headers.common['Content-type'] ='application/json';
-									$http.post($scope.apppath+'/api/getunpaidpo',{poid:poid,action:'makevendorpayment',amount:paymentamount}).
-										success(function(data, status, headers, config) {
-											//console.log(data);
-											//console.log(data.status_code);
-											if(data.status_code == 200){
-												$('a#'+poid).removeClass('makepayment');
-												$('a#'+poid).addClass('fade_pay');
-												bootbox.hideAll();	
-											} else {
-												if(data.status_code == 201){
-													if(data.message != ''){
-														$('div.bootbox').find('div.bootbox-body').append('<p style="color:red;">'+data.message+'</p>');
-														
-													} else {
-														//createauthtoken(sendrequestlink);
-													}
+						$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+						$http.post($scope.apppath+'/api/getunpaidpo',{poid:poid,action:'checktransferoption'}).
+							success(function(data, status, headers, config) {
+								if(data.status_code == 200){
+									if(data.transfer_option == 1){
+										
+									} else {
+										bootbox.dialog({
+											message: "Do you want to make payment to vendor?",
+											title: "Payment Confirmation",
+											size: 'small',
+											className:'paymentlinkconfirmation',
+											buttons: {
+											  danger: {
+												label: "Cancel",
+												className: "cancel-btn",
+												callback: function() {
+													bootbox.hideAll();	
+												}
+											  },
+											  success: {
+												label: "Pay",
+												className: "main-btn",
+												callback: function() {
 													
-												} 
-												
+													$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+													$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+													//$http.defaults.headers.common['Content-type'] ='application/json';
+													$http.post($scope.apppath+'/api/getunpaidpo',{poid:poid,action:'makevendorpayment',amount:paymentamount}).
+														success(function(data, status, headers, config) {
+															//console.log(data);
+															//console.log(data.status_code);
+															if(data.status_code == 200){
+																$('a#'+poid).removeClass('makepayment');
+																$('a#'+poid).addClass('fade_pay');
+																bootbox.hideAll();	
+															} else {
+																if(data.status_code == 201){
+																	if(data.message != ''){
+																		$('div.bootbox').find('div.bootbox-body').append('<p style="color:red;">'+data.message+'</p>');
+																		
+																	} else {
+																		//createauthtoken(sendrequestlink);
+																	}
+																	
+																} 
+																
+															}
+													});
+													return false;
+													
+												}
+											  }
 											}
-									});
-									return false;
+									 });
+									}
+									
+								} else {
+									if(data.status_code == 201){
+										
+									} 
 									
 								}
-							  }
-							}
-					 });
+						});
+							
 					 
 				} 
 				
