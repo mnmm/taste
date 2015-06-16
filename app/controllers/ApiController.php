@@ -1619,15 +1619,6 @@ class ApiController extends BaseController {
 		}
 		if($action == 'makevendorpayment'){
 			
-			if (array_key_exists("poid", $data1))
-			{
-				$poid = $data1->poid;
-			}
-			else
-			{
-				$poid = '';
-
-			}
 			
 			if (array_key_exists("amount", $data1))
 			{
@@ -1640,6 +1631,20 @@ class ApiController extends BaseController {
 			}
 			
 		}
+		
+		if($action == 'makevendorpayment' || $action == 'checktransferoption' ){
+			
+			if (array_key_exists("poid", $data1))
+			{
+				$poid = $data1->poid;
+			}
+			else
+			{
+				$poid = '';
+
+			}
+		}
+		
 
 		
 		$validate_data = array(
