@@ -202,6 +202,65 @@
   
 </form>
 
+<form class="form-horizontal" name="manualAccount" novalidate id="manualAccount" style="display: none;"> 
+	<p id="accounterror" class="help-error" style="display:none;"></p>
+	
+    <div class="form-group"  id="payeeinfo">
+		<label class="col-md-5 control-label" for="name">Cheque #:</label>
+        <div class="col-md-5">
+            <input id="cheque" name="cheque" type="text" placeholder="Cheque Number" class="form-control input-md">
+        </div>
+   </div>
+   
+    <div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Cheque Date:</label>
+        <div class="col-md-5">
+            <input id="chequedate" name="chequedate" type="text" placeholder="Cheque Date" class="form-control input-md" >
+        </div>
+   </div>
+   
+    <div class="form-group" id="zipcodefield">
+		<label class="col-md-5 control-label" for="name">Select Carrier:</label>
+        <div class="col-md-5">
+            <select name="carrier" id="carrier">
+				<option value="">Select Carrier</option>
+				<option value="usps">USPS</option>
+				<option value="fedex">FedEx</option>
+				<option value="ups">UPS</option>
+				<option value="prioritymail">Priority Mail</option>
+            </select>
+        </div>
+   </div>
+   
+    <div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Mail Address:</label>
+        <div class="col-md-5">
+            <input id="mailingaddress" name="mailingaddress" type="text" placeholder="Mailing Address" class="form-control input-md" >
+        </div>
+   </div>
+   
+   <div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Airway Bill:</label>
+        <div class="col-md-5">
+            <input id="airwaybill" name="airwaybill" type="text" placeholder="Airway Bill" class="form-control input-md" >
+        </div>
+   </div>
+
+  <div class="form-group">
+	<p style="color: buttonshadow;font-size: 10px;margin-left:20%;margin-right:15%">
+	Disclaimer: All Credit card and banking information is stored with Stripe and we are PCI compliant. For details, please check
+	<a target="_blank" href="https://stripe.com/help/security">https://stripe.com/help/security</a>
+	</p>
+  </div>
+
+  <input type="hidden" name="paymenttype" value="" id="paymenttypemanual">
+   <input type="hidden" name="bankaccountid" value="0" id="bankaccountid">
+   <input type="submit" id="savemanualbankinfo" style="display:none;">
+
+  </div>
+  
+</form>
+
 
 <form class="form-horizontal" name="transfers" novalidate id="transfers" style="display: none;"> 
 	<div id="transfertextautomatic" style="display:none;">
