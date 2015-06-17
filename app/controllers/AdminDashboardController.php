@@ -16,7 +16,7 @@ class AdminDashboardController extends BaseController {
 	*/
 	
 	public function viewdashboard() {
-		$uri = $request->url();
+		$uri = Request::url();
 		echo 'url is'.$uri;
 		return View::make('index');
 	}
