@@ -181,3 +181,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1010', end
 .login .page-content{
 	background-color:#364150 !important;
 }
+#loginForm .form-group{ margin-left:0; margin-right:0;}
