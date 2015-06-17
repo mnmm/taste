@@ -64,8 +64,10 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
 	<div class="page-container">
-		<div class="content">
-			
+		<div class="page-content-wrapper" >
+			<div class="content">
+				
+			</div>
 		</div>
 	</div>
 	<!-- BEGIN PAGE SPINNER -->
