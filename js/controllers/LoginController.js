@@ -64,7 +64,8 @@
     };
 }();
 
-jQuery('#register-btn').click(function() {
+
+/*jQuery('#register-btn').click(function() {
 	jQuery('.login-form').hide();
 	jQuery('.register-form').show();
 });
@@ -72,15 +73,22 @@ jQuery('#register-btn').click(function() {
 jQuery('#register-back-btn').click(function() {
 	jQuery('.login-form').show();
 	jQuery('.register-form').hide();
-});
+});*/
         
 MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,authenticationSvc) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	FormValidation.init();
 	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 	
+	$scope.createAccount = function() {
+		$('.login-form').hide();
+		$('.register-form').show();
+	}
+
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
     $rootScope.settings.layout.showAllOptions = true;
     
 }); 
+
+
