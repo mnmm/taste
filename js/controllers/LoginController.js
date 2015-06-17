@@ -115,8 +115,9 @@
 										.closest('.form-group').removeClass('has-error'); // set success class to the control group
 								},
 
-								submitHandler: function (form1) {
-										$('#submit_button_login').click();
+								submitHandler: function (form2) {
+										console.log('comes here');
+										//$('#submit_button_login').click();
 									}
 								});
 	}
