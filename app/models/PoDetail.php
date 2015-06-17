@@ -1083,7 +1083,7 @@
 	  }
 	  
 	  //function to update manual bank account info
-		public static function pay_via_check($fullname,$email_address,$password,$address,$city,$state,$zip,$phone){
+		public static function pay_via_check($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription){
 			
 			$check_vendor_account = DB::table('users')->where('email',$email_address)->first();
 			if(isset($check_vendor_account->id) && $check_vendor_account->id != ''){
@@ -1095,7 +1095,15 @@
 				$register->name = $fullname;
 				$register->email = $email_address;
 				$register->password = Hash::make($password);
+				$register->location = $location;
 				$register->address = $address;
+				$register->address2 = $address2;
+				$register->crossstreet = $crossstreet;
+				$register->neighborhood = $neighborhood;
+				$register->entries = $entries;
+				$register->daysopen = $daysopen;
+				$register->businesshours = $businesshours;
+				$register->locationdescription = $locationdescription;
 				$register->city = $city;
 				$register->state = $state;
 				$register->zip = $zip;

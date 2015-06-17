@@ -1790,6 +1790,86 @@ class ApiController extends BaseController {
 
 			}
 			
+			if (array_key_exists("location", $data1))
+			{
+				$location = $data1->location;
+			}
+			else
+			{
+				$location = '';
+
+			}
+			
+			if (array_key_exists("address2", $data1))
+			{
+				$address2 = $data1->address2;
+			}
+			else
+			{
+				$address2 = '';
+
+			}
+			
+			if (array_key_exists("crossstreet", $data1))
+			{
+				$crossstreet = $data1->crossstreet;
+			}
+			else
+			{
+				$crossstreet = '';
+
+			}
+			
+			if (array_key_exists("neighborhood", $data1))
+			{
+				$neighborhood = $data1->neighborhood;
+			}
+			else
+			{
+				$neighborhood = '';
+
+			}
+			
+			if (array_key_exists("entries", $data1))
+			{
+				$entries = $data1->entries;
+			}
+			else
+			{
+				$entries = '';
+
+			}
+
+			if (array_key_exists("daysopen", $data1))
+			{
+				$daysopen = $data1->daysopen;
+			}
+			else
+			{
+				$daysopen = '';
+
+			}
+			
+			if (array_key_exists("businesshours", $data1))
+			{
+				$businesshours = $data1->businesshours;
+			}
+			else
+			{
+				$businesshours = '';
+
+			}
+			
+			if (array_key_exists("locationdescription", $data1))
+			{
+				$locationdescription = $data1->locationdescription;
+			}
+			else
+			{
+				$locationdescription = '';
+
+			}
+			
 		}
 		
 
@@ -2378,7 +2458,7 @@ class ApiController extends BaseController {
 					$result['message'] = 'No option exists';
 				}
 			} else if($action == 'createvendoraccount'){
-				$check_vendor_account = PoDetail::create_vendor_account($fullname,$email_address,$password,$address,$city,$state,$zip,$phone);
+				$check_vendor_account = PoDetail::create_vendor_account($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription);
 				if(isset($check_vendor_account) &&  $check_vendor_account != '' &&  $check_vendor_account != 0){
 					$result['status_code']=200;
 					$result['accountcreated'] = 1;

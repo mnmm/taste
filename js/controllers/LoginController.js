@@ -164,7 +164,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		console.log($scope.fullname);
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
-		$http.post($scope.apppath+'/api/getunpaidpo',{fullname:$scope.fullname,email_address:$scope.email_address,password:$scope.register_password,address:$scope.address,city:$scope.city,state:$scope.state,zip:$scope.zip,phone:$scope.phone,action:'createvendoraccount'}).
+		$http.post($scope.apppath+'/api/getunpaidpo',{fullname:$scope.fullname,email_address:$scope.email_address,password:$scope.register_password,address:$scope.address,city:$scope.city,state:$scope.state,zip:$scope.zip,phone:$scope.phone,location:$scope.location,address2:$scope.address2,crossstreet:$scope.crossstreet,neighborhood:$scope.neighborhood,entries:$scope.entries,daysopen:$scope.daysopen,businesshours:$scope.businesshours,locationdescription:$scope.locationdescription,action:'createvendoraccount'}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
 					
