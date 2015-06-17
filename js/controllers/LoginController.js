@@ -116,7 +116,7 @@
 								},
 
 								submitHandler: function (form2) {
-										createVendorAccount();
+										$('button#createAccount').click();
 									}
 								});
 	}
@@ -160,7 +160,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$('.register-form').hide();
 	}
 	
-	function createVendorAccount(){
+	$scope.SignUp = function() {
 		consloe.log('here');
 	}
 	
