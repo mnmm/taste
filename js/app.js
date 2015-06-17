@@ -500,7 +500,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                 "viewB": {
                     templateUrl: "views/dashboard.html"
                 }
-            }
+            },
            // templateUrl: "views/dashboard.html",            
             data: {pageTitle: 'Admin Dashboard Template', authorizedRoles: ['admin']},
             controller: "DashboardController",
