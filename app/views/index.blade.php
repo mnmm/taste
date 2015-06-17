@@ -175,9 +175,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<img src="../../assets/admin/layout/img/logo-big.png" alt=""/>
 	</a>
 </div>
-<div class="copyright">
-	 2014 © Metronic. Admin Dashboard Template.
-</div>
+
 <!-- END LOGIN -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
