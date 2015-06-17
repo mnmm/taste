@@ -244,4 +244,5 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = false;
+    $rootScope.settings.layout.showAllOptions = false;
 });
