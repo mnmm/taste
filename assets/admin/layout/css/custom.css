@@ -178,3 +178,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1010', end
     padding-left: 15px;
     padding-right: 5px;
 }
+.login .page-container-bg-solid .page-content{
+	background-color:#364150 !important;
+}
