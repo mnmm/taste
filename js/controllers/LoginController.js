@@ -171,7 +171,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 				} else {
 					if(data.status_code == 201){
 						if(data.accountcreated ==  0){
-							
+							$('#registerformalert').show(data.message);
 						} else {
 							
 						}

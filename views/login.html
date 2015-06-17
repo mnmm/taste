@@ -73,6 +73,11 @@
 	<!-- END FORGOT PASSWORD FORM -->
 	<!-- BEGIN REGISTRATION FORM -->
 	<form class="register-form" novalidate method="post" ng-controller="LoginController" id="registerForm" class="form-horizontal">
+		<div class="alert alert-danger display-hide" id="registerformalert">
+			<button class="close" data-close="alert"></button>
+			<span>
+			Enter any username and password. </span>
+		</div>
 		<h3>Sign Up</h3>
 		<p class="hint">
 			 Enter your personal details below:
