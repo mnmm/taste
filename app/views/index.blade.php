@@ -48,7 +48,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END THEME STYLES -->
 
 <link rel="shortcut icon" href="favicon.ico"/>
-<link ng-if="showHeader" href="<?php echo Request::root(); ?>/assets/admin/pages/css/login.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo Request::root(); ?>/assets/admin/pages/css/login.css" rel="stylesheet" type="text/css"/>
 </head>
 <!-- END HEAD -->
 
