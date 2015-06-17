@@ -161,7 +161,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	}
 	
 	$scope.SignUp = function() {
-		consloe.log('here');
+		console.log('here');
 	}
 	
 	function createauthtoken(){
