@@ -75,7 +75,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			</a>
 		</div>
 
-		<div class="page-content">
+		<div ng-class="{'page-content': settings.layout.showAllOptions}">
 		
 			<!-- BEGIN ACTUAL CONTENT -->
 			<div ui-view class="fade-in-up">
