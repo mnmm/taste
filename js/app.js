@@ -1166,7 +1166,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         })
 		
 		 // User Profile Dashboard
-        .state("login", {
+      /*  .state("login", {
             url: "/login",
             templateUrl: "views/login.html",
             data: {pageTitle: 'Login', authorizedRoles: ['vendor','admin','all']},
@@ -1187,6 +1187,28 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                               Globals.url+'/js/controllers/LoginController.js'
                               
                               
+                        ]                    
+                    });
+                }]
+            }
+        })*/
+        
+        .state("login", {
+            url: "/login",
+            templateUrl: "views/login.html",
+            data: {pageTitle: 'Login', authorizedRoles: ['vendor','admin','all']},
+            controller: "LoginController",
+            resolve: {
+                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',  
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+							  Globals.url+'/assets/admin/pages/css/login.css',                          
+                              Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                              Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
+                              Globals.url+'assets/admin/pages/scripts/login.js',
+                              Globals.url+'/js/controllers/LoginController.js' 
                         ]                    
                     });
                 }]
