@@ -61,10 +61,10 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+<body ng-if="showHeader" ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
 
 	<!-- BEGIN PAGE SPINNER -->
-	<div ng-spinner-bar class="page-spinner-bar" ng-if="showHeader">
+	<div ng-spinner-bar class="page-spinner-bar">
 		<div class="bounce1"></div>
 		<div class="bounce2"></div>
 		<div class="bounce3"></div>
@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END PAGE SPINNER -->
 
 	<!-- BEGIN HEADER -->
-	<div ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 	</div>
 	<!-- END HEADER -->
 
@@ -82,15 +82,15 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
-		<div ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper">			
+		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper">			
 		</div>
 		<!-- END SIDEBAR -->
 
 		<!-- BEGIN CONTENT -->
-		<div class="page-content-wrapper" ng-if="showHeader">
+		<div class="page-content-wrapper">
 			<div class="page-content">
 				<!-- BEGIN STYLE CUSTOMIZER(optional) -->
-				<div ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm">				
+				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm">				
 				</div>
 				<!-- END STYLE CUSTOMIZER -->
 						
@@ -110,7 +110,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END CONTAINER -->
 
 	<!-- BEGIN FOOTER -->
-	<div ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
 	</div>
 	<!-- END FOOTER -->
 
@@ -164,4 +164,17 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
+<body class="login" ng-controller="AppController">
+<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+<div class="menu-toggler sidebar-toggler">
+</div>
+<!-- END SIDEBAR TOGGLER BUTTON -->
+<!-- BEGIN LOGO -->
+<div class="logo">
+	<a href="index.html">
+	<img src="<?php echo Request::root(); ?>/assets/admin/layout/img/logo-big.png" alt=""/>
+	</a>
+</div>
+
+</body>
 </html>
