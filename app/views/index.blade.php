@@ -142,18 +142,24 @@ License: You must have a valid license purchased only from themeforest(the above
 	<script src="../../../assets/global/plugins/respond.min.js"></script>
 	<script src="../../../assets/global/plugins/excanvas.min.js"></script> 
 	<![endif]-->
-	<div id="" ng-if="showHeader">
+
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>	
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-	<!-- END CORE JQUERY PLUGINS -->
-
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+	<!-- END PAGE LEVEL PLUGINS -->
+	
 	<!-- BEGIN CORE ANGULARJS PLUGINS -->
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/angular.min.js" type="text/javascript"></script>	
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
@@ -161,41 +167,16 @@ License: You must have a valid license purchased only from themeforest(the above
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
-	<!-- END CORE ANGULARJS PLUGINS -->
-	
+	<!-- END CORE ANGULARJS PLUGINS -->	
 	<!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
 	<script src="<?php echo Request::root(); ?>/js/app.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/js/directives.js" type="text/javascript"></script>
 	<!-- END APP LEVEL ANGULARJS SCRIPTS -->
-
-	<!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
-	<script src="<?php echo Request::root(); ?>/assets/global/scripts/metronic.js" type="text/javascript"></script>
-	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
-	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>  
-	<!-- END APP LEVEL JQUERY SCRIPTS -->
-
-	<script type="text/javascript">
-		/* Init Metronic's core jquery plugins and layout scripts */
-		$(document).ready(function() {   
-			Metronic.init(); // Run metronic theme
-			//Metronic.setAssetsPath('../../../assets/'); // Set the assets folder path	
-			Metronic.setAssetsPath('http://localhost/laravel/assets/'); // Set the assets folder path			
-		});
-	</script>
-	</div>
-	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-	<script src="<?php echo Request::root(); ?>/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-	<script src="<?php echo Request::root(); ?>/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-	<!-- END CORE PLUGINS -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-	<!-- END PAGE LEVEL PLUGINS -->
+	
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="<?php echo Request::root(); ?>/assets/global/scripts/metronic.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>  
 	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
 	<script type="text/javascript">
