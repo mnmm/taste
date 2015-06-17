@@ -61,8 +61,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body ng-if="userroleInfo.role != ''" ng-controller="AppController" class="login" >
-	
+<body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+
 	<!-- BEGIN PAGE SPINNER -->
 	<div ng-spinner-bar class="page-spinner-bar">
 		<div class="bounce1"></div>
@@ -70,12 +70,12 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="bounce3"></div>
 	</div>
 	<!-- END PAGE SPINNER -->
-	<div >
+
 	<!-- BEGIN HEADER -->
-	<div ng-if="userroleInfo.role != ''" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 	</div>
 	<!-- END HEADER -->
-	
+
 	<div class="clearfix">
 	</div>
 
@@ -110,7 +110,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END CONTAINER -->
 
 	<!-- BEGIN FOOTER -->
-	<div ng-if="userroleInfo.role != ''" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
 	</div>
 	<!-- END FOOTER -->
 
@@ -161,7 +161,6 @@ License: You must have a valid license purchased only from themeforest(the above
 			Metronic.setAssetsPath('http://localhost/laravel/assets/'); // Set the assets folder path			
 		});
 	</script>
-	
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
