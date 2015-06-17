@@ -506,7 +506,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                               Globals.url+'/assets/global/plugins/select2/select2.css',                             
                               Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
                               Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                              Globals.url+'/js/controllers/ServiceAgreementController.js'
+                              Globals.url+'/js/controllers/AgreementController.js'
                         ]                    
                     });
                 }]
