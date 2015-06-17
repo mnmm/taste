@@ -10,6 +10,7 @@ MetronicApp.controller('VendorDashboardController', function($rootScope, $scope,
         $('.theme-panel').css('display','block');
         $('.page-quick-sidebar-wrapper').css('display','block');
         $('.page-footer').css('display','block');
+        $('.logo').css('display','none');
         var authtoken = localStorage.getItem('access_token');
        // var renderAction = $route.current.action;
       // $scope.location = $location.url();
