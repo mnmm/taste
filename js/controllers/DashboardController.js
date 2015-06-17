@@ -8,6 +8,9 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
     $scope.$on('$viewContentLoaded', function() {   
         // initialize core components
         Metronic.initAjax();
+        $('.page-header').css('display','block');
+        $('.page-sidebar-wrapper').css('display','block');
+        $('.page-quick-sidebar-wrapper').css('display','block');
 		var authtoken = localStorage.getItem('access_token');
 		
 		function getunpaidpo(){
