@@ -90,6 +90,9 @@
 									zip: {
 										required: true
 									},
+									entries: {
+										required: true
+									},
 									tnc: {
 										required: true
 									}
