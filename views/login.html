@@ -72,27 +72,27 @@
 	</form>
 	<!-- END FORGOT PASSWORD FORM -->
 	<!-- BEGIN REGISTRATION FORM -->
-	<form class="register-form" action="index.html" method="post">
+	<form class="register-form" novalidate method="post" ng-controller="LoginController" id="registerForm" class="form-horizontal">
 		<h3>Sign Up</h3>
 		<p class="hint">
 			 Enter your personal details below:
 		</p>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Full Name</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname"/>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" id="fullname"/>
 		</div>
 		<div class="form-group">
 			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 			<label class="control-label visible-ie8 visible-ie9">Email</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email_address" id="email_address"/>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Password</label>
-			<input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
+			<input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="register_password" id="register_password"/>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-			<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword"/>
+			<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword" id="rpassword"/>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Address</label>
@@ -104,11 +104,15 @@
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">State</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city"/>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="State" name="state"/>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Zip</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city"/>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="Zip" name="zip"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Phone</label>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="Phone" name="phone"/>
 		</div>
 		<!--<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Country</label>
@@ -357,8 +361,7 @@
 			<label class="control-label visible-ie8 visible-ie9">Username</label>
 			<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
 		</div>-->
-		
-		
+
 		<div class="form-group margin-top-20 margin-bottom-20">
 			<label class="check">
 			<input type="checkbox" name="tnc"/> I agree to the <a href="javascript:;">
