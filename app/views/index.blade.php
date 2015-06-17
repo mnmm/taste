@@ -74,7 +74,9 @@ License: You must have a valid license purchased only from themeforest(the above
 			<img src="<?php echo Request::root(); ?>/assets/admin/layout/img/logo-big.png" alt=""/>
 			</a>
 		</div>
-
+		<script type="text/javascript">
+			console.log(settings.layout.showAllOptions);
+		</script>
 		<div ng-class="{'page-content': settings.layout.showAllOptions}">
 		
 			<!-- BEGIN ACTUAL CONTENT -->
