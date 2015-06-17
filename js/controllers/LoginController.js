@@ -65,20 +65,34 @@
 								focusInvalid: false, // do not focus the last invalid input
 								ignore: "",  // validate all fields including form hidden input
 								rules: {
-									email: {
-										required: true,
-										email:true
+									fullname: {
+										required: true
 									},
-									password:{
+									email_address: {
+										required: true,
+										email: true
+									},
+									register_password: {
+										required: true
+									},
+									rpassword: {
+										equalTo: "#register_password"
+									},
+									address: {
+										required: true
+									},
+									city: {
+										required: true
+									},
+									state: {
+										required: true
+									},
+									zip: {
+										required: true
+									},
+									tnc: {
 										required: true
 									}
-								},
-								messages: {
-										email: {
-											required: "Email is required",
-											email: "Please provide a valid email address"
-										},
-										password: "Password is required",
 								},
 								invalidHandler: function (event, validator) { //display error alert on form submit              
 									success1.hide();
@@ -102,7 +116,6 @@
 								},
 
 								submitHandler: function (form1) {
-										
 										$('#submit_button_login').click();
 									}
 								});
