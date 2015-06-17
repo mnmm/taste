@@ -64,26 +64,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'login': settings.layout.showAllOptions,'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
 
-
-		<div class="menu-toggler sidebar-toggler">
-		</div>
-		<!-- END SIDEBAR TOGGLER BUTTON -->
-		<!-- BEGIN LOGO -->
-		<div class="logo">
-			<a href="javascript:void(0);">
-			<img src="<?php echo Request::root(); ?>/assets/admin/layout/img/logo-big.png" alt=""/>
-			</a>
-		</div>
-		
-		<div class="checkhere" ng-class="{'page-content': settings.layout.showAllOptions }" >
-		
-			<!-- BEGIN ACTUAL CONTENT -->
-			<div ui-view class="fadeclasstest" ng-class="{'fade-in-up': settings.layout.showAllOptions }">
-			</div> 
-			<!-- END ACTUAL CONTENT -->
-			
-		</div>
-			
 	<!-- BEGIN PAGE SPINNER -->
 	<div ng-spinner-bar class="page-spinner-bar">
 		<div class="bounce1"></div>
@@ -108,8 +88,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- END SIDEBAR -->
 
 		<!-- BEGIN CONTENT -->
-		<div class="page-content-wrapper" ng-if="showHeader">
+		<div class="page-content-wrapper">
 			<div class="page-content">
+				<div class="logo">
+					<a href="javascript:void(0);">
+					<img src="<?php echo Request::root(); ?>/assets/admin/layout/img/logo-big.png" alt=""/>
+					</a>
+				</div>
 				<!-- BEGIN STYLE CUSTOMIZER(optional) -->
 				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm" style="display:none;">				
 				</div>
