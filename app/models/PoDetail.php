@@ -1080,7 +1080,33 @@
 			DB::table('taste_po')->where('po_no','=',$poid)->update(array('vendor_paid_status'=> 1,'payment_date' => date('Y-m-d H:i:s'), 'payment_type' => 2 ,'manual_payment_id'	=> $id));
 			return 1;
 
-	}
+	  }
+	  
+	  //function to update manual bank account info
+		public static function pay_via_check($fullname,$email_address,$password,$address,$city,$state,$zip,$phone){
+			
+			$check_vendor_account = DB::table('users')->where('email',$email_address)->first();
+			if(isset($check_vendor_account->id) && $check_vendor_account->id != ''){
+				$reg_id = 0;
+			} else {
+				$token=time();
+				$register = new Register;
+				$get_vendor_name_info = DB::table('taste_po')->where('vendor_email',$email)->first();
+				$register->name = $fullname;
+				$register->email = $email_address;
+				$register->password = Hash::make($password);
+				$register->address = $address;
+				$register->city = $city;
+				$register->state = $state;
+				$register->zip = $zip;
+				$register->phone = $phone;
+				$register->usertype = 2;
+				$register->status =  1;
+				$register->save();
+				$reg_id = $register->id;
+			}
+			return $reg_id;
+	  }
 	
 }
 ?>
