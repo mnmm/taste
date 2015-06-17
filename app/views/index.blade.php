@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END PAGE SPINNER -->
 
 	<!-- BEGIN HEADER -->
-	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	<div ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 	</div>
 	<!-- END HEADER -->
 

@@ -1171,6 +1171,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             templateUrl: "views/login.html",
             data: {pageTitle: 'Login', authorizedRoles: ['vendor','admin','all']},
             controller: "LoginController",
+            showHeader : false,
             resolve: {
                 deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
                     return $ocLazyLoad.load({
