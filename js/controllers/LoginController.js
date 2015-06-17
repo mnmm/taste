@@ -1,7 +1,7 @@
 'use strict';
 
  var FormValidation = function () {
-	var createAccountValidation = function() {
+	var handleLoginValidation = function() {
 						var form1 = $('#loginForm');
 						var error1 = $('.alert-danger', form1);
 						var success1 = $('.alert-success', form1);	
@@ -58,13 +58,22 @@
 	return {
         //main function to initiate the module
         init: function () {
-            createAccountValidation();
-          
+            handleLoginValidation();
         }
 
     };
 }();
 
+jQuery('#register-btn').click(function() {
+	jQuery('.login-form').hide();
+	jQuery('.register-form').show();
+});
+
+jQuery('#register-back-btn').click(function() {
+	jQuery('.login-form').show();
+	jQuery('.register-form').hide();
+});
+        
 MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,authenticationSvc) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	FormValidation.init();

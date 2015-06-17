@@ -1,6 +1,6 @@
 var Login = function() {
 
-    var handleLogin = function() {
+    /*var handleLogin = function() {
 
         $('.login-form').validate({
             errorElement: 'span', //default input error message container
@@ -58,7 +58,7 @@ var Login = function() {
                 return false;
             }
         });
-    }
+    }*/
 
     var handleForgetPassword = function() {
         $('.forget-form').validate({
@@ -245,7 +245,7 @@ var Login = function() {
         //main function to initiate the module
         init: function() {
 
-            handleLogin();
+            //handleLogin();
             handleForgetPassword();
             handleRegister();
 
