@@ -70,8 +70,6 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	FormValidation.init();
 	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 	
-	Layout.init(); // init current layout
-	Login.init();
 	
 	 
     $rootScope.settings.layout.pageBodySolid = true;
