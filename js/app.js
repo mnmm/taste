@@ -1184,7 +1184,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                              // Globals.url+'/assets/global/plugins/select2/select2.min.js',
                              // Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
                              // Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
-                               Globals.url+'/assets/admin/pages/scripts/login.js',
+                              Globals.url+'/assets/admin/pages/scripts/login.js',
                               Globals.url+'/js/controllers/LoginController.js'
                               
                               
