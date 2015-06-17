@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END PAGE SPINNER -->
 	<div >
 	<!-- BEGIN HEADER -->
-	<div  data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	<div ng-if="userroleInfo.role != ''" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 	</div>
 	<!-- END HEADER -->
 	
@@ -110,7 +110,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END CONTAINER -->
 
 	<!-- BEGIN FOOTER -->
-	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
+	<div ng-if="userroleInfo.role != ''" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
 	</div>
 	<!-- END FOOTER -->
 
