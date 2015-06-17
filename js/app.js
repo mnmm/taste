@@ -1179,12 +1179,10 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
 							  Globals.url+'/assets/admin/pages/css/login.css',
-                             // Globals.url+'/assets/global/plugins/select2/select2.css',                             
+                             
                               Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
                               Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
-                             // Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                             // Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
-                             // Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+
                               Globals.url+'/assets/admin/pages/scripts/login.js',
                               Globals.url+'/js/controllers/LoginController.js'
                               
