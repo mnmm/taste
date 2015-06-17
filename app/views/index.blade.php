@@ -90,7 +90,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="page-content-wrapper">
 			<div class="page-content">
 				<!-- BEGIN STYLE CUSTOMIZER(optional) -->
-				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm">				
+				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm" ng-if="showHeader">				
 				</div>
 				<!-- END STYLE CUSTOMIZER -->
 						
