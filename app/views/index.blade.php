@@ -75,15 +75,10 @@ License: You must have a valid license purchased only from themeforest(the above
 			</a>
 		</div>
 		
-		<!-- BEGIN HEADER -->
-		<!--<div  ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
-		</div>-->
-		<!-- END HEADER -->
-		<div ui-view="viewA" class="fadeclasstest"  data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 		<div class="checkhere" ng-class="{'page-content': settings.layout.showAllOptions }" >
 		
 			<!-- BEGIN ACTUAL CONTENT -->
-			<div ui-view="viewB" class="fadeclasstest" ng-class="{'fade-in-up': settings.layout.showAllOptions }">
+			<div ui-view class="fadeclasstest" ng-class="{'fade-in-up': settings.layout.showAllOptions }">
 			</div> 
 			<!-- END ACTUAL CONTENT -->
 			
@@ -97,7 +92,10 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 	<!-- END PAGE SPINNER -->
 
-	
+	<!-- BEGIN HEADER -->
+	<div  ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	</div>
+	<!-- END HEADER -->
 
 	<div class="clearfix">
 	</div>
