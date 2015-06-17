@@ -495,6 +495,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             templateUrl: "views/dashboard.html",            
             data: {pageTitle: 'Admin Dashboard Template', authorizedRoles: ['admin']},
             controller: "DashboardController",
+            showHeader : true,
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
 					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
