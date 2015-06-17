@@ -64,7 +64,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
 
 	<!-- BEGIN PAGE SPINNER -->
-	<div ng-spinner-bar class="page-spinner-bar">
+	<div ng-spinner-bar class="page-spinner-bar" ng-if="showHeader">
 		<div class="bounce1"></div>
 		<div class="bounce2"></div>
 		<div class="bounce3"></div>
@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END PAGE SPINNER -->
 
 	<!-- BEGIN HEADER -->
-	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	<div ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 	</div>
 	<!-- END HEADER -->
 
@@ -80,7 +80,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 
 	<!-- BEGIN CONTAINER -->
-	<div class="page-container">
+	<div class="page-container" ng-if="showHeader">
 		<!-- BEGIN SIDEBAR -->
 		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper">			
 		</div>
@@ -110,7 +110,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END CONTAINER -->
 
 	<!-- BEGIN FOOTER -->
-	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer" ng-if="showHeader">
 	</div>
 	<!-- END FOOTER -->
 
