@@ -63,7 +63,10 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
-
+	<div class="content">
+		
+	</div>
+	
 	<!-- BEGIN PAGE SPINNER -->
 	<div ng-spinner-bar class="page-spinner-bar">
 		<div class="bounce1"></div>
@@ -81,14 +84,14 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 
 	<!-- BEGIN CONTAINER -->
-	<div class="page-container" >
+	<div class="page-container" ng-if="showHeader">
 		<!-- BEGIN SIDEBAR -->
 		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper" ng-if="showHeader">			
 		</div>
 		<!-- END SIDEBAR -->
 
 		<!-- BEGIN CONTENT -->
-		<div class="page-content-wrapper">
+		<div class="page-content-wrapper" ng-if="showHeader">
 			<div class="page-content">
 				<!-- BEGIN STYLE CUSTOMIZER(optional) -->
 				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm" ng-if="showHeader">				
