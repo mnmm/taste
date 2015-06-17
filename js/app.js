@@ -481,39 +481,6 @@ MetronicApp.controller('FooterController', ['$scope', 'Globals', function($scope
     });
 }]);
 
-/*$scope.changeSettingStatus = function() {
-		var status=	$("#checkwrapper").attr('openstatus');
-		if(status == 0){
-			
-			$("#checkwrapper .on").addClass('active');
-			$("#checkwrapper .off").removeClass('active');
-			$("#checkwrapper").attr('openstatus','1');
-			
-		} else {
-			
-			$("#checkwrapper .on").removeClass('active');
-			$("#checkwrapper .off").addClass('active');
-			$("#checkwrapper").attr('openstatus','0');
-			
-		}
-		
-		$http.post($scope.apppath+'/api/getunpaidpo',{action:'changesettingstatus',status:status}).
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200 ){
-					
-				} else {
-					if(status == 0){
-						$("#checkwrapper .on").removeClass('active');
-						$("#checkwrapper .off").addClass('active');
-						$("#checkwrapper").attr('openstatus','0');
-					} else {
-						$("#checkwrapper .on").addClass('active');
-						$("#checkwrapper .off").removeClass('active');
-						$("#checkwrapper").attr('openstatus','1');
-					}
-				}
-		});
-}*/
 
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', function($stateProvider, $urlRouterProvider,USER_ROLES) {
@@ -621,34 +588,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             }
         })
 
-        
-         // Todo
-        /*.state('payments', {
-            url: "/payments",
-            templateUrl: "views/payments.html",
-            data: {pageTitle: 'Payments',appPath:'http://localhost/laravel'},
-            controller: "PaymentsController",
-            resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load({ 
-                        name: 'MetronicApp',  
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
-                        files: [
-                            appPath+'/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css',
-                            appPath+'/assets/global/plugins/select2/select2.css',
-                            appPath+'/assets/admin/pages/css/todo.css',
-                            
-                            appPath+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
-                            appPath+'/assets/global/plugins/select2/select2.min.js',
-
-                            appPath+'/assets/admin/pages/scripts/payments.js',
-
-                            appPath+'/js/controllers/PaymentsController.js'  
-                        ]                    
-                    });
-                }]
-            }
-        })*/
 
         // AngularJS plugins
         .state('fileupload', {
@@ -934,24 +873,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
 
-                             /*Globals.url+'/assets/global/plugins/select2/select2.css',
-                             Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
-                             Globals.url+'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
-                             Globals.url+'/assets/global/plugins/sumoselect/sumoselect.css',
-                            
-                             Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                             Globals.url+'/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js',
-                            
-                             Globals.url+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
-                             Globals.url+'/assets/global/plugins/sumoselect/jquery.sumoselect.js',
-                             Globals.url+'/assets/admin/layout/scripts/demo.js',
-							 
-							 Globals.url+'/assets/admin/pages/scripts/ecommerce-orders.js',
-							 
-							
-                             Globals.url+'/assets/admin/pages/scripts/payments.js',
-								
-                             Globals.url+'/js/controllers/PaymentsController.js'*/
+                           
                              Globals.url+'/assets/global/plugins/select2/select2.css', 
                              Globals.url+'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
                               Globals.url+'/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
@@ -978,7 +900,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                              Globals.url+'/assets/global/plugins/datatables/all.min.js',
                              Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
                              Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
-                            // Globals.url+'/js/scripts/table-advanced.js',
+                            
 							 Globals.url+'/assets/admin/pages/scripts/payments.js',
                              Globals.url+'/js/controllers/PaymentsController.js'
                               
@@ -1255,7 +1177,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
-
+							  Globals.url+'/assets/admin/pages/css/login.css',
                               Globals.url+'/assets/global/plugins/select2/select2.css',                             
                               Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
                               Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
