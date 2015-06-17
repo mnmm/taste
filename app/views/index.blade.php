@@ -62,7 +62,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body ng-controller="AppController" class="login" >
-
+	
 	<!-- BEGIN PAGE SPINNER -->
 	<div ng-spinner-bar class="page-spinner-bar">
 		<div class="bounce1"></div>
@@ -70,12 +70,12 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="bounce3"></div>
 	</div>
 	<!-- END PAGE SPINNER -->
-
+	
 	<!-- BEGIN HEADER -->
-	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	<div  data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 	</div>
 	<!-- END HEADER -->
-
+	<div ng-if="userroleInfo.role != ''">
 	<div class="clearfix">
 	</div>
 
@@ -161,6 +161,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			Metronic.setAssetsPath('http://localhost/laravel/assets/'); // Set the assets folder path			
 		});
 	</script>
+	</div>
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
