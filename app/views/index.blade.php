@@ -75,7 +75,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			</a>
 		</div>
 		<script type="text/javascript">
-			console.log(settings.layout.showAllOptions);
+			console.log($rootScope.settings.layout.showAllOptions);
 		</script>
 		<div ng-class="{'page-content': settings.layout.showAllOptions}">
 		
