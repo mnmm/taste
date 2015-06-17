@@ -486,10 +486,33 @@ MetronicApp.controller('FooterController', ['$scope', 'Globals', function($scope
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', function($stateProvider, $urlRouterProvider,USER_ROLES) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/dashboard.html");  
+    //$urlRouterProvider.otherwise("/dashboard.html");  
 	
     $stateProvider
-
+		
+		
+		//vendor dashboard url
+        .state("agreement", {
+            url: "/vendors/agreement",
+            templateUrl: "views/vendor/agreement.html",
+            data: {pageTitle: 'Taste Service Agreement', authorizedRoles: ['vendor']},
+            controller: "AgreementController",
+            resolve: {
+                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',  
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                              Globals.url+'/assets/global/plugins/select2/select2.css',                             
+                              Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
+                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
+                              Globals.url+'/js/controllers/ServiceAgreementController.js'
+                        ]                    
+                    });
+                }]
+            }
+        })
+        
         // Dashboard
         .state('dashboard', {
             url: "/dashboard.html",
@@ -959,27 +982,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             }
         })
         
-         //vendor dashboard url
-        .state("agreement", {
-            url: "/vendors/agreement",
-            templateUrl: "views/vendor/agreement.html",
-            data: {pageTitle: 'Taste Service Agreement', authorizedRoles: ['vendor']},
-            controller: "AgreementController",
-            resolve: {
-                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
-                    return $ocLazyLoad.load({
-                        name: 'MetronicApp',  
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
-                        files: [
-                              Globals.url+'/assets/global/plugins/select2/select2.css',                             
-                              Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
-                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
-                              Globals.url+'/js/controllers/ServiceAgreementController.js'
-                        ]                    
-                    });
-                }]
-            }
-        })
+         
         
         //vendor dashboard url
         .state("vendorw9form", {
