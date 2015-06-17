@@ -493,7 +493,15 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         // Dashboard
         .state('dashboard', {
             url: "/dashboard.html",
-            templateUrl: "views/dashboard.html",            
+            views: {
+                "viewA": {
+                    templateUrl: "views/header.html"
+                },
+                "viewB": {
+                    templateUrl: "views/dashboard.html"
+                }
+            }
+           // templateUrl: "views/dashboard.html",            
             data: {pageTitle: 'Admin Dashboard Template', authorizedRoles: ['admin']},
             controller: "DashboardController",
             showHeader : true,
