@@ -177,6 +177,14 @@ License: You must have a valid license purchased only from themeforest(the above
 	<script src="<?php echo Request::root(); ?>/assets/global/scripts/metronic.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
 	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		/* Init Metronic's core jquery plugins and layout scripts */
+		$(document).ready(function() {   
+			Metronic.init(); // Run metronic theme
+			//Metronic.setAssetsPath('../../../assets/'); // Set the assets folder path	
+			Metronic.setAssetsPath('http://localhost/laravel/assets/'); // Set the assets folder path			
+		});
+	</script>
 		<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
