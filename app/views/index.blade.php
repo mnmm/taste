@@ -82,7 +82,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container" >
 		<!-- BEGIN SIDEBAR -->
-		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper">			
+		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper" ng-if="showHeader">			
 		</div>
 		<!-- END SIDEBAR -->
 
@@ -104,7 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		
 		<!-- BEGIN QUICK SIDEBAR -->
 		<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
-		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper"></div>
+		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper" ng-if="showHeader"></div>
 		<!-- END QUICK SIDEBAR -->
 	</div>
 	<!-- END CONTAINER -->
