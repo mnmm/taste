@@ -96,7 +96,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- END STYLE CUSTOMIZER -->
 						
 				<!-- BEGIN ACTUAL CONTENT -->
-				<div ui-view class="fade-in-up" ng-if="showHeader">
+				<div ui-view class="fade-in-up">
 				</div> 
 				<!-- END ACTUAL CONTENT -->
 			</div>	
