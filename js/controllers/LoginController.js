@@ -84,6 +84,11 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$('.login-form').hide();
 		$('.register-form').show();
 	}
+	
+	$scope.showLogin = function() {
+		$('.login-form').show();
+		$('.register-form').hide();
+	}
 
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
