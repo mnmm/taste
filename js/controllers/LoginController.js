@@ -170,10 +170,17 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$http.post($scope.apppath+'/api/getunpaidpo',{fullname:$scope.fullname,email_address:$scope.email_address,password:$scope.register_password,address:$scope.address,city:$scope.city,state:$scope.state,zip:$scope.zip,phone:$scope.phone,location:$scope.location,address2:$scope.address2,crossstreet:$scope.crossstreet,neighborhood:$scope.neighborhood,entries:$scope.entries,daysopen:$scope.daysopen,businesshours:$scope.businesshours,locationdescription:$scope.locationdescription,action:'createvendoraccount'}).
 			success(function(data, status, headers, config) {
 				if(data.status_code == 200){
-					
+						$('#registerForm').reset();
+						var sucess2 = $('#registerformsucess');
+						sucess2.show();
+						Metronic.scrollTo(sucess2, -200);
+						$('#registerformsucess').hide();
 				} else {
 					if(data.status_code == 201){
 						if(data.accountcreated ==  0){
+							var error3 = $('#registerformalert');
+							error3.show();
+							Metronic.scrollTo(error3, -200);
 							$('#registerformalert').show(data.message);
 						} else {
 							
