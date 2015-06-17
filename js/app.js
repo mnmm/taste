@@ -495,7 +495,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             url: "/dashboard.html",
             views: {
                 "viewA": {
-                    templateUrl:  Globals.url+"/tpl/header.html"
+                    templateUrl:  "https://mnmdesignlabs.com/taste/app/views/tpl/header.html"
                 },
                 "viewB": {
                     templateUrl: "views/dashboard.html"
