@@ -172,7 +172,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 				if(data.status_code == 200){
 						$('form#registerForm')[0].reset();
 						var sucess2 = $('#registerformsucess');
-						sucess2.show();
+						$('#registerForm').find('#registerformsucess').show();
 						Metronic.scrollTo(sucess2, -200);
 						$('#registerformsucess').hide();
 				} else {
