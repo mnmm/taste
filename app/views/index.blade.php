@@ -83,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="checkhere" ng-class="{'page-content': settings.layout.showAllOptions }" >
 		
 			<!-- BEGIN ACTUAL CONTENT -->
-			<div ui-view class="fadeclasstest" ng-class="{'fade-in-up': settings.layout.showAllOptions }">
+			<div ui-view="viewB" class="fadeclasstest" ng-class="{'fade-in-up': settings.layout.showAllOptions }">
 			</div> 
 			<!-- END ACTUAL CONTENT -->
 			
