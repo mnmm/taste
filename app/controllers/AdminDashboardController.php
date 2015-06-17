@@ -16,8 +16,8 @@ class AdminDashboardController extends BaseController {
 	*/
 	
 	public function viewdashboard() {
-		echo  Request::path();exit;
-		return View::make('index');
+		
+		//return View::make('index');
 	}
 
 }
