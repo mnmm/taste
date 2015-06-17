@@ -64,7 +64,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
 
 	<!-- BEGIN PAGE SPINNER -->
-	<div ng-spinner-bar class="page-spinner-bar" ng-if="showHeader">
+	<div ng-spinner-bar class="page-spinner-bar">
 		<div class="bounce1"></div>
 		<div class="bounce2"></div>
 		<div class="bounce3"></div>
@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END PAGE SPINNER -->
 
 	<!-- BEGIN HEADER -->
-	<div ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 	</div>
 	<!-- END HEADER -->
 
