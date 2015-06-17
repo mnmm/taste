@@ -81,4 +81,5 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
+    $rootScope.settings.layout.showAllOptions = true;
 }); 

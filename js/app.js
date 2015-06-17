@@ -103,7 +103,8 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
         layout: {
             pageSidebarClosed: false, // sidebar menu state
             pageBodySolid: false, // solid body color state
-            pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
+            pageAutoScrollOnLoad: 1000, // auto scroll to top on page load
+            showAllOptions: false // auto scroll to top on page load
         },
         layoutImgPath: Metronic.getAssetsPath() + 'admin/layout/img/',
         layoutCssPath: Metronic.getAssetsPath() + 'admin/layout/css/'
@@ -495,7 +496,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             templateUrl: "views/dashboard.html",            
             data: {pageTitle: 'Admin Dashboard Template', authorizedRoles: ['admin']},
             controller: "DashboardController",
-            showHeader : true,
+            showallOptions : true,
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
 					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
