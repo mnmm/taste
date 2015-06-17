@@ -57,8 +57,8 @@
 	
 	var handleRegisterValidation = function() {
 						var form2 = $('#registerForm');
-						var error1 = $('.alert-danger', form1);
-						var success1 = $('.alert-success', form1);	
+						var error1 = $('.alert-danger', form2);
+						var success1 = $('.alert-success', form2);	
                         form2.validate({
 								errorElement: 'span', //default input error message container
 								errorClass: 'help-block help-block-error', // default input error message class
