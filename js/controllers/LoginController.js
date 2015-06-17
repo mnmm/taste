@@ -161,7 +161,17 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	}
 	
 	$scope.SignUp = function() {
-		console.log('here');
+		console.log($scope.fullname);
+		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
+		$http.post($scope.apppath+'/api/getunpaidpo',{fullname:$scope.fullname,email_address:$scope.email_address,password:$scope.register_password,address:$scope.address,city:$scope.city,state:$scope.state,zip:$scope.zip,phone:$scope.phone,action:'createvendoraccount'}).
+			success(function(data, status, headers, config) {
+				if(data.status_code == 200){
+					callback();
+				} else {
+					createauthtoken(callback);
+				}
+		});
 	}
 	
 	function createauthtoken(){
