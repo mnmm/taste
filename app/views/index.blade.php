@@ -164,7 +164,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
-<body class="login" ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+<body class="login" ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" >
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
 </div>
