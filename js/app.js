@@ -966,27 +966,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             data: {pageTitle: 'Taste Service Agreement', authorizedRoles: ['vendor']},
             controller: "AgreementController",
             resolve: {
-				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
-					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
-									 if (userLogInfo)
-									 {
-											var userroleInfo = authenticationSvc.getUserInfo();
-											if(userroleInfo.role==2)
-											{
-												return $q.when(userroleInfo);
-											}
-											else
-											{
-												authenticationSvc.logout();
-												return $q.reject({ authenticated: false });
-											} 
-									  } 
-									  else {
-										authenticationSvc.logout();	
-										return $q.reject({ authenticated: false });
-									  }  
-					  });
-					}],
                 deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',  
