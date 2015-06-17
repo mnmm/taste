@@ -1082,7 +1082,7 @@
 
 	  }
 	  
-	  //function to update manual bank account info
+	  //function to create vendor self account
 		public static function create_vendor_account($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription){
 			
 			$check_vendor_account = DB::table('users')->where('email',$email_address)->first();
