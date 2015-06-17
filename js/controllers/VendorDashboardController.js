@@ -5,6 +5,11 @@ MetronicApp.controller('VendorDashboardController', function($rootScope, $scope,
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
     $scope.$on('$viewContentLoaded', function() {   
         Metronic.initAjax(); // initialize core components
+        $('.page-header').css('display','block');
+        $('.page-sidebar-wrapper').css('display','block');
+        $('.theme-panel').css('display','block');
+        $('.page-quick-sidebar-wrapper').css('display','block');
+        $('.page-footer').css('display','block');
         var authtoken = localStorage.getItem('access_token');
        // var renderAction = $route.current.action;
       // $scope.location = $location.url();
