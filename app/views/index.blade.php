@@ -92,7 +92,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<div class="page-content">
 				<div class="logo">
 					<a href="javascript:void(0);">
-					<img src="<?php echo Request::root(); ?>/assets/admin/layout/img/logo-big.png" alt=""/>
+					<img src="<?php echo Request::root(); ?>/assets/admin/layout/img/taste.png" alt=""/>
 					</a>
 				</div>
 				<!-- BEGIN STYLE CUSTOMIZER(optional) -->
