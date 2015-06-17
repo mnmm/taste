@@ -1091,7 +1091,6 @@
 			} else {
 				$token=time();
 				$register = new Register;
-				$get_vendor_name_info = DB::table('taste_po')->where('vendor_email',$email)->first();
 				$register->name = $fullname;
 				$register->email = $email_address;
 				$register->password = Hash::make($password);
