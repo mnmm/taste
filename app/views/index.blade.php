@@ -80,7 +80,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 
 	<!-- BEGIN CONTAINER -->
-	<div class="page-container" ng-if="showHeader">
+	<div class="page-container" >
 		<!-- BEGIN SIDEBAR -->
 		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper">			
 		</div>
