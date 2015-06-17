@@ -2458,7 +2458,7 @@ class ApiController extends BaseController {
 					$result['message'] = 'No option exists';
 				}
 			} else if($action == 'createvendoraccount'){
-				$check_vendor_account = PoDetail::create_vendor_account($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription);
+				$check_vendor_account = PoDetail::create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription);
 				if(isset($check_vendor_account) &&  $check_vendor_account != '' &&  $check_vendor_account != 0){
 					$result['status_code']=200;
 					$result['accountcreated'] = 1;
