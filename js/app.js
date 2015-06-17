@@ -960,11 +960,11 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         })
         
          //vendor dashboard url
-        .state("serviceagreement", {
-            url: "/vendors/serviceagreement",
-            templateUrl: "views/vendor/serviceagreement.html",
+        .state("agreement", {
+            url: "/vendors/agreement",
+            templateUrl: "views/vendor/agreement.html",
             data: {pageTitle: 'Taste Service Agreement', authorizedRoles: ['vendor']},
-            controller: "ServiceAgreementController",
+            controller: "AgreementController",
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
 					 authenticationSvc.checkloggedIn().then(function (userLogInfo){

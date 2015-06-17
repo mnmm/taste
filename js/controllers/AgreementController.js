@@ -1,6 +1,6 @@
 'use strict';
 
-MetronicApp.controller('ServiceAgreementController', function($rootScope, $scope, $http, $timeout,AUTH_EVENTS,Session,AuthService) {
+MetronicApp.controller('AgreementController', function($rootScope, $scope, $http, $timeout,AUTH_EVENTS,Session,AuthService) {
 	$scope.unpaid = [];
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
