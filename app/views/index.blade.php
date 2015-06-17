@@ -164,7 +164,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
-<body class="login" ng-controller="AppController">
+<body class="login" ng-controller="AppController" >
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
 </div>
@@ -194,6 +194,9 @@ License: You must have a valid license purchased only from themeforest(the above
 		/* Init Metronic's core jquery plugins and layout scripts */
 		$(document).ready(function() {   
 			Metronic.init(); // Run metronic theme
+			Layout.init(); // init current layout
+			Login.init();
+			Demo.init();
 			//Metronic.setAssetsPath('../../../assets/'); // Set the assets folder path	
 			Metronic.setAssetsPath('http://localhost/laravel/assets/'); // Set the assets folder path			
 		});
