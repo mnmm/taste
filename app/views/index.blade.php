@@ -93,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END PAGE SPINNER -->
 
 	<!-- BEGIN HEADER -->
-	<div  ng-if="showHeader" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	<div style="display:none;" data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
 	</div>
 	<!-- END HEADER -->
 
@@ -103,7 +103,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container" >
 		<!-- BEGIN SIDEBAR -->
-		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper" ng-if="showHeader">			
+		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper" style="display:none;">			
 		</div>
 		<!-- END SIDEBAR -->
 
@@ -111,7 +111,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="page-content-wrapper" ng-if="showHeader">
 			<div class="page-content">
 				<!-- BEGIN STYLE CUSTOMIZER(optional) -->
-				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm" ng-if="showHeader">				
+				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm" style="display:none;">				
 				</div>
 				<!-- END STYLE CUSTOMIZER -->
 						
@@ -125,13 +125,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		
 		<!-- BEGIN QUICK SIDEBAR -->
 		<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
-		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper" ng-if="showHeader"></div>
+		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper" style="display:none;"></div>
 		<!-- END QUICK SIDEBAR -->
 	</div>
 	<!-- END CONTAINER -->
 
 	<!-- BEGIN FOOTER -->
-	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer" ng-if="showHeader">
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer" style="display:none;">
 	</div>
 	<!-- END FOOTER -->
 
