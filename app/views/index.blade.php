@@ -92,7 +92,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	$(document).ready(function() {   
 			Metronic.init(); // Run metronic theme
 			Layout.init(); // init current layout
-			Login.init();
+			
 			Demo.init();
 			//Metronic.setAssetsPath('../../../assets/'); // Set the assets folder path	
 			Metronic.setAssetsPath('http://localhost/laravel/assets/'); // Set the assets folder path			
