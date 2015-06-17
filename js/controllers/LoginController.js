@@ -163,13 +163,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	
 	
 	$scope.SignUp = function() {
-		$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200 ){
-					localStorage.setItem('access_token',data.access_token);
-					callback();
-				}
-		});
+		console.log('create');
 	}
 	
 	function createauthtoken(){
@@ -200,7 +194,6 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	} else {
 		createauthtoken();
 	}
-	
 	
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
