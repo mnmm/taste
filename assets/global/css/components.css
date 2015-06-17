@@ -3474,7 +3474,7 @@ label {
   color: #a94442;
 }
 .has-error .form-control {
-  border-color: #ebccd1;
+  border-color: #ebccd1 !important;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
