@@ -116,8 +116,7 @@
 								},
 
 								submitHandler: function (form2) {
-										console.log('comes here');
-										//$('#submit_button_login').click();
+										
 									}
 								});
 	}
@@ -147,6 +146,7 @@ jQuery('#register-back-btn').click(function() {
 MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,authenticationSvc) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	FormValidation.init();
+	var authtoken = localStorage.getItem('access_token');
 	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 	
 	$scope.createAccount = function() {
@@ -158,7 +158,49 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$('.login-form').show();
 		$('.register-form').hide();
 	}
+	
+	
+	
+	$scope.SignUp = function() {
+		$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
+			success(function(data, status, headers, config) {
+				if(data.status_code == 200 ){
+					localStorage.setItem('access_token',data.access_token);
+					callback();
+				}
+		});
+	}
+	
+	function createauthtoken(){
+			
+		$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
+				success(function(data, status, headers, config) {
+					if(data.status_code == 200 ){
+						localStorage.setItem('access_token',data.access_token);
+					}
+		});			
+	}
+	
+	function checktokenauthentication(authtoken){
+		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
+		$http.post($scope.apppath+'/api/checktokenauthentication').
+			success(function(data, status, headers, config) {
+				if(data.status_code == 200){
+					
+				} else {
+					createauthtoken();
+				}
+		});
+	}
 
+	if(authtoken != '' && typeof authtoken !== 'undefined' && authtoken !==null){
+		checktokenauthentication(authtoken);
+	} else {
+		createauthtoken();
+	}
+	
+	
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
     $rootScope.settings.layout.showAllOptions = true;
