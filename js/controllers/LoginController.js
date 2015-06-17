@@ -147,6 +147,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	FormValidation.init();
 	var authtoken = localStorage.getItem('access_token');
+	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 	
 	$scope.createAccount = function() {
