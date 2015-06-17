@@ -61,50 +61,107 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" ng-class="{'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
 
-<body class="login" ng-controller="AppController" class="page-header-fixed page-sidebar-closed-hide-logo page-quick-sidebar-over-content page-on-load" >
-<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-<div class="menu-toggler sidebar-toggler">
-</div>
-<!-- END SIDEBAR TOGGLER BUTTON -->
-<!-- BEGIN LOGO -->
-<div class="logo">
-	<a href="index.html">
+	<!-- BEGIN PAGE SPINNER -->
+	<div ng-spinner-bar class="page-spinner-bar">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div class="bounce3"></div>
+	</div>
+	<!-- END PAGE SPINNER -->
+
+	<!-- BEGIN HEADER -->
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+	</div>
+	<!-- END HEADER -->
+
+	<div class="clearfix">
+	</div>
+
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper">			
+		</div>
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN STYLE CUSTOMIZER(optional) -->
+				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm">				
+				</div>
+				<!-- END STYLE CUSTOMIZER -->
+						
+				<!-- BEGIN ACTUAL CONTENT -->
+				<div ui-view class="fade-in-up">
+				</div> 
+				<!-- END ACTUAL CONTENT -->
+			</div>	
+		</div>
+		<!-- END CONTENT -->
+		
+		<!-- BEGIN QUICK SIDEBAR -->
+		<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
+		<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper"></div>
+		<!-- END QUICK SIDEBAR -->
+	</div>
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+	<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
+	</div>
+	<!-- END FOOTER -->
+
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+	<!-- BEGIN CORE JQUERY PLUGINS -->
+	<!--[if lt IE 9]>
+	<script src="../../../assets/global/plugins/respond.min.js"></script>
+	<script src="../../../assets/global/plugins/excanvas.min.js"></script> 
+	<![endif]-->
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>	
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+	<!-- END CORE JQUERY PLUGINS -->
+
+	<!-- BEGIN CORE ANGULARJS PLUGINS -->
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/angular.min.js" type="text/javascript"></script>	
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/angular-touch.min.js" type="text/javascript"></script>	
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+	<!-- END CORE ANGULARJS PLUGINS -->
 	
-	</a>
-</div>
+	<!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
+	<script src="<?php echo Request::root(); ?>/js/app.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/js/directives.js" type="text/javascript"></script>
+	<!-- END APP LEVEL ANGULARJS SCRIPTS -->
 
-<!-- END LOGIN -->
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<!--[if lt IE 9]>
-<script src="../../assets/global/plugins/respond.min.js"></script>
-<script src="../../assets/global/plugins/excanvas.min.js"></script> 
-<![endif]-->
-<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="<?php echo Request::root(); ?>/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="<?php echo Request::root(); ?>/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="<?php echo Request::root(); ?>/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="<?php echo Request::root(); ?>/assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-<script src="<?php echo Request::root(); ?>/assets/admin/pages/scripts/login.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
-<script>
-jQuery(document).ready(function() {     
-Metronic.init(); // init metronic core components
-//Layout.init(); // init current layout
-//Login.init();
-//Demo.init();
-});
-</script>
-<!-- END JAVASCRIPTS -->
+	<!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
+	<script src="<?php echo Request::root(); ?>/assets/global/scripts/metronic.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+	<script src="<?php echo Request::root(); ?>/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>  
+	<!-- END APP LEVEL JQUERY SCRIPTS -->
+
+	<script type="text/javascript">
+		/* Init Metronic's core jquery plugins and layout scripts */
+		$(document).ready(function() {   
+			Metronic.init(); // Run metronic theme
+			//Metronic.setAssetsPath('../../../assets/'); // Set the assets folder path	
+			Metronic.setAssetsPath('http://localhost/laravel/assets/'); // Set the assets folder path			
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
 </body>
+<!-- END BODY -->
 </html>
