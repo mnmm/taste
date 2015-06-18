@@ -132,7 +132,6 @@
         init: function () {
             handleLoginValidation();
             handleRegisterValidation();
-            handleClockfaceTimePickers();
         }
 
     };
@@ -322,7 +321,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		createauthtoken();
 	}
 	
-	 ComponentsPickers.init();
+	ComponentsPickers.init();
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
     $rootScope.settings.layout.showAllOptions = true;
