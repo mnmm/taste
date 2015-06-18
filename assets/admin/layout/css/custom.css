@@ -190,7 +190,7 @@ button#loginbtn{ float:right; }
 #register-submit-btn{ margin-right:18px;}
 .login .content .check{ margin-left:15px !important; }
 .form-group.margin-top-20.margin-bottom-20.has-error{ clear:both; }
-.priority-yellow{ border-left: 2px solid yellow !important; }
-.priority-orange{ border-left: 2px solid orange !important; }
-.priority-red{ border-left: 2px solid red !important; }
-.priority-green{ border-left: 2px solid green !important; }
+.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-yellow{ border-left: 2px solid yellow !important; }
+.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-orange{ border-left: 2px solid orange !important; }
+.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-red{ border-left: 2px solid red !important; }
+.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-green{ border-left: 2px solid green !important; }
