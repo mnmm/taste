@@ -1167,8 +1167,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                               Globals.url+'/assets/global/plugins/sumoselect/sumoselect.css',
                               Globals.url+'/assets/global/plugins/sumoselect/jquery.sumoselect.js',
                               Globals.url+'/js/controllers/LoginController.js'
-                              
-                              
                         ]                    
                     });
                 }]
