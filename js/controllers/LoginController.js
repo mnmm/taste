@@ -153,7 +153,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 	function callAtTimeout() {
-		$('.daysopen').SumoSelect({selectAll:false,csvDispCount:2});
+		$('.daysopen').SumoSelect({selectAll:true,csvDispCount:2,selectAlltext:'Select All'});
 		$('.locationtype').SumoSelect({selectAll:false,csvDispCount:3});
 		
 	}
