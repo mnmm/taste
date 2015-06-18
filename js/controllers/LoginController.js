@@ -234,9 +234,15 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	
 	$scope.changedValue=function(item){
 		
+		var otherexists = 0;
 		$.each( item, function( key, value ) {
-			console.log(value.id);
+			if(value.id == 'other'){
+				otherexists = 1;
+			}
 		});
+		if(otherexists == 1){
+			$('#locationtypeother').css('display','inline-block');
+		}
     }     
 
 	if(authtoken != '' && typeof authtoken !== 'undefined' && authtoken !==null){
