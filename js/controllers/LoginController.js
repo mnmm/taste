@@ -265,10 +265,8 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		var otherexists = 0;
 		
 		$.each( item, function( key, value ) {
-			console.log(value);
-			console.log(value.resnameid);
-			console.log(value.id);
-			if(value.id == 'other'){
+			
+			if(value == 'other'){
 				otherexists = 1;
 			}
 		});
