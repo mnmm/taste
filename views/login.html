@@ -128,6 +128,8 @@
 			<label class="control-label visible-ie8 visible-ie9">Street Address 2</label>
 			<input class="form-control placeholder-no-fix" type="text" placeholder="Street Address 2" name="address2" id="address2" ng-model="address2"/>
 		</div>
+		</div>
+		<div class="col-md-6 nopad">
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Cross Street</label>
 			<input class="form-control placeholder-no-fix" type="text" placeholder="Cross Street" name="crossstreet" id="crossstreet" ng-model="crossstreet"/>
@@ -136,8 +138,6 @@
 			<label class="control-label visible-ie8 visible-ie9">Neighborhood</label>
 			<input class="form-control placeholder-no-fix" type="text" placeholder="Neighborhood" name="neighborhood" id="neighborhood" ng-model="neighborhood"/>
 		</div>
-		</div>
-		<div class="col-md-6">
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">City/Town</label>
 			<input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city"  id="city" ng-model="city"/>
@@ -154,9 +154,11 @@
 			<label class="control-label visible-ie8 visible-ie9">Business Phone</label>
 			<input class="form-control placeholder-no-fix" type="text" placeholder="Phone" name="phone" id="phone" ng-model="phone"/>
 		</div>
+		</div>
 		<p class="hint">
 			Main Point of Contact:
 		</p>
+		<div class="col-md-6">
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Email</label>
 			<input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="emailcontact" id="emailcontact" ng-model="emailcontact"/>
@@ -165,9 +167,11 @@
 			<label class="control-label visible-ie8 visible-ie9">CellPhone</label>
 			<input class="form-control placeholder-no-fix" type="text" placeholder="Cell Phone" name="contactphone" id="contactphone" ng-model="contactphone"/>
 		</div>
+		</div>
 		<p class="hint">
 			Meal Production:
 		</p>
+		<div class="col-md-6">
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">What is the Maximum # of Entrees you can produce for one order ?</label>
 			<!--<textarea class="form-control" placeholder="What is the Maximum # of Entrees you can produce for one order ?"  name="entries" rows="3"  id="entries" ng-model="entries" ></textarea>-->
@@ -179,9 +183,11 @@
 			<textarea class="form-control" placeholder="Notes"  name="entries" rows="3"  id="mealnotes" ng-model="mealnotes" ></textarea>
 			<!--<input class="form-control placeholder-no-fix" type="text" placeholder="Notes" name="mealnotes" id="mealnotes" ng-model="mealnotes"/>-->
 		</div>
+		</div>
 		<p class="hint">
 			Location Type:
 		</p>
+		<div class="col-md-6">
 		<div class="form-group" id="locationdata" ng-controller="LoginController">
 			<label class="control-label visible-ie8 visible-ie9">Location Type (select one or more or specify)</label>
 			<select multiple="multiple" placeholder="Location Type" class="locationtype table-group-action-input form-control input-inline input-small input-sm" name="locationtype" ng-model="blisterPackTemplateSelected" ng-change="changedValue(blisterPackTemplateSelected)" 
@@ -194,6 +200,7 @@
 			<textarea class="form-control" placeholder="Notes"  name="entries" rows="3"  id="locationnotes" ng-model="locationnotes" ></textarea>
 			<!--<input class="form-control placeholder-no-fix" type="text" placeholder="Notes" name="locationnotes" id="locationnotes" ng-model="locationnotes"/>-->
 		</div>
+		
 		<div class="form-group" id="daysopendata">
 			<label class="control-label visible-ie8 visible-ie9">Days Open</label>
 			<select multiple="multiple" placeholder="Days Open" class="daysopen table-group-action-input form-control input-inline input-small input-sm" name="locationtype" ng-model="blisterPackTemplateSelected1" ng-change="changedDay(blisterPackTemplateSelected1)" 
@@ -201,19 +208,7 @@
 				
 			</select>
 		</div>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">Vendor Business Hours</label>
-			<input class="form-control placeholder-no-fix clockface_1" type="text" placeholder="Opening Hour" name="businessopeninghour" id="businessopeninghour" ng-model="businessopeninghour" readonly />
-			<span class="input-group-addon"> to </span>
-			<input class="form-control placeholder-no-fix clockface_2" type="text" placeholder="Closing Hour" name="businessclosinghour" id="businessclosinghour" ng-model="businessclosinghour" readonly />
-			
-		</div>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">Location Description</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="Location Description" name="locationdescription" id="locationdescription" ng-model="locationdescription"/>
-			
-		</div>
-		</div>
+		
 		<div class="form-group margin-top-20 margin-bottom-20">
 			<label class="check">
 			<input type="checkbox" name="tnc"/> I agree to the <a href="https://mnmdesignlabs.com/taste/#/agreement" target="_blank">
@@ -224,6 +219,12 @@
 			<div id="register_tnc_error">
 			</div>
 		</div>
+		</div>
+		
+		
+		
+		
+		
 		<div class="form-actions">
 			<button type="button" id="register-back-btn" class="btn btn-default" ng-click="showLogin();">Back</button>
 			<button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right" >Submit</button>
