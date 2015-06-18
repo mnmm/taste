@@ -1910,6 +1910,28 @@ class ApiController extends BaseController {
 
 			}
 			
+			
+			if (array_key_exists("emailcontact", $data1))
+			{
+				$emailcontact = $data1->emailcontact;
+			}
+			else
+			{
+				$emailcontact = '';
+
+			}
+			
+			
+			if (array_key_exists("contactphone", $data1))
+			{
+				$contactphone = $data1->contactphone;
+			}
+			else
+			{
+				$contactphone = '';
+
+			}
+			
 		}
 		
 
