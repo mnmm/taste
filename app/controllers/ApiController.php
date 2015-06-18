@@ -1860,13 +1860,43 @@ class ApiController extends BaseController {
 
 			}
 			
-			if (array_key_exists("businesshours", $data1))
+			if (array_key_exists("businessopeninghours", $data1))
 			{
-				$businesshours = $data1->businesshours;
+				$businessopeninghours = $data1->businessopeninghours;
 			}
 			else
 			{
-				$businesshours = '';
+				$businessopeninghours = '';
+
+			}
+			
+			if (array_key_exists("businessclosinghours", $data1))
+			{
+				$businessclosinghours = $data1->businessclosinghours;
+			}
+			else
+			{
+				$businessclosinghours = '';
+
+			}
+			
+			if (array_key_exists("locationnotes", $data1))
+			{
+				$locationnotes = $data1->locationnotes;
+			}
+			else
+			{
+				$locationnotes = '';
+
+			}
+			
+			if (array_key_exists("mealnotes", $data1))
+			{
+				$mealnotes = $data1->mealnotes;
+			}
+			else
+			{
+				$mealnotes = '';
 
 			}
 			
@@ -2468,7 +2498,7 @@ class ApiController extends BaseController {
 					$result['message'] = 'No option exists';
 				}
 			} else if($action == 'createvendoraccount'){
-				$check_vendor_account = PoDetail::create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$locationtype,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription);
+				$check_vendor_account = PoDetail::create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$locationtype,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businessopeninghours,$businessclosinghours,$locationdescription,$locationnotes,$mealnotes);
 				if(isset($check_vendor_account) &&  $check_vendor_account != '' &&  $check_vendor_account != 0){
 					$result['status_code']=200;
 					$result['accountcreated'] = 1;
