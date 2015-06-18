@@ -1101,6 +1101,12 @@
 				$register->neighborhood = $neighborhood;
 				$register->entries = $entries;
 				$register->daysopen = $daysopen;
+				if($businessopeninghours != ''){
+					$businessopeninghours = $businessopeninghours.':00';
+				}
+				if($businessclosinghours != ''){
+					$businessclosinghours = $businessclosinghours.':00';
+				}
 				$register->businessopeninghours = $businessopeninghours;
 				$register->businessclosinghours = $businessclosinghours;
 				$register->locationnotes = $locationnotes;
