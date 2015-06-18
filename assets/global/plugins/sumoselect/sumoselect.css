@@ -11,7 +11,7 @@
     .SumoSelect > .CaptionCont { position: relative; /*border: 1px solid #A4A4A4;*/ min-height: 14px; /*background-color: #fff;*/ border-radius:2px;margin:0px; border: 1px solid #dde3ec; background:#dde3ec; }
         .SumoSelect > .CaptionCont > span { display: block; padding-right: 30px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;cursor:default;}
             /*placeholder style*/
-            .SumoSelect > .CaptionCont > span.placeholder { /*color: #ccc; font-style: italic;*/ color:#8290a3; }
+            .SumoSelect > .CaptionCont > span.placeholder { /*color: #ccc; font-style: italic;*/ color:#8290a3; font-size:14px !important;}
 
         .SumoSelect > .CaptionCont > label { position: absolute; top: 0px; right: 0px; bottom: 0px; width: 30px;}
             .SumoSelect > .CaptionCont > label > i { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wMdBhAJ/fwnjwAAAGFJREFUKM9jYBh+gBFKuzEwMKQwMDB8xaOWlYGB4T4DA0MrsuapDAwM//HgNwwMDDbYTJuGQ8MHBgYGJ1xOYGNgYJiBpuEpAwODHSF/siDZ+ISBgcGClEDqZ2Bg8B6CkQsAPRga0cpRtDEAAAAASUVORK5CYII=');
