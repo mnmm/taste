@@ -116,7 +116,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7dc5ee', end
     text-align: center;
 }
 
-.addaccountdetail {
+.addaccountdetail,.requestlinkconfirmation {
 	top:9% !important;
 }
 .transferoptions{ top:9% !important; }
