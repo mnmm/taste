@@ -90,11 +90,11 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
 			<div class="page-content">
-				<div class="logo">
+				<!--<div class="logo">
 					<a href="javascript:void(0);">
 					<img src="<?php echo Request::root(); ?>/assets/admin/layout/img/taste.png" alt=""/>
 					</a>
-				</div>
+				</div>-->
 				<!-- BEGIN STYLE CUSTOMIZER(optional) -->
 				<div data-ng-include="'<?php echo TEMPLATE_PATH; ?>/tpl/theme-panel.html'" data-ng-controller="ThemePanelController" class="theme-panel hidden-xs hidden-sm" style="display:none;">				
 				</div>
