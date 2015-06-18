@@ -163,7 +163,7 @@ var ComponentsPickers = function () {
 				e.stopPropagation();
 				$('#clockface_1_modal').clockface('toggle');
 			});
-			$('#clockface_2').clockface({
+			/*$('#clockface_2').clockface({
 				format: 'HH:mm',
 				trigger: 'manual'
 			});
@@ -181,7 +181,7 @@ var ComponentsPickers = function () {
 			$('#clockface_2_modal_toggle').click(function (e) {
 				e.stopPropagation();
 				$('#clockface_2_modal').clockface('toggle');
-			});
+			});*/
 			 
 		}
 		
