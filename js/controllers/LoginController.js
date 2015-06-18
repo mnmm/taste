@@ -174,13 +174,20 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		
 		var locationArr = [];
 		$('div#locationdata').find('option:selected').each(function () {
-			locationArr.push($(this).val());
+			if($this).val() != 'other'){
+				locationArr.push($(this).val());
+			} else {
+				var locationotherval = $scope.locationtypeother;
+				if(locationotherval != '' && typeof locationotherval != 'undefined'){
+					locationArr.push(locationotherval);
+				}
+			}
 		});
 		var locationtype = '';
 		if(locationArr.length > 0){
 			locationtype = locationArr.join();
 		}
-		console.log(locationtype);
+		console.log('locationtype'+locationtype);
 		
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
