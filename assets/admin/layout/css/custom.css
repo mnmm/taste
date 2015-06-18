@@ -187,3 +187,4 @@ button#loginbtn{ float:right; }
 .login .content .rememberme{ margin-left:0px !important; }
 .login div.checker{ margin-left:0px !important; }
 .login .content .forget-password{ float:left !important; }
+#register-submit-btn{ margin-right:18px;}
