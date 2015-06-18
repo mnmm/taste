@@ -1164,8 +1164,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                         files: [
                               Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
                               Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',
-                              Globals.url+'/assets/global/plugins/sumoselect/sumoselect.css',
-                              Globals.url+'/assets/global/plugins/sumoselect/jquery.sumoselect.js',
+                              //Globals.url+'/assets/global/plugins/sumoselect/sumoselect.css',
+                             // Globals.url+'/assets/global/plugins/sumoselect/jquery.sumoselect.js',
                               Globals.url+'/js/controllers/LoginController.js'
                         ]                    
                     });
