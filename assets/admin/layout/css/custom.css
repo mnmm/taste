@@ -194,3 +194,4 @@ button#loginbtn{ float:right; }
 .portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-orange{ border-left: 4px solid orange !important; }
 .portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-red{ border-left: 4px solid red !important; }
 .portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-green{ border-left: 4px solid green !important; }
+.login .logo{ margin-top:20px !important; }
