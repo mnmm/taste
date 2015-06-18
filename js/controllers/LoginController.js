@@ -156,11 +156,13 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	$scope.createAccount = function() {
 		$('.login-form').hide();
 		$('.register-form').show();
+		$('.login').find('.content').css('width','800px');
 	}
 	
 	$scope.showLogin = function() {
 		$('.login-form').show();
 		$('.register-form').hide();
+		$('.login').find('.content').css('width','400px');
 	}
 	
 	$scope.SignUp = function() {
