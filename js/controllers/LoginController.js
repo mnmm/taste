@@ -124,17 +124,40 @@
 								});
 	}
 	
+	
+	
 
 	return {
         //main function to initiate the module
         init: function () {
             handleLoginValidation();
             handleRegisterValidation();
+            handleClockfaceTimePickers();
         }
 
     };
 }();
 
+var ComponentsPickers = function () {
+	 var handleClockfaceTimePickers = function () {
+
+			if (!jQuery().clockface) {
+				return;
+			}
+
+			$('.clockface_1').clockface();
+			$('.clockface_2').clockface();
+			 
+		}
+		
+    return {
+        //main function to initiate the module
+        init: function () {
+          handleClockfaceTimePickers();
+        }
+    };
+
+}();
 
 /*jQuery('#register-btn').click(function() {
 	jQuery('.login-form').hide();
@@ -181,11 +204,11 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$('div#locationdata').find('option:selected').each(function () {
 			if($(this).val() != 4){
 				var locval = $(this).val();
-				console.log('locvalAr'+locationArrval[0]);
+				//console.log('locvalAr'+locationArrval[0]);
 				locationArr.push(locationArrval[locval]);
 			} else {
 				var locationotherval = $('input#locationtypeother').val();
-				console.log('locationotherval'+locationotherval);
+				//console.log('locationotherval'+locationotherval);
 				if(locationotherval != '' && typeof locationotherval != 'undefined'){
 					locationArr.push(locationotherval);
 				}
@@ -196,7 +219,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 			locationtype = locationArr.join();
 		}
 		
-		console.log('locationtype'+locationtype);
+		//console.log('locationtype'+locationtype);
 		var daysArr = [];
 		$('div#daysopendata').find('option:selected').each(function () {
 				var dayval = $(this).val();
@@ -207,7 +230,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		if(daysArr.length > 0){
 			opendays = daysArr.join();
 		}
-		console.log('opendays'+opendays);
+		//console.log('opendays'+opendays);
 		
 		/*$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
