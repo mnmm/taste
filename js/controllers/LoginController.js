@@ -249,9 +249,9 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		});
 	}
 	
-	$scope.blisterPackTemplates=[{ID:'restaurant',name:"Restaurant"},{ID:'caterer',name:"Caterer"},{ID:'foodtruck',name:"Food Truck"},{ID:'bakery',name:"Bakery"},{id:'other',name:"Other"}]
+	$scope.blisterPackTemplates=[{resnameid:'restaurant',name:"Restaurant"},{resnameid:'caterer',name:"Caterer"},{resnameid:'foodtruck',name:"Food Truck"},{resnameid:'bakery',name:"Bakery"},{resnameid:'other',name:"Other"}]
 	
-	$scope.blisterPackTemplatess=[{ID:'monday',dayname:"Monday"},{ID:'tuesday',dayname:"Tuesday"},{ID:'wednesday',dayname:"Wednesday"},{ID:'thursday',dayname:"Thursday"},{ID:'friday',dayname:"Friday"},{ID:'saturday',dayname:"Saturday"},{ID:'sunday',dayname:"Sunday"}]
+	$scope.blisterPackTemplatess=[{daynameid:'monday',dayname:"Monday"},{daynameid:'tuesday',dayname:"Tuesday"},{daynameid:'wednesday',dayname:"Wednesday"},{daynameid:'thursday',dayname:"Thursday"},{daynameid:'friday',dayname:"Friday"},{daynameid:'saturday',dayname:"Saturday"},{daynameid:'sunday',dayname:"Sunday"}]
 	
 	$scope.changedValue=function(item){
 		
