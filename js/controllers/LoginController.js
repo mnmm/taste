@@ -241,7 +241,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	
 	$scope.blisterPackTemplates=[{id:'restaurant',name:"Restaurant"},{id:'caterer',name:"Caterer"},{id:'foodtruck',name:"Food Truck"},{id:'bakery',name:"Bakery"},{id:'other',name:"Other"}]
 	
-	$scope.daysOpenOptions=[{id:'monday',name:"Monday"},{id:'tuesday',name:"Tuesday"},{id:'wednesday',name:"Wednesday"},{id:'thursday',name:"Thursday"},{id:'friday',name:"Friday"},{id:'saturday',name:"Saturday"},{id:'sunday',name:"Sunday"}]
+	$scope.daysOpenOptions=[{id:'monday',dayname:"Monday"},{id:'tuesday',dayname:"Tuesday"},{id:'wednesday',dayname:"Wednesday"},{id:'thursday',dayname:"Thursday"},{id:'friday',dayname:"Friday"},{id:'saturday',dayname:"Saturday"},{id:'sunday',dayname:"Sunday"}]
 	
 	$scope.changedValue=function(item){
 		
