@@ -175,7 +175,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	$scope.SignUp = function() {
 		
 		var locationArr = [];
-		var locationArrval = [0:'restaurant',1:'caterer',2:'foodtruck',3:'bakery',4:'other'];
+		var locationArrval = {0:'restaurant',1:'caterer',2:'foodtruck',3:'bakery',4:'other'};
 		/*$scope.blisterPackTemplatess=[{daynameid:'monday',dayname:"Monday"},{daynameid:'tuesday',dayname:"Tuesday"},{daynameid:'wednesday',dayname:"Wednesday"},{daynameid:'thursday',dayname:"Thursday"},{daynameid:'friday',dayname:"Friday"},{daynameid:'saturday',dayname:"Saturday"},{daynameid:'sunday',dayname:"Sunday"}]*/
 		$('div#locationdata').find('option:selected').each(function () {
 			if($(this).val() != 'other'){
