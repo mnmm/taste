@@ -1168,6 +1168,12 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                               Globals.url+'/assets/global/plugins/select2/select2.min.js',
                               Globals.url+'/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js',
                               Globals.url+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',*/
+                              Globals.url+'/assets/global/plugins/clockface/css/clockface.css',
+							  Globals.url+'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+							  Globals.url+'/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+							  Globals.url+'/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+							  Globals.url+'/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css',
+							  Globals.url+'/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
                               Globals.url+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
 							  Globals.url+'/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
 							  Globals.url+'/assets/global/plugins/clockface/js/clockface.js',
