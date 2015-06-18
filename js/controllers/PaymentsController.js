@@ -164,7 +164,11 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
     $scope.$on('$viewContentLoaded', function() {   
         Metronic.initAjax(); // initialize core components   
         var authtoken = localStorage.getItem('access_token');   
-        
+        $('.page-header').css('display','block');
+        $('.page-sidebar-wrapper').css('display','block');
+        $('.theme-panel').css('display','block');
+        $('.page-quick-sidebar-wrapper').css('display','block');
+        $('.page-footer').css('display','block'); 
         function callAtTimeout() {
 			//$('.customername').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'All' });
 			$('div.page-content').find('div#site_statistics_loading').each(function(){
