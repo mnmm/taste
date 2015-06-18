@@ -209,7 +209,8 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		
 			$('#clockface_2_modal').clockface('toggle');
 			
-	});
+	}
+	
 	$scope.SignUp = function() {
 		
 		var locationArr = [];
