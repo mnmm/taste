@@ -157,7 +157,7 @@
 		</p>
 		<div class="form-group" id="locationdata">
 			<label class="control-label visible-ie8 visible-ie9">Location Type (circle one or more or specify)</label>
-			<select multiple="multiple" placeholder="Location Type" ng-change="selectedLocationType()" class="locationtype table-group-action-input form-control input-inline input-small input-sm" name="locationtype">
+			<select multiple="multiple" placeholder="Location Type" onchange="console.log($(this).children(':selected').selectedIndex)" class="locationtype table-group-action-input form-control input-inline input-small input-sm" name="locationtype">
 				 <option value="restaurant">Restaurant</option>
 				 <option value="caterer">Caterer</option>
 				 <option value="foodtruck">Food Truck</option>
