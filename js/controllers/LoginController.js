@@ -190,6 +190,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 			locationtype = locationArr.join();
 		}
 		
+		console.log('locationtype'+locationtype);
 		var daysArr = [];
 		$('div#daysopendata').find('option:selected').each(function () {
 				daysArr.push($(this).val());
