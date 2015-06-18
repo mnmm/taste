@@ -145,10 +145,7 @@ jQuery('#register-back-btn').click(function() {
 	jQuery('.login-form').show();
 	jQuery('.register-form').hide();
 });*/
-     
-      $(document).on("change", "select#locationtype", function() {
-		  console.log($(this).children(':selected').index());
-	  });   
+  
 MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,authenticationSvc) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	FormValidation.init();
@@ -233,9 +230,10 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		});
 	}
 	
-	function selectedLocationType(){
-		alert('comes here');
-	}
+	$scope.changedValue=function(item){
+		console.log(item.name);
+		$scope.itemList.push(item.name);
+    }     
 
 	if(authtoken != '' && typeof authtoken !== 'undefined' && authtoken !==null){
 		checktokenauthentication(authtoken);
