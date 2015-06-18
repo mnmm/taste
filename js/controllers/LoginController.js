@@ -184,7 +184,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 				console.log('locvalAr'+locationArrval[0]);
 				locationArr.push(locationArrval[locval]);
 			} else {
-				var locationotherval = $scope.locationtypeother;
+				var locationotherval = $('input#locationtypeother').val();
 				console.log('locationotherval'+locationotherval);
 				if(locationotherval != '' && typeof locationotherval != 'undefined'){
 					locationArr.push(locationotherval);
