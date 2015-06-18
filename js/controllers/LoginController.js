@@ -144,12 +144,13 @@ var ComponentsPickers = function () {
 				return;
 			}
 
-			$('#clockface_2').clockface({
+			$('.clockface_1').clockface();
+			//$('.clockface_2').clockface();
+			 $('.clockface_2').clockface({
 				format: 'HH:mm',
 				trigger: 'manual'
 			});
-
-			$('#clockface_2_toggle').click(function (e) {
+			$('.clockface_2_toggle').click(function (e) {
 				e.stopPropagation();
 				$('#clockface_2').clockface('toggle');
 			});
@@ -159,29 +160,11 @@ var ComponentsPickers = function () {
 				trigger: 'manual'
 			});
 
-			$('#clockface_2_modal_toggle').click(function (e) {
+			$('.clockface_2_modal_toggle').click(function (e) {
 				e.stopPropagation();
 				$('#clockface_2_modal').clockface('toggle');
 			});
-			/*$('#clockface_2').clockface({
-				format: 'HH:mm',
-				trigger: 'manual'
-			});
-
-			$('#clockface_2_toggle').click(function (e) {
-				e.stopPropagation();
-				$('#clockface_2').clockface('toggle');
-			});
-
-			$('#clockface_2_modal').clockface({
-				format: 'HH:mm',
-				trigger: 'manual'
-			});
-
-			$('#clockface_2_modal_toggle').click(function (e) {
-				e.stopPropagation();
-				$('#clockface_2_modal').clockface('toggle');
-			});*/
+			
 			 
 		}
 		
