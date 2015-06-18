@@ -175,9 +175,15 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	$scope.SignUp = function() {
 		
 		var locationArr = [];
+		var locationArrval = ['restaurant','caterer','foodtruck','bakery','other'];
+		
+		/*$scope.blisterPackTemplatess=[{daynameid:'monday',dayname:"Monday"},{daynameid:'tuesday',dayname:"Tuesday"},{daynameid:'wednesday',dayname:"Wednesday"},{daynameid:'thursday',dayname:"Thursday"},{daynameid:'friday',dayname:"Friday"},{daynameid:'saturday',dayname:"Saturday"},{daynameid:'sunday',dayname:"Sunday"}]*/
 		$('div#locationdata').find('option:selected').each(function () {
 			if($(this).val() != 'other'){
-				locationArr.push($(this).val());
+				var locval = $(this).val();
+				console.log('locval'+locval);
+				console.log('locvalAr'+locationArrval.locval);
+				locationArr.push(locationArrval.locval);
 			} else {
 				var locationotherval = $scope.locationtypeother;
 				if(locationotherval != '' && typeof locationotherval != 'undefined'){
