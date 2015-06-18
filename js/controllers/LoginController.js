@@ -230,7 +230,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		});
 	}
 	
-	$scope.blisterPackTemplates=[{id:1,name:"Restaurant"},{id:2,name:"Caterer"},{id:3,name:"Food Truck"},{id:4,name:"Bakery"},{id:5,name:"Other"}]
+	$scope.blisterPackTemplates=[{id:'restaurant',name:"Restaurant"},{id:'caterer',name:"Caterer"},{id:'foodtruck',name:"Food Truck"},{id:'bakery',name:"Bakery"},{id:'other',name:"Other"}]
 	
 	$scope.changedValue=function(item){
 		console.log(item.name);

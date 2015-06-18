@@ -155,7 +155,7 @@
 		<p class="hint">
 			Location Type:
 		</p>
-		<div class="form-group" id="locationdata">
+		<div class="form-group" id="locationdata" ng-controller="LoginController">
 			<label class="control-label visible-ie8 visible-ie9">Location Type (circle one or more or specify)</label>
 			<select multiple="multiple" placeholder="Location Type" class="locationtype table-group-action-input form-control input-inline input-small input-sm" name="locationtype" ng-model="blisterPackTemplateSelected" ng-change="changedValue(blisterPackTemplateSelected)" 
 			data-ng-options="blisterPackTemplate as blisterPackTemplate.name for blisterPackTemplate in blisterPackTemplates">
