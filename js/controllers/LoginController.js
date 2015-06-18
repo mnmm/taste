@@ -144,8 +144,44 @@ var ComponentsPickers = function () {
 				return;
 			}
 
-			$('.clockface_1').clockface();
-			$('.clockface_2').clockface();
+			$('#clockface_1').clockface({
+				format: 'HH:mm',
+				trigger: 'manual'
+			});
+
+			$('#clockface_1_toggle').click(function (e) {
+				e.stopPropagation();
+				$('#clockface_1').clockface('toggle');
+			});
+
+			$('#clockface_1_modal').clockface({
+				format: 'HH:mm',
+				trigger: 'manual'
+			});
+
+			$('#clockface_1_modal_toggle').click(function (e) {
+				e.stopPropagation();
+				$('#clockface_1_modal').clockface('toggle');
+			});
+			$('#clockface_2').clockface({
+				format: 'HH:mm',
+				trigger: 'manual'
+			});
+
+			$('#clockface_2_toggle').click(function (e) {
+				e.stopPropagation();
+				$('#clockface_2').clockface('toggle');
+			});
+
+			$('#clockface_2_modal').clockface({
+				format: 'HH:mm',
+				trigger: 'manual'
+			});
+
+			$('#clockface_2_modal_toggle').click(function (e) {
+				e.stopPropagation();
+				$('#clockface_2_modal').clockface('toggle');
+			});
 			 
 		}
 		
