@@ -189,3 +189,4 @@ button#loginbtn{ float:right; }
 .login .content .forget-password{ float:left !important; }
 #register-submit-btn{ margin-right:18px;}
 .login .content .check{ margin-left:15px !important; }
+.form-group.margin-top-20.margin-bottom-20.has-error{ clear:both; }
