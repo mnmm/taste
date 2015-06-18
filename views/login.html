@@ -191,6 +191,18 @@
 			<p class="hint">
 			Location Type:
 		</p>
+		<div class="form-group" id="locationdata" ng-controller="LoginController">
+			<label class="control-label visible-ie8 visible-ie9">Location Type (select one or more or specify)</label>
+			<select multiple="multiple" placeholder="Location Type" class="locationtype table-group-action-input form-control input-inline input-small input-sm" name="locationtype" ng-model="blisterPackTemplateSelected" ng-change="changedValue(blisterPackTemplateSelected)" 
+			data-ng-options="blisterPackTemplate.resnameid as blisterPackTemplate.name for blisterPackTemplate in blisterPackTemplates">
+			</select>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="location Type Other" name="locationtypeother" id="locationtypeother" ng-model="locationtypeother" style="display:none;"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Notes</label>
+			<textarea class="form-control" placeholder="Notes"  name="entries" rows="3"  id="locationnotes" ng-model="locationnotes" ></textarea>
+			<!--<input class="form-control placeholder-no-fix" type="text" placeholder="Notes" name="locationnotes" id="locationnotes" ng-model="locationnotes"/>-->
+		</div>
 		<div class="form-group" id="daysopendata">
 			<label class="control-label visible-ie8 visible-ie9">Days Open</label>
 			<select multiple="multiple" placeholder="Days Open" class="daysopen table-group-action-input form-control input-inline input-small input-sm" name="locationtype" ng-model="blisterPackTemplateSelected1" ng-change="changedDay(blisterPackTemplateSelected1)" 
@@ -226,9 +238,7 @@
 		
 		
 		
-		
-		
-		
+	
 		<div class="form-actions">
 			<button type="button" id="register-back-btn" class="btn btn-default" ng-click="showLogin();">Back</button>
 			<button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right" >Submit</button>
