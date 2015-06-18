@@ -234,13 +234,17 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
 							//console.log('in this function'+aData[0]);
 							if (aData[0].indexOf("low") >= 0){
-								$('tr', nRow).addClass('yellow');
+								//$('tr', nRow).addClass('yellow');
+								nRow.className = 'yellow';
 							} else if(aData[0].indexOf("medium") >= 0){
-								$('tr', nRow).addClass('blue');
+								//$('tr', nRow).addClass('blue');
+								nRow.className = 'blue';
 							} else if(aData[0].indexOf("high") >= 0){
-								$('tr', nRow).addClass('red');
+								//$('tr', nRow).addClass('red');
+								nRow.className = 'red';
 							} else {
-								$('tr', nRow).addClass('orange');
+								//$('tr', nRow).addClass('orange');
+								nRow.className = 'orange';
 							}
 							 // Bold the grade for all 'A' grade browsers
 							/* if ( aData[4] == "A" )
