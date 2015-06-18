@@ -68,7 +68,7 @@
 									fullname: {
 										required: true
 									},
-									email_address: {
+									/*email_address: {
 										required: true,
 										email: true
 									},
@@ -95,7 +95,7 @@
 									},
 									tnc: {
 										required: true
-									}
+									}*/
 								},
 								invalidHandler: function (event, validator) { //display error alert on form submit              
 									success1.hide();
@@ -185,6 +185,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 				locationArr.push(locationArrval[locval]);
 			} else {
 				var locationotherval = $scope.locationtypeother;
+				console.log('locationotherval'+locationotherval);
 				if(locationotherval != '' && typeof locationotherval != 'undefined'){
 					locationArr.push(locationotherval);
 				}
