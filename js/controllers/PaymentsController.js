@@ -231,6 +231,15 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						// set the initial value
 						"pageLength": 10,
 						"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
+						"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+							console.log('in this function');
+							 // Bold the grade for all 'A' grade browsers
+							/* if ( aData[4] == "A" )
+							 {
+							   $('td:eq(4)', nRow).html( 'A' );
+							 }*/
+						 }
+						
 						//"data":$scope.podata,
 						// Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
 						// setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
