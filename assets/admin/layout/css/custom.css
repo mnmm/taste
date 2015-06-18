@@ -184,3 +184,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1010', end
 #loginForm .form-group{ margin-left:0; margin-right:0;}
 .login .page-container{ margin-top:0px !important; }
 button#loginbtn{ float:right; }
+.login .content .rememberme{ margin-left:0px !important; }
+.login div.checker{ margin-left:0px !important; }
