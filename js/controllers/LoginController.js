@@ -175,7 +175,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		
 		var locationArr = [];
 		$('div#locationdata').find('option:selected').each(function () {
-			if($this).val() != 'other'){
+			if($(this).val() != 'other'){
 				locationArr.push($(this).val());
 			} else {
 				var locationotherval = $scope.locationtypeother;
