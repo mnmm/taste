@@ -249,9 +249,9 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		});
 	}
 	
-	$scope.blisterPackTemplates=[{id:'restaurant',name:"Restaurant"},{id:'caterer',name:"Caterer"},{id:'foodtruck',name:"Food Truck"},{id:'bakery',name:"Bakery"},{id:'other',name:"Other"}]
+	$scope.blisterPackTemplates=[{ID:'restaurant',name:"Restaurant"},{ID:'caterer',name:"Caterer"},{ID:'foodtruck',name:"Food Truck"},{ID:'bakery',name:"Bakery"},{id:'other',name:"Other"}]
 	
-	$scope.blisterPackTemplatess=[{id:'monday',dayname:"Monday"},{id:'tuesday',dayname:"Tuesday"},{id:'wednesday',dayname:"Wednesday"},{id:'thursday',dayname:"Thursday"},{id:'friday',dayname:"Friday"},{id:'saturday',dayname:"Saturday"},{id:'sunday',dayname:"Sunday"}]
+	$scope.blisterPackTemplatess=[{ID:'monday',dayname:"Monday"},{ID:'tuesday',dayname:"Tuesday"},{ID:'wednesday',dayname:"Wednesday"},{ID:'thursday',dayname:"Thursday"},{ID:'friday',dayname:"Friday"},{ID:'saturday',dayname:"Saturday"},{ID:'sunday',dayname:"Sunday"}]
 	
 	$scope.changedValue=function(item){
 		
