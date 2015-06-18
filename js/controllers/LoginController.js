@@ -172,20 +172,17 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$('.login').find('.content').css('width','400px');
 	}
 	
-	var locationArrval = {0:'restaurant',1:'caterer',2:'foodtruck',3:'bakery',4:'other'};
-	console.log('locvalAr'+locationArrval[0]);	
-		
+	
 	$scope.SignUp = function() {
 		
 		var locationArr = [];
 		var locationArrval = {0:'restaurant',1:'caterer',2:'foodtruck',3:'bakery',4:'other'};
-		/*$scope.blisterPackTemplatess=[{daynameid:'monday',dayname:"Monday"},{daynameid:'tuesday',dayname:"Tuesday"},{daynameid:'wednesday',dayname:"Wednesday"},{daynameid:'thursday',dayname:"Thursday"},{daynameid:'friday',dayname:"Friday"},{daynameid:'saturday',dayname:"Saturday"},{daynameid:'sunday',dayname:"Sunday"}]*/
+		var daysArrval = {0:'monday',1:'tuesday',2:'webnesday',3:'thursday',4:'friday',5:'saturday',6:'sunday'}; 
 		$('div#locationdata').find('option:selected').each(function () {
-			if($(this).val() != 'other'){
+			if($(this).val() != 4){
 				var locval = $(this).val();
-				console.log('locval'+locval);
 				console.log('locvalAr'+locationArrval[0]);
-				locationArr.push(locationArrval.locval);
+				locationArr.push(locationArrval[locval]);
 			} else {
 				var locationotherval = $scope.locationtypeother;
 				if(locationotherval != '' && typeof locationotherval != 'undefined'){
@@ -201,7 +198,9 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		console.log('locationtype'+locationtype);
 		var daysArr = [];
 		$('div#daysopendata').find('option:selected').each(function () {
-				daysArr.push($(this).val());
+				var dayval = $(this).val();
+				console.log('locvalAr'+daysArrval[dayval]);
+				daysArr.push(daysArrval[dayval]);
 		});
 		var opendays = '';
 		if(daysArr.length > 0){
