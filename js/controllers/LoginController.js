@@ -246,7 +246,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 						var sucess2 = $('#registerformsucess');
 						$('#registerForm').find('#registerformsucess').show();
 						Metronic.scrollTo(sucess2, -200);
-						$('#registerformsucess').hide();
+						$('#registerformalert').hide();
 				} else {
 					if(data.status_code == 201){
 						if(data.accountcreated ==  0){
@@ -254,6 +254,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 							error3.show();
 							Metronic.scrollTo(error3, -200);
 							$('#registerformalert').show(data.message);
+							$('#registerformsucess').hide();
 						} else {
 							
 						}
