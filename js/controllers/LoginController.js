@@ -242,6 +242,8 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		});
 		if(otherexists == 1){
 			$('#locationtypeother').css('display','inline-block');
+		} else {
+			$('#locationtypeother').css('display','none');
 		}
     }     
 
