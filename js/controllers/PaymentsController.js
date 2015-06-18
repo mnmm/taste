@@ -238,13 +238,13 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 								nRow.className = 'priority-yellow';
 							} else if(aData[0].indexOf("medium") >= 0){
 								//$('tr', nRow).addClass('blue');
-								nRow.className = 'priority-blue';
+								nRow.className = 'priority-orange';
 							} else if(aData[0].indexOf("high") >= 0){
 								//$('tr', nRow).addClass('red');
 								nRow.className = 'priority-red';
 							} else {
 								//$('tr', nRow).addClass('orange');
-								nRow.className = 'priority-orange';
+								nRow.className = 'priority-green';
 							}
 							 // Bold the grade for all 'A' grade browsers
 							/* if ( aData[4] == "A" )
