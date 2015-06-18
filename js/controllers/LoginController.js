@@ -91,7 +91,11 @@
 										required: true
 									},
 									entries: {
-										required: true
+										required: true,
+										number:true
+									},
+									emailcontact:{
+										email: true
 									},
 									tnc: {
 										required: true
