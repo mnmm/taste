@@ -1083,7 +1083,7 @@
 	  }
 	  
 	  //function to create vendor self account
-		public static function create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription){
+		public static function create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription,$locationtype){
 			
 			$check_vendor_account = DB::table('users')->where('email',$email_address)->first();
 			if(isset($check_vendor_account->id) && $check_vendor_account->id != ''){
