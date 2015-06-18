@@ -1083,7 +1083,7 @@
 	  }
 	  
 	  //function to create vendor self account
-		public static function create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businesshours,$locationdescription,$locationtype){
+		public static function create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$locationtype,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businessopeninghours,$businessclosinghours,$locationdescription,$locationnotes,$mealnotes){
 			
 			$check_vendor_account = DB::table('users')->where('email',$email_address)->first();
 			if(isset($check_vendor_account->id) && $check_vendor_account->id != ''){
@@ -1101,7 +1101,11 @@
 				$register->neighborhood = $neighborhood;
 				$register->entries = $entries;
 				$register->daysopen = $daysopen;
-				$register->businesshours = $businesshours;
+				$register->businessopeninghours = $businessopeninghours;
+				$register->businessclosinghours = $businessclosinghours;
+				$register->locationnotes = $locationnotes;
+				$register->mealnotes = $mealnotes;
+				$register->locationtype = $locationtype;
 				$register->locationdescription = $locationdescription;
 				$register->city = $city;
 				$register->state = $state;
