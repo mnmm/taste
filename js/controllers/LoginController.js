@@ -241,7 +241,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	
 	$scope.blisterPackTemplates=[{id:'restaurant',name:"Restaurant"},{id:'caterer',name:"Caterer"},{id:'foodtruck',name:"Food Truck"},{id:'bakery',name:"Bakery"},{id:'other',name:"Other"}]
 	
-	$scope.daysOpenOptions=[{id:'monday',dayname:"Monday"},{id:'tuesday',dayname:"Tuesday"},{id:'wednesday',dayname:"Wednesday"},{id:'thursday',dayname:"Thursday"},{id:'friday',dayname:"Friday"},{id:'saturday',dayname:"Saturday"},{id:'sunday',dayname:"Sunday"}]
+	$scope.blisterPackTemplatess=[{id:'monday',dayname:"Monday"},{id:'tuesday',dayname:"Tuesday"},{id:'wednesday',dayname:"Wednesday"},{id:'thursday',dayname:"Thursday"},{id:'friday',dayname:"Friday"},{id:'saturday',dayname:"Saturday"},{id:'sunday',dayname:"Sunday"}]
 	
 	$scope.changedValue=function(item){
 		
@@ -256,7 +256,22 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		} else {
 			$('#locationtypeother').css('display','none');
 		}
-    }     
+    }  
+    
+    $scope.changedDay=function(item){
+		
+		/*var otherexists = 0;
+		$.each( item, function( key, value ) {
+			if(value.id == 'other'){
+				otherexists = 1;
+			}
+		});
+		if(otherexists == 1){
+			$('#locationtypeother').css('display','inline-block');
+		} else {
+			$('#locationtypeother').css('display','none');
+		}*/
+    }   
 
 	if(authtoken != '' && typeof authtoken !== 'undefined' && authtoken !==null){
 		checktokenauthentication(authtoken);
