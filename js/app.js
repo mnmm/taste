@@ -1162,9 +1162,15 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                         name: 'MetronicApp',  
                         insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                         files: [
+							  Globals.url+'/assets/global/plugins/select2/select2.css',
+                              Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css',
+                              Globals.url+'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
+                              Globals.url+'/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js',
+                              Globals.url+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
                               Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
                               Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',
-                              //Globals.url+'/assets/global/plugins/sumoselect/sumoselect.css',
+                              Globals.url+'/assets/global/plugins/sumoselect/sumoselect.css',
                              // Globals.url+'/assets/global/plugins/sumoselect/jquery.sumoselect.js',
                               Globals.url+'/js/controllers/LoginController.js'
                         ]                    
