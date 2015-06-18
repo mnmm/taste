@@ -203,10 +203,22 @@
 			<label class="control-label visible-ie8 visible-ie9">Vendor Business Hours</label>
 			<input class="form-control placeholder-no-fix clockface_1" type="text" placeholder="Vendor Business Opening Hour" name="businessopeninghour" id="businessopeninghour" ng-model="businessopeninghour" data-format="hh:mm A" />
 			<span class="input-group-addon"> to </span>
-			<input class="form-control placeholder-no-fix clockface_2" type="text" placeholder="Vendor Business Closing Hour" name="businessclosinghour" id="businessclosinghour" ng-model="businessclosinghour" />
+			<!--<input class="form-control placeholder-no-fix clockface_2" type="text" placeholder="Vendor Business Closing Hour" name="businessclosinghour" id="businessclosinghour" ng-model="businessclosinghour" />
 			<span class="input-group-btn">
 				<button class="btn default" type="button" class="clockface_2_modal_toggle"><i class="fa fa-clock-o"></i></button>
-			</span>
+			</span>-->
+			
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3">Button</label>
+			<div class="col-md-3">
+				<div class="input-group">
+					<input type="text" id="clockface_2" value="14:30" class="form-control" readonly=""/>
+					<span class="input-group-btn">
+					<button class="btn default" type="button" id="clockface_2_toggle"><i class="fa fa-clock-o"></i></button>
+					</span>
+				</div>
+			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Location Description</label>
