@@ -157,12 +157,14 @@
 		</p>
 		<div class="form-group" id="locationdata">
 			<label class="control-label visible-ie8 visible-ie9">Location Type (circle one or more or specify)</label>
-			<select multiple="multiple" placeholder="Location Type" class="locationtype table-group-action-input form-control input-inline input-small input-sm" name="locationtype" ng-change="changedValue(blisterPackTemplateSelected)" ng-model="blisterPackTemplateSelected">
-				 <option value="restaurant">Restaurant</option>
+			<select multiple="multiple" placeholder="Location Type" class="locationtype table-group-action-input form-control input-inline input-small input-sm" name="locationtype" ng-model="blisterPackTemplateSelected" ng-change="changedValue(blisterPackTemplateSelected)" 
+			data-ng-options="blisterPackTemplate as blisterPackTemplate.name for blisterPackTemplate in blisterPackTemplates">
+				 <!--<option value="restaurant">Restaurant</option>
 				 <option value="caterer">Caterer</option>
 				 <option value="foodtruck">Food Truck</option>
 				 <option value="bakery">Bakery</option>
-				 <option value="other" >Other</option>
+				 <option value="other" >Other</option>-->
+				 
 			</select>
 		</div>
 		<div class="form-group">

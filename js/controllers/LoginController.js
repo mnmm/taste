@@ -230,9 +230,10 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		});
 	}
 	
+	$scope.blisterPackTemplates=[{id:1,name:"Restaurant"},{id:2,name:"Caterer"},{id:3,name:"Food Truck"},{id:4,name:"Bakery"},{id:5,name:"Other"}]
+	
 	$scope.changedValue=function(item){
 		console.log(item.name);
-		$scope.itemList.push(item.name);
     }     
 
 	if(authtoken != '' && typeof authtoken !== 'undefined' && authtoken !==null){
