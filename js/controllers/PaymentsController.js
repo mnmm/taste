@@ -220,8 +220,8 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 							[0, 'asc']
 						],
 						"lengthMenu": [
-							[5, 15, 20, -1],
-							[5, 15, 20, "All"] // change per page values here
+							[5, 10, 20, -1],
+							[5, 10, 20, "All"] // change per page values here
 						],
 						"data":$scope.data,
 						// set the initial value
