@@ -154,6 +154,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 	function callAtTimeout() {
 		$('.locationtype').SumoSelect({selectAll:false,csvDispCount:3,selectAlltext:'All' });
+		$('.locationtype').SumoSelect({selectAll:false,csvDispCount:3,selectAlltext:'All' });
 	}
 	$timeout(function () {
 		 $timeout(callAtTimeout, 1000);
@@ -238,6 +239,8 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	}
 	
 	$scope.blisterPackTemplates=[{id:'restaurant',name:"Restaurant"},{id:'caterer',name:"Caterer"},{id:'foodtruck',name:"Food Truck"},{id:'bakery',name:"Bakery"},{id:'other',name:"Other"}]
+	
+	$scope.daysOpenOptions=[{id:'monday',name:"Monday"},{id:'tuesday',name:"Tuesday"},{id:'wednesday',name:"Wednesday"},{id:'thursday',name:"Thursday"},{id:'friday',name:"Friday"},{id:'saturday',name:"Saturday"},{id:'sunday',name:"Sunday"}]
 	
 	$scope.changedValue=function(item){
 		
