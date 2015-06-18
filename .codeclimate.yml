@@ -5,7 +5,7 @@ languages:
   PHP: true
   Python: false
 exclude_paths:
-"assets"
-"packages"
-"tpl"
-"public"
+- "assets"
+- "packages"
+- "tpl"
+- "public"
