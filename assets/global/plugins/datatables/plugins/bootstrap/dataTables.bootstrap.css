@@ -99,7 +99,8 @@ div.dataTables_scrollFoot table {
    to use separate
  */
 table.table-bordered.dataTable {
-	border-collapse: separate !important;
+	/*border-collapse: separate !important;*/
+	border-collapse: collapse !important;
 }
 table.table-bordered thead th,
 table.table-bordered thead td {
