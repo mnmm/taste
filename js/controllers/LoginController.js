@@ -181,7 +181,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 	function callAtTimeout() {
-		$('.daysopen').SumoSelect({selectAll:true,csvDispCount:2,selectAlltext:'Select All'});
+		$('.daysopen').SumoSelect({selectAll:true,csvDispCount:3,selectAlltext:'Select All'});
 		$('.locationtype').SumoSelect({selectAll:false,csvDispCount:3});
 		
 	}
@@ -237,7 +237,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		}
 		//console.log('opendays'+opendays);
 		
-		/*$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
 		$http.post($scope.apppath+'/api/getunpaidpo',{fullname:$scope.fullname,email_address:$scope.email_address,password:$scope.register_password,address:$scope.address,city:$scope.city,state:$scope.state,zip:$scope.zip,phone:$scope.phone,location:$scope.location,address2:$scope.address2,crossstreet:$scope.crossstreet,neighborhood:$scope.neighborhood,entries:$scope.entries,daysopen:opendays,businessopeninghours:$scope.businessopeninghours,businessclosinghours:$scope.businessclosinghours,locationdescription:$scope.locationdescription,locationtype:locationtype,locationnotes:locationnotes,mealnotes:mealnotes,action:'createvendoraccount'}).
 			success(function(data, status, headers, config) {
@@ -259,7 +259,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 						}
 					}
 				}
-		});*/
+		});
 	}
 	
 	function createauthtoken(){
