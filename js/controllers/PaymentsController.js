@@ -232,7 +232,16 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						"pageLength": 10,
 						"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
 						"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-							console.log('in this function'+aData[0]);
+							//console.log('in this function'+aData[0]);
+							if (aData[0].indexOf("low") >= 0){
+								$('td', nRow).css('background-color', 'blue');
+							} else if(aData[0].indexOf("medium") >= 0){
+								$('td', nRow).css('background-color', 'red');
+							} else if(aData[0].indexOf("high") >= 0){
+								$('td', nRow).css('background-color', 'green');
+							} else {
+								$('td', nRow).css('background-color', 'black');
+							}
 							 // Bold the grade for all 'A' grade browsers
 							/* if ( aData[4] == "A" )
 							 {
