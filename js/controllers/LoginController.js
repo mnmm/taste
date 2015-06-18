@@ -196,20 +196,6 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$('.login').find('.content').css('width','400px');
 	}
 	
-	$scope.toggleClock =function(){
-		    /*$('#clockface_2_toggle').click(function (e) {
-				e.stopPropagation();
-				$('.clockface_2').clockface('toggle');
-			});
-
-			$('#clockface_2_modal').clockface({
-				format: 'HH:mm',
-				trigger: 'manual'
-			});*/
-		
-			$('#clockface_2_modal').clockface('toggle');
-			
-	}
 	
 	$scope.SignUp = function() {
 		
