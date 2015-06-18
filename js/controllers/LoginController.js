@@ -146,7 +146,7 @@ jQuery('#register-back-btn').click(function() {
 	jQuery('.register-form').hide();
 });*/
      
-      $(document).on("change", "#locationtype", function() {
+      $(document).on("change", "select#locationtype", function() {
 		  console.log($(this).children(':selected').index());
 	  });   
 MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,authenticationSvc) {
