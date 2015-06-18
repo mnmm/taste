@@ -172,6 +172,9 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$('.login').find('.content').css('width','400px');
 	}
 	
+	var locationArrval = {0:'restaurant',1:'caterer',2:'foodtruck',3:'bakery',4:'other'};
+	console.log('locvalAr'+locationArrval[0]);	
+		
 	$scope.SignUp = function() {
 		
 		var locationArr = [];
