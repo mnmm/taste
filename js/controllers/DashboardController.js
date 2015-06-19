@@ -25,23 +25,27 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 					$(this).css('display','none');
 				});
 				Layout.initSidebar();
-				if(data.status_code == 200){
+				if(data.status_code === 200){
 					
-					 if(data.unpaidorders != '')
-						$scope.unpaidorders = data.unpaidorders;	
+					 if(data.unpaidorders !== ''){
+						$scope.unpaidorders = data.unpaidorders;
+					 }	
 						
-					 if(data.totalunpaidamount != '')
+					 if(data.totalunpaidamount !== ''){
 						$scope.totalunpaidamount = data.totalunpaidamount;
+					 }
 						
-					if(data.totalunpaidamount != '')
+					if(data.totalunpaidamount !== ''){
 						$scope.unpaidnextweekorders = data.unpaidnextweekorders;
+					}
 						
-					if(data.unpaidnextweekamount != '')
+					if(data.unpaidnextweekamount !== ''){
 						$scope.unpaidnextweekamount = data.unpaidnextweekamount;
-					else 
+					} else { 
 						$scope.unpaidnextweekamount = 0;
+					}
 						
-					if(data.getpodetails != ''){
+					if(data.getpodetails !== ''){
 						$scope.getpodetails = data.getpodetails;
 						$scope.graphData =[];
 						$scope.graphSaleStats =[];
@@ -89,7 +93,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 						
 					}
 					
-					if(data.nextweekdue != ''){
+					if(data.nextweekdue !== ''){
 						$scope.nextweekdue = data.nextweekdue;
 						$scope.nextweekData =[];
 						angular.forEach($scope.nextweekdue, function(x, k) {
@@ -104,11 +108,11 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 						//console.log($scope.nextweekData);
 					}
 					
-					if(data.nextweekduecount != ''){
+					if(data.nextweekduecount !== ''){
 						$scope.nextweekduecount = data.nextweekduecount;	
 					}
 					
-					if(data.vendorpodetails != ''){
+					if(data.vendorpodetails !== ''){
 						$scope.vendorpodetails = data.vendorpodetails;
 						console.log($scope.vendorpodetails);
 					}
@@ -160,7 +164,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 			});
 		}
 		
-		if(authtoken != '' && typeof authtoken !== 'undefined' && authtoken !==null){
+		if(authtoken !== '' && typeof authtoken !== 'undefined' && authtoken !== null){
 			checktokenauthentication(authtoken, getunpaidpo);
 		} else {
 			createauthtoken(getunpaidpo);
@@ -182,7 +186,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 							//console.log(data.getpodetails);
 							angular.forEach($scope.getpodetails, function(x, k) {
 		   
-								 if(x.time != undefined)
+								 if(x.time !== undefined)
 								  {
 									$scope.graphData.push({
 										  period: x.time,
@@ -190,7 +194,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 										  paidamount:x.paidamount
 									});
 								} else {
-									if(x.totalamount != undefined)
+									if(x.totalamount !== undefined)
 									{	
 										$scope.graphSaleStats.push({
 											  totalamount: x.totalamount,
