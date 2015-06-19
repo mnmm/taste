@@ -2598,6 +2598,69 @@ class ApiController extends BaseController {
 					$result['savedtoadminnotes'] = 0;
 				}
 				
+			} else if($action == 'adminnotes') {
+				$ordercount = 0;
+				
+				$admin_notes_all = AdminNotes::get_all_admin_notes();
+				
+				echo "<pre>";
+				print_r($admin_notes_all);exit;
+				$draw = 0;
+				$recordsfound = 0;
+				if(count($admin_notes) > 0){
+					$recordsfound = count($admin_notes_all);
+					
+				     $admin_notes = array();		
+					 foreach($admin_notes_all as $key=>$val)
+					 {
+							$admin_notes[$val->newdate][] = $val;
+					 }
+					 
+				     /*foreach($admin_notes as $key=>$admin_note){
+								$newdate = $key;  
+								$todaydate = date('Y-m-d');
+								$yesterday = date('Y-m-d',strtotime("-1 days"));
+								$check_key =  0;
+                                $cDateTime = strtotime($key); 
+								echo date('F j, Y', $cDateTime); 
+                                                  
+                                                
+                                                <p class="day" style="font-weight: normal; color:#aa9c84; font-size:13px;"><?php
+												
+												if($newdate < $todaydate && $newdate == $yesterday)
+												{
+													echo $timedisplay = 'Yesterday';
+												   	$check_key++;
+											    } 
+											    else if($newdate < $todaydate)
+											    {
+												 	
+												  	$check_key++;
+											  	} 
+											  	else 
+											  	{
+												  $dates =  $key; 
+												  $cDateTime = strtotime($dates);
+												  //echo "Today";
+											  	}
+						$result['data'][]= array($notedetail->po_no.'<input type="hidden" name="prioritystatus" value="'.$priority_status.'">',$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" >Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
+					}*/
+					
+					$result["draw"] = $draw;
+					$result["recordsTotal"] = $recordsfound;
+					$result["recordsFiltered"] = $recordsfound;
+
+					$json_result = str_replace('null','""',json_encode($result));
+					echo $json_result;
+					exit;
+				} else {
+					$result['data'][] =array();
+					$result["draw"] = 0;
+					$result["recordsTotal"] = 0;
+					$result["recordsFiltered"] = 0;
+					$result["zeroRecords"] = 0;
+					
+				}
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));

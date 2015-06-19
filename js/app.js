@@ -938,6 +938,62 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             }
         })
         
+        
+        // User Profile
+        .state("adminnotes", {
+            url: "/adminnotes",
+            templateUrl: "views/adminnotes.html",
+            data: {pageTitle: 'Admin Notes', authorizedRoles: ['admin']},
+            controller: "AdminNotesController",
+            resolve: {
+				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
+					 authenticationSvc.checkloggedIn().then(function (userLogInfo){
+									 if (userLogInfo)
+									 {
+											var userroleInfo = authenticationSvc.getUserInfo();
+											if(userroleInfo.role==1)
+											{
+												return $q.when(userroleInfo);
+											}
+											else
+											{
+												authenticationSvc.logout();
+												return $q.reject({ authenticated: false });
+											} 
+									  } 
+									  else {
+										authenticationSvc.logout();	
+										return $q.reject({ authenticated: false });
+									  }  
+					  });
+					}],
+                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',  
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+
+                           
+                             Globals.url+'/assets/global/plugins/select2/select2.css', 
+                             Globals.url+'/assets/admin/pages/scripts/components-pickers.js',
+                             Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                             Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',                                         
+                             Globals.url+'/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css', 
+                             Globals.url+'/assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css',
+                             Globals.url+'/assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css',
+
+                             Globals.url+'/assets/global/plugins/select2/select2.min.js',
+                             Globals.url+'/assets/global/plugins/datatables/all.min.js',
+                             Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
+                             Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                             Globals.url+'/js/controllers/AdminNotesController.js'
+  
+                        ]                    
+                    });
+                }]
+            }
+        })
+        
         //vendor dashboard url
         .state("vendordashboard", {
             url: "/vendors",
@@ -983,6 +1039,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                 }]
             }
         })
+        
+        
+        
         
          
         
