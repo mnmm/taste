@@ -23,7 +23,7 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 						
 						$http.post($scope.apppath+'/api/getunpaidpo',{action:'getw9form',formname:'w9 form',email:useremail,reminder_code:1}).
-						success(function(data, status, headers, config) {
+						success(function(data) {
 							if(data.w9signed == 0){
 								if(data.w9response==2)
 								{
@@ -52,16 +52,16 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getaccountinfo',accesshash:payauthtoken,email:useremail}).
-				success(function(data, status, headers, config) {
+				success(function(data) {
 					Layout.initSidebar();
-					if(data.status_code == 200){
+					if(data.status_code === 200){
 						
-						 if(data.vendorinfo != '')
+						 if(data.vendorinfo !== '')
 							$scope.vendorinfo = data.vendorinfo;	
 						
 							var vm = this;
 					} else {
-						if(data.status_message == 'Invalid token'){
+						if(data.status_message === 'Invalid token'){
 							$window.location.href = '#/vendors/addbankinfo';
 						} else {
 							createauthtoken(getunpaidpo);
@@ -87,8 +87,8 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 				$http.post($scope.apppath+'/api/getunpaidpo',{action:'savecontractinfo',email:all_dt[0],ssn_last4:all_dt[1],ssn_enc:all_dt[2],ein:all_dt[3],payeename:'Test Payee'}).
-				success(function(data, status, headers, config) {
-					if(data.updatedtaxid == 1){
+				success(function(data) {
+					if(data.updatedtaxid === 1){
 						$window.location.href = '#/vendors/addbankinfo';
 					 }
 				});
@@ -100,8 +100,8 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 		function createauthtoken(callback){
 			
 			$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
-					success(function(data, status, headers, config) {
-						if(data.status_code == 200 ){
+					success(function(data) {
+						if(data.status_code === 200 ){
 							localStorage.setItem('access_token',data.access_token);
 							callback();
 						}
@@ -112,8 +112,8 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =authtoken;
 			$http.post($scope.apppath+'/api/checktokenauthentication').
-				success(function(data, status, headers, config) {
-					if(data.status_code == 200){
+				success(function(data) {
+					if(data.status_code === 200){
 						callback();
 					} else {
 						createauthtoken(callback);
@@ -140,8 +140,8 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'createuseraccount',email:email,password:password}).
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200){
+			success(function(data) {
+				if(data.status_code === 200){
 					 
 				} else {
 					createauthtoken(createUserAccount);
