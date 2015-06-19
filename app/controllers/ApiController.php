@@ -2601,7 +2601,7 @@ class ApiController extends BaseController {
 			} else if($action == 'adminnotes') {
 				$ordercount = 0;
 				
-				$admin_notes_all = AdminNotes::get_all_admin_notes();
+				$admin_notes_all = AdminNotes::get_adminnotes();
 				
 				echo "<pre>";
 				print_r($admin_notes_all);exit;

@@ -5,7 +5,7 @@ class AdminNotes extends Eloquent{
 	public $table = 'admin_notes';
 	public $timestamps = false;
 
-    public function adminnotes()
+    public function get_adminnotes()
 	{
 		$admin_notes_all= DB::table('admin_notes')
 					->leftjoin('users','admin_notes.user_id', '=', 'users.id')
