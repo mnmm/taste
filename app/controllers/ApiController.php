@@ -2605,7 +2605,7 @@ class ApiController extends BaseController {
 				
 				$draw = 0;
 				$recordsfound = 0;
-				if(count($admin_notes) > 0){
+				if(count($admin_notes_all) > 0){
 					$recordsfound = count($admin_notes_all);
 					
 				     $admin_notes = array();		
