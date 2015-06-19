@@ -331,6 +331,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
     }   
 
 	if(authtoken !== '' && typeof authtoken !== 'undefined' && authtoken !== null){
+		console.log('authtoken'+authtoken);
 		checktokenauthentication(authtoken);
 	} else {
 		createauthtoken();
