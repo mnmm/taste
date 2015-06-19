@@ -172,28 +172,7 @@ MetronicApp.controller('AdminNotesController', function($rootScope, $scope, $htt
 						"data":$scope.data,
 						// set the initial value
 						"pageLength": 10,
-						"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
-						"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-							//console.log('in this function'+aData[0]);
-							if (aData[0].indexOf("low") >= 0){
-								//$('tr', nRow).addClass('yellow');
-								nRow.className = 'priority-yellow';
-							} else if(aData[0].indexOf("medium") >= 0){
-								//$('tr', nRow).addClass('blue');
-								nRow.className = 'priority-orange';
-							} else if(aData[0].indexOf("high") >= 0){
-								//$('tr', nRow).addClass('red');
-								nRow.className = 'priority-red';
-							} else {
-								//$('tr', nRow).addClass('orange');
-								nRow.className = 'priority-green';
-							}
-							 // Bold the grade for all 'A' grade browsers
-							/* if ( aData[4] == "A" )
-							 {
-							   $('td:eq(4)', nRow).html( 'A' );
-							 }*/
-						 }
+						"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>" // horizobtal scrollable datatable
 						
 						
 					});
