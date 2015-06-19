@@ -10,3 +10,4 @@ exclude_paths:
 - "tpl/*"
 - "public/*"
 - "app/*_bkup.php"
+- "app/controllers/lib/Stripe/*"
