@@ -210,14 +210,14 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		var locationArrval = {0:'restaurant',1:'caterer',2:'foodtruck',3:'bakery',4:'other'};
 		var daysArrval = {0:'monday',1:'tuesday',2:'webnesday',3:'thursday',4:'friday',5:'saturday',6:'sunday'}; 
 		$('div#locationdata').find('option:selected').each(function () {
-			if($(this).val() != 4){
+			if($(this).val() !== 4){
 				var locval = $(this).val();
 				//console.log('locvalAr'+locationArrval[0]);
 				locationArr.push(locationArrval[locval]);
 			} else {
 				var locationotherval = $('input#locationtypeother').val();
 				//console.log('locationotherval'+locationotherval);
-				if(locationotherval != '' && typeof locationotherval != 'undefined'){
+				if(locationotherval !== '' && typeof locationotherval !== 'undefined'){
 					locationArr.push(locationotherval);
 				}
 			}
@@ -243,24 +243,22 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
 		$http.post($scope.apppath+'/api/getunpaidpo',{fullname:$scope.fullname,email_address:$scope.email_address,password:$scope.register_password,address:$scope.address,city:$scope.city,state:$scope.state,zip:$scope.zip,phone:$scope.phone,location:$scope.location,address2:$scope.address2,crossstreet:$scope.crossstreet,neighborhood:$scope.neighborhood,entries:$scope.entries,daysopen:opendays,businessopeninghours:$scope.businessopeninghours,businessclosinghours:$scope.businessclosinghours,locationdescription:$scope.locationdescription,locationtype:locationtype,locationnotes:$scope.locationnotes,mealnotes:$scope.mealnotes,emailcontact:$scope.emailcontact,contactphone:$scope.contactphone,action:'createvendoraccount'}).
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200){
+			success(function(data) {
+				if(data.status_code === 200){
 						$('form#registerForm')[0].reset();
 						var sucess2 = $('#registerformsucess');
 						$('#registerForm').find('#registerformsucess').show();
 						Metronic.scrollTo(sucess2, -200);
 						$('#registerformalert').hide();
 				} else {
-					if(data.status_code == 201){
-						if(data.accountcreated ==  0){
+					if(data.status_code === 201){
+						if(data.accountcreated ===  0){
 							var error3 = $('#registerformalert');
 							error3.show();
 							Metronic.scrollTo(error3, -200);
 							$('#registerformalert').show(data.message);
 							$('#registerformsucess').hide();
-						} else {
-							
-						}
+						} 
 					}
 				}
 		});
@@ -269,8 +267,8 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 	function createauthtoken(){
 			
 		$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
-				success(function(data, status, headers, config) {
-					if(data.status_code == 200 ){
+				success(function(data) {
+					if(data.status_code === 200 ){
 						localStorage.setItem('access_token',data.access_token);
 					}
 		});			
@@ -280,8 +278,8 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
 		$http.post($scope.apppath+'/api/checktokenauthentication').
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200){
+			success(function(data) {
+				if(data.status_code === 200){
 					
 				} else {
 					createauthtoken();
@@ -299,11 +297,11 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		
 		$.each( item, function( key, value ) {
 			
-			if(value == 'other'){
+			if(value === 'other'){
 				otherexists = 1;
 			}
 		});
-		if(otherexists == 1){
+		if(otherexists === 1){
 			$('#locationtypeother').css('display','inline-block');
 		} else {
 			$('#locationtypeother').css('display','none');
@@ -325,7 +323,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		}*/
     }   
 
-	if(authtoken != '' && typeof authtoken !== 'undefined' && authtoken !==null){
+	if(authtoken !== '' && typeof authtoken !== 'undefined' && authtoken !== null){
 		checktokenauthentication(authtoken);
 	} else {
 		createauthtoken();
