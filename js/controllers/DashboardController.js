@@ -52,7 +52,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 						//console.log(data.getpodetails);
 						angular.forEach($scope.getpodetails, function(x, k) {
        
-							 if(x.time != undefined)
+							 if(x.time !== undefined)
 							  {
 								$scope.graphData.push({
 									  period: x.time,
@@ -60,7 +60,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 									  paidamount:x.paidamount
 								});
 							} else {
-								if(x.totalamount != undefined)
+								if(x.totalamount !== undefined)
 								{
 									$scope.graphSaleStats.push({
 										  totalamount: x.totalamount,
@@ -97,7 +97,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 						$scope.nextweekdue = data.nextweekdue;
 						$scope.nextweekData =[];
 						angular.forEach($scope.nextweekdue, function(x, k) {
-							  if(x.po_no != undefined)
+							  if(x.po_no !== undefined)
 							  {
 									$scope.nextweekData.push({
 										  itemdetails: 'po no #'+x.po_no + ' with amount $'+ x.total_amount+' is due on '+x.due_date,
@@ -122,7 +122,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 				
 					$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
 					success(function(data) {
-						if(data.status_code == 200 ){
+						if(data.status_code === 200 ){
 							localStorage.setItem('access_token',data.access_token);
 							getunpaidpo();
 						}
@@ -144,7 +144,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 			
 			$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
 					success(function(data) {
-						if(data.status_code == 200 ){
+						if(data.status_code === 200 ){
 							localStorage.setItem('access_token',data.access_token);
 							callback();
 						}
@@ -156,7 +156,7 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 			$http.defaults.headers.common['x-taste-access-token'] =authtoken;
 			$http.post($scope.apppath+'/api/checktokenauthentication').
 				success(function(data) {
-					if(data.status_code == 200){
+					if(data.status_code === 200){
 						callback();
 					} else {
 						createauthtoken(callback);
@@ -178,8 +178,8 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 		$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 		$http.post($scope.apppath+'/api/getpodataforgraphs',{fetchordertype:type}).
 			success(function(data) {
-				if(data.status_code == 200){
-					if(data.getpodetails != ''){
+				if(data.status_code === 200){
+					if(data.getpodetails !== ''){
 							$scope.getpodetails = data.getpodetails;
 							$scope.graphData =[];
 							$scope.graphSaleStats =[];
@@ -240,8 +240,8 @@ MetronicApp.controller('DashboardController', function($rootScope, $scope, $http
 		$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 		$http.post($scope.apppath+'/api/getunpaidpo',{activitytype:type,action:'dashboard',fetchdata:'members'}).
 			success(function(data) {
-				if(data.status_code == 200){
-					if(data.vendorpodetails != ''){
+				if(data.status_code === 200){
+					if(data.vendorpodetails !== ''){
 						$scope.vendorpodetails = data.vendorpodetails;
 						console.log($scope.vendorpodetails);
 					}	
