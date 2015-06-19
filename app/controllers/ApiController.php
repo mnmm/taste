@@ -2589,7 +2589,7 @@ class ApiController extends BaseController {
 					$result['message'] = 'vendor account already exists';
 				}
 			} else if($action == 'saveadminnotes'){
-				$noteid = Logs::sendadminnotes($sub,$message,$userid,1);
+				$noteid = Logs::sendadminnotes($subject,$message,$userid,1);
 				if($noteid != ''){
 					$result['status_code']=200;
 					$result['savedtoadminnotes'] = 1;
