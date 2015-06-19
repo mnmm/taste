@@ -14,7 +14,7 @@ class Logs extends Eloquent{
 	public static function sendadminnotes($sub,$message ,$user_id,$type='')
     {
        $created=date('Y-m-d H:i:s');
-	   $adminnoteid = DB::table('admin_notes')->insertId(
+	   $adminnoteid = DB::table('admin_notes')->insertGetId(
     			array('subject' => $sub, 'message' => $message, 'user_id' => $user_id, 'created' => $created,'type' => $type)
 			);
 	  return $adminnoteid;
