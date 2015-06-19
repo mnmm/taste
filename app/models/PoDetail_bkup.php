@@ -78,15 +78,53 @@
 			
 			
 			if($searchby == 'all' || $searchby == 'duedate'){
-				if($due_date_from != ''){
-				
-					if($search_string != ''){
-						$search_string .= ' AND taste_po.due_date >= "'.$due_date_from.' 00:00:00" AND taste_po.due_date <= "'.$due_date_from.' 23:59:59"';
+				/*if($due_date_from != '' && $due_date_to != ''){
+					$extract_due_date_from = explode(' ',$due_date_from);
+					$extract_due_date_to = explode(' ',$due_date_to);
+					if(count($extract_due_date_from) == 1 && count($extract_due_date_to) == 1){
+						if($search_string != ''){
+							$search_string .= ' AND taste_po.due_date >= "'.$due_date_from.' 00:00:00" AND taste_po.due_date <= "'.$due_date_to.' 23:59:59"';
+						} else {
+							$search_string .= 'taste_po.due_date >= "'.$due_date_from.' 00:00:00" AND taste_po.due_date <= "'.$due_date_to.' 23:59:59"';
+						}
 					} else {
-						$search_string .= 'taste_po.due_date >= "'.$due_date_from.' 00:00:00" AND taste_po.due_date <= "'.$due_date_from.' 23:59:59"';
-					}	
-				
-				}
+						if($search_string != ''){
+							$search_string .= ' AND taste_po.due_date = "'.$due_date_from.'" AND taste_po.due_date <="'.$due_date_to.'"';
+						} else {
+							$search_string .= 'taste_po.due_date = "'.$duedate.'" AND taste_po.due_date <="'.$due_date_to.'"';
+						}
+					}
+				} else*/ if($due_date_from != ''){
+					/*$extract_due_date_from = explode(' ',$due_date_from);
+					if(count($extract_due_date_from) == 1){
+						if($search_string != ''){
+							$search_string .= ' AND taste_po.due_date >= "'.$due_date_from.' 00:00:00" AND taste_po.due_date <= "'.$due_date_to.' 23:59:59"';
+						} else {
+							$search_string .= ' taste_po.due_date >= "'.$due_date_from.' 00:00:00" AND taste_po.due_date <= "'.$due_date_to.' 23:59:59"';
+						}
+					} else {*/
+						if($search_string != ''){
+							$search_string .= ' AND taste_po.due_date >= "'.$due_date_from.' 00:00:00" AND taste_po.due_date <= "'.$due_date_from.' 23:59:59"';
+						} else {
+							$search_string .= 'taste_po.due_date >= "'.$due_date_from.' 00:00:00" AND taste_po.due_date <= "'.$due_date_from.' 23:59:59"';
+						}	
+					//}
+				} /*else {
+					$extract_due_date_to = explode(' ',$due_date_to);
+					if(count($extract_due_date_to) == 1){
+						if($search_string != ''){
+							$search_string .= ' AND taste_po.due_date <= "'.$due_date_to.' 23:59:59"';
+						} else {
+							$search_string .= 'taste_po.due_date >= "'.$due_date_to.' 23:59:59"';
+						}
+					} else {
+						if($search_string != ''){
+							$search_string .= ' AND taste_po.due_date <= "'.$due_date_to.'"';
+						} else {
+							$search_string .= 'taste_po.due_date <= "'.$due_date_to.'"';
+						}	
+					}
+				}*/
 			}
 			
 			if($searchby == 'all' || $searchby == 'orderamount'){
@@ -126,19 +164,19 @@
 					
 				} else {
 					$getorderamount = explode('-',$orderamount);
-					//if($search_string != ''){
+					if($search_string != ''){
 						if($getorderamount[1] != 'all'){
 							$search_string .= ' AND  taste_po.total_amount BETWEEN '.$getorderamount[0].'.00 AND '.$getorderamount[1].'.00';
 						} else{
 							$search_string .= ' AND  taste_po.total_amount >= '.$getorderamount[0].'.00';
 						}
-					/*} else {
+					} else {
 						if($getorderamount[1] != 'all'){
 							$search_string .= 'taste_po.total_amount BETWEEN '.$getorderamount[0].'.00 AND '.$getorderamount[1].'.00';
 						} else {
 							$search_string .= ' AND  taste_po.total_amount >= '.$getorderamount[0].'.00';
 						}
-					}*/
+					}
 				}
 			}
 			
@@ -202,6 +240,11 @@
 			return $po_details;
 		}
 		
+		/*public static function get_unpaid_amount_total(){
+
+			$po_details = DB::table('taste_po')->select(DB::raw('SUM(total_amount) as unpaidamount'))->where('paid_status','=','unpaid')->first();
+			return $po_details;
+		}*/
 		
 		public static function get_next_week_po(){
 			
@@ -211,59 +254,32 @@
 			return $po_details;
 		}
 		
-		public static function get_paid_order_arr($start_date,$end_date){
-			
-			$paidorderArr = array();
-			$totalamount = 0;
-			$totalorders = 0;
-			while (strtotime($start_date) <= strtotime($end_date)) {
-				$start_date = date ("Y-m-d", strtotime("+1 day", strtotime($start_date)));
-				$make_start_date = $start_date.' '.'00:00:00';
-				$make_end_date = $start_date.' '.'23:59:59';
-				$po_details = DB::table('taste_po')->select(DB::raw('COUNT(*) as paidorders,SUM(total_amount) as paidamount'))->where('paid_status','=','paid')->where('due_date','>=',$make_start_date)->where('due_date','<=',$make_end_date)->first();	
-				if(count($po_details) > 0){
-					
-					if($po_details->paidamount != '')
-						$paidamount = $po_details->paidamount;
-					else 
-						$paidamount = 0;
-					
-					$totalamount += $paidamount;
-					$totalorders += 1;
-					$paidorderArr[] = array('time'=>$start_date,'paidorders' => $po_details->paidorders ,'paidamount' => $paidamount);
-				} else {
-					$paidorderArr[] = array('time'=>$start_date,'paidorders' => 0 ,'paidamount' => 0);
-				}
-			}
-			$paidorderArr[] = array('totalamount' => $totalamount, 'totalorders' => $totalorders);
-			return $paidorderArr;
-		}
-		
 		public static function get_po_detail_with_type($type){
 			
 			$paidorderArr = array();
 			$totalamount = 0;
 			$totalorders = 0;
 			if($type == 'today'){
-				$current_time = $close_time = date('H:i');
+				$current_time = $lounge_close_time = date('H:i');
 				$timeo = strtotime($current_time);
-				$new_lounge_time       = date("m-d-Y H:i", strtotime(START_TIME, $timeo));
-				$split_new_lounge = explode('-', $new_lounge_time);
-				$new_lounge_date       = $split_new_lounge[1];
+				$check_new_lounge_time       = date("m-d-Y H:i", strtotime(START_TIME, $timeo));
+				$check_new_lounge_split_date = explode('-', $check_new_lounge_time);
+				$check_new_lounge_date       = $check_new_lounge_split_date[1];
 				$today                       = date('d');
 
-				if ($new_lounge_date != $today) {        
-					$new_open_time = '00:00';
+				if ($check_new_lounge_date != $today) {        
+					$lounge_new_open_time = '00:00';
 				} else {
-					$new_open_time = date("H:i", strtotime(START_TIME, $timeo));
+					$lounge_new_open_time = date("H:i", strtotime(START_TIME, $timeo));
 				}
 				
-				$get_starting_hour = explode(':',$new_open_time);
-				$starting_hour = $get_starting_hour[0];
+				$extract_starting_hour = explode(':',$lounge_new_open_time);
+				$starting_hour = $extract_starting_hour[0];
 				$closing_hour = date('H');
-				
-				$tStart = strtotime($new_open_time);
-				$tEnd = strtotime($close_time);
+				//echo 'lounge_new_open_time'.$lounge_new_open_time;
+				//echo '$lounge_close_time'.$lounge_close_time;exit;
+				$tStart = strtotime($lounge_new_open_time);
+				$tEnd = strtotime($lounge_close_time);
 				$tCrnt =  strtotime($current_time);
 				$tNow = $tStart;
 				while($tNow <= $tEnd){
@@ -287,13 +303,12 @@
 						$paidorderArr[] = array('time'=>$start_hour,'paidorders' => 0 ,'paidamount' => 0);
 					}
 				}
-				$paidorderArr[] = array('totalamount' => $totalamount, 'totalorders' => $totalorders);
 			} else if($type == 'week'){
 				//$start_date = date('Y-m-d', strtotime('-7 days'));
 				$start_date = date('Y-m-d', strtotime('last week'));
 				$end_date = date("Y-m-d", strtotime('sunday last week'));
-				$paidorderArr = $this->get_paid_order_arr($start_date,$end_date);
-				/*while (strtotime($start_date) <= strtotime($end_date)) {
+			//	$today = date('Y-m-d');
+				while (strtotime($start_date) <= strtotime($end_date)) {
 					$start_date = date ("Y-m-d", strtotime("+1 day", strtotime($start_date)));
 					$make_start_date = $start_date.' '.'00:00:00';
 					$make_end_date = $start_date.' '.'23:59:59';
@@ -311,15 +326,32 @@
 					} else {
 						$paidorderArr[] = array('time'=>$start_date,'paidorders' => 0 ,'paidamount' => 0);
 					}
-				}*/
+				}
 				
 		    } else {
 				$start_date = date('Y-m-d', strtotime('first day of last month'));
 				$end_date = date('Y-m-d', strtotime('last day of last month'));
-				$paidorderArr = $this->get_paid_order_arr($start_date,$end_date);
-				
+				while (strtotime($start_date) <= strtotime($end_date)) {
+					$start_date = date ("Y-m-d", strtotime("+1 day", strtotime($start_date)));
+					$make_start_date = $start_date.' '.'00:00:00';
+					$make_end_date = $start_date.' '.'23:59:59';
+					$po_details = DB::table('taste_po')->select(DB::raw('COUNT(*) as paidorders,SUM(total_amount) as paidamount'))->where('paid_status','=','paid')->where('due_date','>=',$make_start_date)->where('due_date','<=',$make_end_date)->first();	
+					if(count($po_details) > 0){
+						
+						if($po_details->paidamount != '')
+							$paidamount = $po_details->paidamount;
+						else 
+							$paidamount = 0;
+						
+						$totalamount += $paidamount;
+						$totalorders += 1;
+						$paidorderArr[] = array('time'=>$start_date,'paidorders' => $po_details->paidorders ,'paidamount' => $paidamount);
+					} else {
+						$paidorderArr[] = array('time'=>$start_date,'paidorders' => 0 ,'paidamount' => 0);
+					}
+				}
 			}
-			
+			$paidorderArr[] = array('totalamount' => $totalamount, 'totalorders' => $totalorders);
 			return $paidorderArr;
 		}
 		
