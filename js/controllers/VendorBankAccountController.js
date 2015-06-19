@@ -95,7 +95,7 @@ var FormValidation = function () {
 											dataType:'json',
 											success: function (data) {
 												
-												if(data.status_code == 200 ){
+												if(data.status_code === 200 ){
 													bootbox.hideAll();	
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addbankacnt').text('Update Bank Account');
 													
@@ -104,13 +104,11 @@ var FormValidation = function () {
 													$('div.paymentmethods').find('div#manageBankAccounts').find('div#prefilledinfo').find('div#bankaccountprefilled').html(prefilledHtml).css('display','inline-block');
 												} else {
 												
-													if(data.status_code == 201 ){
+													if(data.status_code === 201 ){
 														
-														if(data.message != ''){
+														if(data.message !== ''){
 															$('p#accounterror').html(data.message).css('display','block');
-														} else {
-															
-														}
+														} 
  													} 
 												}
 											}
@@ -166,7 +164,7 @@ var FormValidation = function () {
 										.closest('.form-group').removeClass('has-error'); // set success class to the control group
 								},
 
-								submitHandler: function (form2) {
+								submitHandler: function () {
 									
 									var vendoruserid  = localStorage.getItem('userid');
 									
@@ -196,19 +194,17 @@ var FormValidation = function () {
 											dataType:'json',
 											success: function (data) {
 												
-												if(data.status_code == 200 ){
+												if(data.status_code === 200 ){
 													bootbox.hideAll();
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addpayeebtn').css('display','none');	
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatepayeebtn').css('display','inline-block');
 												} else {
 												
-													if(data.status_code == 201 ){
+													if(data.status_code === 201 ){
 														
-														if(data.message != ''){
+														if(data.message !== ''){
 															$('p#accounterror').html(data.message).css('display','block');
-														} else {
-															
-														}
+														} 
  													} 
 												}
 											}
@@ -290,7 +286,7 @@ var FormValidation = function () {
 										.closest('.form-group').removeClass('has-error'); // set success class to the control group
 								},
 
-								submitHandler: function (form3) {
+								submitHandler: function () {
 									
 									var vendoruserid  = localStorage.getItem('userid');
 									
@@ -341,15 +337,15 @@ var FormValidation = function () {
 											dataType:'json',
 											success: function (data) {
 												
-												if(data.status_code == 200 ){
+												if(data.status_code === 200 ){
 													bootbox.hideAll();
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#addpayeebtn').css('display','none');	
 													$('div.paymentmethods').find('div#manageBankAccounts').find('button#updatepayeebtn').css('display','inline-block');
 												} else {
 												
-													if(data.status_code == 201 ){
+													if(data.status_code === 201 ){
 														
-														if(data.message != ''){
+														if(data.message !== ''){
 															$('p#accounterror').html(data.message).css('display','block');
 														} else {
 															
@@ -457,8 +453,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 						
 						$http.post($scope.apppath+'/api/getunpaidpo',{action:'gettaxidforvendor',vendorid:vendoruserid}).
-						success(function(data, status, headers, config) {
-							if(data.status_code == 200){
+						success(function(data) {
+							if(data.status_code === 200){
 									$scope.apppath= 'https://mnmdesignlabs.com/taste';
 									
 									
@@ -474,7 +470,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 									
 									var transfertext = '';
 									var transferbtntext = '';
-									if(data.transferoption != '' && typeof data.transferoption != 'undefined'){
+									if(data.transferoption !== '' && typeof data.transferoption !== 'undefined'){
 										if(data.transferoption  == 1){
 											transfertext ='Manual check transfer enabled';
 											transferbtntext ='Switch to enable ACH transfer';
@@ -485,8 +481,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 									}
 									
 									var displaybuttonclass = 'addbankacnt';
-									 if(data.paymenttype != '' &&  typeof data.paymenttype != 'undefined' && data.paymenttype != 0 ){
-										 if(data.paymenttype == 'electronic'){
+									 if(data.paymenttype !== '' &&  typeof data.paymenttype !== 'undefined' && data.paymenttype !== 0 ){
+										 if(data.paymenttype === 'electronic'){
 											 displaybuttonclass = 'updatebankacnt'
 										 } else {
 											displaybuttonclass = 'addbankacnt';
@@ -496,14 +492,14 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 									 }
 									 
 									var displaypayeebuttonclass = 'addpayeebtn';
-									if(data.manualexists != '' &&  typeof data.manualexists != 'undefined' && data.manualexists != 0 ){
+									if(data.manualexists !== '' &&  typeof data.manualexists !== 'undefined' && data.manualexists !== 0 ){
 										displaypayeebuttonclass = 'updatepayeebtn'
 									 } else {
 										displaypayeebuttonclass = 'addpayeebtn';
 									 }
 									 
 									var prefilledHtml = '';
-									if(data.electricdetails != '' &&  typeof data.electricdetails != 'undefined' && data.electricdetails != 0 ){
+									if(data.electricdetails !== '' &&  typeof data.electricdetails !== 'undefined' && data.electricdetails !== 0 ){
 										//console.log(data.electricdetails);
 										var accountingnumber = data.electricdetails.account_number;
 										var accno = accountingnumber.substr(accountingnumber.length - 4);
@@ -526,7 +522,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 									var vm = this;
 							} else {
 								console.log('data.status_message'+data.status_message);
-								if(data.status_message == 'Invalid token'){
+								if(data.status_message === 'Invalid token'){
 									
 								} else {
 									createauthtoken(getunpaidpo);
@@ -540,8 +536,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		function createauthtoken(callback){
 			
 			$http.post($scope.apppath+'/create_auth_token', {api_key:'1-Z9QSD6E6QJNDYTPBUD8XEX8',api_secret:'N-9OXFMLDXLXB7N2IXXOQR85XFV5V7QKGR_',timestamp:$scope.timestamp}). 
-					success(function(data, status, headers, config) {
-						if(data.status_code == 200 ){
+					success(function(data) {
+						if(data.status_code === 200 ){
 							localStorage.setItem('access_token',data.access_token);
 							callback();
 						}
@@ -552,8 +548,8 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =authtoken;
 			$http.post($scope.apppath+'/api/checktokenauthentication').
-				success(function(data, status, headers, config) {
-					if(data.status_code == 200){
+				success(function(data) {
+					if(data.status_code === 200){
 						callback();
 					} else {
 						createauthtoken(callback);
