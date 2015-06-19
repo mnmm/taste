@@ -16,7 +16,7 @@ App::before(function($request)
 	//secure request
 	if( ! Request::secure())
     {  
-		echo 'comes here';exit;
+		echo Redirect::secure(Request::path());exit;
         return Redirect::secure(Request::path());
     }
 });
