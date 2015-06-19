@@ -2615,8 +2615,7 @@ class ApiController extends BaseController {
 					 }
 					 
 				    foreach($admin_notes as $key=>$admin_note){
-								echo "<pre>";
-								print_r($admin_note);exit;
+								
 								$cDateTime = strtotime($key); 
 								$adminnotesdate = date('F j, Y', $cDateTime); 
                                 /*if($newdate < $todaydate && $newdate == $yesterday)
@@ -2634,10 +2633,10 @@ class ApiController extends BaseController {
 								  $cDateTime = strtotime($dates);
 								  //echo "Today";
 								}*/
-								$dates =  $admin_note->created; 
+								$dates =  $admin_note[0]->created; 
 								$crDateTime = strtotime($dates);
 								$newDateTime = date('h:i A', $crDateTime);
-								$result['data'][]= array($adminnotesdate,$admin_note->message,$newDateTime);
+								$result['data'][]= array($adminnotesdate,$admin_note[0]->message,$newDateTime);
 					}
 					
 					$result["draw"] = $draw;
