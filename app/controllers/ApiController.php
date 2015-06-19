@@ -1934,6 +1934,41 @@ class ApiController extends BaseController {
 			
 		}
 		
+		if($action == 'saveadminnotes'){
+			
+			
+			if (array_key_exists("subject", $data1))
+			{
+				$subject = $data1->subject;
+			}
+			else
+			{
+				$subject = '';
+
+			}
+			
+			if (array_key_exists("message", $data1))
+			{
+				$message = $data1->message;
+			}
+			else
+			{
+				$message = '';
+
+			}
+			
+			if (array_key_exists("userid", $data1))
+			{
+				$userid = $data1->userid;
+			}
+			else
+			{
+				$userid = '';
+
+			}
+			
+		}
+		
 
 		
 		$validate_data = array(
@@ -2553,6 +2588,16 @@ class ApiController extends BaseController {
 					$result['accountcreated'] = 0;
 					$result['message'] = 'vendor account already exists';
 				}
+			} else if($action == 'saveadminnotes'){
+				$noteid = Logs::sendadminnotes($sub,$message,$userid,1);
+				if($noteid != ''){
+					$result['status_code']=200;
+					$result['savedtoadminnotes'] = 1;
+				} else {
+					$result['status_code']=201;
+					$result['savedtoadminnotes'] = 0;
+				}
+				
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));

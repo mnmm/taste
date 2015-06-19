@@ -245,11 +245,18 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		$http.post($scope.apppath+'/api/getunpaidpo',{fullname:$scope.fullname,email_address:$scope.email_address,password:$scope.register_password,address:$scope.address,city:$scope.city,state:$scope.state,zip:$scope.zip,phone:$scope.phone,location:$scope.location,address2:$scope.address2,crossstreet:$scope.crossstreet,neighborhood:$scope.neighborhood,entries:$scope.entries,daysopen:opendays,businessopeninghours:$scope.businessopeninghours,businessclosinghours:$scope.businessclosinghours,locationdescription:$scope.locationdescription,locationtype:locationtype,locationnotes:$scope.locationnotes,mealnotes:$scope.mealnotes,emailcontact:$scope.emailcontact,contactphone:$scope.contactphone,action:'createvendoraccount'}).
 			success(function(data) {
 				if(data.status_code === 200){
-						$('form#registerForm')[0].reset();
-						var sucess2 = $('#registerformsucess');
-						$('#registerForm').find('#registerformsucess').show();
-						Metronic.scrollTo(sucess2, -200);
-						$('#registerformalert').hide();
+					`	var subject = 'registered as new vendor';
+						var message = fullname+' has registred as new vendor with email '+email_address;
+						$http.post($scope.apppath+'/api/getunpaidpo',{subject:subject,message:message,userid:1,action:'saveadminnotes'}).
+						success(function(data) {
+							if(data.status_code === 200){
+								$('form#registerForm')[0].reset();
+								var sucess2 = $('#registerformsucess');
+								$('#registerForm').find('#registerformsucess').show();
+								Metronic.scrollTo(sucess2, -200);
+								$('#registerformalert').hide();
+							}
+						});
 				} else {
 					if(data.status_code === 201){
 						if(data.accountcreated ===  0){
