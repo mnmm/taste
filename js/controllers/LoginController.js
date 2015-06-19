@@ -27,7 +27,7 @@
 										},
 										password: "Password is required",
 								},
-								invalidHandler: function (event, validator) { //display error alert on form submit              
+								invalidHandler: function (event) { //display error alert on form submit              
 									success1.hide();
 									//error1.show();
 									Metronic.scrollTo(error1, -200);
@@ -101,7 +101,7 @@
 										required: true
 									}
 								},
-								invalidHandler: function (event, validator) { //display error alert on form submit              
+								invalidHandler: function (event) { //display error alert on form submit              
 									success1.hide();
 									//error1.show();
 									Metronic.scrollTo(error1, -200);
