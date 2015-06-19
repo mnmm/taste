@@ -128,7 +128,18 @@
 								});
 	}
 	
-	
+	 var handleClockfaceTimePickers = function () {
+
+			if (!jQuery().clockface) {
+				return;
+			}
+
+			$('.clockface_1').clockface();
+			$('.clockface_2').clockface();
+			
+			
+
+	}
 	
 
 	return {
@@ -136,12 +147,13 @@
         init: function () {
             handleLoginValidation();
             handleRegisterValidation();
+            handleClockfaceTimePickers();
         }
 
     };
 }();
 
-var ComponentsPickers = function () {
+/*var ComponentsPickers = function () {
 	 var handleClockfaceTimePickers = function () {
 
 			if (!jQuery().clockface) {
@@ -162,17 +174,8 @@ var ComponentsPickers = function () {
         }
     };
 
-}();
+}();*/
 
-/*jQuery('#register-btn').click(function() {
-	jQuery('.login-form').hide();
-	jQuery('.register-form').show();
-});
-
-jQuery('#register-back-btn').click(function() {
-	jQuery('.login-form').show();
-	jQuery('.register-form').hide();
-});*/
   
 MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $timeout, $location,$window ,authenticationSvc) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
@@ -328,7 +331,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 		createauthtoken();
 	}
 	
-	ComponentsPickers.init();
+	//ComponentsPickers.init();
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
     $rootScope.settings.layout.showAllOptions = true;
