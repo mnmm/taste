@@ -2615,6 +2615,8 @@ class ApiController extends BaseController {
 					 }
 					 
 				    foreach($admin_notes as $key=>$admin_note){
+								echo "<pre>";
+								print_r($admin_note);exit;
 								$cDateTime = strtotime($key); 
 								$adminnotesdate = date('F j, Y', $cDateTime); 
                                 /*if($newdate < $todaydate && $newdate == $yesterday)
