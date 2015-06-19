@@ -421,6 +421,7 @@ MetronicApp.controller('SidebarController', ['$scope','$http', 'Globals', functi
 			$("#checkwrapper .off").removeClass('active');
 			$("#checkwrapper").attr('openstatus','1');
 			$('span#live').addClass('bright-text');
+			$('span#test').removeClass('bright-text');
 			
 		} else {
 			
@@ -428,6 +429,7 @@ MetronicApp.controller('SidebarController', ['$scope','$http', 'Globals', functi
 			$("#checkwrapper .off").addClass('active');
 			$("#checkwrapper").attr('openstatus','0');
 			$('span#test').addClass('bright-text');
+			$('span#live').removeClass('bright-text');
 			
 		}
 		
