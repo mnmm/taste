@@ -471,7 +471,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 									var transfertext = '';
 									var transferbtntext = '';
 									if(data.transferoption !== '' && typeof data.transferoption !== 'undefined'){
-										if(data.transferoption  == 1){
+										if(data.transferoption  === 1){
 											transfertext ='Manual check transfer enabled';
 											transferbtntext ='Switch to enable ACH transfer';
 										} else {
