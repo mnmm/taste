@@ -18,8 +18,8 @@ class TokenController extends BaseController {
 	public function generateRandomPassword($length = 10) {
 		$alphabets = range('A','Z');
 		$numbers = range('0','9');
-		$additional_characters = array('_','-','X');
-		$final_array = array_merge($alphabets,$numbers,$additional_characters);
+		$extra_char = array('_','-','X');
+		$final_array = array_merge($alphabets,$numbers,$extra_char);
 			 
 		$password = '';
 	  
@@ -111,15 +111,14 @@ class TokenController extends BaseController {
 
 			$result['status_code']=201;
 			$err ='';
-			$i=0;
+			$errorcount=0;
 			foreach ($validator->messages()->getMessages() as $field_name => $messages){
-				$i++;
-				$err .= $i.'). '.$messages[0]."     "; // messages are retrieved (publicly)
+				$errorcount++;
+				$err .= $errorcount.'). '.$messages[0]."     "; // messages are retrieved (publicly)
 			}
 			$result['status_message']=trim($err,",");
 			$json_result = str_replace('null','""',json_encode($result));
-			echo $json_result;
-			exit;
+			return $json_result;
 			
 		} else {
 			$authenticate = 0;
@@ -202,8 +201,8 @@ class TokenController extends BaseController {
 				$result['status_message']=$message;
 			}
 			$json_result = str_replace('null','""',json_encode($result));
-			echo $json_result;
-			exit;
+			return $json_result;
+		
 		}
 	}
 
