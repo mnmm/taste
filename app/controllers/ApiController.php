@@ -2603,8 +2603,6 @@ class ApiController extends BaseController {
 				
 				$admin_notes_all = AdminNotes::get_adminnotes();
 				
-				echo "<pre>";
-				print_r($admin_notes_all);exit;
 				$draw = 0;
 				$recordsfound = 0;
 				if(count($admin_notes) > 0){
@@ -2616,35 +2614,29 @@ class ApiController extends BaseController {
 							$admin_notes[$val->newdate][] = $val;
 					 }
 					 
-				     /*foreach($admin_notes as $key=>$admin_note){
-								$newdate = $key;  
-								$todaydate = date('Y-m-d');
-								$yesterday = date('Y-m-d',strtotime("-1 days"));
-								$check_key =  0;
-                                $cDateTime = strtotime($key); 
-								echo date('F j, Y', $cDateTime); 
-                                                  
-                                                
-                                                <p class="day" style="font-weight: normal; color:#aa9c84; font-size:13px;"><?php
-												
-												if($newdate < $todaydate && $newdate == $yesterday)
-												{
-													echo $timedisplay = 'Yesterday';
-												   	$check_key++;
-											    } 
-											    else if($newdate < $todaydate)
-											    {
-												 	
-												  	$check_key++;
-											  	} 
-											  	else 
-											  	{
-												  $dates =  $key; 
-												  $cDateTime = strtotime($dates);
-												  //echo "Today";
-											  	}
-						$result['data'][]= array($notedetail->po_no.'<input type="hidden" name="prioritystatus" value="'.$priority_status.'">',$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" >Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'">'.$request_status.'</button>');
-					}*/
+				    foreach($admin_notes as $key=>$admin_note){
+								$cDateTime = strtotime($key); 
+								$adminnotesdate = date('F j, Y', $cDateTime); 
+                                /*if($newdate < $todaydate && $newdate == $yesterday)
+								{
+									echo $timedisplay = 'Yesterday';
+									$check_key++;
+								} 
+								else if($newdate < $todaydate)
+								{
+									$check_key++;
+								} 
+								else 
+								{
+								  $dates =  $key; 
+								  $cDateTime = strtotime($dates);
+								  //echo "Today";
+								}*/
+								$dates =  $admin_note->created; 
+								$crDateTime = strtotime($dates);
+								$newDateTime = date('h:i A', $crDateTime);
+								$result['data'][]= array($adminnotesdate,$admin_note->message,$newDateTime);
+					}
 					
 					$result["draw"] = $draw;
 					$result["recordsTotal"] = $recordsfound;
