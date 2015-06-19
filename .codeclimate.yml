@@ -11,3 +11,5 @@ exclude_paths:
 - "public/*"
 - "app/*_bkup.php"
 - "app/controllers/lib/Stripe/*"
+- "app/controllers/lib/ptstripe.php"
+- "app/controllers/lib/whmcs.php"
