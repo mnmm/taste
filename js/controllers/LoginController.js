@@ -48,7 +48,7 @@
 										.closest('.form-group').removeClass('has-error'); // set success class to the control group
 								},
 
-								submitHandler: function (form1) {
+								submitHandler: function () {
 										
 										$('#submit_button_login').click();
 									}
@@ -122,7 +122,7 @@
 										.closest('.form-group').removeClass('has-error'); // set success class to the control group
 								},
 
-								submitHandler: function (form2) {
+								submitHandler: function () {
 										$('button#createAccount').click();
 									}
 								});
