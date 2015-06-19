@@ -1051,42 +1051,44 @@
 	  }
 	  
 	  //function to create vendor self account
-		public static function create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$locationtype,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businessopeninghours,$businessclosinghours,$locationdescription,$locationnotes,$mealnotes,$contactphone,$emailcontact){
+		/*public static function create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$locationtype,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businessopeninghours,$businessclosinghours,$locationdescription,$locationnotes,$mealnotes,$contactphone,$emailcontact){*/
+		public static function create_vendor_account_self($createAccountArr){
 			
-			$check_vendor_account = DB::table('users')->where('email',$email_address)->first();
+			$check_vendor_account = DB::table('users')->where('email',$createAccountArr['email_address'])->first();
 			if(isset($check_vendor_account->id) && $check_vendor_account->id != ''){
 				$reg_id = 0;
 			} else {
+			
 				$token=time();
 				$register = new Register;
-				$register->name = $fullname;
-				$register->email = $email_address;
-				$register->password = Hash::make($password);
-				$register->location = $location;
-				$register->address = $address;
-				$register->address2 = $address2;
-				$register->crossstreet = $crossstreet;
-				$register->neighborhood = $neighborhood;
-				$register->entries = $entries;
-				$register->daysopen = $daysopen;
-				if($businessopeninghours != ''){
-					$businessopeninghours = $businessopeninghours.':00';
+				$register->name = $createAccountArr['fullname'];
+				$register->email = $createAccountArr['email_address'];
+				$register->password = Hash::make($createAccountArr['password']);
+				$register->location = $createAccountArr['location'];
+				$register->address = $createAccountArr['address'];
+				$register->address2 = $createAccountArr['address2'];
+				$register->crossstreet = $createAccountArr['crossstreet'];
+				$register->neighborhood = $createAccountArr['neighborhood'];
+				$register->entries = $createAccountArr['entries'];
+				$register->daysopen = $createAccountArr['daysopen'];
+				if($createAccountArr['businessopeninghours'] != ''){
+					$businessopeninghours = $createAccountArr['businessopeninghours'].':00';
 				}
-				if($businessclosinghours != ''){
-					$businessclosinghours = $businessclosinghours.':00';
+				if($createAccountArr['businessclosinghours'] != ''){
+					$businessclosinghours = $createAccountArr['businessclosinghours'].':00';
 				}
 				$register->businessopeninghours = $businessopeninghours;
 				$register->businessclosinghours = $businessclosinghours;
-				$register->locationnotes = $locationnotes;
-				$register->mealnotes = $mealnotes;
-				$register->locationtype = $locationtype;
-				$register->locationdescription = $locationdescription;
-				$register->contactphone = $contactphone;
-				$register->emailcontact = $emailcontact;
-				$register->city = $city;
-				$register->state = $state;
-				$register->zip = $zip;
-				$register->phone = $phone;
+				$register->locationnotes = $createAccountArr['locationnotes'];
+				$register->mealnotes = $createAccountArr['mealnotes'];
+				$register->locationtype = $createAccountArr['locationtype'];
+				$register->locationdescription = $createAccountArr['locationdescription'];
+				$register->contactphone = $createAccountArr['contactphone'];
+				$register->emailcontact = $createAccountArr['emailcontact'];
+				$register->city = $createAccountArr['city'];
+				$register->state = $createAccountArr['state'];
+				$register->zip = $createAccountArr['zip'];
+				$register->phone = $createAccountArr['phone'];
 				$register->usertype = 2;
 				$register->status =  1;
 				$register->save();

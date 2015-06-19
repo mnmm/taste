@@ -2520,7 +2520,31 @@ class ApiController extends BaseController {
 					$result['message'] = 'No option exists';
 				}
 			} else if($action == 'createvendoraccount'){
-				$check_vendor_account = PoDetail::create_vendor_account_self($fullname,$email_address,$password,$address,$city,$state,$zip,$phone,$location,$locationtype,$address2,$crossstreet,$neighborhood,$entries,$daysopen,$businessopeninghours,$businessclosinghours,$locationdescription,$locationnotes,$mealnotes,$contactphone,$emailcontact);
+				 
+				$createAccountArr = array();
+				$createAccountArr['fullname'] = $fullname;
+				$createAccountArr['email_address'] = $email_address;
+				$createAccountArr['password'] = $password;
+				$createAccountArr['address'] = $address;
+				$createAccountArr['city'] = $city;
+				$createAccountArr['state'] = $state;
+				$createAccountArr['zip'] = $zip;
+				$createAccountArr['phone'] = $phone;
+				$createAccountArr['location'] = $location;
+				$createAccountArr['locationtype'] = $locationtype;
+				$createAccountArr['address2'] = $address2;
+				$createAccountArr['crossstreet'] = $crossstreet;
+				$createAccountArr['neighborhood'] = $neighborhood;
+				$createAccountArr['entries'] = $entries;
+				$createAccountArr['daysopen'] = $daysopen;
+				$createAccountArr['businessopeninghours'] = $businessopeninghours;
+				$createAccountArr['businessclosinghours'] = $businessclosinghours;
+				$createAccountArr['locationdescription'] = $locationdescription;
+				$createAccountArr['locationnotes'] = $locationnotes;
+				$createAccountArr['mealnotes'] = $mealnotes;
+				$createAccountArr['contactphone'] = $contactphone;
+				$createAccountArr['emailcontact'] = $emailcontact;
+				$check_vendor_account = PoDetail::create_vendor_account_self($createAccountArr);
 				if(isset($check_vendor_account) &&  $check_vendor_account != '' &&  $check_vendor_account != 0){
 					$result['status_code']=200;
 					$result['accountcreated'] = 1;
