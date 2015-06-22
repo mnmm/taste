@@ -90,7 +90,7 @@ var FormValidation = function () {
 																	/* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
 
 																	var oTable = table.dataTable({
-
+																		destroy: true,
 																		// Internationalisation. For more info refer to http://datatables.net/manual/i18n
 																		"language": {
 																			"aria": {
@@ -221,7 +221,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 						/* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
 
 						var oTable = table.dataTable({
-
+							destroy: true,
 							// Internationalisation. For more info refer to http://datatables.net/manual/i18n
 							"language": {
 								"aria": {
