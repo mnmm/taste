@@ -673,7 +673,8 @@
 			
 			$id = DB::table('bank_detail')->insertGetId($insertBankDetailAr);
 			
-			if($id != '' && $authcode != ''){
+			//if($id != '' && $authcode != ''){
+			if($id != '' ){
 				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
 				if(isset($expire_auth_code->id ) && $expire_auth_code->id != ''){
 					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
@@ -783,7 +784,7 @@
 			
 			DB::table('bank_detail')->where('id','=',$bankid)->update($insertBankDetailAr);
 			
-			if($authcode != ''){
+			//if($authcode != ''){
 				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
 				if(isset($expire_auth_code->id ) && $expire_auth_code->id != ''){
 					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
@@ -791,9 +792,9 @@
 				} else {
 					return 0;
 				} 
-			} else {
+			/*} else {
 				return 0;
-			}
+			}*/
 		}
 		
 		
