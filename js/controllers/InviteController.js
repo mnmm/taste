@@ -519,7 +519,9 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 	}
 	$(document).on("click", ".sendemail", function() {
 	//$scope.openSendEmailPopUp = function(){
-			console.log('comes here');
+			//console.log('comes here');
+			var email = $(this).prop('data-invite');
+			console.log('email'+email);
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
 			success(function(data1) {
@@ -595,6 +597,8 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 							},0);
 						
 						});
+						
+						$('input#emailinvite').val(email);
 						
 						/* if ($('.wysihtml5').size() > 0) {
 							$('.wysihtml5').wysihtml5({
