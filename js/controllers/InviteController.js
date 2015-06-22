@@ -611,13 +611,13 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     $rootScope.settings.layout.pageSidebarClosed = true;
 }); 
 
-MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
+MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal,$modalInstance) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	
 	$scope.sendInvitation = function () {
 		console.log($('#message').val());
-		$modalInstance.close($scope.form);
+		$modalInstance.close();
 	}
 	
 });
