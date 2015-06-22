@@ -517,23 +517,16 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 		});
 
 	}
+	
 	$(document).on("click", ".sendemail", function() {
 	//$scope.openSendEmailPopUp = function(){
 			//console.log('comes here');
+			console.log($(this).html());
 			var email = $(this).prop('data-invite');
 			console.log('email'+email);
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
 			success(function(data1) {
-					$scope.userroleInfo = data1;
-					 vendoruserid = $scope.userroleInfo.id;
-			
-				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
-				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
-				success(function(data, status, headers, config) {
-					if(data.status_code == 200){
-						
 						/*bootbox.dialog({
 							title:'Invite Vendor',
 							message: $('#inviteVendor'),
@@ -594,11 +587,12 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 								$('.wysihtml5').wysihtml5({
 									"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
 								});
+								$('input#emailinvite').val(email);
 							},0);
 						
 						});
 						
-						$('input#emailinvite').val(email);
+						
 						
 						/* if ($('.wysihtml5').size() > 0) {
 							$('.wysihtml5').wysihtml5({
@@ -606,8 +600,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 							});
 						}*/
 						
-					} 		
-				});
+					
 		});
 
 	});
