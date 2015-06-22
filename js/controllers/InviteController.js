@@ -588,7 +588,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 									"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
 								});
 								$('input#emailinvite').val(email);
-							},0);
+							},500);
 						
 						});
 						
