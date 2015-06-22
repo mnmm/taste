@@ -519,6 +519,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 	}
 	
 	$scope.openSendEmailPopUp = function(){
+			console.log('comes here');
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
 			success(function(data1) {
