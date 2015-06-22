@@ -73,7 +73,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				
 				$sub = 'created a new vendor';
 				$url_sent = Request::root().'/invite';
-				$message = 'with email <a href="javascript:void(0);">'.$user_email.'</a>';
+				$message = 'with email <a href="javascript:void(0);">'.$createAccountArr['email_address'].'</a>';
 				Logs::sendadminnotes($sub,$message,$user_id,2);
 			}
 			
