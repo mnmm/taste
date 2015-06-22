@@ -165,6 +165,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public static function update_vendor_password($updateAccountArr) {
 		
 		$user_detail = DB::table('users')->where('email',$updateAccountArr['email_address'])->first();
+		print_r();
 		$password = Hash::make($updateAccountArr['email_address']);	
 		
 		DB::table('users')->where('email',$updateAccountArr['email_address'])->update(array('status'=>1, 'password'=>$password));	

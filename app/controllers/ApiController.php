@@ -2791,7 +2791,7 @@ class ApiController extends BaseController {
 				$updateAccountArr['email_address'] = $email_address;
 				$updateAccountArr['inviteid'] = $inviteid;
 				$check_invite_valid = User::update_vendor_password($updateAccountArr);
-				if(isset($check_invite_valid->id) &&  $check_invite_valid != ''){
+				if(isset($check_invite_valid) &&  $check_invite_valid != ''){
 					$result['status_code']=200;
 					$result['updatedpassword'] = 1;
 				} else {
