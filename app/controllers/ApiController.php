@@ -1720,6 +1720,16 @@ class ApiController extends BaseController {
 
 			}
 			
+			if (array_key_exists("inviteid", $data1))
+			{
+				$inviteid = $data1->inviteid;
+			}
+			else
+			{
+				$inviteid = '';
+
+			}
+			
 			if (array_key_exists("email_address", $data1))
 			{
 				$email_address = $data1->email_address;
@@ -2779,14 +2789,15 @@ class ApiController extends BaseController {
 				$updateAccountArr = array();
 				$updateAccountArr['password'] = $password;
 				$updateAccountArr['email_address'] = $email_address;
+				$updateAccountArr['inviteid'] = $inviteid;
 				$check_invite_valid = User::update_vendor_password($updateAccountArr);
 				if(isset($check_invite_valid->id) &&  $check_invite_valid != ''){
 					$result['status_code']=200;
-					$result['userdata'] = $check_invite_valid;
+					$result['updatedpassword'] = 1;
 				} else {
 					$result['status_code']=201;
-					$result['invitationexpired'] = 1;
-					$result['message'] = 'Invitation links is invalid/expired';
+					$result['updatedpassword'] = 0;
+					$result['message'] = 'Password updated sucessfully';
 				}
 	
 			}

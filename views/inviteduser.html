@@ -6,6 +6,16 @@
 	<!-- BEGIN LOGIN FORM -->
 	<form name="setPasswordForm" novalidate method="post" ng-controller="SetPasswordController" id="setPasswordForm" class="form-horizontal login-form">
 		<!--<h3 class="form-title">Sign In</h3>-->
+		<div class="alert alert-danger display-hide" id="registerformalert">
+			<button class="close" data-close="alert">Problem updating password</button>
+			<span>
+			</span>
+		</div>
+		<div class="alert alert-success display-hide" id="registerformsucess">
+			<button class="close" data-close="alert"></button>
+			<span>
+			Vendor password updated sucessfully</span>
+		</div>
 		<div class="logo">
 			<a href="javascript:void(0);">
 				<img src="{{ apppath }}/assets/admin/layout/img/taste-black.png" alt=""/>
@@ -30,6 +40,7 @@
 			<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Confirm Password"  id="confirmpassword" name="confirmpassword" ng-model="confirmpassword" required/>
 		</div>
 		<input type="hidden" name="invitedemail" value="" id="invitedemail" ng-model="invitedemail" >
+		<input type="hidden" name="inviteid" value="" id="inviteid" ng-model="inviteid" >
 		<div class="form-group">
 			<button type="submit" class="btn btn-success uppercase" id="loginbtn">Update</button>
 		</div>

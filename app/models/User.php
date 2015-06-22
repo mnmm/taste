@@ -164,6 +164,37 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	//function to update vendor password
 	public static function update_vendor_password($updateAccountArr) {
 		
+		$user_detail = DB::table('users')->where('email',$updateAccountArr['email_address'])->first();
+		$password = Hash::make($updateAccountArr['email_address']);	
+		
+		DB::table('users')->where('email',$data['email'])->update(array('status'=>1, 'password'=>$password));	
+		
+		DB::table('user_invite')->where('id',base64_decode($updateAccountArr['inviteid']))->where('email',$updateAccountArr['email_address'])->update(array('status'=>1));
+		
+		$sub = 'has accepted the';
+		$url_sent = Request::root().'/invite';
+		
+		
+		$message = 'invitation at <a href="'.$url_sent.'">'.date('m-d-Y').'</a>';
+		Logs::sendadminnotes($sub,$message,$user_detail->id,5);
+		
+		$reg_user = array(
+						'email'=>$user_detail->email,
+						'name'=>$user_detail->name,
+						);
+
+		$data1 = array(
+			'custommessage' => "Thank you for activating your account. Please click on the below link to login into your account.<br /><a href='".Request::root()."/#/login' targer='_blank'>Click here to login</a>"
+	
+		);
+		
+		Mail::send('emails.customemail', $data1, function($message) use ($reg_user)
+		{
+			   $message->from('noreply@gfoodtrucks.com', 'Taste');
+			   $message->to($reg_user['email'], $reg_user['name'])->subject('Account activated at Taste');
+		});	
+
+		return 1;
 	}
 	  
 }

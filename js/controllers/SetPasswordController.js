@@ -88,6 +88,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 					
 					if(data.userdata != '' && typeof data.userdata != 'undefined'){
 						$('#setPasswordForm').find('input#invitedemail').val(data.userdata.email);
+						$('#setPasswordForm').find('input#inviteid').val(data.userdata.invitationcode);
 					} 
 				} else {
 					
@@ -143,7 +144,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
-		$http.post($scope.apppath+'/api/getunpaidpo',{password:$scope.password,email_address:$scope.invitedemail,action:'updatevendorpassword'}).
+		$http.post($scope.apppath+'/api/getunpaidpo',{password:$scope.password,email_address:$scope.invitedemail,inviteid:$scope.inviteid,action:'updatevendorpassword'}).
 			success(function(data) {
 				if(data.status_code === 200){
 					var subject = 'registered as new vendor';
@@ -151,16 +152,16 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 						$http.post($scope.apppath+'/api/getunpaidpo',{subject:subject,message:message,userid:1,action:'saveadminnotes'}).
 						success(function(data) {
 							if(data.status_code === 200){
-								$('form#registerForm')[0].reset();
+								$('form#setPasswordForm')[0].reset();
 								var sucess2 = $('#registerformsucess');
-								$('#registerForm').find('#registerformsucess').show();
+								$('#setPasswordForm').find('#registerformsucess').show();
 								Metronic.scrollTo(sucess2, -200);
 								$('#registerformalert').hide();
 							}
 						});
 				} else {
 					if(data.status_code === 201){
-						if(data.accountcreated ===  0){
+						if(data.updatedpassword ===  0){
 							var error3 = $('#registerformalert');
 							error3.show();
 							Metronic.scrollTo(error3, -200);
