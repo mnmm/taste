@@ -96,9 +96,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$user_email_details  = DB::table('users')->where('email',$email)->first();
 		$user_type = $user_email_details->usertype;
 		
-		if(isset($data['message']))
+		if(isset($message))
 		{
-			$msg = $data['message'];
+			$msg = $message;
 			if (preg_match("/href/", $msg)){
 				
 				$string = $msg;
