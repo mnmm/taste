@@ -564,6 +564,10 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		}
 		FormValidation.init();
 		ComponentsPickers.init();
+		
+		function hideBankpopup1(){
+			$modalInstance.close();
+		}
 			
     });
     
@@ -1231,9 +1235,10 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	
 	//function to redirect to dashboard
 	$scope.redirecToDashboard = function () {
-		bootbox.hideAll();	
-		$('body').find('.modal-backdrop').click();
-		$window.location.href = '#/vendors';
+		//bootbox.hideAll();	
+		//$('body').find('.modal-backdrop').click();
+		hideBankpopup1();
+		//$window.location.href = '#/vendors';
 		
 	}
 	
