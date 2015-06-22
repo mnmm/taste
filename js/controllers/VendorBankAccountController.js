@@ -578,7 +578,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		
 	}
 		
-	$scope.hideBankpopup1 = function() {
+	$scope.hideBankpopupnew = function() {
 	
 			$modalInstance.close();
 	}
@@ -1241,7 +1241,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	$scope.redirecToDashboard = function () {
 		//bootbox.hideAll();	
 		//$('body').find('.modal-backdrop').click();
-		hideBankpopup1();
+		$modalInstance.close();
 		//$window.location.href = '#/vendors';
 		
 	}
