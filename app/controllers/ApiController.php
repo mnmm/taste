@@ -2744,7 +2744,7 @@ class ApiController extends BaseController {
 			} else if($action == 'sendinviteemail'){
 				
 				$send_vendor_invite = User::send_invite_email($email,$message);
-				if(isset($add_vendor_account) &&  $add_vendor_account != '' &&  $add_vendor_account != 0){
+				if(isset($send_vendor_invite) &&  $send_vendor_invite != '' &&  $send_vendor_invite != 0){
 					$result['status_code']=200;
 					$result['invitationsent'] = 1;
 				} else {
