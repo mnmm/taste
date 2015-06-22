@@ -113,8 +113,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			}
 		}
 		
-		he data that will be passed into the mail view blade template
-		
 		
 		$data = array(
 			'detail'=>'Your Invation details are as below',
