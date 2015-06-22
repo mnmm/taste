@@ -91,7 +91,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'name'=>'Vendor'
 		);
 		
-		$loginurl = Request::root().'/InvitedUser/'.base64_encode($user_detail->id);
+		$loginurl = Request::root().'/#/inviteduser/'.base64_encode($user_detail->id);
 		$invitationcode = base64_encode($user_detail->id);
 		$user_email_details  = DB::table('users')->where('email',$email)->first();
 		$user_type = $user_email_details->usertype;

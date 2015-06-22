@@ -1160,6 +1160,34 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
             }
         })
         
+          // User Profile Dashboard
+        .state("inviteduser", {
+            url: "/inviteduser/:param",
+            templateUrl: "views/inviteduser.html",
+            data: {pageTitle: 'Set Password', authorizedRoles: ['vendor','admin','all']},
+            controller: "SetPasswordController",
+            resolve: {
+                deps: ['$ocLazyLoad', 'Globals', function($ocLazyLoad, Globals) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',  
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+
+                              Globals.url+'/assets/global/plugins/select2/select2.css',                             
+                              Globals.url+'/assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+                              Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',    
+                              Globals.url+'/assets/global/plugins/select2/select2.min.js',
+                              Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
+                              Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                              Globals.url+'/js/controllers/SetPasswordController.js'
+                              
+                              
+                        ]                    
+                    });
+                }]
+            }
+        })
+        
          // User Profile Dashboard
         .state("invite", {
             url: "/invite",
