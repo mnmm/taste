@@ -160,5 +160,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		}
 
 	}
+	
+	//function to update vendor password
+	public static function update_vendor_password($updateAccountArr) {
+		
+	}
 	  
 }

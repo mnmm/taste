@@ -1707,7 +1707,7 @@ class ApiController extends BaseController {
 			}
 		}
 		
-		if($action == 'createvendoraccount' || $action == 'addvendorinfo'){
+		if($action == 'createvendoraccount' || $action == 'addvendorinfo' || $action == 'updatevendorpassword'){
 			
 			
 			if (array_key_exists("fullname", $data1))
@@ -2766,6 +2766,20 @@ class ApiController extends BaseController {
 				}
 			} else if($action == 'checkvalidinvitetoken'){
 				$check_invite_valid = User::InvitedUser($vendorinvitetoken);
+				if(isset($check_invite_valid->id) &&  $check_invite_valid != ''){
+					$result['status_code']=200;
+					$result['userdata'] = $check_invite_valid;
+				} else {
+					$result['status_code']=201;
+					$result['invitationexpired'] = 1;
+					$result['message'] = 'Invitation links is invalid/expired';
+				}
+	
+			} else if($action == 'updatevendorpassword'){
+				$updateAccountArr = array();
+				$updateAccountArr['password'] = $password;
+				$updateAccountArr['email_address'] = $email_address;
+				$check_invite_valid = User::update_vendor_password($updateAccountArr);
 				if(isset($check_invite_valid->id) &&  $check_invite_valid != ''){
 					$result['status_code']=200;
 					$result['userdata'] = $check_invite_valid;
