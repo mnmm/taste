@@ -211,7 +211,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     $scope.$on('$viewContentLoaded', function() {   
         Metronic.initAjax(); // initialize core components
         var authtoken = localStorage.getItem('access_token');
-		
+
        $scope.vendortoken = $location.url().split('/')[2];
        localStorage.setItem('payauthtoken',$scope.vendortoken);
        //localStorage.clear();
@@ -462,7 +462,6 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     });
     
     $scope.openAddVendorPopUp = function(){
-			console.log('here');
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
 			success(function(data1) {
@@ -612,7 +611,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     $rootScope.settings.layout.pageSidebarClosed = true;
 }); 
 
-MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
+MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal,$modalInstance) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	
@@ -628,7 +627,6 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 					$http.post($scope.apppath+'/api/getunpaidpo',{action:'sendinviteemail',email:email,message:message}).
 					success(function(data, status, headers, config) {
-						
 					if(data.status_code == 200){
 						$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
@@ -636,7 +634,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						success(function(data, status, headers, config) {
 						
 								if(data.data != ''){
-									//$modalInstance.close();	
+										
 									$scope.data = data.data;
 									
 									var table = $('#sample_2');
