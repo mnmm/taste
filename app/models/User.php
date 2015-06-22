@@ -125,7 +125,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		Mail::send('emails.invite', $data, function($message) use ($user)
 		{
 			$message->from('noreply@gfoodtrucks.com', 'Taste');
-			$message->to($user['email'], $user['name'])->cc(INFO_EMAIL)->subject('Taste Invite Email');
+			$message->to($user['email'], $user['name'])->subject('Taste Invite Email');
 		});
 		
 		$sub = 'sent invitation ';
