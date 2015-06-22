@@ -22,7 +22,7 @@ var FormValidation = function () {
 								},
 								invalidHandler: function (event, validator) { //display error alert on form submit              
 									success1.hide();
-									error1.show();
+									//error1.show();
 									Metronic.scrollTo(error1, -200);
 								},
 
