@@ -15,7 +15,7 @@ var FormValidation = function () {
 										required: true,
 										minlength:6
 									},
-									confirm_password: {
+									confirmpassword: {
 										required:true,
 										equalTo : "#password"
 									}
