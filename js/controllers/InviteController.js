@@ -574,7 +574,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 				});
 		});
 
-	}
+	});
 	
 	
 	
