@@ -2706,7 +2706,7 @@ class ApiController extends BaseController {
 						} else if($userinfo->invite_status==3){
 							
 							$popovercontent = "Last invite sent on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
-							$action_html .= '<a href="javascript:void(0);" ng-click="openSendEmailPopUp(\''.$useremail.'\');" class="pull-left addnew resendemail sentdate popover-dismiss-acc" data-toggle="popover" data-placement="left" data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" data-trigger="hover" data-invite="'.$useremail.'"><span class="create-new edit sendemaillink">Resend Email</span></a>';
+							$action_html .= '<a href="javascript:void(0);" ng-click="openSendEmailPopUp(\''.$useremail.'\');" class="pull-left addnew sendemail sentdate popover-dismiss-acc" data-toggle="popover" data-placement="left" data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" data-trigger="hover" data-invite="'.$useremail.'"><span class="create-new edit sendemaillink">Resend Email</span></a>';
 							
 						} else if($userinfo->invite_status==1){
 							$popovercontent = "Invitation accepted on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
