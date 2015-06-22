@@ -211,7 +211,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     $scope.$on('$viewContentLoaded', function() {   
         Metronic.initAjax(); // initialize core components
         var authtoken = localStorage.getItem('access_token');
-		var modalInstance = { close: function() {}, dismiss: function() {} };
+		
        $scope.vendortoken = $location.url().split('/')[2];
        localStorage.setItem('payauthtoken',$scope.vendortoken);
        //localStorage.clear();
@@ -458,16 +458,6 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 		} else {
 			createauthtoken(getunpaidpo);
 		}
-		
-		var modalInstance = $modal.open({
-		  animation: true,
-		  templateUrl: 'myModalContent.html',
-		  controller: 'ModalInstanceCtrl',
-		  windowClass:'paymentmethods',
-		  resolve: {
-			
-		  }
-		});
 		
     });
     
