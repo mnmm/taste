@@ -82,7 +82,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	  }
 	  
 	  // Function to send invite Email to vendor 
-	public function send_invite_email($email,$message)
+	public static function send_invite_email($email,$message)
     {
 		$user_detail  = DB::table('user_invite')->where('email',$email)->first();
 		
