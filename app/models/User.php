@@ -99,7 +99,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		if(isset($data['message']))
 		{
 			$msg = $data['message'];
-			if (preg_match("/invitelink/", $msg)){
+			if (preg_match("/href/", $msg)){
 				
 				$string = $msg;
 				$pattern = "/(?<=href=(\"|'))[^\"']+(?=(\"|'))/";
@@ -113,6 +113,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			}
 		}
 		
+		echo $msg1;exit;
 		
 		// the data that will be passed into the mail view blade template
 		
