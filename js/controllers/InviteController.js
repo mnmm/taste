@@ -561,7 +561,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 						.on('shown.bs.modal', function() {
 
 							$('#inviteVendor').show(); 
-							$('#inviteVendor').validate().resetForm(); 	
+							//$('#inviteVendor').validate().resetForm(); 	
 							console.log($('inviteVendor').find('textarea#message').html());
 							$('inviteVendor').find('textarea#message').wysihtml5({
 								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
