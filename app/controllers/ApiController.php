@@ -2704,23 +2704,23 @@ class ApiController extends BaseController {
 						$userphone = $userinfo->phone;
 						//$popoverhtml = '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>';
 						if($userinfo->status==1){
-								$action_html .='<a href="javascript:void(0);" class="pull-left addnew  btn btn-xs" ng-click="openstatusproductinfo('.$userinfo->id.',2);"><span class="create-new deactive">Deactivate</span></a>';
+								$action_html .='<a href="javascript:void(0);" class="pull-left addnew  btn btn-xs default btn-editable" ng-click="openstatusproductinfo('.$userinfo->id.',2);"><span class="create-new deactive">Deactivate</span></a>';
 						} else {
-								$action_html .='<a href="javascript:void(0);" class="pull-left addnew  btn btn-xs" onclick="openststusproductinfo('.$userinfo->id.',1);"><span class="create-new activate">Activate</span></a>';
+								$action_html .='<a href="javascript:void(0);" class="pull-left addnew  btn btn-xs default btn-editable" onclick="openststusproductinfo('.$userinfo->id.',1);"><span class="create-new activate">Activate</span></a>';
 						}
 						
 					    if($userinfo->invite_status==2)
 						{
 							$popovercontent = "Please click send email <br/>button to send invitation";
-							$action_html .='<a href="javascript:void(0);" class="pull-left btn btn-xs addnew sendemail sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover"  data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" ng-click="openSendEmailPopUp(\''.$useremail.'\');" data-trigger="hover" data-invite="'.$useremail.'"><span class="create-new edit sendemaillink">Send Email</span></a>';
+							$action_html .='<a href="javascript:void(0);" class="pull-left btn btn-xs default btn-editable addnew sendemail sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover"  data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" ng-click="openSendEmailPopUp(\''.$useremail.'\');" data-trigger="hover" data-invite="'.$useremail.'"><span class="create-new edit sendemaillink">Send Email</span></a>';
 						} else if($userinfo->invite_status==3){
 							
 							$popovercontent = "Last invite sent on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
-							$action_html .= '<a href="javascript:void(0);" ng-click="openSendEmailPopUp(\''.$useremail.'\');" class="pull-left btn btn-xs addnew sendemail sentdate popover-dismiss-acc" data-toggle="popover" data-placement="left" data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" data-trigger="hover" data-invite="'.$useremail.'"><span class="create-new edit sendemaillink">Resend Email</span></a>';
+							$action_html .= '<a href="javascript:void(0);" ng-click="openSendEmailPopUp(\''.$useremail.'\');" class="pull-left btn btn-xs addnew default btn-editable sendemail sentdate popover-dismiss-acc" data-toggle="popover" data-placement="left" data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" data-trigger="hover" data-invite="'.$useremail.'"><span class="create-new edit sendemaillink">Resend Email</span></a>';
 							
 						} else if($userinfo->invite_status==1){
 							$popovercontent = "Invitation accepted on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
-							$action_html .= '<a href="javascript:void(0);" class="btn btn-xs pull-left addnew sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover" data-html="true" data-content="'.$popovercontent.'" data-trigger="hover" ><span class="create-new activate" data-trigger="hover">Accepted</span></a>';
+							$action_html .= '<a href="javascript:void(0);" class="btn btn-xs pull-left default btn-editable addnew sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover" data-html="true" data-content="'.$popovercontent.'" data-trigger="hover" ><span class="create-new activate" data-trigger="hover">Accepted</span></a>';
 						 }
 						 
 						
