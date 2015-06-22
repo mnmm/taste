@@ -612,7 +612,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     $rootScope.settings.layout.pageSidebarClosed = true;
 }); 
 
-MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
+MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal,$modalInstance) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	
@@ -636,7 +636,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						success(function(data, status, headers, config) {
 						
 								if(data.data != ''){
-									$modal.close();	
+									$modalInstance.close();	
 									$scope.data = data.data;
 									
 									var table = $('#sample_2');
