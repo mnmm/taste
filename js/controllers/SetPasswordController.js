@@ -86,39 +86,14 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 			
 				if(data.status_code == 200){
 					
-					if(data.aleadyexists != '' && typeof data.aleadyexists != 'undefined'){
-						Session.create(data.userid,'vendor',data.username);
-						//localStorage.setItem('vendor_access_token',$scope.vendortoken);
-						localStorage.setItem("userid", data.userid);
-						localStorage.setItem("role", 'vendor');
-						localStorage.setItem("name", data.username);
-						localStorage.setItem("useremail", data.aleadyexists);
-						bootbox.hideAll();	
-						if(data.w9signed != '' && typeof data.aleadyexists != 'undefined' && data.w9signed  == 1){
-							//$window.location.href = '#/vendors';
-							$window.location.href = '#/vendors/w9form';
-						} else {
-							$window.location.href = '#/vendors/w9form';
-						} 
-					} else {
-						 if(data.vendoremail != '' && typeof data.vendoremail != 'undefined'){
-								$scope.vendorinfo = data.vendoremail;	
-								localStorage.setItem("useremail", data.vendoremail);
-								$('div#signform').find('input#email').val(data.vendoremail);
-								var vm = this;
-								$timeout(function () {
-									 $timeout(callAtTimeout, 500);
-								});
-						 } 
+					if(data.userdata != '' && typeof data.userdata != 'undefined'){
+						$('div#signform').find('input#email').val(data.vendoremail);
 					} 
 				} else {
 					
-					if(data.status_message === 'Invalid token'){
-						
-						$scope.vendorinfo = '';
-						$('input#email').prop('disabled',true);
-						$('input#password_c').prop('disabled',true);
+					if(data.status_message === 'Invitation links is invalid/expired'){
 						$('input#password').prop('disabled',true);
+						$('input#confirmpassword').prop('disabled',true);
 						$('p#vendoraccountloading').css('display','none');
 						$('p#tokenexpired').css('display','block');
 						$('p#tokenexpired').css('color','red');

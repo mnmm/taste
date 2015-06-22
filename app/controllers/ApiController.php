@@ -2766,14 +2766,9 @@ class ApiController extends BaseController {
 				}
 			} else if($action == 'checkvalidinvitetoken'){
 				$check_invite_valid = User::InvitedUser($vendorinvitetoken);
-				if(isset($check_invite_valid) &&  $check_invite_valid != '' &&  $check_invite_valid != 0){
+				if(isset($check_invite_valid->id) &&  $check_invite_valid != ''){
 					$result['status_code']=200;
-					if($check_invite_valid == 1){
-						$result['message'] = 'Invitation links is invalid/expired';
-					} else {
-						$result['userdata'] = $check_invite_valid;
-					}
-					
+					$result['userdata'] = $check_invite_valid;
 				} else {
 					$result['status_code']=201;
 					$result['invitationexpired'] = 1;
