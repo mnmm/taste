@@ -128,8 +128,6 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getallvendors'}).
 			success(function(data, status, headers, config) {
 			
-				if(data.status_code == 200){
-					
 					if(data.data != ''){
 							
 						$scope.data = data.data;
@@ -174,9 +172,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 						table.$('[data-toggle="popover"]').popover().mouseover(function(e) {e.preventDefault();});
 					}
 					 
-				} else {
-
-				}		
+					
 			});
 			
 			/*bootbox.dialog({
