@@ -565,9 +565,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 		FormValidation.init();
 		ComponentsPickers.init();
 		
-		function hideBankpopup1(){
-			$modalInstance.close();
-		}
+		
 			
     });
     
@@ -578,7 +576,13 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 	$scope.hideBankPopup = function() {
 		bootbox.hideAll();	
 		
-	}	
+	}
+		
+	$scope.hideBankpopup1 = function() {
+	
+			$modalInstance.close();
+	}
+	
 	$scope.submitted = false;
 	
 	$scope.updateBankAccountPopup = function() {
