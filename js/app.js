@@ -1201,6 +1201,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                               Globals.url+'/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
                               Globals.url+'/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css',
                               Globals.url+'/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+                              Globals.url+'/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css',
+                              Globals.url+'/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                              Globals.url+'/assets/global/plugins/bootstrap-summernote/summernote.css',
 
                               Globals.url+'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
                               Globals.url+'/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
@@ -1221,6 +1224,12 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                              Globals.url+'/assets/global/plugins/datatables/all.min.js',
                              Globals.url+'/assets/global/plugins/bootbox/bootbox.min.js',
                              Globals.url+'/assets/admin/pages/scripts/ui-alert-dialog-api.js',
+                             
+                             Globals.url+'/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js',
+							 Globals.url+'/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js',
+							 Globals.url+'/assets/global/plugins/bootstrap-markdown/lib/markdown.js',
+							 Globals.url+'/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js',
+							 Globals.url+'/assets/global/plugins/bootstrap-summernote/summernote.min.js',
                             
 							 Globals.url+'/assets/admin/pages/scripts/payments.js',
                              Globals.url+'/js/controllers/InviteController.js'
