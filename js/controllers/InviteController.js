@@ -150,11 +150,11 @@ var FormValidation = function () {
             return;
         }*/
 
-        if ($('.wysihtml5').size() > 0) {
+      /*  if ($('.wysihtml5').size() > 0) {
             $('.wysihtml5').wysihtml5({
                 "stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
             });
-        }
+        }*/
     }
 	
 
@@ -162,7 +162,7 @@ var FormValidation = function () {
         //main function to initiate the module
         init: function () {
             InviteValidation();
-			handleWysihtml5();
+			//handleWysihtml5();
         }
 
     };
@@ -562,6 +562,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 
 							$('#inviteVendor').show(); 
 							$('#inviteVendor').validate().resetForm(); 	
+							$('inviteVendor').find('#message').wysihtml5();
 								
 						})
 						.on('hide.bs.modal', function(e) {
