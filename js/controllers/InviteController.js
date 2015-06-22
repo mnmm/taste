@@ -562,7 +562,9 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 
 							$('#inviteVendor').show(); 
 							$('#inviteVendor').validate().resetForm(); 	
-							$('inviteVendor').find('#message').wysihtml5();
+							$('inviteVendor').find('.wysihtml5').wysihtml5({
+								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+							});
 								
 						})
 						.on('hide.bs.modal', function(e) {
