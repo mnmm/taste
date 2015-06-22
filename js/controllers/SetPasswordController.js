@@ -11,10 +11,6 @@ var FormValidation = function () {
 								focusInvalid: false, // do not focus the last invalid input
 								ignore: "",  // validate all fields including form hidden input
 								rules: {
-									email: {
-										required: true,
-										email:true
-									},
 									password:{
 										required: true,
 										minlength:6
@@ -47,14 +43,7 @@ var FormValidation = function () {
 
 								submitHandler: function (form1) {
 										
-										$('div.bootbox').find('div#signform').css('display','none');
-										$('div.bootbox').find('div#w9instruction').css('display','block');
-										$('div.bootbox').find('div#w9instruction').html('We need your W9 information in order to make payments to you. Please fill out the W9 form electronically by clicking next below');
-										$('div.bootbox').find('h4.modal-title').text('W9 Confirmation');
-										$('div.modal-footer').css('display','block');
-										$('div.modal-footer').find('.main-btn-new').css('display','none');
-										$('div.modal-footer').find('.cancel-btn').css('display','inline-block');
-										$('div.modal-footer').find('.main-btn').css('display','inline-block');
+										
 									}
 								});
 	}
@@ -77,10 +66,10 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
     $scope.$on('$viewContentLoaded', function() {   
         Metronic.initAjax(); // initialize core components
         var authtoken = localStorage.getItem('access_token');
-      
-       $scope.vendortoken = $location.url().split('/')[2];
-       localStorage.setItem('payauthtoken',$scope.vendortoken);
-       //localStorage.clear();
+       
+       $scope.vendorinvitetoken = $location.url().split('/')[2];
+       localStorage.setItem('vendorinvitetoken',$scope.vendorinvitetoken);
+       console.log(localStorage.getItem('vendorinvitetoken'));
 		FormValidation.init();
        function callAtTimeout() {
 			$('div#site_statistics_loading').css('display','none');
@@ -89,111 +78,10 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 		}
 		
         function getunpaidpo(){
-			
-			bootbox.dialog({
-				title: "Register yourself to Taste",
-				message: $('#signupForm'),
-				show: false,
-				className:'registerform',
-				closeButton:false,
-				buttons: {
-				  danger: {
-					label: "Cancel",
-					className: "cancel-btn",
-					callback: function() {
-						var email = $('input#email').val();
-						var password =  $('input#password').val();
-						$.ajax({
-							url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
-							type: 'post',
-							data: {
-								action: 'createuseraccount',
-								email:email,
-								password:password
-							},
-							headers: {
-								"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
-								"x-taste-access-token": localStorage.getItem('access_token')
-							},
-							dataType:'json',
-							success: function (data) {
-								
-								if(data.status_code == 200){
-									localStorage.setItem("userid", data.vendoruserid);
-									localStorage.setItem("role", 'vendor');
-									localStorage.setItem("name", 'xyz');
-								//	window.location.href = '#/vendors'; 
-									authenticationSvc.login(email,password,'vendors');	
-									bootbox.hideAll();	
-								} else {
-									createauthtoken(createUserAccount);
-								}
-							}
-						});
-					
-					}
-				  },
-				  success: {
-					label: "Continue",
-					className: "main-btn",
-					callback: function() {
-						var email = $('input#email').val();
-						var password =  $('input#password').val();
-						//alert('email'+email+'password'+password);
-						$.ajax({
-							url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
-							type: 'post',
-							data: {
-								action: 'createuseraccount',
-								email:email,
-								password:password
-							},
-							headers: {
-								"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
-								"x-taste-access-token": localStorage.getItem('access_token')
-							},
-							dataType:'json',
-							success: function (data) {
-								
-								if(data.status_code == 200){
-									localStorage.setItem("userid", data.vendoruserid);
-									localStorage.setItem("role", 'vendor');
-									localStorage.setItem("name", 'xyz');
-									bootbox.hideAll();
-									authenticationSvc.login(email,password,'vendors/w9form');	
-									//window.location.href = '#/vendors/w9form'; 
-								} else {
-									createauthtoken(createUserAccount);
-								}
-							}
-						});
-						
-					}
-				  },
-				  signup: {
-					label: "SignUp",
-					className: "main-btn-new",
-					callback: function() {
-						$('input#signupbtn').click();
-						return false;
-					}
-				  }
-				} 
-			})
-			.on('shown.bs.modal', function() {
-				$('#signupForm')
-					.show();                             // Show the login form
-					$('#signupForm').validate().resetForm(); // Reset form
-			})
-			.on('hide.bs.modal', function(e) {
-				// Therefor, we need to backup the form
-				$('#signupForm').hide().appendTo('body');
-			})
-			.modal('show');
-					
+		
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getaccountinfo',accesshash:$scope.vendortoken}).
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'checkvalidinvitetoken',vendorinvitetoken:$scope.vendorinvitetoken }).
 			success(function(data, status, headers, config) {
 			
 				if(data.status_code == 200){
