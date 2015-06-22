@@ -102,9 +102,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			if (preg_match("/invitelink/", $msg)){
 				
 				$string = $msg;
-				$newurl = $loginurl;
 				$pattern = "/(?<=href=(\"|'))[^\"']+(?=(\"|'))/";
-				$msg1 = preg_replace($pattern,$newurl,$string);
+				$msg1 = preg_replace($pattern,$loginurl,$string);
 				
 			
 			}
