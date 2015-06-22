@@ -2658,6 +2658,12 @@ class ApiController extends BaseController {
 						$useremail = $userinfo->email;
 						$userphone = $userinfo->phone;
 						//$popoverhtml = '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>';
+						if($userinfo->status==1){
+								$actionhtml .='<a href="javascript:void(0);" class="pull-left addnew" ng-click="openstatusproductinfo('.$userinfo->id.',2);"><span class="create-new deactive">Deactivate</span></a>';
+						} else {
+								$actionhtml .='<a href="javascript:void(0);" class="pull-left addnew" onclick="openststusproductinfo('.$userinfo->id.',1);"><span class="create-new activate">Activate</span></a>';
+						}
+						
 					    if($userinfo->invite_status==2)
 						{ 
 							$popovercontent = "Please click send email <br/>button to send invitation";
@@ -2671,6 +2677,7 @@ class ApiController extends BaseController {
 							$popovercontent = "Invitation accepted on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
 							$action_html .= '<a href="javascript:void(0);" class="pull-left addnew sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover" data-html="true" data-content="'.$popovercontent.'" data-trigger="hover" ><span class="create-new activate" data-trigger="hover">Accepted</span></a>';
 						 }
+						 
 						
 						$result['data'][]= array($useremail,$userphone,$action_html);
 						
