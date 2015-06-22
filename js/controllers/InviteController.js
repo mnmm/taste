@@ -205,7 +205,7 @@ MetronicApp.directive('validPasswordC', function() {
 });
 
 
-MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $timeout, $location,$window ,AUTH_EVENTS,Session,AuthService,authenticationSvc) {
+MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $timeout, $location,$window ,AUTH_EVENTS,Session,AuthService,authenticationSvc,$modal) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
     $scope.$on('$viewContentLoaded', function() {   
