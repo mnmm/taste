@@ -73,8 +73,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 		FormValidation.init();
        function callAtTimeout() {
 			$('div#site_statistics_loading').css('display','none');
-			$('p#vendoraccountloading').css('display','none');
-			$('#signform').css('display','block');
+			$('#setpasswordform').css('display','block');
 		}
 		
         function getunpaidpo(){
@@ -89,13 +88,15 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 					if(data.userdata != '' && typeof data.userdata != 'undefined'){
 						$('#setPasswordForm').find('input#invitedemail').val(data.userdata.email);
 						$('#setPasswordForm').find('input#inviteid').val(data.userdata.invitationcode);
+						$timeout(function () {
+							$timeout(callAtTimeout, 500);
+						});
 					} 
 				} else {
 					
 					if(data.status_message === 'Invitation links is invalid/expired'){
 						$('input#password').prop('disabled',true);
 						$('input#confirmpassword').prop('disabled',true);
-						$('p#vendoraccountloading').css('display','none');
 						$('p#tokenexpired').css('display','block');
 						$('p#tokenexpired').css('color','red');
 						$('div#site_statistics_loading').css('display','none');

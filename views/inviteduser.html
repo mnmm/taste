@@ -11,6 +11,7 @@
 			<span>
 			</span>
 		</div>
+		<p id="tokenexpired" style="display:none;">Invitation links is invalid/expired</p>
 		<div class="alert alert-success display-hide" id="registerformsucess">
 			<button class="close" data-close="alert"></button>
 			<span>
@@ -29,7 +30,7 @@
 			<span>
 			Enter any username and password. </span>
 		</div>
-		
+		<div id="setpasswordform" style="display:none;">
 		<div class="form-group">
 			
 			<label class="control-label visible-ie8 visible-ie9">Password</label>
@@ -43,6 +44,7 @@
 		<input type="hidden" name="inviteid" value="" id="inviteid" ng-model="inviteid" >
 		<div class="form-group">
 			<button type="submit" class="btn btn-success uppercase" id="loginbtn">Update</button>
+		</div>
 		</div>
 		<button type="submit" style="display:none !important;" ng-click="updatePassword()" id="updatepassword" class="btn btn-success">Update</button>
 	</form>
