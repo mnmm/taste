@@ -144,7 +144,9 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 		var authtoken = localStorage.getItem('access_token');
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
-		$http.post($scope.apppath+'/api/getunpaidpo',{password:$scope.password,email_address:$scope.invitedemail,inviteid:$scope.inviteid,action:'updatevendorpassword'}).
+		var invitedemail = $('input#invitedemail').val();
+		var inviteid = $('input#inviteid').val();
+		$http.post($scope.apppath+'/api/getunpaidpo',{password:$scope.password,email_address:invitedemail,inviteid:inviteid,action:'updatevendorpassword'}).
 			success(function(data) {
 				if(data.status_code === 200){
 					var subject = 'registered as new vendor';
