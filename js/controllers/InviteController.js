@@ -636,7 +636,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						success(function(data, status, headers, config) {
 						
 								if(data.data != ''){
-									$modalInstance.close();	
+									$modal.close();	
 									$scope.data = data.data;
 									
 									var table = $('#sample_2');
