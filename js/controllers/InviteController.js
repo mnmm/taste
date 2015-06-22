@@ -357,7 +357,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 						})
 						.on('hide.bs.modal', function(e) {
 						
-							
+							$('#addVendor').hide().appendTo('body');  
 						})
 						.modal('show');
 
