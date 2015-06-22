@@ -614,5 +614,10 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
+	
+	$scope.sendInvitation = function () {
+		console.log($('#message').val());
+	}
+	
 });
 	
