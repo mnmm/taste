@@ -502,6 +502,65 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 
 	}
 	
+	$scope.openSendEmailPopUp = function(){
+			var vendoruserid  = localStorage.getItem('userid');
+			$http.get($scope.apppath+"/api/checklogin").
+			success(function(data1) {
+					$scope.userroleInfo = data1;
+					 vendoruserid = $scope.userroleInfo.id;
+			
+				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
+				success(function(data, status, headers, config) {
+					if(data.status_code == 200){
+						
+						bootbox.dialog({
+							title:'Invite Vendor',
+							message: $('#inviteVendor'),
+							show: false,
+							animate:true,
+							closeButton: false,
+							className:'invitevendor',
+							buttons: {
+							  danger: {
+								label: "Cancel",
+								className: "cancel-btn",
+								callback: function() {
+									
+									bootbox.hideAll();	
+								}
+							  },
+							  success: {
+								label: "Save",
+								className: "main-btn",
+								callback: function() {
+									$('#inviteVendor').find('input#invitevendorbtn').click();
+									return false;
+								}
+							  }
+							} 
+						})
+						.on('shown.bs.modal', function() {
+
+							$('#inviteVendor').show(); 
+							$('#inviteVendor').validate().resetForm(); 	
+								
+						})
+						.on('hide.bs.modal', function(e) {
+						
+							
+						})
+						.modal('show');
+
+					} 		
+				});
+		});
+
+	}
+	
+	
+	
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
