@@ -43,7 +43,7 @@ var FormValidation = function () {
 
 								submitHandler: function (form1) {
 										
-										
+										$('button#updatepassword').click();
 									}
 								});
 	}
@@ -169,3 +169,36 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
 }); 
+
+$scope.updatePassword = function() {
+
+		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
+		$http.post($scope.apppath+'/api/getunpaidpo',{fullname:$scope.fullname,email_address:$scope.email_address,password:$scope.register_password,address:$scope.address,city:$scope.city,state:$scope.state,zip:$scope.zip,phone:$scope.phone,location:$scope.location,address2:$scope.address2,crossstreet:$scope.crossstreet,neighborhood:$scope.neighborhood,entries:$scope.entries,daysopen:opendays,businessopeninghours:$('input#businessopeninghour').val(),businessclosinghours:$('input#businessclosinghour').val(),locationdescription:$scope.locationdescription,locationtype:locationtype,locationnotes:$scope.locationnotes,mealnotes:$scope.mealnotes,emailcontact:$scope.emailcontact,contactphone:$scope.contactphone,action:'updateuserpassword'}).
+			success(function(data) {
+				if(data.status_code === 200){
+					var subject = 'registered as new vendor';
+						var message = $scope.fullname+' has registred as new vendor with email '+$scope.email_address;
+						$http.post($scope.apppath+'/api/getunpaidpo',{subject:subject,message:message,userid:1,action:'saveadminnotes'}).
+						success(function(data) {
+							if(data.status_code === 200){
+								$('form#registerForm')[0].reset();
+								var sucess2 = $('#registerformsucess');
+								$('#registerForm').find('#registerformsucess').show();
+								Metronic.scrollTo(sucess2, -200);
+								$('#registerformalert').hide();
+							}
+						});
+				} else {
+					if(data.status_code === 201){
+						if(data.accountcreated ===  0){
+							var error3 = $('#registerformalert');
+							error3.show();
+							Metronic.scrollTo(error3, -200);
+							$('#registerformalert').show(data.message);
+							$('#registerformsucess').hide();
+						} 
+					}
+				}
+		});
+	}

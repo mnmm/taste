@@ -1992,6 +1992,18 @@ class ApiController extends BaseController {
 			}
 		}
 		
+		
+		if($action == 'checkvalidinvitetoken'){
+			if (array_key_exists("vendorinvitetoken", $data1))
+			{
+				$vendorinvitetoken = $data1->vendorinvitetoken;
+			}
+			else
+			{
+				$vendorinvitetoken = '';
+
+			}
+		}
 
 		
 		$validate_data = array(
@@ -2752,7 +2764,23 @@ class ApiController extends BaseController {
 					$result['invitationsent'] = 0;
 					$result['message'] = 'vendor account already exists';
 				}
-			} 
+			} else if($action == 'checkvalidinvitetoken'){
+				$check_invite_valid = User::InvitedUser($vendorinvitetoken);
+				if(isset($check_invite_valid) &&  $check_invite_valid != '' &&  $check_invite_valid != 0){
+					$result['status_code']=200;
+					if($check_invite_valid == 1){
+						$result['message'] = 'Invitation links is invalid/expired';
+					} else {
+						$result['userdata'] = $check_invite_valid;
+					}
+					
+				} else {
+					$result['status_code']=201;
+					$result['invitationexpired'] = 1;
+					$result['message'] = 'Invitation links is invalid/expired';
+				}
+	
+			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
 			echo $json_result;

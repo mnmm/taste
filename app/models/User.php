@@ -137,5 +137,28 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		DB::table('user_invite')->where('email',$email)->update(array('status'=>3,'invitationcode'=>$invitationcode,'created_date'=>date('Y-m-d H:i:s')));
 		return 1;
 	}
+	
+					//Invited User
+	public function InvitedUser($id) {
+		
+		$data = DB::table('user_invite')->where('id',base64_decode($id))->first();	
+		
+		if(count($data)>0)
+		{	
+			if($data->status==2 || $data->status==3)
+			{	
+				return $data;
+			}
+			else
+			{
+				return 1;
+			}
+		}
+		else
+		{
+			return 0;
+		}
+
+	}
 	  
 }
