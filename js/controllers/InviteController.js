@@ -145,9 +145,10 @@ var FormValidation = function () {
 	
 	
 	var handleWysihtml5 = function () {
-        if (!jQuery().wysihtml5) {
+        
+        /*if (!jQuery().wysihtml5) {
             return;
-        }
+        }*/
 
         if ($('.wysihtml5').size() > 0) {
             $('.wysihtml5').wysihtml5({
