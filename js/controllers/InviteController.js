@@ -583,14 +583,18 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 						  controller: 'ModalInstanceCtrl',
 						  windowClass:'paymentmethods',
 						  resolve: {
-							
+							$('#manageBankAccounts').find('textarea.wysihtml5').wysihtml5({
+								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+							});	
 						  }
 						});
-						 if ($('.wysihtml5').size() > 0) {
+						
+						/* if ($('.wysihtml5').size() > 0) {
 							$('.wysihtml5').wysihtml5({
 								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
 							});
-						}		
+						}*/
+						
 					} 		
 				});
 		});
