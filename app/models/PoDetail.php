@@ -672,16 +672,21 @@
 			$insertBankDetailAr = array('vendorid' => $vendorid,'name' => $get_vendor_name,'bank_name'=>'','type'=>'individual','account_number'=>$account_number,'tax_id'=>$tax_id,'country'=>$country,'routing_number'=>$routing_number,'recipient'=>$recipient,'mailing_address' => $mailingaddress,'paymenttype'=>$paymenttype); 
 			
 			$id = DB::table('bank_detail')->insertGetId($insertBankDetailAr);
-			echo 'comes here'.$id;exit;
+			
 			//if($id != '' && $authcode != ''){
 			if($id != '' ){
-				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
-				if(isset($expire_auth_code->id ) && $expire_auth_code->id != ''){
-					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
-					return $id;
+				if($authcode != ''){
+					$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
+					if(isset($expire_auth_code->id ) && $expire_auth_code->id != ''){
+						DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
+						return $id;
+					} else {
+						return 0;
+					} 
 				} else {
-					return 0;
-				} 
+					return $id;
+				}
+				
 			} else {
 				return 0;
 			}
@@ -784,7 +789,7 @@
 			
 			DB::table('bank_detail')->where('id','=',$bankid)->update($insertBankDetailAr);
 			
-			//if($authcode != ''){
+			if($authcode != ''){
 				$expire_auth_code = DB::table('payment_auth_code')->where('auth_code','=',$authcode)->first();
 				if(isset($expire_auth_code->id ) && $expire_auth_code->id != ''){
 					DB::table('payment_auth_code')->where('auth_code','=',$authcode)->update(array('status' => 0));
@@ -792,9 +797,9 @@
 				} else {
 					return 0;
 				} 
-			/*} else {
-				return 0;
-			}*/
+			} else {
+				return $bankid;
+			}
 		}
 		
 		
