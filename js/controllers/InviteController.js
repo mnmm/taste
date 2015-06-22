@@ -517,8 +517,8 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 		});
 
 	}
-	
-	$scope.openSendEmailPopUp = function(){
+	$(document).on("click", ".sendemail", function() {
+	//$scope.openSendEmailPopUp = function(){
 			console.log('comes here');
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
