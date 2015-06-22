@@ -113,9 +113,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			}
 		}
 		
-		echo $msg1;exit;
-		
-		// the data that will be passed into the mail view blade template
+		he data that will be passed into the mail view blade template
 		
 		
 		$data = array(
