@@ -627,6 +627,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 					$http.post($scope.apppath+'/api/getunpaidpo',{action:'sendinviteemail',email:email,message:message}).
 					success(function(data, status, headers, config) {
+						
 					if(data.status_code == 200){
 						$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');

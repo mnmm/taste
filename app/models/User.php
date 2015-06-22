@@ -92,7 +92,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		);
 		
 		$loginurl = Request::root().'/InvitedUser/'.base64_encode($user_detail->id);
-		
+		$invitationcode = base64_encode($user_detail->id);
 		$user_email_details  = DB::table('users')->where('email',$email)->first();
 		$user_type = $user_email_details->usertype;
 		
@@ -134,7 +134,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$message = 'to <a href="'.$url_sent.'">'.$user_email_details->email.'</a>';
 		Logs::sendadminnotes($sub,$message,Auth::user()->id,3);
 		
-		DB::table('user_invite')->where('email',$email)->update(array('status'=>3,'created_date'=>date('Y-m-d H:i:s')));
+		DB::table('user_invite')->where('email',$email)->update(array('status'=>3,'invitationcode'=>$invitationcode,'created_date'=>date('Y-m-d H:i:s')));
 		return 1;
 	}
 	  
