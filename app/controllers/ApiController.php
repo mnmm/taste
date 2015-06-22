@@ -2667,7 +2667,7 @@ class ApiController extends BaseController {
 					    if($userinfo->invite_status==2)
 						{ 
 							$popovercontent = "Please click send email <br/>button to send invitation";
-							$action_html .='<a href="javascript:void(0);" class="pull-left addnew sendemail sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover"  data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" ng-click="send_email('.$useremail.');" data-trigger="hover" ><span class="create-new edit">Send Email</span></a>';
+							$action_html .='<a href="javascript:void(0);" class="pull-left addnew sendemail sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover"  data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" ng-click="send_email(\''.$useremail.'\');" data-trigger="hover" ><span class="create-new edit">Send Email</span></a>';
 						} else if($userinfo->invite_status==3){
 							
 							$popovercontent = "Last invite sent on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
