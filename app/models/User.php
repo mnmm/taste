@@ -167,7 +167,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$user_detail = DB::table('users')->where('email',$updateAccountArr['email_address'])->first();
 		$password = Hash::make($updateAccountArr['email_address']);	
 		
-		DB::table('users')->where('email',$data['email'])->update(array('status'=>1, 'password'=>$password));	
+		DB::table('users')->where('email',$updateAccountArr['email_address'])->update(array('status'=>1, 'password'=>$password));	
 		
 		DB::table('user_invite')->where('id',base64_decode($updateAccountArr['inviteid']))->where('email',$updateAccountArr['email_address'])->update(array('status'=>1));
 		
