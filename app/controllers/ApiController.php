@@ -1969,6 +1969,29 @@ class ApiController extends BaseController {
 			
 		}
 		
+		
+		if($action == 'sendinviteemail'){
+			if (array_key_exists("email", $data1))
+			{
+				$email = $data1->email;
+			}
+			else
+			{
+				$email = '';
+
+			}
+			
+			if (array_key_exists("message", $data1))
+			{
+				$message = $data1->message;
+			}
+			else
+			{
+				$message = '';
+
+			}
+		}
+		
 
 		
 		$validate_data = array(
@@ -2710,6 +2733,17 @@ class ApiController extends BaseController {
 				$createAccountArr['zip'] = $zip;
 				$createAccountArr['phone'] = $phone;
 				$add_vendor_account = User::add_vendor_account($createAccountArr);
+				if(isset($add_vendor_account) &&  $add_vendor_account != '' &&  $add_vendor_account != 0){
+					$result['status_code']=200;
+					$result['accountcreated'] = 1;
+				} else {
+					$result['status_code']=201;
+					$result['accountcreated'] = 0;
+					$result['message'] = 'vendor account already exists';
+				}
+			} else if($action == 'sendinviteemail'){
+				
+				$send_vendor_invite = User::send_invite_email($email,$message);
 				if(isset($add_vendor_account) &&  $add_vendor_account != '' &&  $add_vendor_account != 0){
 					$result['status_code']=200;
 					$result['accountcreated'] = 1;

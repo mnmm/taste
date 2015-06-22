@@ -617,7 +617,22 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	
 	$scope.sendInvitation = function () {
 		console.log($('#message').val());
-		$modalInstance.close();
+			var vendoruserid  = localStorage.getItem('userid');
+			$http.get($scope.apppath+"/api/checklogin").
+				success(function(data1) {
+					$scope.userroleInfo = data1;
+					var email = $('#emailinvite').val();
+					var message = $('#manageBankAccounts').find('#message').val();
+					$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+					$http.post($scope.apppath+'/api/getunpaidpo',{action:'sendinviteemail',email:email,message:message}).
+					success(function(data, status, headers, config) {
+					if(data.status_code == 200){
+						$modalInstance.close();
+				} 		
+			});
+		});
+		//$modalInstance.close();
 	}
 	
 });

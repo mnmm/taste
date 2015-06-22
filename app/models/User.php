@@ -81,4 +81,73 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			
 	  }
 	  
+	  // Function to send invite Email to vendor 
+	public function send_invite_email($email,$message)
+    {
+		$user_detail  = DB::table('user_invite')->where('email',$email)->first();
+		
+		$user = array(
+			'email'=>$email,
+			'name'=>'Vendor'
+		);
+		
+		$loginurl = Request::root().'/InvitedUser/'.base64_encode($user_detail->id);
+		
+		$user_email_details  = DB::table('users')->where('email',$email)->first();
+		$user_type = $user_email_details->usertype;
+		
+		if(isset($data['message']))
+		{
+			$msg = $data['message'];
+			if (preg_match("/invitelink/", $msg)){
+				
+				$string = $msg;
+				$newurl = $loginurl;
+				$pattern = "/(?<=href=(\"|'))[^\"']+(?=(\"|'))/";
+				$msg1 = preg_replace($pattern,$newurl,$string);
+				
+			
+			}
+			else
+			{
+				$msg1 = $msg;
+			}
+		}
+		
+		
+		// the data that will be passed into the mail view blade template
+		
+		
+		$data = array(
+			'detail'=>'Your Invation details are as below',
+			'loginlink' => $loginurl,
+			'email' => $email,
+			'custommessage'=> $msg1
+		);
+
+		
+		Mail::send('emails.invite', $data, function($message) use ($user)
+		{
+			$message->from('noreply@gfoodtrucks.com', 'Taste');
+			$message->to($user['email'], $user['name'])->cc(INFO_EMAIL)->subject('GFood Invite Email');
+		});
+		
+		$sub = 'sent invitation ';
+		
+		if($user_type==1)
+		{
+			$url_sent = Request::root().'/admin/managevendors';
+		}
+		else 
+		{
+			$url_sent = Request::root().'/admin/manageusers';
+		}	
+		
+		$message = 'to <a href="'.$url_sent.'">'.$user_email_details->email.'</a>';
+		Logs::sendadminnotes($sub,$message,Auth::user()->id,3);
+		
+		DB::table('user_invite')->where('email',$email)->update(array('status'=>3,'created_date'=>date('Y-m-d H:i:s')));
+		echo 1;exit;
+	}
+	  
 }
