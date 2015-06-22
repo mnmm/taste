@@ -465,8 +465,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	
 	$scope.sendInvitation = function () {
-		$('div.paymentmethods').remove();
-		$('div.modal-backdrop').remove();
+		
 		//console.log($('#message').val());
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
@@ -479,7 +478,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 					$http.post($scope.apppath+'/api/getunpaidpo',{action:'sendinviteemail',email:email,message:message}).
 					success(function(data, status, headers, config) {
 					if(data.status_code == 200){
-						
+						$('div.paymentmethods').remove();
+						$('div.modal-backdrop').remove();
 						$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 						$http.post($scope.apppath+'/api/getunpaidpo',{action:'getallvendors'}).
