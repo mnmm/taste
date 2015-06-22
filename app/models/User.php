@@ -64,7 +64,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				$register->save();
 				$reg_id = $register->id;
 				
-				DB::table('user_invite')->insert(array( 'email' => $data['email'],'status' => 2,'created_date'=>date('Y-m-d H:i:s'))); 
+				DB::table('user_invite')->insert(array( 'email' => $createAccountArr['email_address'],'status' => 2,'created_date'=>date('Y-m-d H:i:s'))); 
 				$user_id  = Auth::user()->id; 
 				$user_details = $this->get_user_complete_details($user_id);
 				if(count($user_details) > 0){
