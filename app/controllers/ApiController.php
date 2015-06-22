@@ -2710,7 +2710,7 @@ class ApiController extends BaseController {
 				$createAccountArr['zip'] = $zip;
 				$createAccountArr['phone'] = $phone;
 				$add_vendor_account = User::add_vendor_account($createAccountArr);
-				if(isset($check_vendor_account) &&  $check_vendor_account != '' &&  $check_vendor_account != 0){
+				if(isset($add_vendor_account) &&  $add_vendor_account != '' &&  $add_vendor_account != 0){
 					$result['status_code']=200;
 					$result['accountcreated'] = 1;
 				} else {
