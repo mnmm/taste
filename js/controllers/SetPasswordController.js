@@ -200,6 +200,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
     $rootScope.settings.layout.pageSidebarClosed = true;
+    $rootScope.settings.layout.showAllOptions = true;
 }); 
 
 
