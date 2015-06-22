@@ -94,7 +94,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 					} 
 				} else {
 					
-					if(data.status_message === 'Invitation links is invalid/expired'){
+					if(data.message === 'Invitation links is invalid/expired'){
 						$('input#password').prop('disabled',true);
 						$('input#confirmpassword').prop('disabled',true);
 						$('p#tokenexpired').css('display','block');
