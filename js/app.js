@@ -229,6 +229,7 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state, Gl
  	 var deferred = $q.defer();
 	 $http.post(rootapppath+"/api/logout", {}).then(function(result) {
 		$window.sessionStorage["userInfo"] = null;
+		localStorage.clear();
 		userInfo = null;
 		deferred.resolve(result);
 		//$state.go('login');
