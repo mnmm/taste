@@ -1707,7 +1707,7 @@ class ApiController extends BaseController {
 			}
 		}
 		
-		if($action == 'createvendoraccount'){
+		if($action == 'createvendoraccount' || $action == 'addvendorinfo'){
 			
 			
 			if (array_key_exists("fullname", $data1))
@@ -2699,7 +2699,26 @@ class ApiController extends BaseController {
 					$result["zeroRecords"] = 0;
 					
 				}
-			}
+			} else if($action == 'addvendorinfo'){
+				 
+				$createAccountArr = array();
+				$createAccountArr['fullname'] = $fullname;
+				$createAccountArr['email_address'] = $email_address;
+				$createAccountArr['address'] = $address;
+				$createAccountArr['city'] = $city;
+				$createAccountArr['state'] = $state;
+				$createAccountArr['zip'] = $zip;
+				$createAccountArr['phone'] = $phone;
+				$add_vendor_account = User::add_vendor_account($createAccountArr);
+				if(isset($check_vendor_account) &&  $check_vendor_account != '' &&  $check_vendor_account != 0){
+					$result['status_code']=200;
+					$result['accountcreated'] = 1;
+				} else {
+					$result['status_code']=201;
+					$result['accountcreated'] = 0;
+					$result['message'] = 'vendor account already exists';
+				}
+			} 
 				
 			$json_result = str_replace('null','""',json_encode($result));
 			echo $json_result;

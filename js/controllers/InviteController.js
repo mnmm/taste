@@ -1,8 +1,8 @@
 'use strict';
 
 var FormValidation = function () {
-	var createAccountValidation = function() {
-						var form1 = $('#signupForm');
+	var InviteValidation = function() {
+						var form1 = $('#addVendor');
 						var error1 = $('.alert-danger', form1);
 						var success1 = $('.alert-success', form1);	
                         form1.validate({
@@ -14,14 +14,6 @@ var FormValidation = function () {
 									email: {
 										required: true,
 										email:true
-									},
-									password:{
-										required: true,
-										minlength:6
-									},
-									confirm_password: {
-										required:true,
-										equalTo : "#password"
 									}
 								},
 								invalidHandler: function (event, validator) { //display error alert on form submit              
@@ -46,15 +38,107 @@ var FormValidation = function () {
 								},
 
 								submitHandler: function (form1) {
-										
-										$('div.bootbox').find('div#signform').css('display','none');
-										$('div.bootbox').find('div#w9instruction').css('display','block');
-										$('div.bootbox').find('div#w9instruction').html('We need your W9 information in order to make payments to you. Please fill out the W9 form electronically by clicking next below');
-										$('div.bootbox').find('h4.modal-title').text('W9 Confirmation');
-										$('div.modal-footer').css('display','block');
-										$('div.modal-footer').find('.main-btn-new').css('display','none');
-										$('div.modal-footer').find('.cancel-btn').css('display','inline-block');
-										$('div.modal-footer').find('.main-btn').css('display','inline-block');
+									
+									var vendoruserid  = localStorage.getItem('userid');
+									var name = $('#addVendor').find('input#name').val();
+									var email = $('#addVendor').find('input#email').val();
+									var phone = $('#addVendor').find('input#phone').val();
+									var address = $('#addVendor').find('input#address').val();
+									var city = $('#addVendor').find('input#city').val();
+									var state = $('#addVendor').find('input#state').val();
+									var zip = $('#addVendor').find('input#zip').val();
+									$.ajax({
+											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
+											type: 'post',
+											data: {
+												action: 'addvendorinfo',
+												fullname:name,
+												email_address:email,
+												phone:phone,
+												address:address,
+												city:city,
+												state:state,
+												zip:zip
+											},
+											headers: {
+												"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
+												"x-taste-access-token": localStorage.getItem('access_token')
+											},
+											dataType:'json',
+											success: function (data) {
+												
+												if(data.status_code === 200 ){
+													bootbox.hideAll();	
+													$.ajax({
+															url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
+															type: 'post',
+															data: {
+																action: 'getallvendors'
+															},
+															headers: {
+																"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
+																"x-taste-access-token": localStorage.getItem('access_token')
+															},
+															dataType:'json',
+															success: function (data) {
+																if(data.data != ''){
+																	
+																	$scope.data = data.data;
+																	
+																	var table = $('#sample_2');
+
+																	/* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
+
+																	var oTable = table.dataTable({
+
+																		// Internationalisation. For more info refer to http://datatables.net/manual/i18n
+																		"language": {
+																			"aria": {
+																				"sortAscending": ": activate to sort column ascending",
+																				"sortDescending": ": activate to sort column descending"
+																			},
+																			"emptyTable": "No data available in table",
+																			"info": "Showing _START_ to _END_ of _TOTAL_ entries",
+																			"infoEmpty": "No entries found",
+																			"infoFiltered": "(filtered1 from _MAX_ total entries)",
+																			"lengthMenu": "Show _MENU_ entries",
+																			"search": "Search:",
+																			"zeroRecords": "No matching records found"
+																		},
+																	
+																		"order": [
+																			[0, 'asc']
+																		],
+																		"lengthMenu": [
+																			[5, 10, 20, -1],
+																			[5, 10, 20, "All"] // change per page values here
+																		],
+																		"data":$scope.data,
+																		// set the initial value
+																		"pageLength": 10,
+																		"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>" // horizobtal scrollable datatable
+																		
+																	});
+
+																	var tableWrapper = $('#sample_2_wrapper'); // datatable creates the table wrapper by adding with id {your_table_jd}_wrapper
+																	tableWrapper.find('.dataTables_length select').select2(); // initialize select2 dropdown
+																	table.$('[data-toggle="popover"]').popover().mouseover(function(e) {e.preventDefault();});
+																}
+															}
+														});
+													
+													
+												} else {
+												
+													if(data.status_code === 201 ){
+														
+														if(data.message !== ''){
+															$('p#accounterror').html(data.message).css('display','block');
+														} 
+ 													} 
+												}
+											}
+										});
 									}
 								});
 	}
@@ -63,7 +147,7 @@ var FormValidation = function () {
 	return {
         //main function to initiate the module
         init: function () {
-            createAccountValidation();
+            InviteValidation();
           
         }
 
@@ -115,7 +199,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
        $scope.vendortoken = $location.url().split('/')[2];
        localStorage.setItem('payauthtoken',$scope.vendortoken);
        //localStorage.clear();
-		//FormValidation.init();
+		FormValidation.init();
        function callAtTimeout() {
 			$('div#site_statistics_loading').css('display','none');
 			$('p#vendoraccountloading').css('display','none');
