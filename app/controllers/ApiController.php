@@ -2655,22 +2655,20 @@ class ApiController extends BaseController {
 				  foreach($get_all_vendors as $userinfo){
 						
 						$action_html = '';
-						$useremail = $vendorinfo->email;
-						$userphone = $vendorinfo->phone;
+						$useremail = $userinfo->email;
+						$userphone = $userinfo->phone;
 						//$popoverhtml = '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>';
 					    if($userinfo->invite_status==2)
 						{ 
-							
-							
 							$popovercontent = "Please click send email <br/>button to send invitation";
 							$action_html .='<a href="javascript:void(0);" class="pull-left addnew sendemail sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover"  data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" onClick="send_email('.$useremail.');" data-trigger="hover" ><span class="create-new edit">Send Email</span></a>';
 						} else if($vendorinfo->invite_status==3){
 							
-							$popovercontent = "Last invite sent on<br/>".date('F jS \a\t H:i',strtotime($vendorinfo->sent_date));
+							$popovercontent = "Last invite sent on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
 							$action_html .= '<a href="javascript:void(0);" onClick="send_email('.$useremail.');" class="pull-left addnew resendemail sentdate popover-dismiss-acc" data-toggle="popover" data-placement="left" data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" data-trigger="hover" ><span class="create-new edit">Resend Email</span></a>';
 							
 						} else if($vendorinfo->invite_status==1){
-							$popovercontent = "Invitation accepted on<br/>".date('F jS \a\t H:i',strtotime($vendorinfo->sent_date));
+							$popovercontent = "Invitation accepted on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
 							$action_html .= '<a href="javascript:void(0);" class="pull-left addnew sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover" data-html="true" data-content="'.$popovercontent.'" data-trigger="hover" ><span class="create-new activate" data-trigger="hover">Accepted</span></a>';
 						 }
 						
