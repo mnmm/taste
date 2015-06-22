@@ -617,6 +617,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	
 	$scope.sendInvitation = function () {
 		console.log($('#message').val());
+		$modalInstance.close($scope.form);
 	}
 	
 });
