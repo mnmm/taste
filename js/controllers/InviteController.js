@@ -465,6 +465,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	
 	$scope.sendInvitation = function () {
+		$('body').find('div.modal-backdrop').click();
 		//console.log($('#message').val());
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
