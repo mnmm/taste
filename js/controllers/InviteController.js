@@ -589,6 +589,15 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 						  }
 						});
 						
+						  modalInstance.opened.then(function () {
+							$timeout ( function(){
+								$('.wysihtml5').wysihtml5({
+									"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+								});
+							},0);
+						
+						});
+						
 						/* if ($('.wysihtml5').size() > 0) {
 							$('.wysihtml5').wysihtml5({
 								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
