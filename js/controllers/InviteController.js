@@ -520,11 +520,9 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 	
 	$(document).on("click", ".sendemail", function() {
 	//$scope.openSendEmailPopUp = function(){
-			//console.log('comes here');
-			console.log($(this).html());
-			console.log($(this).attr('data-invite'));
+			
 			var email = $(this).attr('data-invite');
-			console.log('email'+email);
+			
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
 			success(function(data1) {
@@ -585,7 +583,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 						
 						  modalInstance.opened.then(function () {
 							$timeout ( function(){
-								$('.wysihtml5').wysihtml5({
+								$('#manageBankAccounts').find('.wysihtml5').wysihtml5({
 									"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
 								});
 								$('input#emailinvite').val(email);
