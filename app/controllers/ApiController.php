@@ -2618,21 +2618,6 @@ class ApiController extends BaseController {
 								
 								$cDateTime = strtotime($key); 
 								$adminnotesdate = date('F j, Y', $cDateTime); 
-                                /*if($newdate < $todaydate && $newdate == $yesterday)
-								{
-									echo $timedisplay = 'Yesterday';
-									$check_key++;
-								} 
-								else if($newdate < $todaydate)
-								{
-									$check_key++;
-								} 
-								else 
-								{
-								  $dates =  $key; 
-								  $cDateTime = strtotime($dates);
-								  //echo "Today";
-								}*/
 								$dates =  $admin_note[0]->created; 
 								$crDateTime = strtotime($dates);
 								$newDateTime = date('h:i A', $crDateTime);
@@ -2654,6 +2639,10 @@ class ApiController extends BaseController {
 					$result["zeroRecords"] = 0;
 					
 				}
+			} else if($action == 'getallvendors'){
+				$get_all_vendors = User::get_all_vendors();
+				echo "<pre>";
+				print_r($get_all_vendors);exit;
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
