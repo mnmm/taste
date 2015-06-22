@@ -164,13 +164,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 		
     });
 		
-	
-    // set sidebar closed and body solid layout mode
-    $rootScope.settings.layout.pageBodySolid = true;
-    $rootScope.settings.layout.pageSidebarClosed = true;
-}); 
-
-$scope.updatePassword = function() {
+		$scope.updatePassword = function() {
 
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
@@ -202,3 +196,10 @@ $scope.updatePassword = function() {
 				}
 		});
 	}
+	
+    // set sidebar closed and body solid layout mode
+    $rootScope.settings.layout.pageBodySolid = true;
+    $rootScope.settings.layout.pageSidebarClosed = true;
+}); 
+
+
