@@ -211,7 +211,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     $scope.$on('$viewContentLoaded', function() {   
         Metronic.initAjax(); // initialize core components
         var authtoken = localStorage.getItem('access_token');
-
+		var modalInstance = { close: function() {}, dismiss: function() {} };
        $scope.vendortoken = $location.url().split('/')[2];
        localStorage.setItem('payauthtoken',$scope.vendortoken);
        //localStorage.clear();
@@ -459,6 +459,16 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 			createauthtoken(getunpaidpo);
 		}
 		
+		var modalInstance = $modal.open({
+		  animation: true,
+		  templateUrl: 'myModalContent.html',
+		  controller: 'ModalInstanceCtrl',
+		  windowClass:'paymentmethods',
+		  resolve: {
+			
+		  }
+		});
+		
     });
     
     $scope.openAddVendorPopUp = function(){
@@ -612,7 +622,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     $rootScope.settings.layout.pageSidebarClosed = true;
 }); 
 
-MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal,$modalInstance) {
+MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	
@@ -636,7 +646,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 						success(function(data, status, headers, config) {
 						
 								if(data.data != ''){
-									$modalInstance.close();	
+									//$modalInstance.close();	
 									$scope.data = data.data;
 									
 									var table = $('#sample_2');
