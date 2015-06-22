@@ -857,7 +857,7 @@ return {
 });
 
  
-MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
+MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window, $modalInstance) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	$scope.openBankAccountPopUp = function () {
