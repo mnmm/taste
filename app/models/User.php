@@ -139,7 +139,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 	
 					//Invited User
-	public function InvitedUser($id) {
+	public static function InvitedUser($id) {
 		
 		$data = DB::table('user_invite')->where('id',base64_decode($id))->first();	
 		
