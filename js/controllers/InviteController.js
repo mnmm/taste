@@ -150,11 +150,11 @@ var FormValidation = function () {
             return;
         }*/
 
-      /*  if ($('.wysihtml5').size() > 0) {
+        if ($('.wysihtml5').size() > 0) {
             $('.wysihtml5').wysihtml5({
                 "stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
             });
-        }*/
+        }
     }
 	
 
@@ -162,7 +162,7 @@ var FormValidation = function () {
         //main function to initiate the module
         init: function () {
             InviteValidation();
-			//handleWysihtml5();
+			handleWysihtml5();
         }
 
     };
@@ -532,7 +532,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 				success(function(data, status, headers, config) {
 					if(data.status_code == 200){
 						
-						bootbox.dialog({
+						/*bootbox.dialog({
 							title:'Invite Vendor',
 							message: $('#inviteVendor'),
 							show: false,
@@ -575,8 +575,18 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 						.modal('show');
 						$('inviteVendor').find('textarea.message').wysihtml5({
 								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+						});*/
+						
+						var modalInstance = $modal.open({
+						  animation: true,
+						  templateUrl: 'myModalContent.html',
+						  controller: 'ModalInstanceCtrl',
+						  windowClass:'paymentmethods',
+						  resolve: {
+							
+						  }
 						});
-
+									
 					} 		
 				});
 		});
