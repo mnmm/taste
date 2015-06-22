@@ -2746,10 +2746,10 @@ class ApiController extends BaseController {
 				$send_vendor_invite = User::send_invite_email($email,$message);
 				if(isset($add_vendor_account) &&  $add_vendor_account != '' &&  $add_vendor_account != 0){
 					$result['status_code']=200;
-					$result['accountcreated'] = 1;
+					$result['invitationsent'] = 1;
 				} else {
 					$result['status_code']=201;
-					$result['accountcreated'] = 0;
+					$result['invitationsent'] = 0;
 					$result['message'] = 'vendor account already exists';
 				}
 			} 

@@ -135,7 +135,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		Logs::sendadminnotes($sub,$message,Auth::user()->id,3);
 		
 		DB::table('user_invite')->where('email',$email)->update(array('status'=>3,'created_date'=>date('Y-m-d H:i:s')));
-		echo 1;exit;
+		return 1;
 	}
 	  
 }
