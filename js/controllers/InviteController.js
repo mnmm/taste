@@ -462,6 +462,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     });
     
     $scope.openAddVendorPopUp = function(){
+			console.log('here');
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
 			success(function(data1) {
