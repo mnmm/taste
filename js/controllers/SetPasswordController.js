@@ -87,7 +87,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 				if(data.status_code == 200){
 					
 					if(data.userdata != '' && typeof data.userdata != 'undefined'){
-						$('div#signform').find('input#email').val(data.vendoremail);
+						$('#setPasswordForm').find('input#invitedemail').val(data.userdata.email);
 					} 
 				} else {
 					
