@@ -86,7 +86,7 @@ var FormValidation = function () {
 																	var newdata = data.data;
 																	
 																	var table = $('#sample_2');
-																	//table.destroy();
+																
 																	/* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
 
 																	var oTable = table.dataTable({
