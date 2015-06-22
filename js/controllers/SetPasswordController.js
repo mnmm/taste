@@ -141,7 +141,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
     });
 		
 		$scope.updatePassword = function() {
-
+		var authtoken = localStorage.getItem('access_token');
 		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 		$http.defaults.headers.common['x-taste-access-token'] =authtoken;
 		$http.post($scope.apppath+'/api/getunpaidpo',{password:$scope.password,email_address:$scope.invitedemail,inviteid:$scope.inviteid,action:'updatevendorpassword'}).
