@@ -556,7 +556,7 @@
 					if($usergroup == 2) {
 						if($status == 1) {	
 							
-							$vendorArr['aleadyexists'] = $vendordetails[0]->vendor_email;
+							$vendorArr['aleadyexists'] = $get_user_id[0]->email;
 							$vendorArr['userid'] = $currentuser->id;
 							$vendorArr['username'] = $currentuser->name;
 						} 
