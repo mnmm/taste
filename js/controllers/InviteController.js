@@ -83,7 +83,7 @@ var FormValidation = function () {
 															success: function (data) {
 																if(data.data != ''){
 																	
-																	$scope.data = data.data;
+																	var newdata = data.data;
 																	
 																	var table = $('#sample_2');
 
@@ -113,7 +113,7 @@ var FormValidation = function () {
 																			[5, 10, 20, -1],
 																			[5, 10, 20, "All"] // change per page values here
 																		],
-																		"data":$scope.data,
+																		"data":newdata,
 																		// set the initial value
 																		"pageLength": 10,
 																		"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>" // horizobtal scrollable datatable
