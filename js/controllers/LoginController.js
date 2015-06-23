@@ -292,7 +292,7 @@ MetronicApp.controller('LoginController', function($rootScope, $scope, $http, $t
 			success(function(data) {
 				if(data.status_code === 200){
 					var subject = 'registered as new vendor';
-						var message = $scope.fullname+' has registred as new vendor with email '+$scope.email_address;
+						var message = $scope.fullname+' has registered as new vendor with email '+$scope.email_address;
 						$http.post($scope.apppath+'/api/getunpaidpo',{subject:subject,message:message,userid:1,action:'saveadminnotes'}).
 						success(function(data) {
 							if(data.status_code === 200){
