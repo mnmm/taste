@@ -616,7 +616,7 @@
 			
 		}
 		
-		public static function save_tax_info($email,$ssn_last4,$ssn_enc,$ein,$payeename){
+		public static function save_tax_info($email,$ssn_last4,$ssn_enc,$ein,$payeename,$address){
 			
 			$check_vendor_account = DB::table('users')->where('email',$email)->first();
 			if(isset($check_vendor_account->id) && $check_vendor_account->id != ''){
@@ -624,7 +624,7 @@
 				DB::table('w9form')->where('vendorid', '=', $reg_id)->delete();
 				
 				$id = DB::table('w9form')->insertGetId(
-				array('vendorid' => $reg_id, 'email' => $email, 'ssn_last4' => $ssn_last4, 'ssn_enc' => $ssn_enc,'ein' => $ein,'payeename' => $payeename, 'created' => date('Y-m-d')));
+				array('vendorid' => $reg_id, 'email' => $email, 'address' => $address, 'ssn_last4' => $ssn_last4, 'ssn_enc' => $ssn_enc,'ein' => $ein,'payeename' => $payeename, 'created' => date('Y-m-d')));
 				
 				DB::table('users')->where('id','=',$reg_id)->update(array('tax_id' => $ein));
 				return 1;

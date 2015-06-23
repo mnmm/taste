@@ -1360,6 +1360,16 @@ class ApiController extends BaseController {
 
 			}
 			
+			if (array_key_exists("address", $data1))
+			{
+				$address = $data1->address;
+			}
+			else
+			{
+				 $address = '';
+
+			}
+			
 			if (array_key_exists("ssn_last4", $data1))
 			{
 				$ssn_last4 = $data1->ssn_last4;
@@ -2452,7 +2462,7 @@ class ApiController extends BaseController {
 				$result['status_code']=200;
 				
 			} else if($action == 'savecontractinfo') {
-				$save_tax_info = PoDetail::save_tax_info($email,$ssn_last4,$ssn_enc,$ein,$payeename);
+				$save_tax_info = PoDetail::save_tax_info($email,$ssn_last4,$ssn_enc,$ein,$payeename,$address);
 				$result['status_code']=200;
 				
 				$result['updatedtaxid'] = $save_tax_info;

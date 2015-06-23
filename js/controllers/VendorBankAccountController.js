@@ -453,16 +453,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 						$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 						
-						$http.post($scope.apppath+'/api/getunpaidpo',{action:'getrequesterinfo',vendorid:vendoruserid}).
-						success(function(data) {
-							if(data.status_code === 200){
-								console.log('comes here');
-								console.log(data);
-								console.log(data.requesterinfo);
-								console.log(data.requesterinfo.user_list_array.address);
-								console.log(data.requesterinfo.user_list_array.zip_code);
-							}
-						});
+						
 						$http.post($scope.apppath+'/api/getunpaidpo',{action:'gettaxidforvendor',vendorid:vendoruserid}).
 						success(function(data) {
 							//console.log(data);
