@@ -156,7 +156,11 @@
         $("#contactphone").inputmask("mask", {
             "mask": "(999) 999-9999"
         }); 
-       
+        
+       $("#zip").inputmask("mask", {
+            "mask": "99999-9999"
+       });
+        
     }
 
 	
