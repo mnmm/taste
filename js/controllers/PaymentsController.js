@@ -804,6 +804,9 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 											if(data.payeeaddress !== '' && typeof data.payeeaddress !== 'undefined'){
 												$('#manualAccount').find('input#mailingaddress').val(data.payeeaddress);
 											}
+											if(data.payeename !== '' && typeof data.payeename !== 'undefined'){
+												$('#manualAccount').find('input#payeename').val(data.payeename);
+											}
 											$('#manualAccount').find('input#paymenttype').val('manual');
 											$('#manualAccount').find('input#po_no').val(poid);
 										
