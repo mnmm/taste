@@ -155,9 +155,10 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 							success: function (data) {
 								
 								if(data.status_code == 200){
+									$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 									localStorage.setItem("userid", data.vendoruserid);
 									localStorage.setItem("role", 'vendor');
-									localStorage.setItem("name", 'xyz');
+									localStorage.setItem("name", '');
 								//	window.location.href = '#/vendors'; 
 									authenticationSvc.login(email,password,'vendors');	
 									bootbox.hideAll();	
@@ -192,6 +193,7 @@ MetronicApp.controller('AccountController', function($rootScope, $scope, $http, 
 							success: function (data) {
 								
 								if(data.status_code == 200){
+									$scope.login = function(){authenticationSvc.login($scope.email,$scope.password,'vendors');}
 									localStorage.setItem("userid", data.vendoruserid);
 									localStorage.setItem("role", 'vendor');
 									localStorage.setItem("name", 'xyz');
