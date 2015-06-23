@@ -457,7 +457,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						success(function(data) {
 							if(data.status_code === 200){
 									$scope.apppath= 'https://mnmdesignlabs.com/taste';
-									
+									console.log(data.taxinformation);
 									if(data.taxinformation != '' && typeof data.taxinformation != 'undefined'){
 										var modalInstance = $modal.open({
 										  animation: true,
