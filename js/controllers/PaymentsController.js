@@ -543,7 +543,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		  
     });
     
-    $(document).on("click", "td#sorting_1", function() {
+    $(document).on("click", ".sorting_1", function() {
 		/*console.log('comes here');
 		var currentstatus = $(this).parent().prop('className');
 		console.log(currentstatus);
