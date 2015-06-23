@@ -1078,14 +1078,15 @@
 				$register->neighborhood = $createAccountArr['neighborhood'];
 				$register->entries = $createAccountArr['entries'];
 				$register->daysopen = $createAccountArr['daysopen'];
-				if($createAccountArr['businessopeninghours'] != ''){
+				if(isset($createAccountArr['businessopeninghours']) &&  $createAccountArr['businessopeninghours'] != ''){
 					$businessopeninghours = $createAccountArr['businessopeninghours'].':00';
+					$register->businessopeninghours = $businessopeninghours;
 				}
-				if($createAccountArr['businessclosinghours'] != ''){
+				if(isset($createAccountArr['businessclosinghours']) && $createAccountArr['businessclosinghours'] != ''){
 					$businessclosinghours = $createAccountArr['businessclosinghours'].':00';
+					$register->businessclosinghours = $businessclosinghours;
 				}
-				$register->businessopeninghours = $businessopeninghours;
-				$register->businessclosinghours = $businessclosinghours;
+				
 				$register->locationnotes = $createAccountArr['locationnotes'];
 				$register->mealnotes = $createAccountArr['mealnotes'];
 				$register->locationtype = $createAccountArr['locationtype'];
