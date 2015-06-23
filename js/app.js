@@ -200,6 +200,7 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state, Gl
 				userName: result.data.email
 			  };
 			  $window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
+			  localStorage.setItem('userid',result.data.id);
 			  deferred.resolve(userInfo);
 		  }
 		  else
