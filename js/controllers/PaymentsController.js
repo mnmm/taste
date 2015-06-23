@@ -640,6 +640,15 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 			var priority = 'hold';
 		}*/
 		var priority = $(this).find("input[name='prioritystatus']").val();
+		if(priority == 'low'){
+			var oldprioritycolor = 'priority-yellow';
+		} else if(priority == 'medium') {
+			var oldprioritycolor = 'priority-orange';
+		} else if(priority == 'high') {
+			var oldprioritycolor = 'priority-red';
+		} else {
+			var oldprioritycolor = 'priority-green';
+		}
 		var orderno = $(this).find("input[name='orderno']").val();
 		bootbox.dialog({
 			title:'Change Priority',
@@ -665,6 +674,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 					//return false;
 					var priority = $('#changepriority').find('input#priority_status').val();
 					var po_no = $('#changepriority').find('input#po_no').val();
+					var old_priority_color = $('#changepriority').find('input#priority_old').val();
 					$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 					$http.post($scope.apppath+'/api/getunpaidpo',{action:'updatepriority',priority:priority,poid:po_no}).
@@ -684,6 +694,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 											var prioritycolor = 'priority-green';
 										}
 										$(this).parent('tr').addClass(prioritycolor);
+										$(this).parent('tr').removeClass(old_priority_color);
 									}
 								});
 								bootbox.hideAll();	
@@ -715,6 +726,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		$('#changepriority').find('label#'+priority).find('input#'+priority).prop('checked',true);
 		$('#changepriority').find('input#po_no').val(orderno);
 		$('#changepriority').find('input#priority_status').val(priority);
+		$('#changepriority').find('input#priority_old').val(oldprioritycolor);
 		//$('#changepriority').find('input#'+priority).css('display','none');
 	});
     
