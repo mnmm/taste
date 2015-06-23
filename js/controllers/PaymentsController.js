@@ -663,7 +663,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 					//console.log('priority status');
 					//$('#changepriority').find('#changeprioritystatus').click();
 					//return false;
-					var priority = $('#changepriority').find('input#priority').val();
+					var priority = $('#changepriority').find('input#priority_status').val();
 					var po_no = $('#changepriority').find('input#po_no').val();
 					$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
