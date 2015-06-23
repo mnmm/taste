@@ -73,7 +73,16 @@
 									},
 									email_address: {
 										required: true,
-										email: true
+										email: true,
+										remote: {
+											url: "https://mnmdesignlabs.com/taste/api/getunpaidpo",
+											type: "post",
+											data: {
+											  username: function() {
+												return $( "#email_address" ).val();
+											  }
+											}
+										}
 									},
 									register_password: {
 										required: true
