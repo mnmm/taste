@@ -49,8 +49,15 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 				success(function(data1) {
 					$scope.userroleInfo = data1;
 					 useremail = $scope.userroleInfo.email;
+					 
 				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getrequesterinfo',vendorid:vendoruserid}).
+				success(function(data) {
+					if(data.status_code === 200){
+						
+					}
+				});
 				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getaccountinfo',accesshash:payauthtoken,email:useremail}).
 				success(function(data) {
 					Layout.initSidebar();
