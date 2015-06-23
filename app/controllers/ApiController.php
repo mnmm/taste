@@ -2983,7 +2983,7 @@ class ApiController extends BaseController {
 					$id = Auth::user()->id;
 					$result['email'] = Auth::user()->email;
 					$result['role'] = Auth::user()->usertype;
-					$result['name'] = Auth::user()->name;
+					$result['name'] = Auth::user()->firstname.' '.Auth::user()->lastname;
 					$result['id'] = Auth::user()->id;
 					$json_result = str_replace('null','""',json_encode($result));
 					return $json_result;
