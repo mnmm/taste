@@ -666,7 +666,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 					var priority = $('#changepriority').find('input#priority').val();
 					var po_no = $('#changepriority').find('input#po_no').val();
 					$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
-					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');.
+					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 					$http.post($scope.apppath+'/api/getunpaidpo',{action:'updatepriority',priority:priority,poid:po_no}).
 					success(function(data, status, headers, config) {
 						if(data.status_code == 200){
