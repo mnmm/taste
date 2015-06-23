@@ -676,9 +676,9 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 										$(this).find("input[name='prioritystatus']").val(priority);
 										if(priority == 'low'){
 											var prioritycolor = 'priority-yellow';
-										} else if(priority == 'low') {
+										} else if(priority == 'medium') {
 											var prioritycolor = 'priority-orange';
-										} else if() {
+										} else if(priority == 'high') {
 											var prioritycolor = 'priority-red';
 										} else {
 											var prioritycolor = 'priority-green';
