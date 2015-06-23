@@ -112,9 +112,8 @@ $(document).ready(function(){
 <form class="form-horizontal" name="changepriority" novalidate id="changepriority" style="display: none;"> 
 	<p id="accounterror" class="help-error" style="display:none;"></p>
 	<input type="hidden" id="currentpriority" value="">
-    <div class="form-group"  id="payeeinfo">
-		<!--<label class="col-md-3 control-label" for="name">Priority #:</label>-->
-        <div class="radio-list">
+    <div class="form-group"  id="payeeinfo" style="margin-left:15px !important;">
+		<div class="radio-list">
 			<label class="radio-inline" style="color:yellow;" id="low">
 			<input type="radio" name="priority" ng-model="value" value="low" ng-change='priorityChosen(value)' id="low">Low</label>
 			<label class="radio-inline" style="color:orange;" id="medium">
