@@ -876,6 +876,8 @@ class ApiController extends BaseController {
 		
 		$data1=$this->get_data();
 		
+		print_r($data1);exit;
+		
 		if (array_key_exists("email_address", $data1))
 		{
    		 	$email_address = $data1->email_address;
