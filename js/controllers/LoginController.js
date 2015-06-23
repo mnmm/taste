@@ -167,6 +167,7 @@
             handleLoginValidation();
             handleRegisterValidation();
             handleClockfaceTimePickers();
+            handleInputMasks();
         }
 
     };
