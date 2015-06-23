@@ -2811,7 +2811,8 @@ class ApiController extends BaseController {
 			} else if($action == 'addvendorinfo'){
 				 
 				$createAccountArr = array();
-				$createAccountArr['fullname'] = $fullname;
+				$createAccountArr['firstname'] = $firstname;
+				$createAccountArr['lastname'] = $lastname;
 				$createAccountArr['email_address'] = $email_address;
 				$createAccountArr['address'] = $address;
 				$createAccountArr['city'] = $city;
