@@ -40,7 +40,8 @@ var FormValidation = function () {
 								submitHandler: function (form1) {
 									
 									var vendoruserid  = localStorage.getItem('userid');
-									var name = $('#addVendor').find('input#fullname').val();
+									var firstname = $('#addVendor').find('input#firstname').val();.
+									var lastname = $('#addVendor').find('input#lastname').val();
 									var email = $('#addVendor').find('input#email').val();
 									var phone = $('#addVendor').find('input#phone').val();
 									var address = $('#addVendor').find('input#address').val();
@@ -52,7 +53,8 @@ var FormValidation = function () {
 											type: 'post',
 											data: {
 												action: 'addvendorinfo',
-												fullname:name,
+												firstname:firstname,
+												lastname:lastname,
 												email_address:email,
 												phone:phone,
 												address:address,
