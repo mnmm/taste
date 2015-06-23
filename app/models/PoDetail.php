@@ -662,7 +662,7 @@
 		public static function get_vendor_account_info($vendorid){
 			
 			$get_vendor_info =  DB::table('users')->where('id','=',$vendorid)->first();
-			$vendor_name = $get_vendor_info->name;
+			$vendor_name = $get_vendor_info->firstname.' '.$get_vendor_info->lastname;
 			
 			return $vendor_name;
 			
