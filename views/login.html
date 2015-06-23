@@ -100,8 +100,12 @@
 		</p>
 		<div class="col-md-6 nopad">
 		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">Full Name</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" id="fullname" ng-model="fullname"/>
+			<label class="control-label visible-ie8 visible-ie9">First Name</label>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="First Name" name="firstname" id="firstname" ng-model="firstname"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Last Name</label>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="Last Name" name="lastname" id="lastname" ng-model="lastname"/>
 		</div>
 		<div class="form-group">
 			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
@@ -247,7 +251,7 @@
 			<button type="button" id="register-back-btn" class="btn btn-default" ng-click="showLogin();">Back</button>
 			<button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right" >Submit</button>
 		</div>
-		<button type="submit" style="display:none !important;" class="btn btn-success uppercase pull-right" ng-click="SignUp()" id="createAccount">Submit</button
+		<button type="submit" style="display:none !important;" class="btn btn-success uppercase pull-right" ng-click="SignUp()" id="registeruser">Submit</button
 	</form>
 	<!-- END REGISTRATION FORM -->
 </div>

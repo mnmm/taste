@@ -65,7 +65,10 @@
 								focusInvalid: false, // do not focus the last invalid input
 								ignore: "",  // validate all fields including form hidden input
 								rules: {
-									fullname: {
+									firstname: {
+										required: true
+									},
+									lastname: {
 										required: true
 									},
 									email_address: {
@@ -123,7 +126,7 @@
 								},
 
 								submitHandler: function () {
-										$('button#createAccount').click();
+										$('button#registeruser').click();
 									}
 								});
 	}
