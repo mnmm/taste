@@ -342,6 +342,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
     });
     
     $scope.openAddVendorPopUp = function(){
+		   
 			var vendoruserid  = localStorage.getItem('userid');
 			$http.get($scope.apppath+"/api/checklogin").
 			success(function(data1) {
@@ -384,6 +385,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 
 							$('#addVendor').show(); 
 							$('#addVendor').validate().resetForm(); 	
+							$('#accounterror').css('display','none');
 								
 						})
 						.on('hide.bs.modal', function(e) {
@@ -391,9 +393,9 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 							$('#addVendor').hide().appendTo('body');  
 						})
 						.modal('show');
-							$("#phone").inputmask("mask", {
+						$("#phone").inputmask("mask", {
 								"mask": "(999) 999-9999"
-							}); 
+						}); 
 
 					} 		
 				});
