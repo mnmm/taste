@@ -182,7 +182,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		
 		$reg_user = array(
 						'email'=>$user_detail->email,
-						'name'=>$user_detail->name,
+						'name'=>$user_detail->firstname.' '.$user_detail->lastname,
 						);
 
 		$data1 = array(
