@@ -110,14 +110,14 @@
 									emailcontact:{
 										email: true
 									},
-									tnc: {
-										required: true
-									},
 									businessopeninghour:{
 										time:true
 									},
 									businessclosinghour:{
 										time:true
+									},
+									tnc: {
+										required: true
 									}
 								},
 								messages:
