@@ -702,6 +702,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		$('#changepriority').find('label#'+priority).find('span').addClass('checked');
 		$('#changepriority').find('label#'+priority).find('input#'+priority).prop('checked',true);
 		$('#changepriority').find('input#po_no').val(orderno);
+		$('#changepriority').find('input#priority_status').val(priority);
 		//$('#changepriority').find('input#'+priority).css('display','none');
 	});
     
