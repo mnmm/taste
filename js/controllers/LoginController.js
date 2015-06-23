@@ -144,6 +144,22 @@
 
 	}
 	
+	var handleInputMasks = function () {
+        $.extend($.inputmask.defaults, {
+            'autounmask': true
+        });
+        
+		$("#phone").inputmask("mask", {
+            "mask": "(999) 999-9999"
+        }); //specifying fn & options
+        
+        $("#contactphone").inputmask("mask", {
+            "mask": "(999) 999-9999"
+        }); 
+       
+    }
+
+	
 
 	return {
         //main function to initiate the module
