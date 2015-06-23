@@ -493,7 +493,7 @@ MetronicApp.controller('FooterController', ['$scope', 'Globals', function($scope
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', function($stateProvider, $urlRouterProvider,USER_ROLES) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/dashboard.html");  
+    $urlRouterProvider.otherwise("/login.html");  
 	
     $stateProvider
 		
