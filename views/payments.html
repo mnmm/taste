@@ -58,7 +58,6 @@ $(document).ready(function(){
 <!-- END PAGE HEADER-->
 <form class="form-horizontal" name="manualAccount" novalidate id="manualAccount" style="display: none;"> 
 	<p id="accounterror" class="help-error" style="display:none;"></p>
-	<p id="accounterror" class="help-error" style="display:none;"></p>
 	<input type="hidden" id="datepickerhide" value="0">
     <div class="form-group"  id="payeeinfo">
 		<label class="col-md-5 control-label" for="name">Check #:</label>
@@ -108,6 +107,27 @@ $(document).ready(function(){
 
   </div>
   
+</form>
+
+<form class="form-horizontal" name="changepriority" novalidate id="changepriority" style="display: none;"> 
+	<p id="accounterror" class="help-error" style="display:none;"></p>
+	<input type="hidden" id="currentpriority" value="">
+    <div class="form-group"  id="payeeinfo">
+		<label class="col-md-5 control-label" for="name">Priority #:</label>
+        <div class="radio-list">
+			<label class="radio-inline">
+			<input type="radio" name="priority" ng-model="value" value="low" ng-change='priorityChosen(value)' id="low"></label>
+			<label class="radio-inline">
+			<input type="radio" name="priority" ng-model="value" value="medium" ng-change='priorityChosen(value)' id="medium"></label>
+			<label class="radio-inline">
+			<input type="radio" name="priority" ng-model="value" value="high" ng-change='priorityChosen(value)' id="high"></label>
+			<label class="radio-inline">
+			<input type="radio" name="priority" ng-model="value" value="hold" ng-change='priorityChosen(value)' id="hold"></label>
+		</div>
+    </div>
+	<input type="hidden" name="po_no" value="0" id="po_no">
+   <input type="submit" id="savemanualbankinfo" style="display:none;">
+
 </form>
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">

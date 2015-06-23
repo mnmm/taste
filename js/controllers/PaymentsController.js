@@ -160,6 +160,7 @@ var ComponentsPickers = function () {
     };
 
 }();
+
 MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http, $timeout) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
@@ -542,6 +543,57 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		  
     });
     
+    $(document).on("click", "td#sorting_1", function() {
+		/*console.log('comes here');
+		var currentstatus = $(this).parent().prop('className');
+		console.log(currentstatus);
+		if(currentstatus == 'priority-yellow'){
+			var priority = 'low';
+		} else if(currentstatus == 'priority-orange'){
+			var priority = 'medium';
+		} else if(currentstatus == 'priority-red') {
+			var priority = 'high';
+		} else {
+			var priority = 'hold';
+		}*/
+		var priority = $(this).find("input[name='prioritystatus']").val();
+		
+		bootbox.dialog({
+			title:'Change Priority',
+			message: $('#changepriority'),
+			show: false,
+			animate:true,
+			closeButton: false,
+			className:'addaccountdetail',
+			buttons: {
+			  danger: {
+				label: "Cancel",
+				className: "cancel-btn",
+				callback: function() {
+					bootbox.hideAll();	
+				}
+			  },
+			  success: {
+				label: "Update",
+				className: "main-btn",
+				callback: function() {
+					return false;
+				}
+			  }
+			} 
+		})
+		.on('shown.bs.modal', function() {
+			$('#changepriority').show(); 
+			//$('#changepriority').validate().resetForm(); 	
+				
+		})
+		.on('hide.bs.modal', function(e) {
+			$('#changepriority').hide().appendTo('body');
+		})
+		.modal('show');
+		$('#changepriority').find('input#'+priority).css('display','none');
+		//$('#changepriority').find('input#'+priority).css('display','none');
+	});
     
     $(document).on("click", ".makepayment", function() {
 		var paymentamount = $(this).attr('data-payment-amount');
