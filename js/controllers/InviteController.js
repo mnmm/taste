@@ -457,7 +457,8 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 	
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageBodySolid = true;
-    $rootScope.settings.layout.pageSidebarClosed = true;
+    $rootScope.settings.layout.pageSidebarClosed = false;
+    $rootScope.settings.layout.showAllOptions = false;
 }); 
 
 MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window,$modal) {
