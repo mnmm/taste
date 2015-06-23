@@ -117,12 +117,96 @@ var FormValidation = function () {
 									}
 								});
 	}
+	
+	
+	var PriorityValidation = function() {
+						var form4 = $('form#changepriority');
+						var error1 = $('.alert-danger', form3);
+						var success1 = $('.alert-success', form3);	
+                        form3.validate({
+								errorElement: 'span', //default input error message container
+								errorClass: 'help-block help-block-error', // default input error message class
+								focusInvalid: false, // do not focus the last invalid input
+								ignore: "",  // validate all fields including form hidden input
+								messages: {
+								   
+								},
+								rules: {
+									priority:{
+										required:true
+									}
+								},
+
+								invalidHandler: function (event, validator) { //display error alert on form submit              
+									success1.hide();
+									//error1.show();
+									Metronic.scrollTo(error1, -200);
+								},
+
+								highlight: function (element) { // hightlight error inputs
+									$(element)
+										.closest('.form-group').addClass('has-error'); // set error class to the control group
+								},
+
+								unhighlight: function (element) { // revert the change done by hightlight
+									$(element)
+										.closest('.form-group').removeClass('has-error'); // set error class to the control group
+								},
+
+								success: function (label) {
+									label
+										.closest('.form-group').removeClass('has-error'); // set success class to the control group
+								},
+
+								submitHandler: function (form3) {
+									var priority = $('#changepriority').find('input#priority').val();
+									var po_no =$('#changepriority').find('input#po_no').val();
+									
+										$.ajax({
+											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
+											type: 'post',
+											data: {
+												action: 'updatepriority',
+												priority:priority,
+												poid:po_no
+											},
+											headers: {
+												"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
+												"x-taste-access-token": localStorage.getItem('access_token')
+											},
+											dataType:'json',
+											success: function (data) {
+												
+												if(data.status_code == 200){
+													$('a#'+po_no).removeClass('makepayment');
+													$('a#'+po_no).addClass('fade_pay');
+													$('a#'+po_no).parent('td').prev('td').find('span.label').removeClass('label-danger');
+													$('a#'+po_no).parent('td').prev('td').find('span.label').addClass('label-success');
+													$('a#'+po_no).parent('td').prev('td').find('span.label').text('paid');
+													bootbox.hideAll();	
+												} else {
+													if(data.status_code == 201){
+														if(data.message != ''){
+															$('div.bootbox').find('div.bootbox-body').append('<p style="color:red;">'+data.message+'</p>');
+															
+														} else {
+															
+														}
+													} 
+												}											
+											}
+										});
+									
+									}
+								});
+	}
 
 	return {
         //main function to initiate the module
         init: function () {
           
             ManualBankAccountValidation();
+            PriorityValidation();
         }
 
     };
@@ -577,6 +661,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 				label: "Update",
 				className: "main-btn",
 				callback: function() {
+					$('#changepriority').find('#changeprioritystatus').click();
 					return false;
 				}
 			  }
