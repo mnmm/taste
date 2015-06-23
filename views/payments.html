@@ -115,14 +115,14 @@ $(document).ready(function(){
     <div class="form-group"  id="payeeinfo">
 		<label class="col-md-5 control-label" for="name">Priority #:</label>
         <div class="radio-list">
-			<label class="radio-inline">
-			<input type="radio" name="priority" ng-model="value" value="low" ng-change='priorityChosen(value)' id="low"></label>
-			<label class="radio-inline">
-			<input type="radio" name="priority" ng-model="value" value="medium" ng-change='priorityChosen(value)' id="medium"></label>
-			<label class="radio-inline">
-			<input type="radio" name="priority" ng-model="value" value="high" ng-change='priorityChosen(value)' id="high"></label>
-			<label class="radio-inline">
-			<input type="radio" name="priority" ng-model="value" value="hold" ng-change='priorityChosen(value)' id="hold"></label>
+			<label class="radio-inline" style="color:yellow;" id="low">
+			<input type="radio" name="priority" ng-model="value" value="low" ng-change='priorityChosen(value)' id="low">Low</label>
+			<label class="radio-inline" style="color:orange;" id="medium">
+			<input type="radio" name="priority" ng-model="value" value="medium" ng-change='priorityChosen(value)' id="medium">Medium</label>
+			<label class="radio-inline" style="color:red;" id="high">
+			<input type="radio" name="priority" ng-model="value" value="high" ng-change='priorityChosen(value)' id="high">High</label>
+			<label class="radio-inline" style="color:green;" id="hold">
+			<input type="radio" name="priority" ng-model="value" value="hold" ng-change='priorityChosen(value)' id="hold">Hold</label>
 		</div>
     </div>
 	<input type="hidden" name="po_no" value="0" id="po_no">

@@ -591,7 +591,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 			$('#changepriority').hide().appendTo('body');
 		})
 		.modal('show');
-		$('#changepriority').find('input#'+priority).css('display','none');
+		$('#changepriority').find('label#'+priority).css('display','none');
 		//$('#changepriority').find('input#'+priority).css('display','none');
 	});
     
