@@ -122,8 +122,8 @@ var FormValidation = function () {
 	var PriorityValidation = function() {
 						var form4 = $('form#changepriority');
 						var error1 = $('.alert-danger', form3);
-						var success1 = $('.alert-success', form3);	
-                        form3.validate({
+						var success1 = $('.alert-success', form4);	
+                        form4.validate({
 								errorElement: 'span', //default input error message container
 								errorClass: 'help-block help-block-error', // default input error message class
 								focusInvalid: false, // do not focus the last invalid input
@@ -158,9 +158,10 @@ var FormValidation = function () {
 										.closest('.form-group').removeClass('has-error'); // set success class to the control group
 								},
 
-								submitHandler: function (form3) {
+								submitHandler: function (form4) {
+									alert('comes here');
 									var priority = $('#changepriority').find('input#priority').val();
-									var po_no =$('#changepriority').find('input#po_no').val();
+									var po_no = $('#changepriority').find('input#po_no').val();
 									
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
@@ -178,17 +179,19 @@ var FormValidation = function () {
 											success: function (data) {
 												
 												if(data.status_code == 200){
-													$('a#'+po_no).removeClass('makepayment');
+													$('table#sample_2').find('tr').find('td').each(function(){
+														
+													});
+													/*$('a#'+po_no).removeClass('makepayment');
 													$('a#'+po_no).addClass('fade_pay');
 													$('a#'+po_no).parent('td').prev('td').find('span.label').removeClass('label-danger');
 													$('a#'+po_no).parent('td').prev('td').find('span.label').addClass('label-success');
-													$('a#'+po_no).parent('td').prev('td').find('span.label').text('paid');
+													$('a#'+po_no).parent('td').prev('td').find('span.label').text('paid');*/
 													bootbox.hideAll();	
 												} else {
 													if(data.status_code == 201){
 														if(data.message != ''){
 															$('div.bootbox').find('div.bootbox-body').append('<p style="color:red;">'+data.message+'</p>');
-															
 														} else {
 															
 														}
@@ -641,7 +644,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 			var priority = 'hold';
 		}*/
 		var priority = $(this).find("input[name='prioritystatus']").val();
-		
+		var orderno = $(this).find("input[name='orderno']").val();
 		bootbox.dialog({
 			title:'Change Priority',
 			message: $('#changepriority'),
@@ -677,6 +680,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		})
 		.modal('show');
 		$('#changepriority').find('label#'+priority).css('display','none');
+		$('#changepriority').find('input#po_no').val(orderno);
 		//$('#changepriority').find('input#'+priority).css('display','none');
 	});
     
