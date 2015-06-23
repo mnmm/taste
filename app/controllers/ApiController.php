@@ -917,9 +917,9 @@ class ApiController extends BaseController {
 			$checkemailexists = User::check_email_exists($email_address);
 			
 			if($checkemailexists != 1){
-				$result['status_code']=200;
+				echo "true";
 			} else {
-				$result['status_code']=201;
+				echo "false";
 			}
 		}
 	}
