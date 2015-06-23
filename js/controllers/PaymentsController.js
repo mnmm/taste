@@ -672,7 +672,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						if(data.status_code == 200){
 							if(data.updated == 1 && typeof data.updated != 'undefined'){
 								$('table#sample_2').find('tr').find('td').each(function(){
-									
+									console.log($(this).find("input[name='orderno']").val());
 								});
 								bootbox.hideAll();	
 							}
