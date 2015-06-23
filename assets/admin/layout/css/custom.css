@@ -151,7 +151,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1010', end
 
 .paymentlinkconfirmation .modal-content{ width:400px !important; }
 .requestlinkconfirmation .modal-content{ width:400px !important; }
-
+.changepriority .modal-content{ width:400px !important; }
 
 .logo-title {
     color: #007fc4;

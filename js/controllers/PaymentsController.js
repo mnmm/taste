@@ -564,7 +564,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 			show: false,
 			animate:true,
 			closeButton: false,
-			className:'addaccountdetail',
+			className:'changepriority',
 			buttons: {
 			  danger: {
 				label: "Cancel",
