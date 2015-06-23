@@ -1253,7 +1253,8 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 		//$modalInstance.close();
 		//$modalInstance.close();
 		//$window.location.href = '#/vendors';
-
+		$('div.paymentmethods').remove();
+		$('div.modal-backdrop').remove();
 	}
 	
 	
