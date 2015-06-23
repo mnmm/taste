@@ -1413,6 +1413,18 @@ class ApiController extends BaseController {
 			}
 		}
 		
+		if($action == 'getrequesterinfo'){
+			if (array_key_exists("email", $data1))
+			{
+				$email = $data1->email;
+			}
+			else
+			{
+				$email = '';
+
+			}
+		}
+		
 		if($action == 'updatetransfermethod'){
 			if (array_key_exists("transferstatus", $data1))
 			{
@@ -2917,9 +2929,16 @@ class ApiController extends BaseController {
 				}
 	
 			} else if($action == 'getrequesterinfo'){
-				$get_vendor_info = User::get_user_complete_details($vendorid);
 				$formname = 'w9 form';
-				$get_requester_info = $this->getrequesterinfo($formname,$get_vendor_info[0]->email);
+				if(isset($email) && $email != ''){
+					$vendoremail = $email;
+				} else {
+					$get_vendor_info = User::get_user_complete_details($vendorid);
+					$vendoremail = $get_vendor_info[0]->email;
+				}
+				
+				
+				$get_requester_info = $this->getrequesterinfo($formname,$vendoremail);
 				$result['status_code']=200;
 				$result['requesterinfo'] = $get_requester_info;
 			}
