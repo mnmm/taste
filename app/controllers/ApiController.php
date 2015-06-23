@@ -2989,7 +2989,7 @@ class ApiController extends BaseController {
 					$result['status_code']=201;
 				}
 			}  else if($action == 'updatepriority'){
-				$update_priority = PoDetail::update_po_priority($priority,$poid);
+				$update_priority = PoDetail::update_po_priority($poid,$priority);
 				if(isset($update_priority) &&  $update_priority != ''){
 					$result['status_code']=200;
 					$result['updated'] = $update_priority;
