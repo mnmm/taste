@@ -604,7 +604,9 @@
 				$token=time();
 				$register = new Register;
 				$get_vendor_name_info = DB::table('taste_po')->where('vendor_email',$email)->first();
-				$register->firstname = $get_vendor_name_info->vendor_name;
+				$extract_name = explode(' ',$get_vendor_name_info->vendor_name);
+				$register->firstname = $extract_name[0];
+				$register->lastname = $extract_name[1];
 				$register->email = $email;
 				$register->password = Hash::make($password);
 				$register->usertype = 2;
