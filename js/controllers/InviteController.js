@@ -158,6 +158,17 @@ var FormValidation = function () {
             });
         }
     }
+    
+    var handleInputMasks = function () {
+        $.extend($.inputmask.defaults, {
+            'autounmask': true
+        });
+        
+		$("#phone").inputmask("mask", {
+            "mask": "(999) 999-9999"
+        }); 
+
+    }
 	
 
 	return {
@@ -165,6 +176,7 @@ var FormValidation = function () {
         init: function () {
             InviteValidation();
 			handleWysihtml5();
+			handleInputMasks();
         }
 
     };

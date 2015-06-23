@@ -1259,7 +1259,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
 							 Globals.url+'/assets/global/plugins/bootstrap-markdown/lib/markdown.js',
 							 Globals.url+'/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js',
 							 Globals.url+'/assets/global/plugins/bootstrap-summernote/summernote.min.js',
-                            
+                             Globals.url+'/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
 							 Globals.url+'/assets/admin/pages/scripts/payments.js',
                              Globals.url+'/js/controllers/InviteController.js'
                               
@@ -1356,7 +1356,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
                               Globals.url+'/assets/global/plugins/jquery-validation/js/additional-methods.js',
                               Globals.url+'/assets/global/plugins/sumoselect/sumoselect.css',
                               Globals.url+'/assets/global/plugins/sumoselect/jquery.sumoselect.js',
-                               Globals.url+'/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                              Globals.url+'/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
                               //Globals.url+'/assets/admin/pages/scripts/components-pickers.js',
                               Globals.url+'/js/controllers/LoginController.js'
                         ]                    
