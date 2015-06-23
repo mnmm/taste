@@ -160,6 +160,7 @@ MetronicApp.controller('SetPasswordController', function($rootScope, $scope, $ht
 								$('#setPasswordForm').find('#registerformsucess').show();
 								Metronic.scrollTo(sucess2, -200);
 								$('#registerformalert').hide();
+								$window.location.href = '#/login';
 							}
 						});
 				} else {
