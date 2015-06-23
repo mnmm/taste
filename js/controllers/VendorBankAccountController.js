@@ -865,7 +865,7 @@ return {
 });
 
  
-MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window, $modalInstance) {
+MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http, $timeout, $location,$window) {
 	$scope.apppath= 'https://mnmdesignlabs.com/taste';
 	$scope.timestamp = Math.floor((new Date().getTime()/1000));
 	$scope.openBankAccountPopUp = function () {
@@ -1250,10 +1250,10 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 		//bootbox.hideAll();	
 		//$('body').find('.modal-backdrop').click();
 	
-		$modalInstance.close();
+		//$modalInstance.close();
 		//$modalInstance.close();
 		//$window.location.href = '#/vendors';
-		
+
 	}
 	
 	
