@@ -18,8 +18,8 @@ var FormValidation = function () {
 											url: "https://mnmdesignlabs.com/taste/api/validateemail",
 											type: "post",
 											data: {
-											  email_address: function() {
-													return $( "#email_address" ).val();
+											  email: function() {
+													return $( "#email" ).val();
 											  },
 											  action:'checkemailexists'
 											}
@@ -28,7 +28,7 @@ var FormValidation = function () {
 								},
 								messages:
 								{
-									 email_address:
+									 email:
 									 {
 										remote: jQuery.validator.format("{0} is already taken.")
 									 },
