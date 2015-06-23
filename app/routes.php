@@ -55,6 +55,7 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::post('/searchorders', array('uses' => 'ApiController@searchorders'));
 	Route::post('/sendpaymentlink', array('uses' => 'ApiController@sendpaymentlink'));
 	Route::post('/getunpaidpo', array('uses' => 'ApiController@getunpaidpo'));
+	Route::post('/validateemail', array('uses' => 'ApiController@validateemail'));
 	Route::post('/gettotalunpaidamount', array('uses' => 'ApiController@gettotalunpaidamount'));
 	Route::post('/getpodataforgraphs', array('uses' => 'ApiController@getpodataforgraphs'));
 	Route::post('/login', array('uses' => 'ApiController@login'));

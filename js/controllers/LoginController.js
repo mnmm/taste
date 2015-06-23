@@ -75,7 +75,7 @@
 										required: true,
 										email: true,
 										remote: {
-											url: "https://mnmdesignlabs.com/taste/api/getunpaidpo",
+											url: "https://mnmdesignlabs.com/taste/api/validateemail",
 											type: "post",
 											data: {
 											  email_address: function() {

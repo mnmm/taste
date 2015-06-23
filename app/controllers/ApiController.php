@@ -872,6 +872,60 @@ class ApiController extends BaseController {
 
 	}
 	
+	public function validateemail(){
+		
+		$data1=$this->get_data();
+		
+		if (array_key_exists("email_address", $data1))
+		{
+   		 	$email_address = $data1->email_address;
+		}
+		else
+		{
+			$email_address  = '';
+		
+		}
+
+		$validate_data = array(
+			'email_address'			=> $email_address,
+		);
+
+		$rules = array(
+			'email'			=> 'required|email',
+		);
+		
+		$messages = array(
+				'email.required' => 'Email address is required',
+				'email.email' => 'Please enter a valid Email Address',
+		);
+		
+		$validator = Validator::make($validate_data,$rules,$messages);
+	
+		if($validator->fails()){
+
+			$result['status_code']=201;
+			$err ='';
+			$i=0;
+			foreach ($validator->messages()->getMessages() as $field_name => $messages){
+			$i++;
+			$err .= $i.'). '.$messages[0]."     "; // messages are retrieved (publicly)
+			}
+			$result['status_message']=trim($err,",");
+			$json_result = str_replace('null','""',json_encode($result));
+			echo $json_result;
+			exit;
+		} else {
+			$checkemailexists = User::check_email_exists($email_address);
+			
+			if($checkemailexists != 1){
+				$result['status_code']=200;
+			} else {
+				$result['status_code']=201;
+			}
+		}
+	}
+		
+	
 	public function sendpaymentlink(){
 		
 		$headers = getallheaders();

@@ -197,5 +197,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return 1;
 	}
+	
+	//function to update vendor password
+	public static function check_email_exists($email) {
+		
+		$user_exists = DB::table('users')->where('email',$email)->first();
+		if(isset($user_exists->id) && $user_exists->id != ''){
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 	  
 }
