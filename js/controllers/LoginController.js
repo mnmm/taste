@@ -78,9 +78,10 @@
 											url: "https://mnmdesignlabs.com/taste/api/getunpaidpo",
 											type: "post",
 											data: {
-											  username: function() {
-												return $( "#email_address" ).val();
-											  }
+											  email_address: function() {
+													return $( "#email_address" ).val();
+											  },
+											  action:'checkemailexists'
 											}
 										}
 									},
