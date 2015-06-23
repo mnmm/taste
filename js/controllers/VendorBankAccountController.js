@@ -444,6 +444,7 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 
 
         function getunpaidpo(){
+			
 			$http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 						$scope.userroleInfo = data1;
@@ -457,69 +458,73 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 							if(data.status_code === 200){
 									$scope.apppath= 'https://mnmdesignlabs.com/taste';
 									
-									
-									var modalInstance = $modal.open({
-									  animation: true,
-									  templateUrl: 'myModalContent.html',
-									  controller: 'ModalInstanceCtrl',
-									  windowClass:'paymentmethods',
-									  resolve: {
+									if(data.taxinformation != '' && typeof data.taxinformation != 'undefined'){
+										var modalInstance = $modal.open({
+										  animation: true,
+										  templateUrl: 'myModalContent.html',
+										  controller: 'ModalInstanceCtrl',
+										  windowClass:'paymentmethods',
+										  resolve: {
+											
+										  }
+										});
 										
-									  }
-									});
-									
-									var transfertext = '';
-									var transferbtntext = '';
-									if(data.transferoption !== '' && typeof data.transferoption !== 'undefined'){
-										if(data.transferoption  === 1){
-											transfertext ='Manual check transfer enabled';
-											transferbtntext ='Switch to enable ACH transfer';
-										} else {
-											transfertext ='ACH transfers enabled';
-											transferbtntext ='Switch to enable manual payment';
+										var transfertext = '';
+										var transferbtntext = '';
+										if(data.transferoption !== '' && typeof data.transferoption !== 'undefined'){
+											if(data.transferoption  === 1){
+												transfertext ='Manual check transfer enabled';
+												transferbtntext ='Switch to enable ACH transfer';
+											} else {
+												transfertext ='ACH transfers enabled';
+												transferbtntext ='Switch to enable manual payment';
+											}
 										}
-									}
-									
-									var displaybuttonclass = 'addbankacnt';
-									 if(data.paymenttype !== '' &&  typeof data.paymenttype !== 'undefined' && data.paymenttype !== 0 ){
-										 if(data.paymenttype === 'electronic'){
-											 displaybuttonclass = 'updatebankacnt'
+										
+										var displaybuttonclass = 'addbankacnt';
+										 if(data.paymenttype !== '' &&  typeof data.paymenttype !== 'undefined' && data.paymenttype !== 0 ){
+											 if(data.paymenttype === 'electronic'){
+												 displaybuttonclass = 'updatebankacnt'
+											 } else {
+												displaybuttonclass = 'addbankacnt';
+											 }
 										 } else {
 											displaybuttonclass = 'addbankacnt';
 										 }
-									 } else {
-										displaybuttonclass = 'addbankacnt';
-									 }
-									 
-									var displaypayeebuttonclass = 'addpayeebtn';
-									if(data.manualexists !== '' &&  typeof data.manualexists !== 'undefined' && data.manualexists !== 0 ){
-										displaypayeebuttonclass = 'updatepayeebtn'
-									 } else {
-										displaypayeebuttonclass = 'addpayeebtn';
-									 }
-									 
-									var prefilledHtml = '';
-									if(data.electricdetails !== '' &&  typeof data.electricdetails !== 'undefined' && data.electricdetails !== 0 ){
-										//console.log(data.electricdetails);
-										var accountingnumber = data.electricdetails.account_number;
-										var accno = accountingnumber.substr(accountingnumber.length - 4);
-										var prefilledHtml = '<span class="country-code">USD</span><span class="fourdigitcode">****'+accno+'</span><span class="slash">/</span><span class="routingcode">'+data.electricdetails.routing_number+'</span>'; 
-																				
-										
 										 
+										var displaypayeebuttonclass = 'addpayeebtn';
+										if(data.manualexists !== '' &&  typeof data.manualexists !== 'undefined' && data.manualexists !== 0 ){
+											displaypayeebuttonclass = 'updatepayeebtn'
+										 } else {
+											displaypayeebuttonclass = 'addpayeebtn';
+										 }
+										 
+										var prefilledHtml = '';
+										if(data.electricdetails !== '' &&  typeof data.electricdetails !== 'undefined' && data.electricdetails !== 0 ){
+											//console.log(data.electricdetails);
+											var accountingnumber = data.electricdetails.account_number;
+											var accno = accountingnumber.substr(accountingnumber.length - 4);
+											var prefilledHtml = '<span class="country-code">USD</span><span class="fourdigitcode">****'+accno+'</span><span class="slash">/</span><span class="routingcode">'+data.electricdetails.routing_number+'</span>'; 
+																					
+											
+											 
+										}
+										
+										var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass+'##@##'+prefilledHtml;
+										/*$timeout(function () {
+											$timeout(makeSettings, 500,optionsfortransfer);
+										});*/
+										$timeout(function() {makeSettings(optionsfortransfer)}, 500); 
+										$scope.transferoption = data.transferoption;
+										
+										
+										localStorage.setItem('taxinfo',data.taxinformation);
+									
+										var vm = this;
+									} else {
+										$window.location.href = '#/vendors/w9form';
 									}
 									
-									var optionsfortransfer = transfertext+'##@##'+data.transferoption+'##@##'+transferbtntext+'##@##'+displaybuttonclass+'##@##'+displaypayeebuttonclass+'##@##'+prefilledHtml;
-									/*$timeout(function () {
-										$timeout(makeSettings, 500,optionsfortransfer);
-									});*/
-									$timeout(function() {makeSettings(optionsfortransfer)}, 500); 
-									$scope.transferoption = data.transferoption;
-									
-									
-									localStorage.setItem('taxinfo',data.taxinformation);
-								
-									var vm = this;
 							} else {
 								console.log('data.status_message'+data.status_message);
 								if(data.status_message === 'Invalid token'){
