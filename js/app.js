@@ -173,6 +173,9 @@ MetronicApp.factory("authenticationSvc", function($http, $q, $window, $state, Gl
 		name: result.data.name,
 		id:result.data.id
       };
+      localStorage.setItem("userid", result.data.id);
+	  localStorage.setItem("role", result.data.role);
+	  localStorage.setItem("name", result.data.name);
 	  if(result.data.role==1)
 	  {
 		  redirectUrl = 'dashboard';
