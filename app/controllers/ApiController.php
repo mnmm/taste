@@ -2768,9 +2768,9 @@ class ApiController extends BaseController {
 						$userphone = $userinfo->phone;
 						//$popoverhtml = '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>';
 						if($userinfo->status==1){
-								$action_html .='<a href="javascript:void(0);" class="pull-left addnew  btn btn-xs default btn-editable" ng-click="openstatusproductinfo('.$userinfo->id.',2);"><span class="create-new deactive">Deactivate</span></a>';
+								$action_html .='<a href="javascript:void(0);" class="pull-left addnew fade_pay btn btn-xs default btn-editable" ng-click="openstatusproductinfo('.$userinfo->id.',2);"><span class="create-new deactive">Deactivate</span></a>';
 						} else {
-								$action_html .='<a href="javascript:void(0);" class="pull-left addnew  btn btn-xs default btn-editable" onclick="openststusproductinfo('.$userinfo->id.',1);"><span class="create-new activate">Activate</span></a>';
+								$action_html .='<a href="javascript:void(0);" class="pull-left addnew fade_pay btn btn-xs default btn-editable" onclick="openststusproductinfo('.$userinfo->id.',1);"><span class="create-new activate">Activate</span></a>';
 						}
 						
 					    if($userinfo->invite_status==2)
