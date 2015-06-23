@@ -246,7 +246,7 @@ class ApiController extends BaseController {
 			     
 				if($data->status != 'error')
 				{
-					return $data;
+					return $data->requesterinfo->user_list_array;
 				}
 				else
 				{
