@@ -13,8 +13,25 @@ var FormValidation = function () {
 								rules: {
 									email: {
 										required: true,
-										email:true
+										email:true,
+										remote: {
+											url: "https://mnmdesignlabs.com/taste/api/validateemail",
+											type: "post",
+											data: {
+											  email_address: function() {
+													return $( "#email_address" ).val();
+											  },
+											  action:'checkemailexists'
+											}
+										}
 									}
+								},
+								messages:
+								{
+									 email_address:
+									 {
+										remote: jQuery.validator.format("{0} is already taken.")
+									 },
 								},
 								invalidHandler: function (event, validator) { //display error alert on form submit              
 									success1.hide();
