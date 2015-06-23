@@ -456,7 +456,11 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						$http.post($scope.apppath+'/api/getunpaidpo',{action:'getrequesterinfo',vendorid:vendoruserid}).
 						success(function(data) {
 							if(data.status_code === 200){
-								
+								console.log(data);
+								console.log(data.status_code);
+								console.log(data.requesterinfo);
+								console.log(data.requesterinfo.address);
+								console.log(data.requesterinfo.zip_code);
 							}
 						});
 						$http.post($scope.apppath+'/api/getunpaidpo',{action:'gettaxidforvendor',vendorid:vendoruserid}).
