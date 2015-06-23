@@ -1710,13 +1710,23 @@ class ApiController extends BaseController {
 		if($action == 'createvendoraccount' || $action == 'addvendorinfo' || $action == 'updatevendorpassword'){
 			
 			
-			if (array_key_exists("fullname", $data1))
+			if (array_key_exists("firstname", $data1))
 			{
-				$fullname = $data1->fullname;
+				$firstname = $data1->firstname;
 			}
 			else
 			{
-				$fullname = '';
+				$firstname = '';
+
+			}
+			
+			if (array_key_exists("lastname", $data1))
+			{
+				$lastname = $data1->lastname;
+			}
+			else
+			{
+				$lastname = '';
 
 			}
 			
@@ -2602,7 +2612,8 @@ class ApiController extends BaseController {
 			} else if($action == 'createvendoraccount'){
 				 
 				$createAccountArr = array();
-				$createAccountArr['fullname'] = $fullname;
+				$createAccountArr['firstname'] = $firstname;
+				$createAccountArr['lastname'] = $lastname;
 				$createAccountArr['email_address'] = $email_address;
 				$createAccountArr['password'] = $password;
 				$createAccountArr['address'] = $address;

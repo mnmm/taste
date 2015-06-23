@@ -1067,7 +1067,8 @@
 			
 				$token=time();
 				$register = new Register;
-				$register->name = $createAccountArr['fullname'];
+				$register->firstname = $createAccountArr['firstname'];
+				$register->lastname = $createAccountArr['lastname'];
 				$register->email = $createAccountArr['email_address'];
 				$register->password = Hash::make($createAccountArr['password']);
 				$register->location = $createAccountArr['location'];
