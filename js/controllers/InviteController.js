@@ -18,7 +18,7 @@ var FormValidation = function () {
 											url: "https://mnmdesignlabs.com/taste/api/validateemail",
 											type: "post",
 											data: {
-											  email: function() {
+											  email_address: function() {
 													return $( "#email" ).val();
 											  },
 											  action:'checkemailexists'
