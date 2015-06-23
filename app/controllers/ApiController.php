@@ -2979,6 +2979,7 @@ class ApiController extends BaseController {
 				$get_requester_info = $this->getrequesterinfo($formname,$vendoremail);
 				if($get_requester_info != 2){
 					$requester = json_decode($get_requester_info);
+					print_r($requester);exit;
 					$requester_address = $requester[0]->address;
 					$requester_name = $requester[0]->fname;
 					if($requester[0]->zip_code != ''){
