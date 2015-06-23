@@ -1115,7 +1115,7 @@
 	  //function to update Po priority 
 		public static function update_po_priority($poid,$priority){
 			
-			$get_vendor_info =  DB::table('taste_po')->where('po_no','=',$poid)->update(array('priority_status' => $priority));
+			$get_vendor_info =  DB::table('taste_po')->where('po_no','=',$poid)->update(array('priority_status1' => $priority));
 			return 1;
 
 	  }
