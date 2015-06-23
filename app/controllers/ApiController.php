@@ -2980,11 +2980,13 @@ class ApiController extends BaseController {
 				if($get_requester_info != 2){
 					$requester = json_decode($get_requester_info);
 					$requester_address = $requester[0]->address;
+					$requester_name = $requester[0]->fname;
 					if($requester[0]->zip_code != ''){
 						$requester_address .=','.$requester[0]->zip_code;
 					}
 					$result['status_code']=200;
 					$result['requesterinfo'] =$requester_address;
+					$result['requestername'] =$requester_name;
 				} else {
 					$result['status_code']=201;
 				}
