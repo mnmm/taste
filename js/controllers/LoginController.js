@@ -114,6 +114,13 @@
 										required: true
 									}
 								},
+								messages:
+								{
+									 email_address:
+									 {
+										remote: jQuery.validator.format("{0} is already taken.")
+									 },
+								}
 								invalidHandler: function (event) { //display error alert on form submit              
 									success1.hide();
 									//error1.show();
