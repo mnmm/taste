@@ -89,11 +89,7 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getrequesterinfo',vendorid:vendoruserid,email:all_dt[0]}).
 				success(function(data) {
-					console.log('comes here');
-					console.log(data);
-					console.log(data.requesterinfo);
-					console.log(data.requesterinfo.user_list_array.address);
-					console.log(data.requesterinfo.user_list_array.zip_code);
+					
 					if(data.status_code === 200){
 						$http.post($scope.apppath+'/api/getunpaidpo',{action:'savecontractinfo',email:all_dt[0],ssn_last4:all_dt[1],ssn_enc:all_dt[2],ein:all_dt[3],payeename:'Test Payee'}).
 						success(function(data) {
