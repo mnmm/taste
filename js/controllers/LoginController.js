@@ -112,6 +112,12 @@
 									},
 									tnc: {
 										required: true
+									},
+									businessopeninghour:{
+										time:true
+									},
+									businessclosinghour:{
+										time:true
 									}
 								},
 								messages:
