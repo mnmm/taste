@@ -2150,6 +2150,27 @@ class ApiController extends BaseController {
 
 			}
 		}
+		
+		if($action == 'updatepriority'){
+			
+			if (array_key_exists("priority", $data1))
+			{
+				$priority = $data1->priority;
+			}
+			else
+			{
+				$priority = '';
+			}
+			
+			if (array_key_exists("poid", $data1))
+			{
+				$poid = $data1->poid;
+			}
+			else
+			{
+				$poid = '';
+			}
+		}
 
 		
 		$validate_data = array(
@@ -2967,6 +2988,8 @@ class ApiController extends BaseController {
 				} else {
 					$result['status_code']=201;
 				}
+			}  else if($action == 'updatepriority'){
+				
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));

@@ -119,7 +119,7 @@ var FormValidation = function () {
 	}
 	
 	
-	var PriorityValidation = function() {
+	/*var PriorityValidation = function() {
 						var form4 = $('form#changepriority');
 						var error1 = $('.alert-danger', form3);
 						var success1 = $('.alert-success', form4);	
@@ -182,11 +182,7 @@ var FormValidation = function () {
 													$('table#sample_2').find('tr').find('td').each(function(){
 														
 													});
-													/*$('a#'+po_no).removeClass('makepayment');
-													$('a#'+po_no).addClass('fade_pay');
-													$('a#'+po_no).parent('td').prev('td').find('span.label').removeClass('label-danger');
-													$('a#'+po_no).parent('td').prev('td').find('span.label').addClass('label-success');
-													$('a#'+po_no).parent('td').prev('td').find('span.label').text('paid');*/
+													
 													bootbox.hideAll();	
 												} else {
 													if(data.status_code == 201){
@@ -202,14 +198,14 @@ var FormValidation = function () {
 									
 									}
 								});
-	}
+	}*/
 
 	return {
         //main function to initiate the module
         init: function () {
           
             ManualBankAccountValidation();
-            PriorityValidation();
+           // PriorityValidation();
         }
 
     };
@@ -664,9 +660,26 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 				label: "Update",
 				className: "main-btn",
 				callback: function() {
-					console.log('priority status');
-					$('#changepriority').find('#changeprioritystatus').click();
+					//console.log('priority status');
+					//$('#changepriority').find('#changeprioritystatus').click();
+					//return false;
+					var priority = $('#changepriority').find('input#priority').val();
+					var po_no = $('#changepriority').find('input#po_no').val();
+					$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');.
+					$http.post($scope.apppath+'/api/getunpaidpo',{action:'updatepriority',priority:priority,poid:po_no}).
+					success(function(data, status, headers, config) {
+						if(data.status_code == 200){
+							if(data.updated == 1 && typeof data.updated != 'undefined'){
+								$('table#sample_2').find('tr').find('td').each(function(){
+									
+								});
+								bootbox.hideAll();	
+							}
+						} 		
+					});
 					return false;
+					
 				}
 			  }
 			} 
@@ -932,6 +945,9 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 			}
 	}*/
 	
+	$scope.priorityChosen = function(value) {
+		$('div.changepriority').find('input#priority_status').val(value);
+	}
 
    
     // set sidebar closed and body solid layout mode
