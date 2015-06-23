@@ -40,7 +40,7 @@ var FormValidation = function () {
 								submitHandler: function (form1) {
 									
 									var vendoruserid  = localStorage.getItem('userid');
-									var firstname = $('#addVendor').find('input#firstname').val();.
+									var firstname = $('#addVendor').find('input#firstname').val();
 									var lastname = $('#addVendor').find('input#lastname').val();
 									var email = $('#addVendor').find('input#email').val();
 									var phone = $('#addVendor').find('input#phone').val();
