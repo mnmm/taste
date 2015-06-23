@@ -455,10 +455,12 @@ MetronicApp.controller('VendorBankAccountController', function($rootScope, $scop
 						
 						$http.post($scope.apppath+'/api/getunpaidpo',{action:'gettaxidforvendor',vendorid:vendoruserid}).
 						success(function(data) {
+							console.log(data);
 							if(data.status_code === 200){
 									$scope.apppath= 'https://mnmdesignlabs.com/taste';
-									console.log(data.taxinformation);
-									if(data.taxinformation != '' && typeof data.taxinformation != 'undefined'){
+									
+									if(data.taxinformation !== '' && typeof data.taxinformation !== 'undefined'){
+										console.log(data.taxinformation);
 										var modalInstance = $modal.open({
 										  animation: true,
 										  templateUrl: 'myModalContent.html',
