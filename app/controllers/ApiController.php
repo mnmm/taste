@@ -2721,7 +2721,14 @@ class ApiController extends BaseController {
 				$check_transfer_option_vendor = PoDetail::check_transfer_option_vendor($poid);
 				if(isset($check_transfer_option_vendor) &&  $check_transfer_option_vendor != ''){
 					$result['status_code']=200;
-					$result['transferoption'] = $check_transfer_option_vendor;
+					if (strpos($check_transfer_option_vendor,'##') !== false) {
+						$extract_payee_info = explode('##',$check_transfer_option_vendor); 
+						$result['transferoption'] = $extract_payee_info[0];
+						$result['payeename'] = $extract_payee_info[1];
+						$result['payeeaddress'] = $extract_payee_info[2];
+					} else {
+						$result['transferoption'] = $check_transfer_option_vendor;
+					}
 				} else {
 					$result['status_code']=201;
 					$result['message'] = 'No option exists';

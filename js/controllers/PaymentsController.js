@@ -611,6 +611,9 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 												}
 												routingcss++;
 											});
+											if(data.payeeaddress !== '' && typeof data.payeeaddress !== 'undefined'){
+												$('#manualAccount').find('input#mailingaddress').val(data.payeeaddress);
+											}
 											$('#manualAccount').find('input#paymenttype').val('manual');
 											$('#manualAccount').find('input#po_no').val(poid);
 										
