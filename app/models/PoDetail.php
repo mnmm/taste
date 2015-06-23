@@ -1034,7 +1034,7 @@
 		
 			if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
 				$user_data = DB::table('users')->where('email','=',$get_vendor_info->vendor_email)->first();
-				if($check_transfer_option_vendor == 1){
+				if($user_data->transfer_option == 1){
 					$get_payee_info = DB::table('w9form')->where('email','=',$get_vendor_info->vendor_email)->first();
 					return $user_data->transfer_option.'##'.$get_payee_info->payeename.'##'.$get_payee_info->address;
 				} else {
