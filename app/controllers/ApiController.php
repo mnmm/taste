@@ -2939,10 +2939,14 @@ class ApiController extends BaseController {
 				
 				
 				$get_requester_info = $this->getrequesterinfo($formname,$vendoremail);
-				echo "<pre>";
-				print_r($get_requester_info);exit;
-				$result['status_code']=200;
-				$result['requesterinfo'] = $get_requester_info;
+				print_r($get_requester_info);
+				print_r($get_requester_info['email']);exit;
+				if($get_requester_info != 2){
+					$result['status_code']=200;
+					$result['requesteraddress'] = $get_requester_info['email'];
+				} else {
+					$result['status_code']=201;
+				}
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
