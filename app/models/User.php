@@ -69,7 +69,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				$user_id  = Auth::user()->id; 
 				$user_details = User::get_user_complete_details($user_id);
 				if(count($user_details) > 0){
-					$username = $user_details[0]->name;
+					$username = $user_details[0]->firstname.' '.$user_details[0]->lastname;
 				}
 				
 				$sub = 'created a new vendor';
