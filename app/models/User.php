@@ -30,7 +30,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 	
 	public static function get_all_vendors(){
-		$sortby=",invite_status asc,name";
+		$sortby=",invite_status asc,firstname";
 		$order="asc";
 		$result = DB::select( DB::raw("SELECT users.*, user_invite.status as invite_status, user_invite.created_date as sent_date from users LEFT JOIN user_invite on users.email = user_invite.email where users.usertype = 2 order by users.status asc $sortby $order"));   
 		return $result;
@@ -51,7 +51,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			} else {
 				$token=time();
 				$register = new Register;
-				$register->name = $createAccountArr['fullname'];
+				$register->firstname = $createAccountArr['firstname'];
+				$register->lastname = $createAccountArr['lastname'];
 				$register->email = $createAccountArr['email_address'];
 				$register->password = Hash::make('123456');
 				$register->address = $createAccountArr['address'];
