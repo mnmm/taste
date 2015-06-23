@@ -664,6 +664,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 				label: "Update",
 				className: "main-btn",
 				callback: function() {
+					console.log('priority status');
 					$('#changepriority').find('#changeprioritystatus').click();
 					return false;
 				}
