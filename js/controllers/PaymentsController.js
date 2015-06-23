@@ -80,6 +80,9 @@ var FormValidation = function () {
 												if(data.status_code == 200){
 													$('a#'+po_no).removeClass('makepayment');
 													$('a#'+po_no).addClass('fade_pay');
+													$('a#'+po_no).parent('td').prev('td').find('span.label').removeClass('label-danger');
+													$('a#'+po_no).parent('td').prev('td').find('span.label').addClass('label-success');
+													$('a#'+po_no).parent('td').prev('td').find('span.label').text('paid');
 													bootbox.hideAll();	
 												} else {
 													if(data.status_code == 201){
