@@ -672,7 +672,19 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						if(data.status_code == 200){
 							if(data.updated == 1 && typeof data.updated != 'undefined'){
 								$('table#sample_2').find('tr').find('td').each(function(){
-									console.log($(this).find("input[name='orderno']").val());
+									if($(this).find("input[name='orderno']").val() === po_no){
+										$(this).find("input[name='prioritystatus']").val(priority);
+										if(priority == 'low'){
+											var prioritycolor = 'priority-yellow';
+										} else if(priority == 'low') {
+											var prioritycolor = 'priority-orange';
+										} else if() {
+											var prioritycolor = 'priority-red';
+										} else {
+											var prioritycolor = 'priority-green';
+										}
+										$(this).parent('tr').addClass(prioritycolor);
+									}
 								});
 								bootbox.hideAll();	
 							}
