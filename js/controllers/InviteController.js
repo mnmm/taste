@@ -374,6 +374,9 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 							$('#addVendor').hide().appendTo('body');  
 						})
 						.modal('show');
+							$("#phone").inputmask("mask", {
+								"mask": "(999) 999-9999"
+							}); 
 
 					} 		
 				});
