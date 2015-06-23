@@ -214,6 +214,59 @@ class ApiController extends BaseController {
 	}
 	
 	
+	public function getrequesterinfo($formname,$email)
+	{
+		$access_token = $this->gettmdtoken();
+		
+		if($access_token!='' && $access_token!=2)
+		{
+			$url = TMD_API_URL."get-requestor-user-list";
+			$post= json_encode(array(	'form_name'=>$formname,
+										'user_email'=>$email
+									));
+
+			$handle = curl_init($url);
+			curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "POST");  
+			curl_setopt($handle, CURLOPT_HTTPHEADER, array(
+														'x-tmd-request-timestamp : '.time(),
+														'x-tmd-access-token : '.$access_token,
+														'x-tmd-api-version  : '.'v1',
+														));
+			curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($handle, CURLOPT_POSTFIELDS,$post);
+			curl_setopt($handle, CURLOPT_FOLLOWLOCATION, 1); 
+	
+			$response = curl_exec($handle);
+			$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+			print_r($response);
+			print_r($httpCode);exit;
+			
+			curl_close($handle);
+			if($httpCode == 200)
+			{
+				$data = json_decode($response);
+			
+				if($data->status != 'error')
+				{
+					return $data->hashcode;
+				}
+				else
+				{
+					return 2;
+				}
+			}
+			else
+			{
+				return 2;
+			} 
+		}
+		else
+		{
+			return 2;	
+		}
+	}
+	
+	
 	public function checktokenauthentication(){
 		
 		$headers = getallheaders();
@@ -1350,7 +1403,7 @@ class ApiController extends BaseController {
 			}
 		}
 		
-		if($action == 'gettaxidforvendor' || $action == 'getpayeename' || $action == 'getbankaccountinfo' || $action == 'updatetransfermethod' || $action == 'getpayeeinfo'){
+		if($action == 'gettaxidforvendor' || $action == 'getpayeename' || $action == 'getbankaccountinfo' || $action == 'updatetransfermethod' || $action == 'getpayeeinfo' || $action == 'getrequesterinfo'){
 			if (array_key_exists("vendorid", $data1))
 			{
 				$vendorid = $data1->vendorid;
@@ -2865,6 +2918,11 @@ class ApiController extends BaseController {
 					$result['message'] = 'Password updated sucessfully';
 				}
 	
+			} else if($action == 'getrequesterinfo'){
+				$get_vendor_info = User::get_user_complete_details($vendorid);
+				$formname = 'w9 form';
+				$get_tax_id = $this->getrequesterinfo($formname,$get_vendor_info[0]->email);
+
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
