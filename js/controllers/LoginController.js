@@ -110,12 +110,12 @@
 									emailcontact:{
 										email: true
 									},
-									businessopeninghour:{
+									/*businessopeninghour:{
 										time:true
 									},
 									businessclosinghour:{
 										time:true
-									},
+									},*/
 									tnc: {
 										required: true
 									}
