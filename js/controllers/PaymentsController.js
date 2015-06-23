@@ -56,6 +56,7 @@ var FormValidation = function () {
 									var carrier =  $('#manualAccount').find('select#carrier').val();
 									var airwaybill =$('#manualAccount').find('input#airwaybill').val();
 									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
+									var payeename =  $('#manualAccount').find('input#payeename').val();
 									var po_no =$('#manualAccount').find('input#po_no').val();
 									
 										$.ajax({
@@ -68,7 +69,8 @@ var FormValidation = function () {
 												checkdate:checkdate,
 												carrier:carrier,
 												airwaybill:airwaybill,
-												mailingaddress:mailingaddress
+												mailingaddress:mailingaddress,
+												payeename:payeename
 											},
 											headers: {
 												"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 

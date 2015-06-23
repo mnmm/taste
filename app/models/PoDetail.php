@@ -1047,14 +1047,14 @@
 		}
 		
 		//function to update manual bank account info
-		public static function pay_via_check($poid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress){
+		public static function pay_via_check($poid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$payeename){
 			
 			$get_vendor_info =  DB::table('taste_po')->where('po_no','=',$poid)->first();
 			
 			$convertdate = explode('-',$checkdate);
 			$new_check_date = $convertdate[2].'-'.$convertdate[0].'-'.$convertdate[1];	
 			
-			$insertBankDetailAr = array('po_no'=> $poid, 'check' => $check,'checkdate' => $new_check_date,'carrier'=>$carrier,'airwaybill'=>$airwaybill,'mailing_address'=>$mailingaddress,'payment_date' => date('Y-m-d H:i:s')); 
+			$insertBankDetailAr = array('po_no'=> $poid, 'check' => $check,'payeename' => $payeename, 'checkdate' => $new_check_date,'carrier'=>$carrier,'airwaybill'=>$airwaybill,'mailing_address'=>$mailingaddress,'payment_date' => date('Y-m-d H:i:s')); 
 			
 			$id =  DB::table('bank_details_manual')->insertGetId($insertBankDetailAr);
 			

@@ -1782,6 +1782,16 @@ class ApiController extends BaseController {
 
 			}
 			
+			if (array_key_exists("payeename", $data1))
+			{
+				$payeename = $data1->payeename;
+			}
+			else
+			{
+				$payeename = '';
+
+			}
+			
 			if (array_key_exists("check", $data1))
 			{
 				$check = $data1->check;
@@ -2755,7 +2765,7 @@ class ApiController extends BaseController {
 					$result['message'] = 'No option exists';
 				}
 			} else if($action == 'payviamanualmode'){
-				$check_transfer_option_vendor = PoDetail::pay_via_check($poid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress);
+				$check_transfer_option_vendor = PoDetail::pay_via_check($poid,$check,$checkdate,$carrier,$airwaybill,$mailingaddress,$payeename);
 				if(isset($check_transfer_option_vendor) &&  $check_transfer_option_vendor != ''){
 					$result['status_code']=200;
 					$result['paymentdone'] = $check_transfer_option_vendor;
