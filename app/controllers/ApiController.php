@@ -243,14 +243,14 @@ class ApiController extends BaseController {
 			if($httpCode == 200)
 			{
 				$data = json_decode($response);
-			
+			     
 				if($data->status != 'error')
 				{
-					return $data->hashcode;
+					return $data;
 				}
 				else
 				{
-					return $data;
+					return 2;
 				}
 			}
 			else
