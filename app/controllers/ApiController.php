@@ -2989,7 +2989,14 @@ class ApiController extends BaseController {
 					$result['status_code']=201;
 				}
 			}  else if($action == 'updatepriority'){
-				
+				$update_priority = PoDetail::update_po_priority($priority,$poid);
+				if(isset($update_priority) &&  $update_priority != ''){
+					$result['status_code']=200;
+					$result['updated'] = $update_priority;
+				} else {
+					$result['status_code']=201;
+					$result['updated'] = 0;
+				}
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
