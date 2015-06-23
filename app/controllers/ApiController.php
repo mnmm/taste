@@ -875,9 +875,6 @@ class ApiController extends BaseController {
 	public function validateemail(){
 		
 		$data1=$this->get_data();
-		
-		print_r($data1);exit;
-		
 		if (array_key_exists("email_address", $data1))
 		{
    		 	$email_address = $data1->email_address;
@@ -893,12 +890,12 @@ class ApiController extends BaseController {
 		);
 
 		$rules = array(
-			'email'			=> 'required|email',
+			'email_address'			=> 'required|email',
 		);
 		
 		$messages = array(
-				'email.required' => 'Email address is required',
-				'email.email' => 'Please enter a valid Email Address',
+				'email_address.required' => 'Email address is required',
+				'email_address.email' => 'Please enter a valid Email Address',
 		);
 		
 		$validator = Validator::make($validate_data,$rules,$messages);
