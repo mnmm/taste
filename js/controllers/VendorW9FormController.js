@@ -90,7 +90,7 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getrequesterinfo',vendorid:vendoruserid,email:all_dt[0]}).
 				success(function(data) {
 					if(data.status_code === 200){
-						$http.post($scope.apppath+'/api/getunpaidpo',{action:'savecontractinfo',email:all_dt[0],ssn_last4:all_dt[1],ssn_enc:all_dt[2],ein:all_dt[3],payeename:'Test Payee',address:data.requesterinfo}).
+						$http.post($scope.apppath+'/api/getunpaidpo',{action:'savecontractinfo',email:all_dt[0],ssn_last4:all_dt[1],ssn_enc:all_dt[2],ein:all_dt[3],payeename:data.requestername,address:data.requesterinfo}).
 						success(function(data) {
 							if(data.updatedtaxid === 1){
 								$window.location.href = '#/vendors/addbankinfo';
