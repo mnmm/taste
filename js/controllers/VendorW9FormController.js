@@ -52,12 +52,6 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 					 
 				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getrequesterinfo',vendorid:vendoruserid}).
-				success(function(data) {
-					if(data.status_code === 200){
-						
-					}
-				});
 				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getaccountinfo',accesshash:payauthtoken,email:useremail}).
 				success(function(data) {
 					Layout.initSidebar();
@@ -90,15 +84,22 @@ MetronicApp.controller('VendorW9FormController', function($rootScope, $scope, $h
 			} else {
 				//alert(dt);
 				var all_dt=dt.split("#@#");
-				
+				var vendoruserid  = localStorage.getItem('userid');
 				$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 				$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-				$http.post($scope.apppath+'/api/getunpaidpo',{action:'savecontractinfo',email:all_dt[0],ssn_last4:all_dt[1],ssn_enc:all_dt[2],ein:all_dt[3],payeename:'Test Payee'}).
+				$http.post($scope.apppath+'/api/getunpaidpo',{action:'getrequesterinfo',vendorid:vendoruserid}).
 				success(function(data) {
-					if(data.updatedtaxid === 1){
-						$window.location.href = '#/vendors/addbankinfo';
-					 }
+					if(data.status_code === 200){
+						$http.post($scope.apppath+'/api/getunpaidpo',{action:'savecontractinfo',email:all_dt[0],ssn_last4:all_dt[1],ssn_enc:all_dt[2],ein:all_dt[3],payeename:'Test Payee'}).
+						success(function(data) {
+							if(data.updatedtaxid === 1){
+								$window.location.href = '#/vendors/addbankinfo';
+							 }
+						});
+					}
 				});
+				
+				
 
 			}
 		}

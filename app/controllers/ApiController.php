@@ -238,8 +238,6 @@ class ApiController extends BaseController {
 	
 			$response = curl_exec($handle);
 			$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-			print_r($response);
-			print_r($httpCode);exit;
 			
 			curl_close($handle);
 			if($httpCode == 200)
@@ -252,7 +250,7 @@ class ApiController extends BaseController {
 				}
 				else
 				{
-					return 2;
+					return $data;
 				}
 			}
 			else
@@ -2921,8 +2919,9 @@ class ApiController extends BaseController {
 			} else if($action == 'getrequesterinfo'){
 				$get_vendor_info = User::get_user_complete_details($vendorid);
 				$formname = 'w9 form';
-				$get_tax_id = $this->getrequesterinfo($formname,$get_vendor_info[0]->email);
-
+				$get_requester_info = $this->getrequesterinfo($formname,$get_vendor_info[0]->email);
+				$result['status_code']=200;
+				$result['requesterinfo'] = $get_requester_info;
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
