@@ -37,40 +37,49 @@
 			
 		}
 		
-		public static function create_authorization_link($vendorid,$actiontype){
+		public static function create_authorization_link($vendorid,$actiontype,$vendoremail,$updateaccountemail){
 			
 			$time = time();
 			$get_vendor_id = DB::table('taste_po')->select('vendor_id','vendor_name','vendor_email')->where('vendor_id','=',$vendorid)->first();
-			if(isset($get_vendor_id->vendor_id) && $get_vendor_id->vendor_id != ''){
-				$email = $get_vendor_id->vendor_email;
-				$create_unique_token_code = $time.'@@@'.$get_vendor_id->vendor_id;
-				$save_auth = base64_encode($create_unique_token_code);
-				if($actiontype == 'requestinfo' ){
-					$createaccount = 1;
-				} else {
-					$createaccount = 0;
+			if(isset($vendoremail) && $vendoremail != ''){
+				if(isset($updateaccountemail) && $updateaccountemail != ''){
+					
+				}  else {
+					
 				}
-				$insertAuthAr = array('vendor_id' => $get_vendor_id->vendor_id,'auth_code' => $save_auth, 'status'=>1,'actiontype' => $createaccount); 
-				$id = DB::table('payment_auth_code')->insertGetId($insertAuthAr);
-				
-				$auth_link = Request::root().'/#/vendor/'.$save_auth;
-				$user = array(
-					'email'=>$email,
-					'name'=>$get_vendor_id->vendor_name
-				);
-				$data = array(
-					'name' => $get_vendor_id->vendor_name,
-					'auth_link' =>$auth_link,
-				);
-				$is_sent=Mail::send('emails.sendpaymentlink', $data, function($message) use ($user)
-				{
-					   $message->from('noreplay@gfoodtrucks.com', 'Taste API Test');
-					   $message->to($user['email'], $user['name'])->subject('Fill Your payment details here');
-				});
-				return $id;
 			} else {
-				return 0;
-			} 
+				if(isset($get_vendor_id->vendor_id) && $get_vendor_id->vendor_id != ''){
+					$email = $get_vendor_id->vendor_email;
+					$create_unique_token_code = $time.'@@@'.$get_vendor_id->vendor_id;
+					$save_auth = base64_encode($create_unique_token_code);
+					if($actiontype == 'requestinfo' ){
+						$createaccount = 1;
+					} else {
+						$createaccount = 0;
+					}
+					$insertAuthAr = array('vendor_id' => $get_vendor_id->vendor_id,'auth_code' => $save_auth, 'status'=>1,'actiontype' => $createaccount); 
+					$id = DB::table('payment_auth_code')->insertGetId($insertAuthAr);
+					
+					$auth_link = Request::root().'/#/vendor/'.$save_auth;
+					$user = array(
+						'email'=>$email,
+						'name'=>$get_vendor_id->vendor_name
+					);
+					$data = array(
+						'name' => $get_vendor_id->vendor_name,
+						'auth_link' =>$auth_link,
+					);
+					$is_sent=Mail::send('emails.sendpaymentlink', $data, function($message) use ($user)
+					{
+						   $message->from('noreplay@gfoodtrucks.com', 'Taste API Test');
+						   $message->to($user['email'], $user['name'])->subject('Fill Your payment details here');
+					});
+					return $id;
+				} else {
+					return 0;
+				}
+			}
+			 
 
 		}
 

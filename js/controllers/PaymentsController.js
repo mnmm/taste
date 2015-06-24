@@ -162,27 +162,22 @@ var FormValidation = function () {
 									console.log('validation');
 									var email = $('#requestinfoform').find('input#requestemail').val();
 									var requestvendorid = $('#requestinfoform').find('input#requestvendorid').val(); 
+									vendorid:vendorid,action:'sendrequesterlink',actiontype:'requestinfo'
 									if(email != '' && typeof email != 'undefined'){
 										if($('#updaterequestemail').is(':checked')){
 											var updateaccountemail = 1
 										} else {
 											var updateaccountemail = 0;
 										}
-										console.log('email'+email+'updateaccountemail'+updateaccountemail);
-									} else {
-										var reqemail = $('#requestinfoform').find('input#requestvendoremail').val(); 
-										console.log('reqemail'+reqemail)
-									}
-									/*var priority = $('#changepriority').find('input#priority').val();
-									var po_no = $('#changepriority').find('input#po_no').val();
-									
 										$.ajax({
 											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
 											type: 'post',
 											data: {
-												action: 'updatepriority',
-												priority:priority,
-												poid:po_no
+												action: 'sendrequesterlink',
+												vendorid:vendorid,
+												actiontype:'requestinfo',
+												vendoremail:email,
+												updateaccountemail:updateaccountemail
 											},
 											headers: {
 												"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
@@ -190,12 +185,7 @@ var FormValidation = function () {
 											},
 											dataType:'json',
 											success: function (data) {
-												
 												if(data.status_code == 200){
-													$('table#sample_2').find('tr').find('td').each(function(){
-														
-													});
-													
 													bootbox.hideAll();	
 												} else {
 													if(data.status_code == 201){
@@ -207,7 +197,39 @@ var FormValidation = function () {
 													} 
 												}											
 											}
-										});*/
+										});
+										//console.log('email'+email+'updateaccountemail'+updateaccountemail);
+									} else {
+										var reqemail = $('#requestinfoform').find('input#requestvendoremail').val(); 
+										$.ajax({
+											url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
+											type: 'post',
+											data: {
+												action: 'sendrequesterlink',
+												vendorid:vendorid,
+												actiontype:'requestinfo'
+											},
+											headers: {
+												"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
+												"x-taste-access-token": localStorage.getItem('access_token')
+											},
+											dataType:'json',
+											success: function (data) {
+												if(data.status_code == 200){
+													bootbox.hideAll();	
+												} else {
+													if(data.status_code == 201){
+														if(data.message != ''){
+															$('div.bootbox').find('div.bootbox-body').append('<p style="color:red;">'+data.message+'</p>');
+														} else {
+															
+														}
+													} 
+												}											
+											}
+										});
+									}
+									
 									
 									}
 								});

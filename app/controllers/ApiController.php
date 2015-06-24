@@ -1293,6 +1293,26 @@ class ApiController extends BaseController {
 				$actiontype = '';
 
 			}
+			
+			if (array_key_exists("updateaccountemail", $data1))
+			{
+				$updateaccountemail = $data1->updateaccountemail;
+			}
+			else
+			{
+				$updateaccountemail = '';
+
+			}
+			
+			if (array_key_exists("vendoremail", $data1))
+			{
+				$vendoremail = $data1->vendoremail;
+			}
+			else
+			{
+				$vendoremail = '';
+
+			}
 		}
 		
 		if($action == 'createuseraccount'){
@@ -2435,7 +2455,7 @@ class ApiController extends BaseController {
 				$result["allvendorsdetails"] = $allvendorsdetails;
 			} else if($action == 'sendrequesterlink') {
 				
-				$sendauthorizationlink = Token::create_authorization_link($vendorid,$actiontype);
+				$sendauthorizationlink = Token::create_authorization_link($vendorid,$actiontype,$vendoremail,$updateaccountemail);
 				if($sendauthorizationlink != 0){
 					$result['status_code']=200;
 					$result['status_message']='Request link send sucessfully!';
