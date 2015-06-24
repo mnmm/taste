@@ -407,86 +407,68 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 	//$scope.openSendEmailPopUp = function(){
 			
 			var email = $(this).attr('data-invite');
-			
 			var vendoruserid  = localStorage.getItem('userid');
-			$http.get($scope.apppath+"/api/checklogin").
-			success(function(data1) {
-						/*bootbox.dialog({
-							title:'Invite Vendor',
-							message: $('#inviteVendor'),
-							show: false,
-							animate:true,
-							closeButton: false,
-							className:'invitevendor',
-							buttons: {
-							  danger: {
-								label: "Cancel",
-								className: "cancel-btn",
-								callback: function() {
-									
-									bootbox.hideAll();	
-								}
-							  },
-							  success: {
-								label: "Save",
-								className: "main-btn",
-								callback: function() {
-									$('#inviteVendor').find('input#invitevendorbtn').click();
-									return false;
-								}
-							  }
-							} 
-						})
-						.on('shown.bs.modal', function() {
-
-							$('#inviteVendor').show(); 
-							//$('#inviteVendor').validate().resetForm(); 	
-							console.log($('inviteVendor').find('textarea#message').html());
-							$('inviteVendor').find('textarea#message').wysihtml5({
-								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
-							});
-								
-						})
-						.on('hide.bs.modal', function(e) {
-						
-							
-						})
-						.modal('show');
-						$('inviteVendor').find('textarea.message').wysihtml5({
-								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
-						});*/
-						
-						var modalInstance = $modal.open({
-						  animation: true,
-						  templateUrl: 'myModalContent.html',
-						  controller: 'ModalInstanceCtrl',
-						  windowClass:'paymentmethods',
-						  resolve: {
-							
-						  }
-						});
-						
-						  modalInstance.opened.then(function () {
-							$timeout ( function(){
-								$('#manageBankAccounts').find('.wysihtml5').wysihtml5({
-									"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
-								});
-								$('input#emailinvite').val(email);
-							},500);
-						
-						});
-						
-						
-						
-						/* if ($('.wysihtml5').size() > 0) {
-							$('.wysihtml5').wysihtml5({
-								"stylesheets": ["https://mnmdesignlabs.com/taste/assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
-							});
-						}*/
-						
+			var message = $('#manageBankAccounts').find('#message').val();
+			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+			$http.post($scope.apppath+'/api/getunpaidpo',{action:'sendinviteemail',email:email,message:message}).
+			success(function(data, status, headers, config) {
+				if(data.status_code == 200){
+					$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+					$http.post($scope.apppath+'/api/getunpaidpo',{action:'getallvendors'}).
+					success(function(data, status, headers, config) {
 					
-		});
+							if(data.data != ''){
+									
+								$scope.data = data.data;
+								
+								var table = $('#sample_2');
 
+								/* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
+
+								var oTable = table.dataTable({
+									destroy: true,
+									// Internationalisation. For more info refer to http://datatables.net/manual/i18n
+									"language": {
+										"aria": {
+											"sortAscending": ": activate to sort column ascending",
+											"sortDescending": ": activate to sort column descending"
+										},
+										"emptyTable": "No data available in table",
+										"info": "Showing _START_ to _END_ of _TOTAL_ entries",
+										"infoEmpty": "No entries found",
+										"infoFiltered": "(filtered1 from _MAX_ total entries)",
+										"lengthMenu": "Show _MENU_ entries",
+										"search": "Search:",
+										"zeroRecords": "No matching records found"
+									},
+								
+									"order": [
+										[0, 'asc']
+									],
+									"lengthMenu": [
+										[5, 10, 20, -1],
+										[5, 10, 20, "All"] // change per page values here
+									],
+									"data":$scope.data,
+									// set the initial value
+									"pageLength": 10,
+									"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>" // horizobtal scrollable datatable
+									
+								});
+
+								var tableWrapper = $('#sample_2_wrapper'); // datatable creates the table wrapper by adding with id {your_table_jd}_wrapper
+								tableWrapper.find('.dataTables_length select').select2(); // initialize select2 dropdown
+								table.$('[data-toggle="popover"]').popover().mouseover(function(e) {e.preventDefault();});
+							}
+							 
+				
+				});
+					
+			} 		
+		});
+		
 	});
 	
 	
