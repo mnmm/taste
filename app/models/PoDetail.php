@@ -503,11 +503,21 @@
 				
 					if($get_vendor_id[1] != '' && $get_vendor_id[1] != 0){
 						
+						
 						$vendordetails = DB::table('taste_po')->select('taste_po.id','taste_po.vendor_email')->where('vendor_id','=',$get_vendor_id[1])->get();
 						
 						if($vendordetails[0]->id != '' && $vendordetails[0]->vendor_email != ''){
-							
-								$get_user_id = DB::table('users')->where('email',$vendordetails[0]->vendor_email)->get();
+								$check_other_email_exists = $vendordetails[0]->update_account_email_id;
+								if( $check_other_email_exists != '' && $check_other_email_exists != 0 ){
+									$vendoremail = DB::table('updated_vendors_emails')->where('id',$check_other_email_exists)->first();
+									if(isset($vendoremail->email) && $vendoremail->email != ''){
+										$useremail =  $vendoremail->email;
+									} 
+								} else {
+									$useremail =  $vendordetails[0]->vendor_email;
+								}
+								
+								$get_user_id = DB::table('users')->where('email',$useremail)->get();
 								if(count($get_user_id) > 0){
 									$id = $get_user_id[0]->id;
 									$currentuser = User::find($id);
@@ -522,13 +532,13 @@
 									if($usergroup == 2) {
 										if($status == 1) {	
 											
-											$vendorArr['aleadyexists'] = $vendordetails[0]->vendor_email;
+											$vendorArr['aleadyexists'] = $useremail;
 											$vendorArr['userid'] = $currentuser->id;
 											$vendorArr['username'] = $currentuser->name;
 										} 
 									}
 								} else {
-									$vendorArr['email'] = $vendordetails[0]->vendor_email;
+									$vendorArr['email'] = $useremail;
 								}
 						} else {
 							$vendorArr['tokenstatus'] = 0;
