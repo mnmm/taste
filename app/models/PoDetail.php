@@ -613,9 +613,19 @@
 			} else {
 				$token=time();
 				$register = new Register;
-				$get_vendor_name_info = DB::table('taste_po')->select('update_account_email_id,vendor_email,vendor_name')->where('vendor_email',$email)->first();
-				print_r($get_vendor_name_info);
-				if(isset($get_vendor_name_info->update_account_email_id) &&  $get_vendor_name_info->update_account_email_id != '' && $get_vendor_name_info->update_account_email_id != 0){
+				$get_vendor_name_info = DB::table('taste_po')->select('update_account_email_id','vendor_email','vendor_name')->where('vendor_email',$email)->first();
+				
+				if(isset($get_vendor_name_info->update_account_email_id)){
+					if(strpos($get_vendor_name_info->vendor_name,' ') !== false) {
+						$extract_name = explode(' ',$get_vendor_name_info->vendor_name);
+						$register->firstname = $extract_name[0];
+						$register->lastname = $extract_name[1];
+					} else {
+						$register->firstname = $get_vendor_name_info->vendor_name;
+						$register->lastname = $get_vendor_name_info->vendor_name;
+					} 
+				}  else {
+					
 					$vendor_name_info = DB::table('updated_vendors_emails')->leftjoin('taste_po','updated_vendors_emails.vendorid', '=', 'taste_po.vendor_id')->where('updated_vendors_emails.email',$email)->first();
 					if(strpos($vendor_name_info->vendor_name,' ') !== false) {
 						$extract_name = explode(' ',$vendor_name_info->vendor_name);
@@ -625,15 +635,7 @@
 						$register->firstname = $get_vendor_name_info->vendor_name;
 						$register->lastname = $get_vendor_name_info->vendor_name;
 					}
-				}  else {
-					if(strpos($get_vendor_name_info->vendor_name,' ') !== false) {
-						$extract_name = explode(' ',$get_vendor_name_info->vendor_name);
-						$register->firstname = $extract_name[0];
-						$register->lastname = $extract_name[1];
-					} else {
-						$register->firstname = $get_vendor_name_info->vendor_name;
-						$register->lastname = $get_vendor_name_info->vendor_name;
-					} 
+
 				}
 				
 				echo $register->firstname.$register->lastname;exit;
