@@ -921,7 +921,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		if(vendorid != ''){
 				if(actiontype == 'updateinfo'){
 							bootbox.dialog({
-							message: "Do you want to send update info link to vendor email ?",
+							message: "Do you want to send update info link to vendor email "+vendoremail+"?",
 							title: "Update bank info confirmation",
 							size: 'small',
 							className:'requestlinkconfirmation',
