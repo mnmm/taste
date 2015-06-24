@@ -162,7 +162,7 @@ var FormValidation = function () {
 									console.log('validation');
 									var email = $('#requestinfoform').find('input#requestemail').val();
 									var requestvendorid = $('#requestinfoform').find('input#requestvendorid').val(); 
-									vendorid:vendorid,action:'sendrequesterlink',actiontype:'requestinfo'
+									
 									if(email != '' && typeof email != 'undefined'){
 										if($('#updaterequestemail').is(':checked')){
 											var updateaccountemail = 1
