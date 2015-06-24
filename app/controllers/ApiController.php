@@ -2672,7 +2672,7 @@ class ApiController extends BaseController {
 					if($action == 'getpayeename'){
 						$result['payeename'] = $get_payee_name->payeename;
 						$result['taxinfo'] = $get_payee_name->ein;
-						
+						$result['payeeaddress'] = $get_payee_name->address;
 					} else {
 						$get_bank_info  = PoDetail::get_bank_info_for_vendor($vendorid);
 						$result['bankaccountinfo'] = $get_bank_info;
