@@ -614,7 +614,7 @@
 				$token=time();
 				$register = new Register;
 				$get_vendor_name_info = DB::table('taste_po')->select('update_account_email_id','vendor_email','vendor_name')->where('vendor_email',$email)->first();
-				
+				print_r($get_vendor_name_info);exit;
 				if(isset($get_vendor_name_info->update_account_email_id) &&  $get_vendor_name_info->update_account_email_id != '' && $get_vendor_name_info->update_account_email_id != 0){
 					$vendor_name_info = DB::table('updated_vendors_emails')->leftjoin('taste_po','updated_vendors_emails.vendorid', '=', 'taste_po.vendor_id')->where('updated_vendors_emails.email',$email)->first();
 					if(strpos($vendor_name_info->vendor_name,' ') !== false) {
