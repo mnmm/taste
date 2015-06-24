@@ -750,6 +750,22 @@
 			}
 		}
 		
+		public static function check_manual_bank_details_filled($vendoremail){
+			
+			$get_vendor_info =  DB::table('users')->where('email','=',$vendoremail)->first();
+			if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
+				$userid = $get_vendor_info->id;
+				$bankdetail = DB::table('w9form')->where('vendorid','=',$userid)->first();
+				if(isset($bankdetail->id) && $bankdetail->id != ''){
+					return 1;
+				} else{
+					return 0;
+				}
+			} else {
+				return 0;
+			}
+		}
+		
 		public static function check_bank_account_exists($vendorid){
 			
 			$get_vendor_info =  DB::table('users')->where('id','=',$vendorid)->first();
