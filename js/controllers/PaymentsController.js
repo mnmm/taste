@@ -882,12 +882,13 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
     $(document).on("click", ".requestinfo", function() {
 		var vendorid = $(this).attr('data-request-id');
 		var actiontype =  $(this).attr('id');
+		var vendoremail =  $(this).attr('data-request-email-id');
 	
 		//console.log($(this).attr('data-request-id'));
 		if(vendorid != ''){
 				if(actiontype == 'updateinfo'){
 							bootbox.dialog({
-							message: "Do you want to send update info link to vendor ?",
+							message: "Do you want to send update info link to vendor email ?",
 							title: "Update bank info confirmation",
 							size: 'small',
 							className:'requestlinkconfirmation',
@@ -918,9 +919,11 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 							}
 					 });
 					 
+					 
 				} else {
 					bootbox.dialog({
-							message: "Do you want to send request info link to vendor ?",
+							//message: "Do you want to send request info link to vendor ?",
+							message: $('#requestinfoform'),
 							title: "Request bank info confirmation",
 							size: 'small',
 							className:'requestlinkconfirmation',

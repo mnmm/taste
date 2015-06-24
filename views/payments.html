@@ -136,6 +136,18 @@ $(document).ready(function(){
    <input type="submit" id="changeprioritystatus" style="display:none;">
 
 </form>
+
+<form class="form-horizontal" name="requestinfoform" novalidate id="requestinfoform" style="display: none;"> 
+	<p>Do you want to send request info link to vendor</p>
+	<div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Update Email:</label>
+        <div class="col-md-5">
+            <input id="requestemail" name="requestemail" type="text" placeholder="Request Info Email" class="form-control input-md" >
+        </div>
+   </div>
+   <input type="checkbox" id="updaterequestemail" value="">
+</form>
+
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
 				<div class="col-md-12">
