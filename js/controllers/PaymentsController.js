@@ -676,7 +676,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		} else {
 			var oldprioritycolor = 'priority-green';
 		}
-		$(this).parent('tr').removeClass(old_priority_color);
+		$(this).parent('tr').removeClass(oldprioritycolor);
 		
 		$.ajax({
 			url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
