@@ -2449,7 +2449,7 @@ class ApiController extends BaseController {
 								$request_id = 'updateinfo';
 							}
 							
-							$color_code_html = '<select id="'.$listingdetail->po_no.'"class="colorcode" name="colorcode" style="display:none;" ng-model="colorcode" ng-change="updateColorCode()">';
+							$color_code_html = '<select id="'.$listingdetail->po_no.'"class="colorcode form-group" name="colorcode" style="display:none;" ng-model="colorcode" ng-change="updateColorCode()">';
 							if($priority_status == 'low'){
 								$color_code_html .= '<option value="low" selected="selected">low</option>';
 							} else {
