@@ -768,7 +768,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
     $(document).on("click", ".makepayment", function() {
 		var paymentamount = $(this).attr('data-payment-amount');
 		var poid =  $(this).attr('id');
-	
+	    var vendoremail =  $(this).attr('data-request-email-id');
 		//console.log('paymentamount'+paymentamount+'vendorid'+vendorid);
 		if(poid != ''){
 				if(paymentamount != 0){
@@ -848,7 +848,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 									
 									} else {
 										bootbox.dialog({
-											message: "Do you want to make payment to vendor?",
+											message: "Do you want to make payment to vendor "+vendoremail+"?",
 											title: "Payment Confirmation",
 											size: 'small',
 											className:'paymentlinkconfirmation',
