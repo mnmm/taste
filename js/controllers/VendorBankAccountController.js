@@ -1077,22 +1077,23 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 								closeButton: false,
 								className:'addaccountdetail',
 								buttons: {
-								  danger: {
+								  /*danger: {
 									label: "Cancel",
 									className: "cancel-btn",
 									callback: function() {
-										$('#manualAccount').find('input#datepickerhide').val(0);
+										//$('#manualAccount').find('input#datepickerhide').val(0);
 										bootbox.hideAll();	
 									}
-								  },
+								  },*/
 								  success: {
-									label: "Save",
+									label: "Done",
 									className: "main-btn",
 									callback: function() {
 										//console.log('comes here');
 										
 										//$('#manualBankAccount').find('input#savemanualbankinfo').click();
-										$('#manualAccount').find('input#savemanualbankinfo').click();
+										//$('#manualAccount').find('input#savemanualbankinfo').click();
+										bootbox.hideAll();	
 										return false;
 									}
 								  }
