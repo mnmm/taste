@@ -1127,7 +1127,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							.on('shown.bs.modal', function() {
 
 								$('#manualAccount').show(); 
-								$('#manualAccount').validate().resetForm(); 	
+								//$('#manualAccount').validate().resetForm(); 	
 									
 							})
 							.on('hide.bs.modal', function(e) {
