@@ -662,8 +662,14 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		  
     });
     
+    $scope.updateColorCode = function() {
+		console.log('comes here');
+	}
+    
     $(document).on("click", ".sorting_1", function() {
 		$(this).find('select#colorcode').css('display','inline-block');
+		var currentpriority = $(this).parent('tr').attr('ClassName');
+		var priority = $(this).find("input[name='prioritystatus']").val();
 		/*console.log('comes here');
 		var currentstatus = $(this).parent().prop('className');
 		console.log(currentstatus);
