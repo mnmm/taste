@@ -1154,5 +1154,13 @@
 			return 1;
 
 	  }
+	  
+	  //function to update Po priority 
+		public static function update_vendor_mailing_address($vendorid,$mailingaddress){
+			
+			$get_vendor_info =  DB::table('w9form')->where('vendorid','=',$vendorid)->update(array('address' => $mailingaddress));
+			return 1;
+
+	  }
 	
 }

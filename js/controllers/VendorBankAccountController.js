@@ -1046,8 +1046,32 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 
 	}
 	
-	//function to add payee details
+	//function to update mailing address
+	$scope.editMailingAddress = function () {
+		//console.log('comes here');
+		$('#manualAccount').find('input#mailingaddress').attr("readonly", false);
+		$('#manualAccount').find('i#updateaddress').css('display','inline-block');
+		$('#manualAccount').find('i#editaddress').css('display','none');
+		
+	}
+	
+	//function to update mailing address
 	$scope.updateMailingAddress = function () {
+		var mailingaddress = $('#manualAccount').find('input#mailingaddress').val();
+		
+		var vendoruserid  = localStorage.getItem('userid');
+		$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+		$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+		$http.post($scope.apppath+'/api/getunpaidpo',{action:'updatemailingaddress',vendorid:vendoruserid,mailingaddress:mailingaddress}).
+		success(function(data) {
+			if(data.status_code == 200){
+				if(data.updatedmailingaddress == 1){
+					$('#manualAccount').find('input#mailingaddress').attr("readonly", true);
+					$('#manualAccount').find('i#updateaddress').css('display','none');
+					$('#manualAccount').find('i#editaddress').css('display','inline-block');
+				}
+			}
+		});
 		
 	}
 	

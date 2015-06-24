@@ -2211,6 +2211,28 @@ class ApiController extends BaseController {
 				$poid = '';
 			}
 		}
+		
+		if($action == 'updatemailingaddress'){
+			
+			if (array_key_exists("mailingaddress", $data1))
+			{
+				$mailingaddress = $data1->mailingaddress;
+			}
+			else
+			{
+				$mailingaddress = '';
+			}
+			
+			if (array_key_exists("vendorid", $data1))
+			{
+				$vendorid = $data1->vendorid;
+			}
+			else
+			{
+				$vendorid = '';
+			}
+
+		}
 
 		
 		$validate_data = array(
@@ -3050,6 +3072,16 @@ class ApiController extends BaseController {
 					$result['status_code']=201;
 					$result['updated'] = 0;
 				}
+			} else if($action == 'updatemailingaddress'){
+				$update_mailing_address = PoDetail::update_vendor_mailing_address($vendorid,$mailingaddress);
+				if(isset($check_invite_valid) &&  $check_invite_valid != ''){
+					$result['status_code']=200;
+					$result['updatedmailingaddress'] = 1;
+				} else {
+					$result['status_code']=201;
+					$result['updatedmailingaddress'] = 0;
+				}
+	
 			}
 				
 			$json_result = str_replace('null','""',json_encode($result));
