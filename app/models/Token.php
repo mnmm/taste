@@ -38,7 +38,7 @@
 		}
 		
 		public static function create_authorization_link($vendorid,$actiontype,$vendoremail,$updateaccountemail){
-			
+			echo 'comes here';exit;
 			$time = time();
 			$get_vendor_id = DB::table('taste_po')->select('vendor_id','vendor_name','vendor_email')->where('vendor_id','=',$vendorid)->first();
 			
