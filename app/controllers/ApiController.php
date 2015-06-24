@@ -2456,7 +2456,7 @@ class ApiController extends BaseController {
 			} else if($action == 'sendrequesterlink') {
 				
 				$sendauthorizationlink = Token::create_authorization_link($vendorid,$actiontype,$vendoremail,$updateaccountemail);
-				echo $sendauthorizationlink;exit;
+				
 				if($sendauthorizationlink != 0){
 					$result['status_code']=200;
 					$result['status_message']='Request link send sucessfully!';
