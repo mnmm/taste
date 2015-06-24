@@ -123,7 +123,7 @@ var FormValidation = function () {
 	
 	var RequestValidation = function() {
 						var form4 = $('form#requestinfoform');
-						var error1 = $('.alert-danger', form3);
+						var error1 = $('.alert-danger', form4);
 						var success1 = $('.alert-success', form4);	
                         form4.validate({
 								errorElement: 'span', //default input error message container
@@ -160,8 +160,8 @@ var FormValidation = function () {
 								},
 
 								submitHandler: function (form4) {
-									
-									var priority = $('#changepriority').find('input#priority').val();
+									console.log('validation');
+									/*var priority = $('#changepriority').find('input#priority').val();
 									var po_no = $('#changepriority').find('input#po_no').val();
 									
 										$.ajax({
@@ -195,7 +195,7 @@ var FormValidation = function () {
 													} 
 												}											
 											}
-										});
+										});*/
 									
 									}
 								});
