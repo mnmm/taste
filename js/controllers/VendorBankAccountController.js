@@ -1052,84 +1052,84 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			$http.get($scope.apppath+"/api/checklogin").
 				success(function(data1) {
 					$scope.userroleInfo = data1;
-					 vendoruserid = $scope.userroleInfo.id;
-			
-			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
-			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-			$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
-			success(function(data, status, headers, config) {
-				if(data.status_code == 200){
-					
-					bootbox.dialog({
-						title:'Please add your checking account details',
-						message: $('#manualAccount'),
-						show: false,
-						animate:true,
-						closeButton: false,
-						className:'addaccountdetail',
-						buttons: {
-						  danger: {
-							label: "Cancel",
-							className: "cancel-btn",
-							callback: function() {
-								$('#manualAccount').find('input#datepickerhide').val(0);
-								bootbox.hideAll();	
-							}
-						  },
-						  success: {
-							label: "Save",
-							className: "main-btn",
-							callback: function() {
-								//console.log('comes here');
-								
-								//$('#manualBankAccount').find('input#savemanualbankinfo').click();
-								$('#manualAccount').find('input#savemanualbankinfo').click();
-								return false;
-							}
-						  }
-						} 
-					})
-					.on('shown.bs.modal', function() {
+					vendoruserid = $scope.userroleInfo.id;
+					 
+					$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+					$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
+					$http.post($scope.apppath+'/api/getunpaidpo',{action:'getpayeename',vendorid:vendoruserid}).
+					success(function(data, status, headers, config) {
+						if(data.status_code == 200){
+							
+							bootbox.dialog({
+								title:'Please add your checking account details',
+								message: $('#manualAccount'),
+								show: false,
+								animate:true,
+								closeButton: false,
+								className:'addaccountdetail',
+								buttons: {
+								  danger: {
+									label: "Cancel",
+									className: "cancel-btn",
+									callback: function() {
+										$('#manualAccount').find('input#datepickerhide').val(0);
+										bootbox.hideAll();	
+									}
+								  },
+								  success: {
+									label: "Save",
+									className: "main-btn",
+									callback: function() {
+										//console.log('comes here');
+										
+										//$('#manualBankAccount').find('input#savemanualbankinfo').click();
+										$('#manualAccount').find('input#savemanualbankinfo').click();
+										return false;
+									}
+								  }
+								} 
+							})
+							.on('shown.bs.modal', function() {
 
-						$('#manualAccount').show(); 
-						$('#manualAccount').validate().resetForm(); 	
+								$('#manualAccount').show(); 
+								$('#manualAccount').validate().resetForm(); 	
+									
+							})
+							.on('hide.bs.modal', function(e) {
 							
-					})
-					.on('hide.bs.modal', function(e) {
-					
-						/*var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val();
-						
-						if (hiddendatepicker == 1) {
-							// datepicker is open. you need the second condition because it starts off as visible but empty
-						} else {
-							console.log('hiddendatepicker'+hiddendatepicker);
-							$('#manualAccount').hide().appendTo('.fade-in-up');  
-						}*/
-						
-						
-					})
-					.modal('show');
-					
-					//$('#manualBankAccount').find('input#paymenttype').val('manual');
-					//$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
-					$('#manualAccount').find('#accountingpopover').click();
-					$('#manualAccount').find('#routingpopover').click();
-					var routingcss = 0;
-					$('#manualAccount').find('.popover').each(function(){
-						if(routingcss != 0){
-							$(this).css('display','block');
-						} else {
+								/*var hiddendatepicker = $('#manualAccount').find('input#datepickerhide').val();
+								
+								if (hiddendatepicker == 1) {
+									// datepicker is open. you need the second condition because it starts off as visible but empty
+								} else {
+									console.log('hiddendatepicker'+hiddendatepicker);
+									$('#manualAccount').hide().appendTo('.fade-in-up');  
+								}*/
+								
+								
+							})
+							.modal('show');
 							
-							$(this).css('left','231.167px');
-							$(this).css('top','-91.5px');
-						}
-						routingcss++;
+							//$('#manualBankAccount').find('input#paymenttype').val('manual');
+							//$('#manualBankAccount').find('input#tax_id').val(data.taxinfo);
+							$('#manualAccount').find('#accountingpopover').click();
+							$('#manualAccount').find('#routingpopover').click();
+							var routingcss = 0;
+							$('#manualAccount').find('.popover').each(function(){
+								if(routingcss != 0){
+									$(this).css('display','block');
+								} else {
+									
+									$(this).css('left','231.167px');
+									$(this).css('top','-91.5px');
+								}
+								routingcss++;
+							});
+							$('#manualAccount').find('input#paymenttype').val('manual');
+							$('#manualAccount').find('input#tax_id').val(data.taxinfo);
+							
+						} 		
 					});
-					$('#manualAccount').find('input#paymenttype').val('manual');
-					$('#manualAccount').find('input#tax_id').val(data.taxinfo);
-					
-				} 		
-			});
 		});
 
 	}
