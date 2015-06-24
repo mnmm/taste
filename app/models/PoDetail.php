@@ -617,6 +617,8 @@
 				if(isset($get_vendor_name_info->update_account_email_id) &&  $get_vendor_name_info->update_account_email_id != '' && $get_vendor_name_info->update_account_email_id != 0){
 					$get_vendor_name_info = DB::table('updated_vendors_emails')->leftjoin('taste_po','updated_vendors_emails.vendorid', '=', 'taste_po.vendor_id')->where('updated_vendors_emails.email',$email)->first();
 				} 
+				print_r($get_vendor_name_info);exit;
+				
 				if(strpos($get_vendor_name_info->vendor_name,' ') !== false) {
 					$extract_name = explode(' ',$get_vendor_name_info->vendor_name);
 					$register->firstname = $extract_name[0];
