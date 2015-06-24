@@ -241,7 +241,9 @@ var FormValidation = function () {
 									airwaybill: {
 										required:true
 									}*/
-									bankname:{
+									
+									
+									/*bankname:{
 										required:true,
 									},
 									nameonaccount:{
@@ -261,8 +263,10 @@ var FormValidation = function () {
 										equalTo : "#account_number_manual",
 										digits: true,
 										maxlength:17
+									}*/
+									mailingaddress: {
+										required:true
 									}
-									
 								},
 
 								invalidHandler: function (event, validator) { //display error alert on form submit              
@@ -289,7 +293,7 @@ var FormValidation = function () {
 								submitHandler: function () {
 									
 									var vendoruserid  = localStorage.getItem('userid');
-									
+									var mailingaddress = $('#manualAccount').find('input#mailingaddress').val();
 									/*var check = $('#manualAccount').find('input#check').val();
 									var checkdate =  $('#manualAccount').find('input#checkdate').val();
 									var carrier =  $('#manualAccount').find('select#carrier').val();
@@ -304,12 +308,13 @@ var FormValidation = function () {
 									var state =$('#manualAccount').find('input#state').val();
 									var zip =$('#manualAccount').find('input#zip').val();*/
 									
-									var bankname = $('#manualAccount').find('input#bankname').val();
+									/*var bankname = $('#manualAccount').find('input#bankname').val();
 									var nameonaccount = $('#manualAccount').find('input#nameonaccount').val();
 									var mailingaddress =  $('#manualAccount').find('input#mailingaddress').val();
 									var routing_number =  $('#manualAccount').find('input#routing').val();
 									var account_number =  $('#manualAccount').find('input#account_number_manual').val();
-									var id =$('#manualAccount').find('input#bankaccountid').val();
+									var id =$('#manualAccount').find('input#bankaccountid').val();*/
+									
 									var authcode = localStorage.getItem('payauthtoken');
 								     
 										$.ajax({
@@ -318,16 +323,17 @@ var FormValidation = function () {
 											data: {
 												action: 'savebankaccountinfomanual',
 												vendorid:vendoruserid,
+												mailingaddress:mailingaddress,
 												/*check:check,
 												checkdate:checkdate,
 												carrier:carrier,
 												airwaybill:airwaybill,*/
-												bankname:bankname,
+												/*bankname:bankname,
 												nameonaccount:nameonaccount,
 												routing_number:routing_number,
 												account_number:account_number,
 												mailingaddress:mailingaddress,
-												bankid:id,
+												bankid:id,*/
 												authcode:authcode
 											},
 											headers: {
@@ -1040,7 +1046,10 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 
 	}
 	
-	
+	//function to add payee details
+	$scope.updateMailingAddress = function () {
+		
+	}
 	
 	
 	
