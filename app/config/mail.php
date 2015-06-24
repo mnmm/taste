@@ -31,8 +31,7 @@ return array(
 
 	//'host' => 'smtp.mailgun.org',
 	//'host' => 'smtp-mail.outlook.com',
-	//'host' => 'hud.macnn.com',
-	'host' => 'mx1.macnn.com',
+	'host' => 'hud.macnn.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -60,7 +59,6 @@ return array(
 	*/
 
 	//'from' => array('address' => null, 'name' => null),
-	//'from' => array('address' => 'noreply@gfoodtrucks.com', 'name' => 'G Food Lounge'),
 	'from' => array('address' => 'noreply@gfoodtrucks.com', 'name' => 'G Food Lounge'),
 
 	/*
@@ -75,7 +73,6 @@ return array(
 	*/
 
 	//'encryption' => '',
-	//'encryption' => 'ssl',
 	'encryption' => 'ssl',
 
 	/*
@@ -89,8 +86,7 @@ return array(
 	|
 	*/
 
-	//'username' => 'noreply@gfoodtrucks.com',
-		'username' => 'noreply@gfoodtrucks.com',
+	'username' => 'noreply@gfoodtrucks.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -103,8 +99,7 @@ return array(
 	|
 	*/
 
-//	'password' => 'vuzEcr8sTe',
-'password' => 'm79NZ6!H',
+	'password' => 'vuzEcr8sTe',
 
 	/*
 	|--------------------------------------------------------------------------
