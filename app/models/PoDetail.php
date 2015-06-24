@@ -1084,6 +1084,7 @@
 				$vendor_email  = $get_vendor_info->vendor_email;
 			}
 			//if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
+			echo '$vendor_email'.$vendor_email;
 				$user_data = DB::table('users')->where('email','=',$vendor_email)->first();
 				if($user_data->transfer_option == 1){
 					$get_payee_info = DB::table('w9form')->where('email','=',$vendor_email)->first();
