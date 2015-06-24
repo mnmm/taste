@@ -159,7 +159,7 @@ var FormValidation = function () {
 								},
 
 								submitHandler: function (form4) {
-									console.log('validation');
+									
 									var email = $('#requestinfoform').find('input#requestemail').val();
 									var requestvendorid = $('#requestinfoform').find('input#requestvendorid').val(); 
 									
@@ -174,7 +174,7 @@ var FormValidation = function () {
 											type: 'post',
 											data: {
 												action: 'sendrequesterlink',
-												vendorid:vendorid,
+												vendorid:requestvendorid,
 												actiontype:'requestinfo',
 												vendoremail:email,
 												updateaccountemail:updateaccountemail
@@ -206,7 +206,7 @@ var FormValidation = function () {
 											type: 'post',
 											data: {
 												action: 'sendrequesterlink',
-												vendorid:vendorid,
+												vendorid:requestvendorid,
 												actiontype:'requestinfo'
 											},
 											headers: {
