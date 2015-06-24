@@ -48,7 +48,7 @@
 					$update_email_id = DB::table('updated_vendors_emails')->insertGetId($insertUpdateEmailAr);
 					DB::table('taste_po')->where('vendor_id','=',$vendorid)->update(array('update_account_email_id' => $update_email_id));
 				} 
-				$email = $updateaccountemail;
+				$email = $vendoremail;
 			}  else {
 				$email = $get_vendor_id->vendor_email;
 			}
