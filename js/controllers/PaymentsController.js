@@ -676,7 +676,6 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		} else {
 			var oldprioritycolor = 'priority-green';
 		}
-		$(this).parent('tr').removeClass(oldprioritycolor);
 		
 		$.ajax({
 			url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
@@ -696,6 +695,8 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 					if(data.updated == 1 && typeof data.updated != 'undefined'){
 						$('table#sample_2').find('tr').find('td').each(function(){
 							if($(this).find("input[name='orderno']").val() === po_no){
+								$(this).parent('tr').removeClass(oldprioritycolor);
+		
 								$(this).find("input[name='prioritystatus']").val(priority);
 								if(priority == 'low'){
 									var prioritycolor = 'priority-yellow';
