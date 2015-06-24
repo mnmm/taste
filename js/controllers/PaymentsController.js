@@ -712,7 +712,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 								}
 								$(this).find("input[name='color']").val(newcolor);
 								$(this).parent('tr').addClass(prioritycolor);
-								$(this).css('display','none');
+								$(this).find('select#'+po_no).css('display','none');
 							}
 						});
 					}
