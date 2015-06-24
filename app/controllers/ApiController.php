@@ -2467,7 +2467,7 @@ class ApiController extends BaseController {
 			} else if($action == 'getaccountinfo') {
 				//$check_user_exists = PoDetail::check_vendor_exists($accesshash);
 				$vendoraccountinfo  = PoDetail::get_vendor_details($accesshash,$email);
-				print_r($vendoraccountinfo);exit;
+				
 				if(isset($vendoraccountinfo['email']) || isset($vendoraccountinfo['tokenstatus']) || isset($vendoraccountinfo['aleadyexists'])){ 
 					$result['status_code']=200;
 					if(isset($vendoraccountinfo['email'])){
