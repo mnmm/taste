@@ -408,7 +408,7 @@ MetronicApp.controller('InviteController', function($rootScope, $scope, $http, $
 			
 			var email = $(this).attr('data-invite');
 			var vendoruserid  = localStorage.getItem('userid');
-			var message = $('#manageBankAccounts').find('#message').val();
+			var message = $('div#invitemessage').find('#message').val();
 			$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 			$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 			$http.post($scope.apppath+'/api/getunpaidpo',{action:'sendinviteemail',email:email,message:message}).
