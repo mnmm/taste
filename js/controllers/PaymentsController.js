@@ -663,6 +663,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
     });
     
     $(document).on("click", ".sorting_1", function() {
+		$(this).find('select#colorcode').css('display','inline-block');
 		/*console.log('comes here');
 		var currentstatus = $(this).parent().prop('className');
 		console.log(currentstatus);
@@ -675,7 +676,8 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		} else {
 			var priority = 'hold';
 		}*/
-		var priority = $(this).find("input[name='prioritystatus']").val();
+		
+		/*var priority = $(this).find("input[name='prioritystatus']").val();
 		if(priority == 'low'){
 			var oldprioritycolor = 'priority-yellow';
 		} else if(priority == 'medium') {
@@ -705,9 +707,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 				label: "Update",
 				className: "main-btn",
 				callback: function() {
-					//console.log('priority status');
-					//$('#changepriority').find('#changeprioritystatus').click();
-					//return false;
+					
 					var priority = $('#changepriority').find('input#priority_status').val();
 					var po_no = $('#changepriority').find('input#po_no').val();
 					var old_priority_color = $('#changepriority').find('input#priority_old').val();
@@ -752,7 +752,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 			$('#changepriority').hide().appendTo('body');
 		})
 		.modal('show');
-		//$('#changepriority').find('label#'+priority).css('display','none');
+		
 		$('#changepriority').find('label').find('span').each(function(){
 			if($(this).hasClass('checked')){
 				$(this).removeClass('checked');
@@ -762,8 +762,8 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		$('#changepriority').find('label#'+priority).find('input#'+priority).prop('checked',true);
 		$('#changepriority').find('input#po_no').val(orderno);
 		$('#changepriority').find('input#priority_status').val(priority);
-		$('#changepriority').find('input#priority_old').val(oldprioritycolor);
-		//$('#changepriority').find('input#'+priority).css('display','none');
+		$('#changepriority').find('input#priority_old').val(oldprioritycolor);*/
+	
 	});
     
     $(document).on("click", ".makepayment", function() {
