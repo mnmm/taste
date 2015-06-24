@@ -52,6 +52,7 @@
 			}  else {
 				$email = $get_vendor_id->vendor_email;
 			}
+			echo $email;exit;
 			
 			if(isset($get_vendor_id->vendor_id) && $get_vendor_id->vendor_id != ''){
 				
