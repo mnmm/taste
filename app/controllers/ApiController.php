@@ -2342,7 +2342,7 @@ class ApiController extends BaseController {
 							//$paid_status = $paid_status_list[$listingdetail->paid_status];
 							//$status_html = '<span class="label label-sm label-'.$status.'">'.$listingdetail->status.'</span>';
 							$vendor_access_account = $listingdetail->update_account_email_id;
-							$get_transfer_option = PoDetail::check_transfer_option_vendor($listingdetail->po_no);
+							$get_transfer_option = PoDetail::get_transfer_option_vendor($listingdetail->po_no);
 							
 							if($vendor_access_account != 0){
 								
@@ -2410,7 +2410,7 @@ class ApiController extends BaseController {
 								
 															
 							} else {
-								if (strpos($get_transfer_option,'##') !== false) {
+								if ($get_transfer_option == 1) {
 									$pay_done_class = 'makepayment';
 									$payment_status = 'unpaid';
 								} else {
