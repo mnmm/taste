@@ -2491,7 +2491,7 @@ class ApiController extends BaseController {
 				}
 			}else if($action == 'createuseraccount') {
 				$vendoruserid  = PoDetail::create_vendor_account($email,$password);
-				print_r($vendoruserid);exit;
+			
 				if(isset($vendoruserid) && $vendoruserid != ''){ 
 					$result['status_code']=200;
 					$result['vendoruserid'] = $vendoruserid;
