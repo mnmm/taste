@@ -1074,7 +1074,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 			}
 		});
 		
-	}
+	});
 	
 	
 	
