@@ -1047,13 +1047,14 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	}
 	
 	//function to update mailing address
-	$scope.editMailingAddress = function () {
+	//$scope.editMailingAddress = function () {
+	$(document).on("click", ".fa-edit", function() {
 		console.log('comes here');
 		$('#manualAccount').find('input#mailingaddress').attr("readonly", false);
 		$('#manualAccount').find('i#updateaddress').css('display','inline-block');
 		$('#manualAccount').find('i#editaddress').css('display','none');
-		
-	}
+	});
+	//}
 	
 	//function to update mailing address
 	$scope.updateMailingAddress = function () {
