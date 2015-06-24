@@ -37,21 +37,25 @@
 			
 		}
 		
-		public static function create_authorization_link($vendorid,$actiontype,$vendoremail,$updateaccountemail){
+		public static function create_authorization_link($vendorid,$actiontype,$vendoremail,$updateaccountemail,$vendorupdateinfoemail){
 			
 			$time = time();
-			$get_vendor_id = DB::table('taste_po')->select('vendor_id','vendor_name','vendor_email')->where('vendor_id','=',$vendorid)->first();
-			
-			if(isset($vendoremail) && $vendoremail != '' && isset($get_vendor_id->vendor_id) && $get_vendor_id->vendor_id != ''){
-				if(isset($updateaccountemail) && $updateaccountemail != '' && $updateaccountemail == 1){
-					$insertUpdateEmailAr = array('vendorid' => $get_vendor_id->vendor_id,'email' => $vendoremail); 
-					$update_email_id = DB::table('updated_vendors_emails')->insertGetId($insertUpdateEmailAr);
-					DB::table('taste_po')->where('vendor_id','=',$vendorid)->update(array('update_account_email_id' => $update_email_id));
-				} 
-				$email = $vendoremail;
-			}  else {
-				$email = $get_vendor_id->vendor_email;
+			if(isset($vendorupdateinfoemail) && $vendorupdateinfoemail != '' && $actiontype == 'updateinfo'){
+				$email = $vendorupdateinfoemail;
+			} else {
+				$get_vendor_id = DB::table('taste_po')->select('vendor_id','vendor_name','vendor_email')->where('vendor_id','=',$vendorid)->first();
+				if(isset($vendoremail) && $vendoremail != '' && isset($get_vendor_id->vendor_id) && $get_vendor_id->vendor_id != ''){
+					if(isset($updateaccountemail) && $updateaccountemail != '' && $updateaccountemail == 1){
+						$insertUpdateEmailAr = array('vendorid' => $get_vendor_id->vendor_id,'email' => $vendoremail); 
+						$update_email_id = DB::table('updated_vendors_emails')->insertGetId($insertUpdateEmailAr);
+						DB::table('taste_po')->where('vendor_id','=',$vendorid)->update(array('update_account_email_id' => $update_email_id));
+					} 
+					$email = $vendoremail;
+				}  else {
+					$email = $get_vendor_id->vendor_email;
+				}
 			}
+			
 			//echo $email;exit;
 			
 			if(isset($get_vendor_id->vendor_id) && $get_vendor_id->vendor_id != ''){

@@ -1313,6 +1313,16 @@ class ApiController extends BaseController {
 				$vendoremail = '';
 
 			}
+			
+			if (array_key_exists("vendorupdateinfoemail", $data1))
+			{
+				$vendorupdateinfoemail = $data1->vendorupdateinfoemail;
+			}
+			else
+			{
+				$vendorupdateinfoemail = '';
+
+			}
 		}
 		
 		if($action == 'createuseraccount'){
@@ -2463,7 +2473,7 @@ class ApiController extends BaseController {
 				$result["allvendorsdetails"] = $allvendorsdetails;
 			} else if($action == 'sendrequesterlink') {
 				
-				$sendauthorizationlink = Token::create_authorization_link($vendorid,$actiontype,$vendoremail,$updateaccountemail);
+				$sendauthorizationlink = Token::create_authorization_link($vendorid,$actiontype,$vendoremail,$updateaccountemail,$vendorupdateinfoemail);
 				
 				if($sendauthorizationlink != 0){
 					$result['status_code']=200;

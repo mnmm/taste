@@ -939,7 +939,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 								callback: function() {
 									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
-									$http.post($scope.apppath+'/api/getunpaidpo',{vendorid:vendorid,action:'sendrequesterlink',actiontype:'updateinfo'}).
+									$http.post($scope.apppath+'/api/getunpaidpo',{vendorupdateinfoemail:vendoremail,vendorid:vendorid,action:'sendrequesterlink',actiontype:'updateinfo'}).
 										success(function(data, status, headers, config) {
 											if(data.status_code == 200){
 												bootbox.hideAll();	
