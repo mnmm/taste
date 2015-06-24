@@ -190,10 +190,10 @@ button#loginbtn{ float:right; }
 #register-submit-btn{ margin-right:18px;}
 .login .content .check{ margin-left:15px !important; }
 .form-group.margin-top-20.margin-bottom-20.has-error{ clear:both; }
-.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-yellow{ border-left: 4px solid yellow !important; }
-.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-orange{ border-left: 4px solid orange !important; }
-.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-red{ border-left: 4px solid red !important; }
-.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-green{ border-left: 4px solid green !important; }
+.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-yellow{ border-left: 6px solid yellow !important; }
+.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-orange{ border-left: 6px solid orange !important; }
+.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-red{ border-left: 6px solid red !important; }
+.portlet-body div.dataTables_wrapper .table-scrollable table.dataTable tbody tr.priority-green{ border-left: 6px solid green !important; }
 .login .logo{ margin-top:20px !important; }
 
 /**css for logout**/
