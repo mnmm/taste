@@ -963,6 +963,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						$('#requestinfoform').hide().appendTo('body');  
 					})
 					.modal('show');
+					$('#requestinfoform').find('p#requestmessage').html('Do you want to send request info link to vendor '+vendoremail+' ?');
 				}
 				
 			}
