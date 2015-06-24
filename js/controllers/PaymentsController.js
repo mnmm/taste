@@ -160,6 +160,18 @@ var FormValidation = function () {
 
 								submitHandler: function (form4) {
 									console.log('validation');
+									var email = $('#requestinfoform').find('input#requestemail').val();
+									var requestvendorid = $('#requestinfoform').find('input#requestvendorid').val(); 
+									if(email != '' && typeof email != 'undefined'){
+										if($('#updaterequestemail').is(':checked')){
+											var updateaccountemail = 1
+										} else {
+											var updateaccountemail = 0;
+										}
+										console.log('email'+email+'updateaccountemail'+updateaccountemail);
+									} else {
+										var email = 
+									}
 									/*var priority = $('#changepriority').find('input#priority').val();
 									var po_no = $('#changepriority').find('input#po_no').val();
 									
@@ -966,6 +978,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 					.modal('show');
 					$('#requestinfoform').find('p#requestmessage').html('Do you want to send request info link to vendor '+vendoremail+' ?');
 					$('#requestinfoform').find('input#requestvendorid').val(vendorid);
+					$('#requestinfoform').find('input#requestvendoremail').val(vendoremail);
 				}
 				
 			}
