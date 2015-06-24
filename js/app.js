@@ -524,7 +524,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state('dashboard', {
             url: "/dashboard.html",
             templateUrl: "views/dashboard.html",            
-            data: {pageTitle: 'Admin Dashboard Template', authorizedRoles: ['admin']},
+            data: {pageTitle: 'Admin Dashboard', authorizedRoles: ['admin']},
             controller: "DashboardController",
             showHeader : true,
             resolve: {
@@ -575,7 +575,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("settings", {
             url: "/settings",
             templateUrl: "views/settings.html",
-            data: {pageTitle: 'Vendor Settings', authorizedRoles: ['vendor','admin','all']},
+            data: {pageTitle: 'Settings', authorizedRoles: ['vendor','admin','all']},
             controller: "SettingsController",
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
@@ -1003,7 +1003,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("vendordashboard", {
             url: "/vendors",
             templateUrl: "views/vendor/dashboard.html",
-            data: {pageTitle: 'Vendor Account', authorizedRoles: ['vendor']},
+            data: {pageTitle: 'Vendor Dashboard', authorizedRoles: ['vendor']},
             controller: "VendorDashboardController",
             resolve: {
 				/*auth: function resolveAuthentication(AuthResolver) { 
@@ -1054,7 +1054,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("vendorw9form", {
             url: "/vendors/w9form",
             templateUrl: "views/vendor/w9form.html",
-            data: {pageTitle: 'Vendor w9Form', authorizedRoles: ['vendor']},
+            data: {pageTitle: 'w9Form', authorizedRoles: ['vendor']},
             controller: "VendorW9FormController",
             resolve: {
 				auth: ["$q", "authenticationSvc", function($q, authenticationSvc) {
@@ -1098,7 +1098,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider','USER_ROLES', functio
         .state("addbankinfo", {
             url: "/vendors/addbankinfo",
             templateUrl: "views/vendor/addbankinfo.html",
-            data: {pageTitle: 'Vendor Bank Account Info', authorizedRoles: ['vendor']},
+            data: {pageTitle: 'Bank Account Info', authorizedRoles: ['vendor']},
             controller: "VendorBankAccountController",
             resolve: {
 				
