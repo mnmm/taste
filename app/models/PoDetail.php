@@ -637,8 +637,6 @@
 					}
 
 				}
-				
-				echo $register->firstname.$register->lastname;exit;
 				$register->email = $email;
 				$register->password = Hash::make($password);
 				$register->usertype = 2;
