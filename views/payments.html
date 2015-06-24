@@ -141,12 +141,17 @@ $(document).ready(function(){
 	<p id="requestmessage">Do you want to send request info link to vendor</p>
 	<span style="margin:0 auto;font-weight:bold;">OR</span>
 	<div class="form-group" id="mailinginfo">
-		<label class="col-md-5 control-label" for="name">Update Email:</label>
+		<label class="col-md-5 control-label" for="name">Request Email:</label>
         <div class="col-md-5">
-            <input id="requestemail" name="requestemail" type="text" placeholder="Request Info Email" class="form-control input-md" >
+            <input id="requestemail" name="requestemail" type="text" placeholder="Email Address" class="form-control input-md" >
         </div>
    </div>
-   <input type="checkbox" id="updaterequestemail" value="">
+   <div class="form-group" id="mailinginfo">
+		<label class="col-md-5 control-label" for="name">Update Email:</label>
+		<div class="col-md-5">
+			<input type="checkbox" id="updaterequestemail" value="">
+		</div>
+  </div>
 </form>
 
 <!-- BEGIN PAGE CONTENT-->
