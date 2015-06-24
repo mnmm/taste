@@ -1061,18 +1061,23 @@
 		public static function check_transfer_option_vendor($poid){
 			
 			$get_vendor_info =  DB::table('taste_po')->where('po_no','=',$poid)->first();
-		
-			if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
-				$user_data = DB::table('users')->where('email','=',$get_vendor_info->vendor_email)->first();
+			if(isset($get_vendor_info->update_account_email_id) && $get_vendor_info->update_account_email_id != 0){
+				$get_vendor_email = DB::table('updated_vendors_emails')->where('id',$get_vendor_info->update_account_email_id)->first();
+				$vendor_email  = $get_vendor_email->email;
+			} else {
+				$vendor_email  = $get_vendor_info->vendor_email;
+			}
+			//if(isset($get_vendor_info->id) && $get_vendor_info->id != ''){
+				$user_data = DB::table('users')->where('email','=',$vendor_email)->first();
 				if($user_data->transfer_option == 1){
-					$get_payee_info = DB::table('w9form')->where('email','=',$get_vendor_info->vendor_email)->first();
+					$get_payee_info = DB::table('w9form')->where('email','=',$vendor_email)->first();
 					return $user_data->transfer_option.'##'.$get_payee_info->payeename.'##'.$get_payee_info->address;
 				} else {
 					return $user_data->transfer_option;
 				}
-			} else {
+			/*} else {
 				return 0;
-			}
+			}*/
 			
 		}
 		
