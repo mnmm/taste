@@ -134,11 +134,35 @@ var FormValidation = function () {
 								   
 								},
 								rules: {
+								   requestemail:{
+									  /*required: function (element) {
+										 if($("#updaterequestemail").is(':checked'))
+										 {
+											 var e = document.getElementById("requestemail");
+											 if(e.value=="")
+											 {
+												return true;  
+											 } 
+											 else
+											 {
+												return false;
+											 } 
+										 }
+										 else
+										 {
+											 return false;
+										 }  
+									  }*/
+									  depends: function(){
+										return $('#updaterequestemail').is(':checked')
+									 }  
+								   }
+							   },
+								/*rules: {
 									requestemail:{
 										required:true
 									}
-								},
-
+								},*/
 								invalidHandler: function (event, validator) { //display error alert on form submit              
 									success1.hide();
 									Metronic.scrollTo(error1, -200);
