@@ -1089,7 +1089,7 @@
 				if(isset($user_data->transfer_option) && $user_data->transfer_option == 1){
 					$get_payee_info = DB::table('w9form')->where('email','=',$vendor_email)->first();
 					return $user_data->transfer_option.'##'.$get_payee_info->payeename.'##'.$get_payee_info->address;
-				} else if($user_data->transfer_option == 0){
+				} else if(isset($user_data->transfer_option) &&  $user_data->transfer_option == 0){
 					return $user_data->transfer_option;
 				} else {
 					return 0;
