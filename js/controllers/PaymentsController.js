@@ -355,6 +355,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
 						"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
 							//console.log('in this function'+aData[0]);
+							console.log(aData[0]);
 							if (aData[0].indexOf("low") >= 0){
 								//$('tr', nRow).addClass('yellow');
 								nRow.className = 'priority-yellow';

@@ -2451,24 +2451,24 @@ class ApiController extends BaseController {
 							
 							$color_code_html = '<select id="colorcode" name="colorcode" style="display:none;">';
 							if($priority_status == 'low'){
-								$color_code_html .= '<option value="lw" selected="selected">low</option>';
+								$color_code_html .= '<option value="low" selected="selected">low</option>';
 							} else {
-								$color_code_html .= '<option value="lw">low</option>';
+								$color_code_html .= '<option value="low">low</option>';
 							}
 							if($priority_status == 'medium'){
-								$color_code_html .= '<option value="med" selected="selected">medium</option>';
+								$color_code_html .= '<option value="medium" selected="selected">medium</option>';
 							} else {
-								$color_code_html .= '<option value="med">medium</option>';
+								$color_code_html .= '<option value="medium">medium</option>';
 							}
 							if($priority_status == 'high'){ 
-								$color_code_html .= '<option value="hi" selected="selected">high</option>';
+								$color_code_html .= '<option value="high" selected="selected">high</option>';
 							} else {
-								$color_code_html .= '<option value="hi">high</option>';
+								$color_code_html .= '<option value="high">high</option>';
 							}
 							if($priority_status == 'hold'){ 
-								$color_code_html .= '<option value="ho" selected="selected">hold</option>';
+								$color_code_html .= '<option value="hold" selected="selected">hold</option>';
 							} else {
-								$color_code_html .= '<option value="ho">hold</option>';
+								$color_code_html .= '<option value="hold">hold</option>';
 							}
 							$color_code_html .='<select>';
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
