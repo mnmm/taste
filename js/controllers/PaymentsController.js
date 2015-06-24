@@ -121,8 +121,8 @@ var FormValidation = function () {
 	}
 	
 	
-	/*var PriorityValidation = function() {
-						var form4 = $('form#changepriority');
+	var RequestValidation = function() {
+						var form4 = $('form#requestinfoform');
 						var error1 = $('.alert-danger', form3);
 						var success1 = $('.alert-success', form4);	
                         form4.validate({
@@ -134,14 +134,13 @@ var FormValidation = function () {
 								   
 								},
 								rules: {
-									priority:{
+									requestemail:{
 										required:true
 									}
 								},
 
 								invalidHandler: function (event, validator) { //display error alert on form submit              
 									success1.hide();
-									//error1.show();
 									Metronic.scrollTo(error1, -200);
 								},
 
@@ -161,7 +160,7 @@ var FormValidation = function () {
 								},
 
 								submitHandler: function (form4) {
-									alert('comes here');
+									
 									var priority = $('#changepriority').find('input#priority').val();
 									var po_no = $('#changepriority').find('input#po_no').val();
 									
@@ -200,14 +199,14 @@ var FormValidation = function () {
 									
 									}
 								});
-	}*/
+	}
 
 	return {
         //main function to initiate the module
         init: function () {
           
             ManualBankAccountValidation();
-           // PriorityValidation();
+            RequestValidation();
         }
 
     };
@@ -883,7 +882,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		var vendorid = $(this).attr('data-request-id');
 		var actiontype =  $(this).attr('id');
 		var vendoremail =  $(this).attr('data-request-email-id');
-	
+		
 		//console.log($(this).attr('data-request-id'));
 		if(vendorid != ''){
 				if(actiontype == 'updateinfo'){
@@ -939,7 +938,10 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 								label: "Continue",
 								className: "main-btn",
 								callback: function() {
-									$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
+									console.log();
+									$('input#requestinfobtn').click();
+									return false;
+									/*$http.defaults.headers.common['x-taste-request-timestamp'] = Math.floor((new Date().getTime()/1000));
 									$http.defaults.headers.common['x-taste-access-token'] =localStorage.getItem('access_token');
 									$http.post($scope.apppath+'/api/getunpaidpo',{vendorid:vendorid,action:'sendrequesterlink',actiontype:'requestinfo'}).
 										success(function(data, status, headers, config) {
@@ -948,7 +950,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 											} else {
 												createauthtoken(sendrequestlink);
 											}
-									});
+									});*/
 								}
 							  }
 							}
@@ -964,6 +966,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 					})
 					.modal('show');
 					$('#requestinfoform').find('p#requestmessage').html('Do you want to send request info link to vendor '+vendoremail+' ?');
+					$('#requestinfoform').find('input#requestvendorid').val(vendorid);
 				}
 				
 			}
