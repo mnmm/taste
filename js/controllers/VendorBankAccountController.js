@@ -1048,7 +1048,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	
 	//function to update mailing address
 	$scope.editMailingAddress = function () {
-		//console.log('comes here');
+		console.log('comes here');
 		$('#manualAccount').find('input#mailingaddress').attr("readonly", false);
 		$('#manualAccount').find('i#updateaddress').css('display','inline-block');
 		$('#manualAccount').find('i#editaddress').css('display','none');
