@@ -169,7 +169,7 @@ class ApiController extends BaseController {
 										'pdf_status'=>1,
 										'url_status'=>1,
 										'requester_name'=>'Gfood Lounge',
-										'external_notes_show'=>1,
+										'external_notes_show'=>0,
 										'api_version'=>'v1',
 										'reminder_code'=>$reminder_code,
 									));
