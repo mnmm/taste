@@ -2309,9 +2309,17 @@ class ApiController extends BaseController {
 							//$status = $status_list[$listingdetail->status];
 							//$paid_status = $paid_status_list[$listingdetail->paid_status];
 							//$status_html = '<span class="label label-sm label-'.$status.'">'.$listingdetail->status.'</span>';
+							$vendor_access_account = $listingdetail->update_account_email_id;
+							if($vendor_access_account != 0){
+								
+								$get_vendor_email = DB::table('updated_vendors_emails')->where('vendorid',$listingdetail->vendor_id)->first();
+								$check_bank_details = PoDetail::check_bank_details_filled($get_vendor_email->email);
+								$vendor_email = $get_vendor_email->email;
+							} else {
+								$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
+								$vendor_email = $listingdetail->email;
+							}
 							
-							$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
-
 							$payment_title = '';
 							$payment_content = '';
 							if($listingdetail->vendor_paid_status == 1){
@@ -2401,7 +2409,7 @@ class ApiController extends BaseController {
 							
 							
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
-							$result['data'][]= array($listingdetail->po_no.'<input type="hidden" name="prioritystatus" value="'.$priority_status.'"><input type="hidden" name="orderno" value="'.$listingdetail->po_no.'">',$podate,$listingdetail->vendor_name,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" >Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'" data-request-email-id="'.$listingdetail->vendor_email.'">'.$request_status.'</button>');
+							$result['data'][]= array($listingdetail->po_no.'<input type="hidden" name="prioritystatus" value="'.$priority_status.'"><input type="hidden" name="orderno" value="'.$listingdetail->po_no.'">',$podate,$listingdetail->vendor_name,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" >Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'" data-request-email-id="'.$vendor_email.'">'.$request_status.'</button>');
 						//}
 						$i++;
 					}
