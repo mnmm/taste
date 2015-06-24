@@ -2958,15 +2958,15 @@ class ApiController extends BaseController {
 						
 					    if($userinfo->invite_status==2)
 						{
-							$popovercontent = "Please click send email <br/>button to send invitation";
+							$popovercontent = "Please click send email button to send invitation";
 							$action_html .='<a href="javascript:void(0);" class="pull-left btn btn-xs default btn-editable addnew sendemail sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover"  data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" ng-click="openSendEmailPopUp(\''.$useremail.'\');" data-trigger="hover" data-invite="'.$useremail.'"><span class="create-new edit sendemaillink">Send Email</span></a>';
 						} else if($userinfo->invite_status==3){
 							
-							$popovercontent = "Last invite sent on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
+							$popovercontent = "Email sent on ".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
 							$action_html .= '<a href="javascript:void(0);" ng-click="openSendEmailPopUp(\''.$useremail.'\');" class="pull-left btn btn-xs addnew default btn-editable sendemail sentdate popover-dismiss-acc" data-toggle="popover" data-placement="left" data-html="true" data-content="'.$popovercontent.'" data-id="'.$useremail.'" data-trigger="hover" data-invite="'.$useremail.'"><span class="create-new edit sendemaillink">Resend Email</span></a>';
 							
 						} else if($userinfo->invite_status==1){
-							$popovercontent = "Invitation accepted on<br/>".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
+							$popovercontent = "Invitation accepted on".date('F jS \a\t H:i',strtotime($userinfo->sent_date));
 							$action_html .= '<a href="javascript:void(0);" class="btn btn-xs pull-left default btn-editable addnew sentdate popover-dismiss-acc" data-placement="left" data-toggle="popover" data-html="true" data-content="'.$popovercontent.'" data-trigger="hover" ><span class="create-new activate" data-trigger="hover">Accepted</span></a>';
 						 }
 						 
