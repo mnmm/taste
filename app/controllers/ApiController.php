@@ -3074,7 +3074,7 @@ class ApiController extends BaseController {
 				}
 			} else if($action == 'updatemailingaddress'){
 				$update_mailing_address = PoDetail::update_vendor_mailing_address($vendorid,$mailingaddress);
-				if(isset($check_invite_valid) &&  $check_invite_valid != ''){
+				if(isset($update_mailing_address) &&  $update_mailing_address != ''){
 					$result['status_code']=200;
 					$result['updatedmailingaddress'] = 1;
 				} else {
