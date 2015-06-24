@@ -2342,11 +2342,14 @@ class ApiController extends BaseController {
 							//$paid_status = $paid_status_list[$listingdetail->paid_status];
 							//$status_html = '<span class="label label-sm label-'.$status.'">'.$listingdetail->status.'</span>';
 							$vendor_access_account = $listingdetail->update_account_email_id;
+							$get_transfer_option = PoDetail::check_transfer_option_vendor($listingdetail->po_no);
+							
 							if($vendor_access_account != 0){
 								
 								$get_vendor_email = DB::table('updated_vendors_emails')->where('vendorid',$listingdetail->vendor_id)->first();
 								$check_bank_details = PoDetail::check_bank_details_filled($get_vendor_email->email);
 								$check_manual_details_filled = PoDetail::check_manual_bank_details_filled($get_vendor_email);
+								
 								$vendor_email = $get_vendor_email->email;
 							} else {
 								$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
@@ -2407,15 +2410,20 @@ class ApiController extends BaseController {
 								
 															
 							} else {
-								
-								if($check_bank_details == 1){
+								if (strpos($get_transfer_option,'##') !== false) {
 									$pay_done_class = 'makepayment';
 									$payment_status = 'unpaid';
 								} else {
-									$pay_done_class = 'fade_pay';
-									$payment_status = 'unpaid';
-									
+									if($check_bank_details == 1){
+										$pay_done_class = 'makepayment';
+										$payment_status = 'unpaid';
+									} else {
+										$pay_done_class = 'fade_pay';
+										$payment_status = 'unpaid';
+										
+									}
 								}
+								
 							}
 							$paid_status = $paid_status_list[$payment_status];
 							$paid_status_html = '<span class="label label-sm label-'.$paid_status.'" data-placement="top"  data-trigger="hover" '.$payment_title.' data-html="true" data-content="'.$payment_content.'">'.$payment_status.'</span>';
