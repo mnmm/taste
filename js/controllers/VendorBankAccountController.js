@@ -1048,7 +1048,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	
 	//function to update mailing address
 	//$scope.editMailingAddress = function () {
-	$(document).on("click", ".fa-edit", function() {
+	$(document).on("click", ".fa-unlock", function() {
 		console.log('comes here');
 		$('#manualAccount').find('input#mailingaddress').attr("readonly", false);
 		$('#manualAccount').find('i#updateaddress').css('display','inline-block');
@@ -1057,7 +1057,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 	//}
 	
 	//function to update mailing address
-	$scope.updateMailingAddress = function () {
+	$(document).on("click", ".fa-lock", function() {
 		var mailingaddress = $('#manualAccount').find('input#mailingaddress').val();
 		
 		var vendoruserid  = localStorage.getItem('userid');
