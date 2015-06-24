@@ -952,8 +952,17 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 								}
 							  }
 							}
-					 });
-	
+					 })
+					.on('shown.bs.modal', function() {
+							
+							$('#transfers').show();     	
+								
+						})
+						.on('hide.bs.modal', function(e) {
+							//$('#addBankAccount').hide().appendTo('body');
+							$('#transfers').hide().appendTo('body');  
+						})
+						.modal('show');
 				}
 				
 			}
