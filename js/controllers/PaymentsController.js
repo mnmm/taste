@@ -664,6 +664,9 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
     
     $(document).on("change",".colorcode",function(){
 		var priority = $(this).val();
+		var po_no = $(this).attr('id');
+		
+		console.log('selectedpriority'+po_no+priority);
 		if(priority == 'low'){
 			var oldprioritycolor = 'priority-yellow';
 		} else if(priority == 'medium') {
@@ -674,8 +677,7 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 			var oldprioritycolor = 'priority-green';
 		}
 		$(this).parent('tr').removeClass(old_priority_color);
-		var po_no = $(this).attr('id');
-		console.log('selectedpriority'+po_no+priority);
+		
 		$.ajax({
 			url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
 			type: 'post',
