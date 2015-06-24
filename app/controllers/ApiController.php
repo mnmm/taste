@@ -2317,7 +2317,7 @@ class ApiController extends BaseController {
 								$vendor_email = $get_vendor_email->email;
 							} else {
 								$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
-								$vendor_email = $listingdetail->email;
+								$vendor_email = $listingdetail->vendor_email;
 							}
 							
 							$payment_title = '';
