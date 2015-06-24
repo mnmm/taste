@@ -663,11 +663,63 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
     });
     
     $(document).on("change",".colorcode",function(){
+		var priority = $(this).val();
+		if(priority == 'low'){
+			var oldprioritycolor = 'priority-yellow';
+		} else if(priority == 'medium') {
+			var oldprioritycolor = 'priority-orange';
+		} else if(priority == 'high') {
+			var oldprioritycolor = 'priority-red';
+		} else {
+			var oldprioritycolor = 'priority-green';
+		}
+		$(this).parent('tr').removeClass(old_priority_color);
+		var po_no = $(this).attr('id');
+		console.log('selectedpriority'+po_no+priority);
+		$.ajax({
+			url: 'https://mnmdesignlabs.com/taste/api/getunpaidpo',
+			type: 'post',
+			data: {
+				action: 'updatepriority',
+				priority:priority,
+				poid:po_no
+			},
+			headers: {
+				"x-taste-request-timestamp": Math.floor((new Date().getTime()/1000)), 
+				"x-taste-access-token": localStorage.getItem('access_token')
+			},
+			dataType:'json',
+			success: function (data) {
+				if(data.status_code == 200){
+					if(data.updated == 1 && typeof data.updated != 'undefined'){
+						$('table#sample_2').find('tr').find('td').each(function(){
+							if($(this).find("input[name='orderno']").val() === po_no){
+								$(this).find("input[name='prioritystatus']").val(priority);
+								if(priority == 'low'){
+									var prioritycolor = 'priority-yellow';
+									var newcolor = 'yellow';
+								} else if(priority == 'medium') {
+									var prioritycolor = 'priority-orange';
+									var newcolor = 'orange';
+								} else if(priority == 'high') {
+									var prioritycolor = 'priority-red';
+									var newcolor = 'red';
+								} else {
+									var prioritycolor = 'priority-green';
+									var newcolor = 'green';
+								}
+								$(this).find("input[name='color']").val(newcolor);
+								$(this).parent('tr').addClass(prioritycolor);
+								$(this).css('display','none');
+							}
+						});
+					}
+				}											
+			}
+		});
 		
 	});
-    $scope.updateColorCode = function() {
-		console.log('comes here');
-	}
+    
     
     $(document).on("click", ".sorting_1", function() {
 		$(this).find('select#colorcode').css('display','inline-block');
