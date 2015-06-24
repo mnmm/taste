@@ -170,7 +170,8 @@ var FormValidation = function () {
 										}
 										console.log('email'+email+'updateaccountemail'+updateaccountemail);
 									} else {
-										var email = 
+										var reqemail = $('#requestinfoform').find('input#requestvendoremail').val(); 
+										console.log('reqemail'+reqemail)
 									}
 									/*var priority = $('#changepriority').find('input#priority').val();
 									var po_no = $('#changepriority').find('input#po_no').val();
