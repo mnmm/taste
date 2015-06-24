@@ -662,8 +662,8 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 		  
     });
     
-    $(document).on("change","#colorcode",function(){
-		console.log('changefired');
+    $(document).on("change",".colorcode",function(){
+		
 	});
     $scope.updateColorCode = function() {
 		console.log('comes here');
