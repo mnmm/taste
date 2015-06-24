@@ -2348,12 +2348,12 @@ class ApiController extends BaseController {
 								
 								$get_vendor_email = DB::table('updated_vendors_emails')->where('vendorid',$listingdetail->vendor_id)->first();
 								$check_bank_details = PoDetail::check_bank_details_filled($get_vendor_email->email);
-								$check_manual_details_filled = PoDetail::check_manual_bank_details_filled($get_vendor_email);
+								//$check_manual_details_filled = PoDetail::check_manual_bank_details_filled($get_vendor_email);
 								
 								$vendor_email = $get_vendor_email->email;
 							} else {
 								$check_bank_details = PoDetail::check_bank_details_filled($listingdetail->vendor_email);
-								$check_manual_details_filled = PoDetail::check_manual_bank_details_filled($listingdetail->vendor_email);
+								//$check_manual_details_filled = PoDetail::check_manual_bank_details_filled($listingdetail->vendor_email);
 								$vendor_email = $listingdetail->vendor_email;
 							}
 							
@@ -2410,7 +2410,7 @@ class ApiController extends BaseController {
 								
 															
 							} else {
-								/*if ($get_transfer_option == 1) {
+								/*if (strpos($get_transfer_option,'##') !== false) {
 									$pay_done_class = 'makepayment';
 									$payment_status = 'unpaid';
 								} else {
@@ -2423,7 +2423,7 @@ class ApiController extends BaseController {
 										
 									}
 								}*/
-								$pay_done_class = 'makepayment';
+								$pay_done_class = 'fade_pay';
 								$payment_status = 'unpaid';
 								
 							}
