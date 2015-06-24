@@ -2359,7 +2359,8 @@ class ApiController extends BaseController {
 							$paid_status_html = '<span class="label label-sm label-'.$paid_status.'" data-placement="top"  data-trigger="hover" '.$payment_title.' data-html="true" data-content="'.$payment_content.'">'.$payment_status.'</span>';
 							
 							$podate = date("n/j, Y",strtotime($listingdetail->po_date));
-							$duedate = date("n/j, g:ia",strtotime($listingdetail->due_date)); $duedate= substr($duedate, 0, -1);
+							//$duedate = date("n/j, g:ia",strtotime($listingdetail->due_date)); $duedate= substr($duedate, 0, -1);
+							$duedate = date("n/j",strtotime($listingdetail->due_date));
 							$payhtml = '';
 							$payclass='';
 							if($listingdetail->paid_status == 'paid')
