@@ -2410,18 +2410,29 @@ class ApiController extends BaseController {
 								
 															
 							} else {
-								if (strpos($get_transfer_option,'##') !== false) {
-									$pay_done_class = 'makepayment';
-									$payment_status = 'unpaid';
-								} else {
-									if($check_bank_details == 1){
+								if($get_transfer_option != 0){
+									if (strpos($get_transfer_option,'##') !== false) {
 										$pay_done_class = 'makepayment';
 										$payment_status = 'unpaid';
 									} else {
-										$pay_done_class = 'fade_pay';
-										$payment_status = 'unpaid';
-										
+										if($check_bank_details == 1){
+											$pay_done_class = 'makepayment';
+											$payment_status = 'unpaid';
+										} else {
+											$pay_done_class = 'fade_pay';
+											$payment_status = 'unpaid';
+											
+										}
 									}
+								} else {
+										if($check_bank_details == 1){
+											$pay_done_class = 'makepayment';
+											$payment_status = 'unpaid';
+										} else {
+											$pay_done_class = 'fade_pay';
+											$payment_status = 'unpaid';
+											
+										}
 								}
 								
 							}
