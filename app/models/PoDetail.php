@@ -504,7 +504,7 @@
 					if($get_vendor_id[1] != '' && $get_vendor_id[1] != 0){
 						
 						
-						$vendordetails = DB::table('taste_po')->select('taste_po.id','taste_po.vendor_email')->where('vendor_id','=',$get_vendor_id[1])->get();
+						$vendordetails = DB::table('taste_po')->select('taste_po.id','taste_po.vendor_email','taste_po.update_account_email_id')->where('vendor_id','=',$get_vendor_id[1])->get();
 						
 						if($vendordetails[0]->id != '' && $vendordetails[0]->vendor_email != ''){
 								$check_other_email_exists = $vendordetails[0]->update_account_email_id;
