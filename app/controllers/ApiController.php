@@ -2451,7 +2451,7 @@ class ApiController extends BaseController {
 								$request_id = 'updateinfo';
 							}
 							
-							$color_code_html = '<select id="colorcode" name="colorcode" style="display:none;">';
+							/*$color_code_html = '<select id="colorcode" name="colorcode" style="display:none;">';
 							if($priority_status == 'low'){
 								$color_code_html .= '<option value="low" selected="selected">low</option>';
 							} else {
@@ -2471,10 +2471,10 @@ class ApiController extends BaseController {
 								$color_code_html .= '<option value="hold" selected="selected">hold</option>';
 							} else {
 								$color_code_html .= '<option value="hold">hold</option>';
-							}
+							}*/
 							
 							//$requestinfohtml = PoDetail::get_request_info($listingdetail->vendor_id);
-							$result['data'][]= array($color_code_html.$listingdetail->po_no.'<input type="hidden" name="prioritystatus" value="'.$priority_status.'"><input type="hidden" name="orderno" value="'.$listingdetail->po_no.'">',$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" data-request-email-id="'.$vendor_email.'">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'" data-request-email-id="'.$vendor_email.'">'.$request_status.'</button>');
+							$result['data'][]= array($listingdetail->po_no.'<input type="hidden" name="prioritystatus" value="'.$priority_status.'"><input type="hidden" name="orderno" value="'.$listingdetail->po_no.'">',$podate,$listingdetail->vendor_name,$shipping_address,'$'.$listingdetail->total_amount,$duedate,$paid_status_html,'<a href="'.$payhtml.'" class="btn btn-xs default btn-editable '.$pay_done_class.'" id="'.$listingdetail->po_no.'" data-payment-amount="'.$listingdetail->total_amount.'" data-request-email-id="'.$vendor_email.'">Pay</a><button class="btn btn-xs  default btn-editable requestinfo" id="'.$request_id.'" data-request-id="'.$listingdetail->vendor_id.'" data-request-email-id="'.$vendor_email.'">'.$request_status.'</button>');
 						//}
 						$i++;
 					}
