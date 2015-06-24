@@ -356,13 +356,13 @@ MetronicApp.controller('PaymentsController', function($rootScope, $scope, $http,
 						"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
 							//console.log('in this function'+aData[0]);
 							console.log(aData[0]);
-							if (aData[0].indexOf("low") >= 0){
+							if (aData[0].indexOf("yellow") >= 0){
 								//$('tr', nRow).addClass('yellow');
 								nRow.className = 'priority-yellow';
-							} else if(aData[0].indexOf("medium") >= 0){
+							} else if(aData[0].indexOf("orange") >= 0){
 								//$('tr', nRow).addClass('blue');
 								nRow.className = 'priority-orange';
-							} else if(aData[0].indexOf("high") >= 0){
+							} else if(aData[0].indexOf("red") >= 0){
 								//$('tr', nRow).addClass('red');
 								nRow.className = 'priority-red';
 							} else {
