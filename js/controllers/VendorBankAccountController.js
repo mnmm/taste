@@ -1162,7 +1162,7 @@ MetronicApp.controller('ModalInstanceCtrl', function ($rootScope, $scope, $http,
 							});
 							$('#manualAccount').find('input#paymenttype').val('manual');
 							//$('#manualAccount').find('input#tax_id').val(data.taxinfo);
-							$('#manualAccount').find('input#payeename').val(data.taxinfo);
+							$('#manualAccount').find('input#payeename').val(data.payeename);
 							$('#manualAccount').find('input#mailingaddress').val(data.payeeaddress);
 							//$('#manualAccount').find('input#tax_id').val(data.taxinfo);
 							
